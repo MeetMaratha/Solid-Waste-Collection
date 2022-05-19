@@ -48,5 +48,20 @@ We are using linear programming optimization in gurobipy to solve for optimal ga
 
 ### Folder structure and files
 - Chandigarh QGIS : It contains all files related to QGIS we have used.
-- Data : It contains Bin location data which we are using for our computation.
- - Bin Locations.csv : They are randomly generated points in QGIS and clustered using K-Means. The depot is assigned ward -1.
+- Data : It contains all data which we are using for our computation.
+- Bin Locations.csv : They are randomly generated points in QGIS and clustered using K-Means. The depot is assigned ward -1.
+- distances.csv : This contains the distance matrix of all points in same ward or from depot.
+- Static Data : Contains data regarding Static cases
+- Dynamic Data : Contains Data regarding Dynamic cases
+- Visited Truck # : Visited truck list with fill ratio
+- Truck # Data : Each truck data used for computation.
+- Statistics.csv : Stats for the respective case.
+
+### Python Files
+- get_distance.py : Run this to get distance matrix
+- static_function.py : Static Optimization code
+- dynamic_function.py : Dynamic Optimization code
+- static_unweighted.py : Static unweighted optimization code
+- static_find_weights.py : Finding the wieghts for static case
+- dynamic_unweighted.py : Dynamic unweighted optimization code
+- dynamic_weight_finding.py : Finding weights for dynamic case. 
