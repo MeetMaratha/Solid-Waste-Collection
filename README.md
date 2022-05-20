@@ -44,7 +44,10 @@
 - wcwidth==0.2.5 
 
 ### General Idea
-We are using linear programming optimization in gurobipy to solve for optimal garbage collection.
+- We are using linear programming optimization in gurobipy to solve for optimal garbage collection.
+- As distances matrix is in meters (huge number) whereas fill ratio is between 0 and 1, it gives us weight of distance as 0 as removing weight will minimize the function most. To counter this bug we normalize all distances by dividing distance in each row with that rows maximum value.
+- Time between each dynamic computation is taken as 15 minutes (900s).
+- Speed of each truck is taken as 50 km/hour (13.88 m/s).
 
 ### Folder structure and files
 - Chandigarh QGIS : It contains all files related to QGIS we have used.
@@ -67,3 +70,4 @@ We are using linear programming optimization in gurobipy to solve for optimal ga
 - dynamic_weight_finding.py : Finding weights for dynamic case. 
 - dynamic_worst_case.py : Computing dynamic worst case optimization
 - multi_truck_function.py : Multiple trucks dynamic optimization function.
+- dynamic_weighted_multiple_trucks.py : Dynamic weighted truck optimization where there are 2 trucks in each ward.
