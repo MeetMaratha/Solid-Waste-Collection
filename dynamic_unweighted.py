@@ -13,6 +13,8 @@ np.random.seed(42)
 # Import Data
 data = pd.read_csv('Data/Bin Locations.csv', index_col= 'id').sort_index()
 distance = pd.read_csv('Data/distance.csv').drop('Unnamed: 0', axis = 1)
+for i in range(distance.shape[0]):
+    distance.iloc[:, i] = distance.iloc[:, i]/np.max(distance.iloc[:, i])
 
 # Add Fill_ratio, distance and fill per meter
 fill_ratio = [0.0] + [np.random.rand() for i in range(data.shape[0] - 1)]
@@ -35,7 +37,7 @@ data3 = data[data.Ward == 2]
 obj_value = dyn_opt(data1, data2, data3, distance, folder_path = 'Data/Dynamic Data/Unweighted/', w1 = 0.5, w2 = 0.5, visit1 = visit1, visit2 = visit2, visit3 = visit3)
 
 # Collect Data
-
+distance = pd.read_csv('Data/distance.csv').drop('Unnamed: 0', axis = 1)
 v1 = pd.read_csv('Data/Dynamic Data/Unweighted/Visited Truck 1/visited_truck1_0.5_0.5.csv')
 v2 = pd.read_csv('Data/Dynamic Data/Unweighted/Visited Truck 2/visited_truck2_0.5_0.5.csv')
 v3 = pd.read_csv('Data/Dynamic Data/Unweighted/Visited Truck 3/visited_truck3_0.5_0.5.csv')

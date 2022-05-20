@@ -202,8 +202,9 @@ def dyn_opt(df1, df2, df3, distances, visit1, visit2, visit3, folder_path, w1 = 
         TIME = 900 # 15 minutes
         visited1 = 0
         next_element = next( y for x, y in active_arcs1 if x == visit1.iloc[-1, 0] )
-        while (TIME - c1[visit1.iloc[-1, 0], next_element]/(SPEED) >= 0) and next_element != 0:
-            TIME = TIME - c1[visit1.iloc[-1, 0], next_element]/(SPEED)
+        temp = np.max(pd.read_csv('Data/distance.csv').drop('Unnamed: 0', axis = 1).iloc[start_node[0], :])
+        while (TIME - temp * c1[visit1.iloc[-1, 0], next_element]/(SPEED) >= 0) and next_element != 0:
+            TIME = TIME - temp * c1[visit1.iloc[-1, 0], next_element]/(SPEED)
             visit1.loc[len(visit1.index)] = [next_element, df1.loc[next_element, f_new]]
             df1.loc[next_element, [f_new, fpm]] = [0.0, 0.0]
             next_element = next( y for x, y in active_arcs1 if x == visit1.iloc[-1, 0] )
@@ -228,8 +229,9 @@ def dyn_opt(df1, df2, df3, distances, visit1, visit2, visit3, folder_path, w1 = 
         TIME = 900 # 15 minutes
         visited2 = 0
         next_element = next( y for x, y in active_arcs2 if x == visit2.iloc[-1, 0] )
-        while (TIME - c2[visit2.iloc[-1, 0], next_element]/SPEED >= 0) and next_element != 0:
-            TIME = TIME - c2[visit2.iloc[-1, 0], next_element]/SPEED
+        temp = np.max(pd.read_csv('Data/distance.csv').drop('Unnamed: 0', axis = 1).iloc[start_node[1], :])
+        while (TIME - temp * c2[visit2.iloc[-1, 0], next_element]/(SPEED) >= 0) and next_element != 0:
+            TIME = TIME - temp * c2[visit2.iloc[-1, 0], next_element]/(SPEED)
             visit2.loc[len(visit2.index)] = [next_element, df2.loc[next_element, f_new]]
             df2.loc[next_element, [f_new, fpm]] = [0.0, 0.0]
             next_element = next( y for x, y in active_arcs2 if x == visit2.iloc[-1, 0] )
@@ -254,8 +256,9 @@ def dyn_opt(df1, df2, df3, distances, visit1, visit2, visit3, folder_path, w1 = 
         TIME = 900 # 15 minutes
         visited3 = 0
         next_element = next( y for x, y in active_arcs3 if x == visit3.iloc[-1, 0] )
-        while (TIME - c3[visit3.iloc[-1, 0], next_element]/SPEED >= 0) and next_element != 0:
-            TIME = TIME - c3[visit3.iloc[-1, 0], next_element]/SPEED
+        temp = np.max(pd.read_csv('Data/distance.csv').drop('Unnamed: 0', axis = 1).iloc[start_node[2], :])
+        while (TIME - temp * c3[visit3.iloc[-1, 0], next_element]/(SPEED) >= 0) and next_element != 0:
+            TIME = TIME - temp * c3[visit3.iloc[-1, 0], next_element]/(SPEED)
             visit3.loc[len(visit3.index)] = [next_element, df3.loc[next_element, f_new]]
             df3.loc[next_element, [f_new, fpm]] = [0.0, 0.0]
             next_element = next( y for x, y in active_arcs3 if x == visit3.iloc[-1, 0] )

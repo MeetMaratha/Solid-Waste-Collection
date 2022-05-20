@@ -65,3 +65,5 @@ We are using linear programming optimization in gurobipy to solve for optimal ga
 - static_find_weights.py : Finding the wieghts for static case
 - dynamic_unweighted.py : Dynamic unweighted optimization code
 - dynamic_weight_finding.py : Finding weights for dynamic case. 
+- dynamic_worst_case.py : Computing dynamic worst case optimization
+- multi_truck_function.py : Multiple trucks dynamic optimization function.
