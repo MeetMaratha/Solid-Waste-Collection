@@ -48,6 +48,8 @@
 - As distances matrix is in meters (huge number) whereas fill ratio is between 0 and 1, it gives us weight of distance as 0 as removing weight will minimize the function most. To counter this bug we normalize all distances by dividing distance in each row with that rows maximum value.
 - Time between each dynamic computation is taken as 15 minutes (900s).
 - Speed of each truck is taken as 50 km/hour (13.88 m/s).
+- For 2 trucks in each ward total coverage is in range 35 to 45
+- For 3 trucks in each ward total coverage is in range 53 to 66
 
 ### Folder structure and files
 - Chandigarh QGIS : It contains all files related to QGIS we have used.
