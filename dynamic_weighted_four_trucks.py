@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from multi_truck_function import dyn_multi_opt
+from four_plus_truck_function import dyn_multi_opt
 
 
 # Constants
@@ -248,5 +248,5 @@ stats = pd.DataFrame(
             round( 100 * (v32.shape[0] - 2)/ data[data.Ward == 2].shape[0], 4),
             round( 100 * (v33.shape[0] - 2)/ data[data.Ward == 2].shape[0], 4),
             round( 100 * (v34.shape[0] - 2)/ data[data.Ward == 2].shape[0], 4)],
-    }, index=['Truck 1', 'Truck 2', 'Truck 3'])
+    }, index=['Truck 1', 'Truck 2', 'Truck 3', 'Truck 4'])
 stats.to_csv('Data/Dynamic Data/Multiple Trucks/4 Trucks/Statistics.csv')

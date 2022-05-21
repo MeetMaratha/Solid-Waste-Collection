@@ -6,69 +6,39 @@ import pandas as pd
 B_TO_T = 10 # Bin to Truck
 B_TO_B = 100 # Bin to Bin
 
-def update_fill(data, m):
-    fillPrevName = 'fill_ratio_' + str(m - 1)
-    fillpmNewName = 'fill_per_m_' + str(m)
-    fillNewName = 'fill_ratio_' + str(m)
-    if m == 0:
-        fillRatio = [0.0] + [np.random.rand() for _ in range(data.shape[0] - 1)]
-    else:
-        fillRatio = data.loc[:, fillPrevName].tolist()
-        for k in range(len(fillRatio)):
-            if fillRatio[k] != 0.0 and np.random.rand() < 0.80:
-                fillRatio[k] = fillRatio[k] + np.random.uniform(0, 1 - fillRatio[k]) / 10
-    data.insert(data.shape[1], fillNewName, fillRatio)
-    # data[fillNewName] = fillRatio
-    return data
+def optimize(df, visit, distances, n_done, visitedNodes, count, n_trucks = 1, w1 = 0.5, w2 = 0.5, m = 0):
 
-def calc_V(N, m, st):
-    if m == 0:
-        V = N + [0]
-    else:
-        V = [st] + N + [0]
-    return V
-
-
-def dyn_multi_opt(df, visit, distances, t_name, n_done, n_trucks = 1, folder_Path = '', ward_name = '', w1 = 0.5, w2 = 0.5, m = 0, obj_value = []):
-    SPEED = 13.88
-    # Model
     mdl = Model('CVRP')
-
     # Initializations
-
+    fillPrevName = 'fill_ratio_' + str(m - 1)
+    fillNewName = 'fill_ratio_' + str(m)
+    fillpmNewName = 'fill_per_m_' + str(m)
     startNode = []
     objs = []
+    fills = []
+    NTaken = []
+    active_arcs = []
     Ns = []
     Vs = []
     As = []
-    Us = []
+    Cs = []
     Xs = []
     Ys = []
-    Cs = []
-    (visit1, visit2, visit3, visit4, visit5) = (None, None, None, None, None)
-    visits = [visit1, visit2, visit3, visit4, visit5]
-    visitedNodes = []
-    NTaken = []
-
+    Us = []
+    (visit1, visit2, visit3) = (None, None, None)
+    visits = [visit1, visit2, visit3]
     for i in range(n_trucks):
         visits[i] = visit[i]
         visits[i].Node = visits[i].Node.astype('int')
         startNode.append(visits[i].iloc[-1, 0])
         objs.append(0)
         for j in visits[i].Node.tolist():
-            visitedNodes.append(j)
+            visitedNodes.add(j)
     
-    fillPrevName = 'fill_ratio_' + str(m - 1)
-    fillpmNewName = 'fill_per_m_' + str(m)
-    fillNewName = 'fill_ratio_' + str(m)
-    fills = []
-    
-
     #  ---------------------------------
     print(f"Start Nodes : {startNode}\nFill Ratios : {[sum(visits[z].iloc[:, 1]) for z in range(n_trucks)]}")
     # -------------------------------------
 
-    df = update_fill(df, m)
     for k in range(len(n_done)):
         Ns.append(None)
         Vs.append(None)
@@ -77,15 +47,14 @@ def dyn_multi_opt(df, visit, distances, t_name, n_done, n_trucks = 1, folder_Pat
         Xs.append(None)
         Ys.append(None)
         Us.append(None)
+        active_arcs.append(None)
         fills.append(None)
         if n_done[k] == 0:
             dist = distances.iloc[startNode[k], df.index.tolist()].tolist()
-            distName = 'distance_from_' + str(startNode[k]) + '_' + str(k)
+            distName = 'distance_from_' + str(startNode[k]) + '_' + str(count) + '_' + str(k)
             df.insert(df.shape[1], distName, dist)
-            # df[distName] = dist
-            fillpmNewName1 = fillpmNewName + '_' + str(startNode[k]) + '_' + str(k)
+            fillpmNewName1 = fillpmNewName + '_' + str(startNode[k]) + '_' + str(count) + '_' + str(k)
             df.insert(df.shape[1], fillpmNewName1, B_TO_B * df.loc[:, fillNewName] / df.loc[:, distName])
-            # df[fillpmNewName1] = B_TO_B * df.loc[:, fillNewName] / df.loc[:, distName]
             df.sort_values(by = fillpmNewName1, ascending = False)
             fills[k] = pd.DataFrame(
                     {'fill' : df.loc[:, fillNewName].tolist() + [0.0]}, index = df.index.tolist() + [0]
@@ -106,7 +75,7 @@ def dyn_multi_opt(df, visit, distances, t_name, n_done, n_trucks = 1, folder_Pat
             objs[k] = quicksum( 
                     (w1 * Xs[k][p, q] * Cs[k][(p, q)]) - (w2 * Ys[k][p] * fills[k].loc[p, 'fill'] * B_TO_T) for p,q in As[k]
                     )
-
+    
     # Optimization Function defination
 
     mdl.modelSense = GRB.MINIMIZE
@@ -159,25 +128,84 @@ def dyn_multi_opt(df, visit, distances, t_name, n_done, n_trucks = 1, folder_Pat
     # Optimization
 
     mdl.optimize()
-    obj_value.append(mdl.getObjective().getValue())
+    ob_value = mdl.getObjective().getValue()
+    for k in range(len(n_done)):
+        if n_done[k] == 0:
+            active_arcs[k] = [a for a in As[k] if Xs[k][a].x > 0.99]
 
-    # Time simulation
+    return ob_value, df, active_arcs, visitedNodes
+
+
+def update_fill(data, m):
+    fillPrevName = 'fill_ratio_' + str(m - 1)
+    fillpmNewName = 'fill_per_m_' + str(m)
+    fillNewName = 'fill_ratio_' + str(m)
+    if m == 0:
+        fillRatio = [0.0] + [np.random.rand() for _ in range(data.shape[0] - 1)]
+    else:
+        fillRatio = data.loc[:, fillPrevName].tolist()
+        for k in range(len(fillRatio)):
+            if fillRatio[k] != 0.0 and np.random.rand() < 0.80:
+                fillRatio[k] = fillRatio[k] + np.random.uniform(0, 1 - fillRatio[k]) / 10
+    data.insert(data.shape[1], fillNewName, fillRatio)
+    # data[fillNewName] = fillRatio
+    return data
+
+def calc_V(N, m, st):
+    if m == 0:
+        V = N + [0]
+    else:
+        V = [st] + N + [0]
+    return V
+
+def dyn_multi_opt(df, visit, distances, t_name, n_done, n_trucks = 1, folder_Path = '', ward_name = '', w1 = 0.5, w2 = 0.5, m = 0, obj_value = []):
+    SPEED = 13.88
+
+    # Model
+    mdl = Model('CVRP')
+
+    # Initializations
+    timesToRun = int(np.ceil(len(n_done) / 3))
+    fillPrevName = 'fill_ratio_' + str(m - 1)
+    fillNewName = 'fill_ratio_' + str(m)
+    fillpmNewName = 'fill_per_m_' + str(m)
+    df = update_fill(df, m)
+    visitedNodes = set()
+    objValue = 0
+    arcs = []
+    startNode = []
+    counts = []
+
+    for k in range(len(n_done)):
+        startNode.append(int(visit[k].iloc[-1, 0]))
+    
+    
+    for l in range(timesToRun):
+        ob_value, df, active_arcs, visitedNodes = optimize(df = df, visit = visit[l*3 : l*3 + 3], distances = distances, n_done = n_done[l*3 : l*3 + 3], n_trucks = len(n_done[l*3 : l*3 + 3]), w1 = w1, w2 = w2, m = m, visitedNodes = visitedNodes, count = l)
+        objValue += ob_value
+        for a in active_arcs:
+            arcs.append(a)
+        for _ in range(len(n_done[l*3 : l*3 + 3])):
+            counts.append(str(l))
+    obj_value.append(objValue)
+
+    # Time Simulation
 
     for k in range(len(n_done)):
         if n_done[k] == 0:
             TIME = 900
-            arcs = [a for a in As[k] if Xs[k][a].x > 0.99]
+            arc = arcs[k]
             imp = 1
             next_element = next(
-                y for x, y in arcs if x == visits[k].iloc[-1 ,0]
+                y for x, y in arc if x == visit[k].iloc[-1 ,0]
             )
             unnormalize = np.max(pd.read_csv('Data/distance.csv').drop('Unnamed: 0', axis = 1).iloc[startNode[k], :])
-            while TIME - (unnormalize * Cs[k][visits[k].iloc[-1, 0], next_element]) / SPEED >= 0 and next_element != 0:
-                TIME -= (unnormalize * Cs[k][visits[k].iloc[-1, 0], next_element]) / SPEED
-                visits[k].loc[len(visits[k])] = [next_element, df.loc[next_element, fillNewName]]
-                df.loc[next_element, [fillNewName, fillpmNewName + '_' + str(startNode[k])]] = [0.0, 0.0]
+            while TIME - (unnormalize * distances.iloc[int(visit[k].iloc[-1, 0]), next_element]) / SPEED >= 0 and next_element != 0:
+                TIME -= unnormalize * distances.iloc[int(visit[k].iloc[-1, 0]), next_element] / SPEED
+                visit[k].loc[len(visit[k])] = [next_element, df.loc[next_element, fillNewName]]
+                df.loc[next_element, [fillNewName, fillpmNewName + '_' + str(startNode[k]) + '_' + counts[k] + '_' + str(k % 3)]] = [0.0, 0.0]
                 next_element = next(
-                    y for x, y in arcs if x == visits[k].iloc[-1 ,0]
+                    y for x, y in arc if x == visit[k].iloc[-1 ,0]
                 )
                 imp = 0
             if imp == 1 and next_element != 0:
@@ -186,25 +214,25 @@ def dyn_multi_opt(df, visit, distances, t_name, n_done, n_trucks = 1, folder_Pat
                 print('Forcefully entering value.')
                 # ------------------------------------
                 TIME = 0
-                visits[k].loc[len(visits[k])] = [next_element, df.loc[next_element, fillNewName]]
-                df.loc[next_element, [fillNewName, fillpmNewName + '_' + str(startNode[k])]] = [0.0, 0.0]
+                visit[k].loc[len(visit[k])] = [next_element, df.loc[next_element, fillNewName]]
+                df.loc[next_element, [fillNewName, fillpmNewName + '_' + str(startNode[k]) + '_' + counts[k] + '_' + str(k)]] = [0.0, 0.0]
                 next_element = next(
-                    y for x, y in arcs if x == visits[k].iloc[-1 ,0]
+                    y for x, y in arc if x == visit[k].iloc[-1 ,0]
                 )
             
             if next_element == 0:
-                visits[k].loc[len(visits[k])] = [next_element, sum(visits[k].iloc[:, 1])]
+                visit[k].loc[len(visit[k])] = [next_element, sum(visit[k].iloc[:, 1])]
 
                 # ----------------------------------------
                 print(f'Optimization done for truck {k}')
                 # ----------------------------------------
 
                 fileName = folder_Path + 'Visited ' + ward_name + '/visited_' + t_name + '_' + str(k + 1) + '_' + str(w1) + '_' + str(w2) + '.csv'
-                visits[k].to_csv(fileName, index = False)
+                visit[k].to_csv(fileName, index = False)
                 n_done[k] = 1
             # ----------------------------------------
             print(f"Start Node : {startNode[k]}")
-            print(f"Active Arcs : {arcs}")
+            print(f"Active Arcs : {arc}")
             # ----------------------------------------
 
     print(f"Done Status : {n_done}")
@@ -221,6 +249,5 @@ def dyn_multi_opt(df, visit, distances, t_name, n_done, n_trucks = 1, folder_Pat
     
     # Recursive call
     
-    dyn_multi_opt(df =df, visit = visits, distances = distances, t_name = t_name, n_done = n_done, w1 = w1, w2 = w2, n_trucks = n_trucks, folder_Path = folder_Path, ward_name = ward_name, obj_value = obj_value, m = m)
+    dyn_multi_opt(df =df, visit = visit, distances = distances, t_name = t_name, n_done = n_done, w1 = w1, w2 = w2, n_trucks = n_trucks, folder_Path = folder_Path, ward_name = ward_name, obj_value = obj_value, m = m)
     return obj_value
-        
