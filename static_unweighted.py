@@ -13,6 +13,8 @@ np.random.seed(42)
 # Import Data
 data = pd.read_csv('Data/Bin Locations.csv', index_col= 'id').sort_index()
 distance = pd.read_csv('Data/distance.csv').drop('Unnamed: 0', axis = 1)
+for i in range(distance.shape[0]):
+    distance.iloc[:, i] = distance.iloc[:, i]/np.max(distance.iloc[:, i])
 
 # Add Fill_ratio, distance and fill per meter
 fill_ratio = [0.0] + [np.random.rand() for i in range(data.shape[0] - 1)]
@@ -25,8 +27,11 @@ data['fill_p_m'] = fill_p_m
 # Optimization
 routes, _ = opt(data, distance, w1 = 0.5, w2 = 0.5)
 
+distance = pd.read_csv('Data/distance.csv').drop('Unnamed: 0', axis = 1)
+
 # Saving all data
 data.to_csv('Data/Static Data/Unweighted/Truck Data.csv')
+
 #Save Data Truck 1
 nodes1 = [0]
 fill1 = [0]
