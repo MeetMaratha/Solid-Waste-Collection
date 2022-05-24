@@ -2,11 +2,16 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from four_plus_truck_function import dyn_multi_opt
+from show_routes import CreateMap
 
 
 # Constants
 B_TO_B = 100
 B_TO_T = 10
+N_WARDS = 3
+N_TRUCKS = 5
+W1 = 0.9
+W2 = 0.1
 
 # Set Random Seed
 np.random.seed(42)
@@ -19,7 +24,7 @@ for i in range(distance.shape[0]):
 
 # Optimization
 
-# Turck 1
+# Ward 1 Optimization
 
 data1 = data[data.Ward == 0]
 visit1, visit2, visit3, visit4, visit5 = (
@@ -30,10 +35,10 @@ visit1, visit2, visit3, visit4, visit5 = (
     pd.DataFrame({'Node': pd.Series(0, dtype='int'), 'fill_ratio': pd.Series(0, dtype='float')}), 
     )
 visitedNodes = set()
-obj_value1 = dyn_multi_opt(data1, [visit1, visit2, visit3, visit4, visit5], visitedNodes = visitedNodes, distances = distance, ward_name = 'Truck 1', t_name = 'truck1', folder_Path = 'Data/Dynamic Data/Multiple Trucks/Best case/', w1 = 0.9, w2 = 0.1, n_done = [0, 0, 0, 0, 0], n_trucks = 5, obj_value=[])
-print('\n Truck 1 Done \n')
+obj_value1 = dyn_multi_opt(data1, [visit1, visit2, visit3, visit4, visit5], visitedNodes = visitedNodes, distances = distance, ward_name = 'Truck 1', t_name = 'truck1', folder_Path = 'Data/Dynamic Data/Multiple Trucks/Best case/', w1 = W1, w2 = W2, n_done = [0] * N_TRUCKS, n_trucks = N_TRUCKS, obj_value=[])
+print('\n Ward 1 Done \n')
 
-# Truck 2
+# Ward 2 Optimization
 
 data2 = data[data.Ward == 1]
 visit1, visit2, visit3, visit4, visit5 = (
@@ -44,10 +49,10 @@ visit1, visit2, visit3, visit4, visit5 = (
     pd.DataFrame({'Node': pd.Series(0, dtype='int'), 'fill_ratio': pd.Series(0, dtype='float')}), 
     )
 visitedNodes = set()
-obj_value2 = dyn_multi_opt(data2, [visit1, visit2, visit3, visit4, visit5], visitedNodes = visitedNodes, distances = distance, ward_name = 'Truck 2', t_name = 'truck2', folder_Path = 'Data/Dynamic Data/Multiple Trucks/Best case/', w1 = 0.9, w2 = 0.1, n_done = [0, 0, 0, 0, 0], n_trucks = 5, obj_value=[])
-print('\nTruck 2 Done \n')
+obj_value2 = dyn_multi_opt(data2, [visit1, visit2, visit3, visit4, visit5], visitedNodes = visitedNodes, distances = distance, ward_name = 'Truck 2', t_name = 'truck2', folder_Path = 'Data/Dynamic Data/Multiple Trucks/Best case/', w1 = W1, w2 = W2, n_done = [0] * N_TRUCKS, n_trucks = N_TRUCKS, obj_value=[])
+print('\n Ward 2 Done \n')
 
-# Truck 3
+# Ward 3 Optimization
 
 data3 = data[data.Ward == 2]
 visit1, visit2, visit3, visit4, visit5 = (
@@ -58,8 +63,8 @@ visit1, visit2, visit3, visit4, visit5 = (
     pd.DataFrame({'Node': pd.Series(0, dtype='int'), 'fill_ratio': pd.Series(0, dtype='float')}), 
     )
 visitedNodes = set()
-obj_value3 = dyn_multi_opt(data3, [visit1, visit2, visit3, visit4, visit5], visitedNodes = visitedNodes, distances = distance, ward_name = 'Truck 3', t_name = 'truck3', folder_Path = 'Data/Dynamic Data/Multiple Trucks/Best case/', w1 = 0.9, w2 = 0.1, n_done = [0, 0, 0, 0, 0], n_trucks = 5, obj_value=[])
-print('\n Truck 3 Done \n')
+obj_value3 = dyn_multi_opt(data3, [visit1, visit2, visit3, visit4, visit5], visitedNodes = visitedNodes, distances = distance, ward_name = 'Truck 3', t_name = 'truck3', folder_Path = 'Data/Dynamic Data/Multiple Trucks/Best case/', w1 = W1, w2 = W2, n_done = [0] * N_TRUCKS, n_trucks = N_TRUCKS, obj_value=[])
+print('\n Ward 3 Done \n')
 
 
 # Collect Data
@@ -79,21 +84,21 @@ path32 = []
 path33 = []
 path34 = []
 path35 = []
-v11 = pd.read_csv('Data/Dynamic Data/Multiple Trucks/Best case/Visited Truck 1/visited_truck1_1_0.9_0.1.csv')
-v12 = pd.read_csv('Data/Dynamic Data/Multiple Trucks/Best case/Visited Truck 1/visited_truck1_2_0.9_0.1.csv')
-v13 = pd.read_csv('Data/Dynamic Data/Multiple Trucks/Best case/Visited Truck 1/visited_truck1_3_0.9_0.1.csv')
-v14 = pd.read_csv('Data/Dynamic Data/Multiple Trucks/Best case/Visited Truck 1/visited_truck1_4_0.9_0.1.csv')
-v15 = pd.read_csv('Data/Dynamic Data/Multiple Trucks/Best case/Visited Truck 1/visited_truck1_5_0.9_0.1.csv')
-v21 = pd.read_csv('Data/Dynamic Data/Multiple Trucks/Best case/Visited Truck 2/visited_truck2_1_0.9_0.1.csv')
-v22 = pd.read_csv('Data/Dynamic Data/Multiple Trucks/Best case/Visited Truck 2/visited_truck2_2_0.9_0.1.csv')
-v23 = pd.read_csv('Data/Dynamic Data/Multiple Trucks/Best case/Visited Truck 2/visited_truck2_3_0.9_0.1.csv')
-v24 = pd.read_csv('Data/Dynamic Data/Multiple Trucks/Best case/Visited Truck 2/visited_truck2_4_0.9_0.1.csv')
-v25 = pd.read_csv('Data/Dynamic Data/Multiple Trucks/Best case/Visited Truck 2/visited_truck2_5_0.9_0.1.csv')
-v31 = pd.read_csv('Data/Dynamic Data/Multiple Trucks/Best case/Visited Truck 3/visited_truck3_1_0.9_0.1.csv')
-v32 = pd.read_csv('Data/Dynamic Data/Multiple Trucks/Best case/Visited Truck 3/visited_truck3_2_0.9_0.1.csv')
-v33 = pd.read_csv('Data/Dynamic Data/Multiple Trucks/Best case/Visited Truck 3/visited_truck3_3_0.9_0.1.csv')
-v34 = pd.read_csv('Data/Dynamic Data/Multiple Trucks/Best case/Visited Truck 3/visited_truck3_4_0.9_0.1.csv')
-v35 = pd.read_csv('Data/Dynamic Data/Multiple Trucks/Best case/Visited Truck 3/visited_truck3_5_0.9_0.1.csv')
+v11 = pd.read_csv(f'Data/Dynamic Data/Multiple Trucks/Best case/Visited Truck 1/visited_truck1_1_{W1}_{W2}.csv')
+v12 = pd.read_csv(f'Data/Dynamic Data/Multiple Trucks/Best case/Visited Truck 1/visited_truck1_2_{W1}_{W2}.csv')
+v13 = pd.read_csv(f'Data/Dynamic Data/Multiple Trucks/Best case/Visited Truck 1/visited_truck1_3_{W1}_{W2}.csv')
+v14 = pd.read_csv(f'Data/Dynamic Data/Multiple Trucks/Best case/Visited Truck 1/visited_truck1_4_{W1}_{W2}.csv')
+v15 = pd.read_csv(f'Data/Dynamic Data/Multiple Trucks/Best case/Visited Truck 1/visited_truck1_5_{W1}_{W2}.csv')
+v21 = pd.read_csv(f'Data/Dynamic Data/Multiple Trucks/Best case/Visited Truck 2/visited_truck2_1_{W1}_{W2}.csv')
+v22 = pd.read_csv(f'Data/Dynamic Data/Multiple Trucks/Best case/Visited Truck 2/visited_truck2_2_{W1}_{W2}.csv')
+v23 = pd.read_csv(f'Data/Dynamic Data/Multiple Trucks/Best case/Visited Truck 2/visited_truck2_3_{W1}_{W2}.csv')
+v24 = pd.read_csv(f'Data/Dynamic Data/Multiple Trucks/Best case/Visited Truck 2/visited_truck2_4_{W1}_{W2}.csv')
+v25 = pd.read_csv(f'Data/Dynamic Data/Multiple Trucks/Best case/Visited Truck 2/visited_truck2_5_{W1}_{W2}.csv')
+v31 = pd.read_csv(f'Data/Dynamic Data/Multiple Trucks/Best case/Visited Truck 3/visited_truck3_1_{W1}_{W2}.csv')
+v32 = pd.read_csv(f'Data/Dynamic Data/Multiple Trucks/Best case/Visited Truck 3/visited_truck3_2_{W1}_{W2}.csv')
+v33 = pd.read_csv(f'Data/Dynamic Data/Multiple Trucks/Best case/Visited Truck 3/visited_truck3_3_{W1}_{W2}.csv')
+v34 = pd.read_csv(f'Data/Dynamic Data/Multiple Trucks/Best case/Visited Truck 3/visited_truck3_4_{W1}_{W2}.csv')
+v35 = pd.read_csv(f'Data/Dynamic Data/Multiple Trucks/Best case/Visited Truck 3/visited_truck3_5_{W1}_{W2}.csv')
 v11.Node = v11.Node.astype('int')
 v12.Node = v12.Node.astype('int')
 v13.Node = v13.Node.astype('int')
@@ -170,40 +175,7 @@ dist33 = sum([distance.iloc[i,j] for i,j in path33])
 dist34 = sum([distance.iloc[i,j] for i,j in path34])
 dist35 = sum([distance.iloc[i,j] for i,j in path35])
 
-# Uncomment if you want to print Stats
-
-# print("\n")
-# print(f'Garbage fill for truck 1 - 1 : {round(gar11, 4)}%')
-# print(f'Garbage fill for truck 1 - 2 : {round(gar12, 4)}%')
-# print(f'Garbage fill for truck 2 - 1 : {round(gar21, 4)}%')
-# print(f'Garbage fill for truck 2 - 2 : {round(gar22, 4)}%')
-# print(f'Garbage fill for truck 3 - 1 : {round(gar31, 4)}%')
-# print(f'Garbage fill for truck 3 - 2 : {round(gar32, 4)}%')
-
-# print("\n")
-# print(f'Garbage collected for truck 1 - 1 : {round(gar11/10 * B_to_B, 4)}')
-# print(f'Garbage collected for truck 1 - 2 : {round(gar12/10 * B_to_B, 4)}')
-# print(f'Garbage collected for truck 2 - 1 : {round(gar21/10 * B_to_B, 4)}')
-# print(f'Garbage collected for truck 2 - 2 : {round(gar22/10 * B_to_B, 4)}')
-# print(f'Garbage collected for truck 3 - 1 : {round(gar31/10 * B_to_B, 4)}')
-# print(f'Garbage collected for truck 3 - 2 : {round(gar32/10 * B_to_B, 4)}')
-
-# print("\n")
-# print(f'Distance travelled for truck 1 - 1 : {round(dist11, 4)}')
-# print(f'Distance travelled for truck 1 - 2 : {round(dist12, 4)}')
-# print(f'Distance travelled for truck 2 - 1 : {round(dist21, 4)}')
-# print(f'Distance travelled for truck 2 - 2 : {round(dist22, 4)}')
-# print(f'Distance travelled for truck 3 - 1 : {round(dist31, 4)}')
-# print(f'Distance travelled for truck 3 - 2 : {round(dist32, 4)}')
-
-# print("\n")
-# print(f'Garbage per meter for truck 1 - 1 : {round(gar11/dist11, 4)}')
-# print(f'Garbage per meter for truck 1 - 2 : {round(gar12/dist12, 4)}')
-# print(f'Garbage per meter for truck 2 - 1 : {round(gar21/dist21, 4)}')
-# print(f'Garbage per meter for truck 2 - 2 : {round(gar22/dist22, 4)}')
-# print(f'Garbage per meter for truck 3 - 1 : {round(gar31/dist31, 4)}')
-# print(f'Garbage per meter for truck 3 - 2 : {round(gar32/dist32, 4)}')
-
+print('--------------- SAVING STATISTICS ----------------------\n')
 # Save Statistics
 
 stats = pd.DataFrame(
@@ -300,3 +272,16 @@ stats = pd.DataFrame(
             round( 100 * (v35.shape[0] - 2)/ data[data.Ward == 2].shape[0], 4)],
     }, index=['Truck 1', 'Truck 2', 'Truck 3', 'Truck 4', 'Truck 5'])
 stats.to_csv('Data/Dynamic Data/Multiple Trucks/Best case/Statistics.csv')
+
+print('--------------- GENERATING MAP ----------------------')
+# Plotting routes
+
+map = CreateMap()
+map.createRoutes('Data/Dynamic Data/Multiple Trucks/Best case/', N_WARDS, N_TRUCKS, W1, W2, Multiple_truck = True)
+map.createLatLong('Data/Bin Locations.csv', N_WARDS)
+map.createRoutesDict(N_WARDS)
+map.addRoutesToMap(N_WARDS, N_TRUCKS)
+map.addDepot()
+map.addNodes('Data/Bin Locations.csv')
+map.saveMap('Data/Dynamic Data/Multiple Trucks/Best case/')
+map.displayMap('Data/Dynamic Data/Multiple Trucks/Best case/')

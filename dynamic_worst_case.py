@@ -2,10 +2,15 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from dynamic_function import dyn_opt
+from show_routes import CreateMap
 
 # Constants
 B_TO_B = 100
 B_TO_T = 10
+N_WARDS = 3
+N_TRUCKS = 1
+W1 = 0.9
+W2 = 0.1
 
 # Set Random Seed
 np.random.seed(42)
@@ -36,13 +41,13 @@ data1 = data[data.Ward == 0]
 data2 = data[data.Ward == 1]
 data3 = data[data.Ward == 2]
 
-obj_value = dyn_opt(data1, data2, data3, distance, folder_path = 'Data/Dynamic Data/Worst Case/', w1 = 0.9, w2 = 0.1, visit1 = visit1, visit2 = visit2, visit3 = visit3)
+obj_value = dyn_opt(data1, data2, data3, distance, folder_path = 'Data/Dynamic Data/Worst Case/', w1 = W1, w2 = W2, visit1 = visit1, visit2 = visit2, visit3 = visit3)
 
 # Collect Data
 distance = pd.read_csv('Data/distance.csv').drop('Unnamed: 0', axis = 1)
-v1 = pd.read_csv('Data/Dynamic Data/Worst Case/Visited Truck 1/visited_truck1_0.9_0.1.csv')
-v2 = pd.read_csv('Data/Dynamic Data/Worst Case/Visited Truck 2/visited_truck2_0.9_0.1.csv')
-v3 = pd.read_csv('Data/Dynamic Data/Worst Case/Visited Truck 3/visited_truck3_0.9_0.1.csv')
+v1 = pd.read_csv(f'Data/Dynamic Data/Worst Case/Visited Truck 1/visited_truck1_{W1}_{W2}.csv')
+v2 = pd.read_csv(f'Data/Dynamic Data/Worst Case/Visited Truck 2/visited_truck2_{W1}_{W2}.csv')
+v3 = pd.read_csv(f'Data/Dynamic Data/Worst Case/Visited Truck 3/visited_truck3_{W1}_{W2}.csv')
 v1.Node = v1.Node.astype('int')
 v2.Node = v2.Node.astype('int')
 v3.Node = v3.Node.astype('int')
@@ -62,28 +67,7 @@ dist1 = sum([distance.iloc[i,j] for i,j in path1])
 dist2 = sum([distance.iloc[i,j] for i,j in path2])
 dist3 = sum([distance.iloc[i,j] for i,j in path3])
 
-# Uncomment if you want to print Stats
-
-# print("\n")
-# print(f'Fill Ratio of truck 1 : {round(gar1, 4)}')
-# print(f'Fill Ratio of truck 2 : {round(gar2, 4)}')
-# print(f'Fill Ratio of truck 3 : {round(gar3, 4)}')
-
-# print("\n")
-# print(f'Garbage collected by truck 1 : {round(gar1/10 * B_TO_B, 4)}')
-# print(f'Garbage collected by truck 2 : {round(gar2/10 * B_TO_B, 4)}')
-# print(f'Garbage collected by truck 3 : {round(gar3/10 * B_TO_B, 4)}')
-
-# print("\n")
-# print(f'Distance travelled by truck 1 : {round(dist1, 4)}')
-# print(f'Distance travelled by truck 2 : {round(dist2, 4)}')
-# print(f'Distance travelled by truck 3 : {round(dist3, 4)}')
-
-# print("\n")
-# print(f'Garbage per meter for truck 1 : {round(gar1/dist1, 4)}')
-# print(f'Garbage per meter for truck 2 : {round(gar2/dist2, 4)}')
-# print(f'Garbage per meter for truck 3 : {round(gar3/dist3, 4)}')
-
+print('--------------- SAVING STATISTICS ----------------------\n')
 # Save Statistics
 
 stats = pd.DataFrame(
@@ -110,3 +94,16 @@ stats = pd.DataFrame(
             round( 100 * (v3.shape[0] - 2)/ data[data.Ward == 2].shape[0], 4)]
     }, index=['Truck 1', 'Truck 2', 'Truck 3'])
 stats.to_csv('Data/Dynamic Data/Worst Case/Statistics.csv')
+
+print('--------------- GENERATING MAP ----------------------')
+# Plotting routes
+
+map = CreateMap()
+map.createRoutes('Data/Dynamic Data/Worst Case/', N_WARDS, N_TRUCKS, W1, W2, Multiple_truck = False)
+map.createLatLong('Data/Bin Locations.csv', N_WARDS)
+map.createRoutesDict(N_WARDS)
+map.addRoutesToMap(N_WARDS, N_TRUCKS)
+map.addDepot()
+map.addNodes('Data/Bin Locations.csv')
+map.saveMap('Data/Dynamic Data/Worst Case/')
+map.displayMap('Data/Dynamic Data/Worst Case/')

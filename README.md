@@ -81,4 +81,4 @@
 - dynamic_weighted_four_trucks.py : Performing Dynamic optimization of 4 trucks in each ward.
 - dynamic_weighted_multi_best_case.py : Best collection ratio for dynamic case (5 Trucks)
 - dynamic_weighted_multi_worst_case.py : Worst collection ratio for dynamic case (5 Trucks)
-- route testing.ipynb : For visualizing routes.
+- show_routes.py : For visualizing routes.
