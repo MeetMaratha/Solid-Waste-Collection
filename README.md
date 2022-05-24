@@ -50,7 +50,8 @@
 - Speed of each truck is taken as 50 km/hour (13.88 m/s).
 - For 2 trucks in each ward total coverage is in range 35 to 45
 - For 3 trucks in each ward total coverage is in range 53 to 66
-- For 4 trucks in each ward total coverage is in range 78 to 95
+- For 4 trucks in each ward total coverage is in range 78 to 85
+- For 5 trucks in each ward we have total coverage above 90 for all wards
 
 ### Folder structure and files
 - Chandigarh QGIS : It contains all files related to QGIS we have used.
@@ -69,6 +70,7 @@
 - dynamic_function.py : Dynamic Optimization code
 - multi_truck_function.py : Multiple trucks dynamic optimization function. It works only till 3 trucks in each ward.
 - four_plus_truck_function.py : Function to perform dynamic optimzation on 4+ trucks
+- four_plus_truck_worst_case_function.py : Function to perform dynamic optimzation on 4+ trucks in worst case
 - static_unweighted.py : Static unweighted optimization code
 - static_find_weights.py : Finding the wieghts for static case
 - dynamic_unweighted.py : Dynamic unweighted optimization code
@@ -77,3 +79,6 @@
 - dynamic_weighted_multiple_trucks.py : Dynamic weighted truck optimization where there are 2 trucks in each ward.
 - dynamic_weighted_three_trucks.py : Performing Dynamic optimization of 3 trucks in each ward.
 - dynamic_weighted_four_trucks.py : Performing Dynamic optimization of 4 trucks in each ward.
+- dynamic_weighted_multi_best_case.py : Best collection ratio for dynamic case (5 Trucks)
+- dynamic_weighted_multi_worst_case.py : Worst collection ratio for dynamic case (5 Trucks)
+- route testing.ipynb : For visualizing routes.
