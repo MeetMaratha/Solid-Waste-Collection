@@ -1,6 +1,6 @@
-PWD c:\Users\ASUS\Desktop\AI Paper
+PWD c:\Users\ASUS\Documents\GitHub\Solid-Waste-Collection\AI Paper
 INPUT C:\Users\ASUS\AppData\Local\MiKTeX\miktex\data\le\pdftex\pdflatex.fmt
-INPUT c:\Users\ASUS\Desktop\AI Paper\AI Paper.tex
+INPUT c:\Users\ASUS\Documents\GitHub\Solid-Waste-Collection\AI Paper\AI Paper.tex
 OUTPUT AI Paper.log
 INPUT C:\Program Files\MiKTeX\tex\latex\base\article.cls
 INPUT C:\Program Files\MiKTeX\tex\latex\base\article.cls
@@ -982,7 +982,6 @@ INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr17.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
 INPUT C:\Users\ASUS\AppData\Local\MiKTeX\pdftex\config\pdftex.map
 INPUT C:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\tcrm1200.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr8.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr6.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmmi12.tfm
@@ -1001,13 +1000,7 @@ INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
-INPUT .\node_position.png
-INPUT .\node_position.png
-INPUT node_position.png
-INPUT .\node_position.png
-INPUT .\node_position.png
-INPUT .\node_position.png
-INPUT .\node_position.png
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
 INPUT .\weight_analysis_w1.jpg
 INPUT .\weight_analysis_w1.jpg
 INPUT weight_analysis_w1.jpg
@@ -1028,49 +1021,28 @@ INPUT .\weight_analysis_w2.jpg
 INPUT .\weight_analysis_w2.jpg
 INPUT .\weight_analysis_w2.jpg
 INPUT .\weight_analysis_w2.jpg
-INPUT .\static_unweighted.png
-INPUT .\static_unweighted.png
-INPUT static_unweighted.png
-INPUT .\static_unweighted.png
-INPUT .\static_unweighted.png
-INPUT .\static_unweighted.png
-INPUT .\static_unweighted.png
-INPUT .\static _weighted.png
-INPUT .\static _weighted.png
-INPUT static _weighted.png
-INPUT .\static _weighted.png
-INPUT .\static _weighted.png
-INPUT .\static _weighted.png
-INPUT .\static _weighted.png
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmti12.tfm
-INPUT .\realtime_unweighted.png
-INPUT .\realtime_unweighted.png
-INPUT realtime_unweighted.png
-INPUT .\realtime_unweighted.png
-INPUT .\realtime_unweighted.png
-INPUT .\realtime_unweighted.png
-INPUT .\realtime_unweighted.png
-INPUT .\realtime_weighted.png
-INPUT .\realtime_weighted.png
-INPUT realtime_weighted.png
-INPUT .\realtime_weighted.png
-INPUT .\realtime_weighted.png
-INPUT .\realtime_weighted.png
-INPUT .\realtime_weighted.png
-INPUT .\realtime_weighted_worst.png
-INPUT .\realtime_weighted_worst.png
-INPUT realtime_weighted_worst.png
-INPUT .\realtime_weighted_worst.png
-INPUT .\realtime_weighted_worst.png
-INPUT .\realtime_weighted_worst.png
-INPUT .\realtime_weighted_worst.png
-INPUT .\realtime_weighted_multiple.png
-INPUT .\realtime_weighted_multiple.png
-INPUT realtime_weighted_multiple.png
-INPUT .\realtime_weighted_multiple.png
-INPUT .\realtime_weighted_multiple.png
-INPUT .\realtime_weighted_multiple.png
-INPUT .\realtime_weighted_multiple.png
+INPUT .\Dynamic5trucks.png
+INPUT .\Dynamic5trucks.png
+INPUT Dynamic5trucks.png
+INPUT .\Dynamic5trucks.png
+INPUT .\Dynamic5trucks.png
+INPUT .\Dynamic5trucks.png
+INPUT .\Dynamic5trucks.png
+INPUT .\coverage_VS_number_of_trucks.png
+INPUT .\coverage_VS_number_of_trucks.png
+INPUT coverage_VS_number_of_trucks.png
+INPUT .\coverage_VS_number_of_trucks.png
+INPUT .\coverage_VS_number_of_trucks.png
+INPUT .\coverage_VS_number_of_trucks.png
+INPUT .\coverage_VS_number_of_trucks.png
+INPUT .\number_of_trucks_VS_bins_visited.png
+INPUT .\number_of_trucks_VS_bins_visited.png
+INPUT number_of_trucks_VS_bins_visited.png
+INPUT .\number_of_trucks_VS_bins_visited.png
+INPUT .\number_of_trucks_VS_bins_visited.png
+INPUT .\number_of_trucks_VS_bins_visited.png
+INPUT .\number_of_trucks_VS_bins_visited.png
 INPUT AI Paper.aux
 INPUT .\AI Paper.out
 INPUT .\AI Paper.out

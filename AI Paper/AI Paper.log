@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.8.25)  7 JUN 2022 16:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.8.25)  11 JUN 2022 19:23
 entering extended mode
-**"c:/Users/ASUS/Desktop/AI Paper/AI Paper.tex"
-(c:/Users/ASUS/Desktop/AI Paper/AI Paper.tex
+**"c:/Users/ASUS/Documents/GitHub/Solid-Waste-Collection/AI Paper/AI Paper.tex"
+(c:/Users/ASUS/Documents/GitHub/Solid-Waste-Collection/AI Paper/AI Paper.tex
 LaTeX2e <2021-06-01> patch level 1
 L3 programming layer <2021-07-12> (C:\Program Files\MiKTeX\tex/latex/base\article.cls
 Document Class: article 2021/02/12 v1.4n Standard LaTeX document class
@@ -630,101 +630,49 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {C:/Users/ASUS/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] [2] [3] [4] [5] [6]
-<node_position.png, id=105, 844.8363pt x 597.432pt>
-File: node_position.png Graphic file (type png)
-<use node_position.png>
-Package pdftex.def Info: node_position.png  used on input line 207.
-(pdftex.def)             Requested size: 422.41711pt x 298.71527pt.
- [7 <./node_position.png>]
-<weight_analysis_w1.jpg, id=116, 404.51125pt x 279.0425pt>
+<weight_analysis_w1.jpg, id=101, 404.51125pt x 279.0425pt>
 File: weight_analysis_w1.jpg Graphic file (type jpg)
 <use weight_analysis_w1.jpg>
-Package pdftex.def Info: weight_analysis_w1.jpg  used on input line 219.
+Package pdftex.def Info: weight_analysis_w1.jpg  used on input line 211.
 (pdftex.def)             Requested size: 241.84843pt x 166.83495pt.
-<weight_analysis_w2.jpg, id=117, 404.51125pt x 279.0425pt>
+<weight_analysis_w2.jpg, id=102, 404.51125pt x 279.0425pt>
 File: weight_analysis_w2.jpg Graphic file (type jpg)
 <use weight_analysis_w2.jpg>
-Package pdftex.def Info: weight_analysis_w2.jpg  used on input line 224.
+Package pdftex.def Info: weight_analysis_w2.jpg  used on input line 216.
 (pdftex.def)             Requested size: 241.84843pt x 166.83495pt.
-<static_unweighted.png, id=118, 844.8363pt x 597.432pt>
-File: static_unweighted.png Graphic file (type png)
-<use static_unweighted.png>
-Package pdftex.def Info: static_unweighted.png  used on input line 240.
-(pdftex.def)             Requested size: 337.92853pt x 238.96857pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<static _weighted.png, id=119, 844.8363pt x 597.432pt>
-File: static _weighted.png Graphic file (type png)
-<use static _weighted.png>
-Package pdftex.def Info: static _weighted.png  used on input line 245.
-(pdftex.def)             Requested size: 337.92853pt x 238.96857pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (4.61339pt too wide) in paragraph at lines 253--260
- [][] 
- []
-
-[8 <./weight_analysis_w1.jpg> <./weight_analysis_w2.jpg>]
-<realtime_unweighted.png, id=130, 844.8363pt x 597.432pt>
-File: realtime_unweighted.png Graphic file (type png)
-<use realtime_unweighted.png>
-Package pdftex.def Info: realtime_unweighted.png  used on input line 268.
-(pdftex.def)             Requested size: 337.92853pt x 238.96857pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<realtime_weighted.png, id=131, 844.8363pt x 597.432pt>
-File: realtime_weighted.png Graphic file (type png)
-<use realtime_weighted.png>
-Package pdftex.def Info: realtime_weighted.png  used on input line 276.
-(pdftex.def)             Requested size: 241.84843pt x 171.0174pt.
-<realtime_weighted_worst.png, id=132, 844.8363pt x 597.432pt>
-File: realtime_weighted_worst.png Graphic file (type png)
-<use realtime_weighted_worst.png>
-Package pdftex.def Info: realtime_weighted_worst.png  used on input line 281.
-(pdftex.def)             Requested size: 241.84843pt x 171.0174pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<realtime_weighted_multiple.png, id=133, 844.8363pt x 597.432pt>
-File: realtime_weighted_multiple.png Graphic file (type png)
-<use realtime_weighted_multiple.png>
-Package pdftex.def Info: realtime_weighted_multiple.png  used on input line 290.
-(pdftex.def)             Requested size: 337.92853pt x 238.96857pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (3.83841pt too wide) in paragraph at lines 299--307
- [][] 
- []
-
-
-Overfull \hbox (27.14328pt too wide) in paragraph at lines 312--319
- [][] 
- []
-
-[9 <./static_unweighted.png>] [10 <./static _weighted.png>] [11 <./realtime_unweighted.png> <./realtime_weighted.png> <./realtime_weighted_worst.png>] [12 <./realtime_weighted_multiple.png>] (AI Paper.aux)
+ [7 <./weight_analysis_w1.jpg> <./weight_analysis_w2.jpg>] [8]
+<Dynamic5trucks.png, id=123, 910.602pt x 561.297pt>
+File: Dynamic5trucks.png Graphic file (type png)
+<use Dynamic5trucks.png>
+Package pdftex.def Info: Dynamic5trucks.png  used on input line 308.
+(pdftex.def)             Requested size: 364.23434pt x 224.51482pt.
+ [9 <./Dynamic5trucks.png>]
+<coverage_VS_number_of_trucks.png, id=131, 502.87875pt x 342.27875pt>
+File: coverage_VS_number_of_trucks.png Graphic file (type png)
+<use coverage_VS_number_of_trucks.png>
+Package pdftex.def Info: coverage_VS_number_of_trucks.png  used on input line 335.
+(pdftex.def)             Requested size: 241.84843pt x 164.6105pt.
+<number_of_trucks_VS_bins_visited.png, id=133, 607.26875pt x 342.27875pt>
+File: number_of_trucks_VS_bins_visited.png Graphic file (type png)
+<use number_of_trucks_VS_bins_visited.png>
+Package pdftex.def Info: number_of_trucks_VS_bins_visited.png  used on input line 340.
+(pdftex.def)             Requested size: 241.84843pt x 136.31367pt.
+ [10 <./coverage_VS_number_of_trucks.png> <./number_of_trucks_VS_bins_visited.png>] [11] (AI Paper.aux)
 Package rerunfilecheck Info: File `"AI Paper".out' has not changed.
-(rerunfilecheck)             Checksum: 9BB088133E6502DA02BAA3F84D2260E8;1013.
+(rerunfilecheck)             Checksum: F61ADF9FDDB5AFA0010777C7DA7DB775;1048.
  ) 
 Here is how much of TeX's memory you used:
- 22479 strings out of 478868
- 404715 string characters out of 2858669
- 702805 words of memory out of 3000000
- 39944 multiletter control sequences out of 15000+600000
+ 22443 strings out of 478868
+ 404265 string characters out of 2858669
+ 713705 words of memory out of 3000000
+ 39916 multiletter control sequences out of 15000+600000
  414425 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,11n,89p,1477b,578s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 84i,11n,89p,1509b,578s stack positions out of 5000i,500n,10000p,200000b,80000s
  <C:\Users\ASUS\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on "AI Paper.pdf" (12 pages, 41272204 bytes).
+Output written on "AI Paper.pdf" (11 pages, 2225620 bytes).
 PDF statistics:
- 234 PDF objects out of 1000 (max. 8388607)
- 49 named destinations out of 1000 (max. 500000)
- 130 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 214 PDF objects out of 1000 (max. 8388607)
+ 45 named destinations out of 1000 (max. 500000)
+ 102 words of extra memory for PDF output out of 10000 (max. 10000000)
 
