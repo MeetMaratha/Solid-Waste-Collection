@@ -1,8 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1654955592 "c:/Users/ASUS/Documents/GitHub/Solid-Waste-Collection/AI Paper/AI Paper.tex" "AI Paper.pdf" "AI Paper" 1654955596
-  "AI Paper.aux" 1654955595 4819 43469e1871b4efb909f85bba4e63862a "pdflatex"
-  "AI Paper.out" 1654955595 1048 f61adf9fddb5afa0010777c7da7db775 "pdflatex"
-  "AI Paper.tex" 1654955590 35461 f9cb439ac5131c691f245e3ce97e88e7 ""
+["pdflatex"] 1655024525 "c:/Users/ASUS/Documents/GitHub/Solid-Waste-Collection/AI Paper/AI Paper.tex" "AI Paper.pdf" "AI Paper" 1655024529
+  "AI Paper.aux" 1655024529 5768 7a9f283d6c301f7fb7e1d42b60a2ccd4 "pdflatex"
+  "AI Paper.out" 1655024529 1172 b5c64833eb7a681c88ce40d9df91a05a "pdflatex"
+  "AI Paper.tex" 1655024518 40484 42ccaca4c97671cde4298f5d89e901d0 ""
   "C:/Program Files/MiKTeX/fonts/tfm/jknappen/ec/tcrm1200.tfm" 993062508 1444 95ffe0f19b974d50849790c8225c7ef7 ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1233951848 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -176,14 +176,16 @@
   "C:/Users/ASUS/AppData/Roaming/MiKTeX/tex/latex/refcount/refcount.sty" 1576433952 9878 9e94e8fa600d95f9c7731bb21dfb67a4 ""
   "C:/Users/ASUS/AppData/Roaming/MiKTeX/tex/latex/relsize/relsize.sty" 1365244030 15542 c4cc3164fe24f2f2fbb06eb71b1da4c4 ""
   "C:/Users/ASUS/AppData/Roaming/MiKTeX/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1575571282 9715 b051d5b493d9fe5f4bc251462d039e5f ""
+  "Dynamic1truck.png" 1654774383 1923334 41b3af658ef86e5e4266fd3c0a8fe663 ""
   "Dynamic5trucks.png" 1654770624 2156850 7c99bb39b1e13dcf3c318d96bdbe4047 ""
-  "c:/Users/ASUS/Documents/GitHub/Solid-Waste-Collection/AI Paper/AI Paper.tex" 1654955590 35461 f9cb439ac5131c691f245e3ce97e88e7 ""
+  "Static1truck.png" 1654772740 1952786 58860a40cee2f9dd42b1c1ff58c82049 ""
+  "c:/Users/ASUS/Documents/GitHub/Solid-Waste-Collection/AI Paper/AI Paper.tex" 1655024518 40484 42ccaca4c97671cde4298f5d89e901d0 ""
   "coverage_VS_number_of_trucks.png" 1654600486 22355 2313358f8d9b7b4ae8753d943eb55045 ""
-  "number_of_trucks_VS_bins_visited.png" 1654600486 28594 bfb2201b19db0101884c144fa0f8d68a ""
+  "number_of_trucks_VS_bins_visited.png" 1654955965 31930 3251e59b70a38705f404d973b72f1544 ""
   "weight_analysis_w1.jpg" 1652638133 10785 ba8f9113ec0f118d662d1990e8d4ec33 ""
   "weight_analysis_w2.jpg" 1652638150 10819 dde10f302c6f4388c3b5189d88afdc1a ""
   (generated)
-  "AI Paper.log"
   "AI Paper.aux"
+  "AI Paper.log"
   "AI Paper.out"
   "AI Paper.pdf"
