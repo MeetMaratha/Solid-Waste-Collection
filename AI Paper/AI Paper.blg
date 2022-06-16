@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: AI Paper.aux
+Reallocating 'name_of_file' (item size: 1) to 7 items.
+The style file: ieeetr.bst
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+Database file #1: citation.bib
+Warning--empty journal in hoornweg2012waste
+You've used 25 entries,
+            1876 wiz_defined-function locations,
+            642 strings with 8909 characters,
+and the built_in function-call counts, 8550 in all, are:
+= -- 898
+> -- 305
+< -- 0
++ -- 111
+- -- 86
+* -- 619
+:= -- 1154
+add.period$ -- 25
+call.type$ -- 25
+change.case$ -- 25
+chr.to.int$ -- 0
+cite$ -- 26
+duplicate$ -- 440
+empty$ -- 754
+format.name$ -- 86
+if$ -- 2101
+int.to.chr$ -- 0
+int.to.str$ -- 25
+missing$ -- 25
+newline$ -- 78
+num.names$ -- 25
+pop$ -- 55
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 355
+stack$ -- 0
+substring$ -- 722
+swap$ -- 224
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 1
+while$ -- 91
+width$ -- 27
+write$ -- 266
+(There was 1 warning)
