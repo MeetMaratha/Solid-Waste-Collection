@@ -132,13 +132,12 @@ for:
 $$ \forall i,j \in A$$
 $$ i,j\ne 0$$
 $$ i,j \ne st $$
-This constraint (Eq \eqref{eq7}) ensures that if a truck goes on an arc (an arc being a small portion of the entire collection route) from node i to node j, the amount of waste is continuous, that is, the waste in the truck at node j is the sum of the waste at node i and the waste collected in the route i to j. The value of the waste inside the truck is updated at node j so that there is no discrepancy in the case when a new path has to be calculated with new data.
+This constraint (Eq \eqref{eq7}) ensures that if a truck goes on an arc (an arc being a small portion of the entire collection route) from two consecutive nodes, node i to node j, the amount of waste is continuous, that is, the waste in the truck at node j is the sum of the waste at node i and the waste collected in the route i to j. The value of the waste inside the truck is updated at node j so that there is no discrepancy in the case when a new path has to be calculated with new data.
 \begin{equation}\label{eq8}
     u_i\ge f_i*BT
 \end{equation}
 $$  \forall i\in N$$
-Eq \eqref{eq8} ensures that the amount of waste in a truck after traversing an arc from i to j must always be greater or equal to the waste before traversing the path. This makes sure that for every part of its collection run, the vehicle is always collecting, or moving towards, collecting more waste.
-
+Eq \eqref{eq8} ensures that the amount of waste in a truck after reaching a node must be greater than or equal to the waste it had before that. This makes sure that the truck is actually collecting the waste from that node and not just passing it.
 \begin{equation}\label{eq12}
     \sum_{i\in N}Y_i f_i* BT\le100
 \end{equation}
