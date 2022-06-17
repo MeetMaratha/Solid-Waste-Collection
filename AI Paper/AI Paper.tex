@@ -52,7 +52,7 @@ To address the challenges stated above, we propose a waste collection framework 
 The paper has the following major contributions:
 \begin{itemize}
 \item Analysis of truck availability in study regions on waste collection, to demonstrate the total coverage.
-\item Consideration of quantitively simulated dynamic waste levels for truck and
+\item Consideration of quantitatively simulated dynamic waste levels for truck and
 collection bins for realistic outcomes.
 \item Detailed sensitivity analysis of various parameters affecting selection of the best path.
 \end{itemize}
@@ -65,7 +65,7 @@ In one paper \cite{kulcar1996optimizing}, the author focuses on the best locatio
 
 Many papers utilize pre-existing solvers or software to compute the optimized routes and use the results to compare them to other algorithms or observe the effects the optimized routes bring to the current system. In the case of one paper \cite{karadimas2008routing}, the sole focus of the paper is on route optimization. However, it only applies ant colony system and the route optimizer for the software ArcGIS Network Analyst to get the optimal route for non-real time data and compares the efficiencies of the two methods. Moreover it focuses on Athens, another developed city, and even then on only one prefecture of it. Similarly, Chaudhary et al \cite{chaudhary2019gis} have utilized ArcGIS Network Analyst software to calculate optimal routes for waste collection, this time in the city of Allahabad. This lies closer to our goal of route optimization for more resource constrained societies and while it is an extensive application of optimization process utilizing the real-life data from the city, it still only utilizes a pre-existing algorithm along with fixed unchanging datapoints to calculate the collection routes, which our work seeks to expand upon. Another paper \cite{amal2018sga} uses the route optimization solver of GIS software ArcGIS (which itself utilizes Dijkstra algorthm) to calculate a pool of routes which, in turn, feeds the genetic algorithm to iteratively arrive at the optimal routes for the waste collection vehicles.
 
-In their paper, Simonetto and Borenstein \cite{de2007decision}, they used linear programming to formulate a function for route optimization via minimization of cost coupled with a heuristic developed by Renaud and Boctor \cite{renaud2002sweep} in order to bring down the computation time (at that time) to reasonable levels. Similarly, in this paper \cite{hannan2020waste}, the authors have used linear programming combined with smart bins to find optimal waste collection routes that remove the inefficiency that is associated with formulating a route that visits all nodes, regardless of its fill status. However, as it was a paper focused on the algorithmic part of the problem, they used purely simulated data, void of any real world analogue and only factored in the euclidian distances between the nodes. Asefi et al \cite{asefi2019mathematical} uses a mixed-integer linear programming model to minimize costs and uses two different meta heuristic approaches to deal with the non-deterministic polynomial-time hardness of the waste collection problem. This model is then applied to a case study in the city of Tehran, Iran. 
+In their paper, Simonetto and Borenstein \cite{de2007decision}, used linear programming to formulate a function for route optimization via minimization of cost coupled with a heuristic developed by Renaud and Boctor \cite{renaud2002sweep} in order to bring down the computation time (at that time) to reasonable levels. Similarly, in this paper \cite{hannan2020waste}, the authors have used linear programming combined with smart bins to find optimal waste collection routes that remove the inefficiency that is associated with formulating a route that visits all nodes, regardless of its fill status. However, as it was a paper focused on the algorithmic part of the problem, they used purely simulated data, void of any real world analogue and only factored in the euclidian distances between the nodes. Asefi et al \cite{asefi2019mathematical} uses a mixed-integer linear programming model to minimize costs and uses two different meta heuristic approaches to deal with the non-deterministic polynomial-time hardness of the waste collection problem. This model is then applied to a case study in the city of Tehran, Iran. 
 
 In other papers utilizing smart bins, Akhtar \cite{akhtar2017backtracking} utilizes new population based meta heuristic backtracking search optimization, developed by Civicioglu \cite{civicioglu2013backtracking}, to calculate optimal routes for collection vehicles. Its main feature is its simplicity as it has only one control parameter. It is also a highly theoretical work and focuses mainly on the mathematical aspects of the problem and not its real-life application. Al-Refaie et al \cite{al2021optimization} takes a different approach and focuses instead on distributing the collection points into optimal clusters so that the collection efficiency of the vehicles can be maximized.
 
@@ -93,24 +93,24 @@ With this we can formulate our base objective function to be:
     Obj(minimize)=\sum_{i,j \forall A} w_1 X_{ij} C_{ij} - w_2 Y_i f_i * BT
 \end{equation}
 
-Here, $X_{ij}$ is a binary variable that can only take the values 0 or 1, based on the fact if a truck took a route from i to j. $C_{ij}$ is the cost, or the distance travelled when moving from i to j. $Y_{i}$ is another binary variable that indicates if waste from node i has been collected or not. $BT$ is the conversion factor of how much would the waste from a node would fill up a truck collecting it. $f_i$ represents the fill ratio (the percentage of how full the bin is) of the bin, its value being 0 and 1. 0 meaning it's empty and 1 meaning it is full. $w_1$ and $w_2$ are the weights associated with distance travelled and waste collected, respectively, to determine which attribute of waste collection should have the higher priority and by how much. 
+Here, $X_{ij}$ is a binary variable that can only take the values 0 or 1, based on the fact if a truck took a route from i to j. $C_{ij}$ is the cost, or the distance travelled when moving from i to j. $Y_{i}$ is another binary variable that indicates if waste from node i has been collected or not. $BT$ is the conversion factor of how much would the waste from a node would fill up a truck collecting it. $f_i$ represents the fill ratio (the percentage of how full the bin is) of the bin, its value being between 0 and 1. 0 meaning it is empty and 1 meaning it is full. The variables $w_1$ and $w_2$ are the weights associated with distance travelled and waste collected, respectively, to determine which attribute of waste collection should have the higher priority and by how much.
 
-We have divided this problem into two cases.
-\begin{itemize}
-    \item Static: In this case, the optimal route calculation is done only once, in the beginning of a collection run, based on the fill ratios of the bins. The values are not updated during the time of the run.
-    \item Real-time: In this case, the fill ratios are updated throughout the run after fixed intervals. After each updation, new optimal routes are calculated to account for the new data according to our objective function.
-\end{itemize}
+For the weights $w_1$ and $w_2$ the following constraint applies:
 
-For the objective function to fully represent our problem, we need to add constraints.
+\begin{equation}\label{eq1.5}
+    \sum_{i\in N} w_i = 1
+\end{equation}
 
-\textbf{First, for the static case:}
+That is, the total sum of $w_1$ and $w_2$ will always remain equal to 1. This will be later used to perform the weight analysis in order to get the optimal ratios of the weights for our objective function.
+
+For the objective function to fully represent our problem, we need to add constraints. The subscript 'st' denotes the starting node at the start of the calculations after the given time interval.
 \begin{equation}\label{eq2}
-    \sum_{j\in N} X_{0 j}=1
+    \sum_{j\in N}X_{st,j}=1
 \end{equation}
 \begin{equation}\label{eq3}
-    \sum_{j\in N} X_{j0}=1
+    \sum_{j\in N}X_{j,st}=1
 \end{equation}
-Node 0 is assigned to be the depot, the start and the end point of every collection run. Eq \eqref{eq2} and Eq \eqref{eq3} ensure that all runs start and end from node 0.
+Node 0 is assigned to be the depot, the start and the end point of every collection run. Eq (\ref{eq2}) and Eq (\ref{eq3}) ensure the looping of the route, with the added caveat that since the calculations are made multiple times per run as new data is obtained, the value of the starting node for each subsequent route calculation, after the initial one, changes. Therefore, these new starting nodes have to also be taken into consideration.
 \begin{equation}\label{eq4}
     \sum_{i\in N}\sum_{j\in V, J\ne i} X_{ji}=1
 \end{equation}
@@ -118,61 +118,36 @@ Node 0 is assigned to be the depot, the start and the end point of every collect
     \sum_{i\in N}\sum_{j\in V, J\ne i} X_{ij}=1
 \end{equation}
 N is the set of all nodes, V is the set of all the nodes excluding node 0. Eq \eqref{eq4}
-and Eq \eqref{eq5} specify that visited nodes are not visited again.
-\begin{equation}\label{eq6}
-    \sum_{i\in N}{y_{i}f_i*BT}\le100
-\end{equation}
-Eq\eqref{eq6} ensures that any truck never goes past being 100\% full.
-If
+and Eq \eqref{eq5} specify that the nodes that are already visited by the truck in a collection run is not considered again for for further calculations, or in simpler terms, a node that has already been visited is not visited again in the same run.
+
+The variable $u_i$ is a temporary variable that resets to zero at the beginning of each route calculation. It represents the percent the the truck is full for each separate calculation. Variable $P_t$ is the variable that stores all the cumulative progress of how full the truck is, in percent, over subsequent route calculations.
+
+If:
 $$ X_{ij}=1$$
-then
+then:
 \begin{equation}\label{eq7}
     u_1+f_1*BT =u_j
 \end{equation}
-for 
+for: 
 $$ \forall i,j \in A$$
 $$ i,j\ne 0$$
-This constraint (Eq \eqref{eq7}) ensures that if a truck goes on an arc from node i to node j, the amount of waste is continuous, ie. the waste in the truck at node j is the sum of the waste at node i and the waste collected in the route i to j. And the value of the waste inside the truck is updated at node j.
+$$ i,j \ne st $$
+This constraint (Eq \eqref{eq7}) ensures that if a truck goes on an arc (an arc being a small portion of the entire collection route) from node i to node j, the amount of waste is continuous, that is, the waste in the truck at node j is the sum of the waste at node i and the waste collected in the route i to j. The value of the waste inside the truck is updated at node j so that there is no discrepancy in the case when a new path has to be calculated with new data.
 \begin{equation}\label{eq8}
     u_i\ge f_i*BT
 \end{equation}
 $$  \forall i\in N$$
-Eq\eqref{eq8} simply ensures that the amount of waste in a truck after traversing an arc from i to j must always be greater or equal to the waste before traversing the path.
-\begin{equation}\label{eq9}
-    u_1\le100
-\end{equation}
-$$\forall i\in N $$
-Eq\eqref{eq9} ensures that the value of the waste at the truck at any given node does not exceed 100\% of its capacity.
+Eq \eqref{eq8} ensures that the amount of waste in a truck after traversing an arc from i to j must always be greater or equal to the waste before traversing the path. This makes sure that for every part of its collection run, the vehicle is always collecting, or moving towards, collecting more waste.
 
-\textbf{Now for the real-time case:}
-
-The objective functions remains the same, only a few more variables are added to the constraints. the subscript 'st' denotes the starting node at the start of the calucations after the given time interval. $T_i$ denotes the percentage of the truck that is full at a given node i
-\begin{equation}\label{eq10}
-    \sum_{j\in N}x_{st,j}=1
-\end{equation}
-\begin{equation}\label{eq11}
-    \sum_{j\in N}x_{j,st}=1
-\end{equation}
-Like the static case, Eq (\ref{eq10}) and Eq (\ref{eq11}) ensure the looping of the route, except here, since the calculations are made multiple times the value of the starting node for each calculation changes.
 \begin{equation}\label{eq12}
     \sum_{i\in N}Y_i f_i* BT\le100
 \end{equation}
-Eq \eqref{eq12} ensures that the truck will only collect waste from a node if the total sum of the waste collected by it on the run is less than its maximum capacity.
-If
-$$X_{ij}=1$$
-Then
+Eq \eqref{eq12} ensures that the truck will not collect waste from a node if collecting from that node makes the truck exceed its maximum capacity. Therefore, for the sake of maximizing waste collected, such nodes will not be taken into consideration for further route calculations
 \begin{equation}\label{eq13}
-    u_i+f_1*BT=u_j
-\end{equation}
-$$\forall i,j\in A$$
-$$i,j\ne 0 $$
-$$ i,j \ne st $$
-This is the same as in the case of static optimization, where the continuity of the waste amount is maintained and updated as the truck exits an arc of a route.
-\begin{equation}\label{eq14}
-    u_i\le 100 - T_i
+    u_i\le 100 - P_t
 \end{equation}
 $$\forall i \in N $$
-This constraint in Eq \eqref{eq14} ensures that the fill ratio at each node will be less than or equal to 100- fill ratio before that node.
+This constraint in Eq \eqref{eq13} ensures that for a single route calculation in the collection run, the value of how full the truck is does not exceed it's capacity. Since $P_t$ stores the cumulative fill percentages of the truck, in any subsequent route calculation, the fill percent of the truck should not exceed the sum of the previous fill percentage and the percent filled in the current calculation. 
 
 With this, we have formulated our problem and now we can move on to implementing and calculating the solution for our problem
 
@@ -184,26 +159,28 @@ We have used a set of randomly selected points in the city of Chandigarh as the 
 
 Now, since we are using the concept of smart bins, we also had to simulate their function. While running the optimization process, each individual bin is randomly assigned a value between 0 and 1 to denote how full the bin is. This value will be one of the parameters during the optimization process.
 
-Next, we use another QGIS function called 'shortestpathtopoint' to calculate the distance between all points in the set, subject to the heuristic that all streets are undirectional, meaning all paths measure the same both ways and that a truck assigned to one ward will only collect from bins in its own ward.
+Next, we use another QGIS function called 'shortestpathtopoint' to calculate the distance between all points in the set, subject to the heuristic that all streets are non-directional, meaning all paths measure the same both ways and that a truck assigned to one ward will only collect from bins in its own ward.
 
 \subsection{Implementation}
 
 Since our objective function is a linear programming optimization problem, we have used gurobipy solver to solve our problem subject to the constraints given for each case.
 
-For our nodes, considering Chadigarh's size and the amount of waste generated \cite{ravindra2015system}, we generated 300 collection points for our vehicles using QGIS. The data had to be scaled down for the sake of computation. We used the optimize function of gurobipy to solve our objective function subject to different restrictions and parameters.
+For our nodes, considering Chandigarh's size and the amount of waste generated \cite{ravindra2015system}, we generated 300 collection points for our vehicles using QGIS. The data had to be scaled down for the sake of computation. We used the optimize function of gurobipy to solve our objective function subject to different restrictions and parameters.
 
 Our objective function has two main objectives, maximizing waste collection and minimizing the distance travelled. In order to decide the relative importance of each objective, we have attached weights to both of them. To get the values of the weights $w_1$ and $w_2$, we solved the optimization problem with different weights, changing the weights in increments of 0.1 plotted a graph of the value of the objective function vs the weight and picked the weights which gave us the highest overall values for the objective function.       
 
-In the route optimization process, we keep track of a few things such as the nodes visited, the nodes that are yet to be visited, which arcs in a route are selected, making sure the routes are continuous. Since we are using smart bins we only consider those nodes for the route calculation that are full beyond a certain threshold of its capacity. Then in the case of static optimization, one route is calculated that gives us the most optimal path for waste collection for that run.
+In the route optimization process, we keep track of a few things such as the nodes visited, the nodes that are yet to be visited, which arcs in a route are selected, making sure the routes are continuous. Since we are using smart bins we only consider those nodes for the route calculation that are full beyond a certain threshold of its capacity.
 
-In the real-time case, there are many more factors to consider, as the values for the nodes are being updated in real time, even while the truck is doing its collection run. If the time interval comes to pass when the truck is in between nodes, the program assumes the truck completed its current arc and considers the next node as the starting point of the new route calculation. That node is then automatically added to the visited nodes list so that it is not factored in the next calculation.
+The basic premise of our real time calculation is that after a certain interval of time, the fill values for all the bins are updated and taking those new values into account, a new optimal route is calculated, taking the current position of the truck and the next node it is going to as the starting position. This happens repeatedly until either the run is complete or the truck is full.
 
-For our average case simulation, the fill ratios for the smart bins are decided randomly, therefore some nodes do not need to be visited for that run.
+In the real-time case, there are many factors to consider, as the values for the nodes are being updated in real time, even while the truck is doing its collection run. If the time interval comes to pass when the truck is in between nodes, the program assumes the truck completed its current arc and considers the next node as the starting point of the new route calculation. That node is then automatically added to the visited nodes list so that it is not factored in the next calculation.
+
+For our average case simulation, the fill ratios for the smart bins are decided randomly, therefore some nodes do not need to be visited for that run, as they may not exceed the threshold fill value.
 
 Our algorithm is based on one single waste collection run per day, to show the resource constraint. But since we also intend for the algorithm to be scalable for a place where resources are not a problem and multiple trucks can be allotted for waste collection, we also have implemented a case where multiple trucks are allotted to run within one ward so that most of the nodes are able to be covered.
 \subsection{Execution case studies}
 \subsubsection*{Case 1: Weight Analysis}
-In order to find the best pair of weights that will give us the best results, ie. the minimum value of the objective function, we need to take different weights, plug them into the objective function and plot the resulting graph (Figure \ref{fig1}). It shows the change in the objective function values for the iterated weights. The lowest point of this graph would give us the optimal weight. Since we want the relative importance of the two objectives, the total sum of the weights is equal to one, thus getting one weight means automatically getting the other.
+In order to find the best pair of weights that will give us the best results, ie. the minimum value of the objective function, we need to take different weights, plug them into the objective function and plot the resulting graph (Figure \ref{fig1}). It shows the change in the objective function values for the iterated weights. The lowest point of this graph would give us the optimal weight. Since we want the relative importance of the two objectives and the total sum of the weights is equal to one, getting one weight means automatically getting the other.
 
 \begin{figure}[h]
     \centering
@@ -223,15 +200,17 @@ In order to find the best pair of weights that will give us the best results, ie
 
 We can see here that for the optimal results, the $w_1$ should be equal to 0.9 and $w_2$ equal to 0.1. This means that our optimization procedure should mainly focus on minimizing the distance and to a small extent maximizing the waste collected.
 
-Now, we have the two cases for which we have solved the objective function for the optimal solution. For the sake of calculations, the maximum capacity of a truck is 1000 kgs of waste, and the maximum capacity of one smart bin is 100 kgs.
+Now, we have the two cases for which we have solved the objective function for the optimal solution. For the sake of calculations, the maximum capacity of a truck is 1000 Kg of waste, and the maximum capacity of one smart bin is 100 Kg.
 
 \subsubsection*{Case 2: Real-time, restricted}
-In this case, the optimal routes will be calculated in real time after a recurring interval of time, but with limited resources which, in this case, are the trucks. We used 1, 2, 3, and 4 trucks per ward and comapared their performances. The weights, as calculated earlier, for distance minimization is taken as 0.9 and waste collection maximization is taken as 0.1
+Restricted here signifies that the resources, which in this case, are the trucks, are restricted and thus not sufficient to cover the demand for them. This is an especially important case for our work because our focus is on resource constrained societies where this is a common scenario.
 
-The following Table \ref{tab1} summaraizes the data obtained from realtime restricted optimization of routes where waste is calculated in kilograms and distance traveled in kilometres.
+In this case, the optimal routes will be calculated in real time after a recurring interval of time. We used 1, 2, 3, and 4 trucks per ward and compared their performances. The weights, as calculated earlier, for distance minimization is taken as 0.9 and waste collection maximization is taken as 0.1
+
+The following Table \ref{tab1} summarizes the data obtained from real-time restricted optimization of routes where waste is calculated in kilograms and distance traveled in kilometres.
 \begin{table}[H]
     \centering
-    \caption{Data for the realtime restricted case} \label{tab1}
+    \caption{Data for the real-time restricted case} \label{tab1}
     \vspace*{0.3cm}
     \begin{tabular}{|c|c|c|c|c|c|c|}
         \hline \multirow{2}{*}{Case} & \multicolumn{2}{c|}{Ward 1} & \multicolumn{2}{c|}{Ward 2} & \multicolumn{2}{c|}{Ward 3}\\
@@ -243,6 +222,12 @@ The following Table \ref{tab1} summaraizes the data obtained from realtime restr
         \hline
     \end{tabular}
 \end{table}
+We take away some interesting observations from the above data such as the total distance that is being travelled by the trucks is not increasing by the same factor as the waste collected as we increase the number of trucks. The difference is most pronounced between the cases of 1 to 2 trucks and 2 to 3 trucks where there is an increase of about 150\% in the distance corresponding to an increase of a 100\% in the waste collected in the 1-2 truck case. But for the same increase in waste collected, the increase in distance travelled is of only about 30\% for 2-3 trucks case. Furthermore, this is emphasized even further for wards 2 and 3 where the total distance travelled actually decreases while still having a 100\% increase in waste collected. This observation can be visualized in Figure \ref{figz}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{distance_VS_garbage_restricted.png}
+    \caption{Distance traveled vs waste collected}\label{figz}
+\end{figure}
 
 We observe the case of 4 trucks per ward to determine whether it is sufficient to satisfy the waste collection demand of the city. Table \ref{tab3} summarizes the data obtained from running the algorithm with this setup.
 \begin{table}[H]
@@ -348,7 +333,7 @@ As expected from our previous cases, increasing the number of trucks available p
 
 \subsubsection*{Case 5: Comparison of real-time with static route calculation}
 
-While our main method of route calculation works in real time by getting new fill values from the smart bins throughout the collection run and calculates new best routes based on the truck's current position in real time, there is another, more simpler method that trades off the reliability and adaptability of the real-time method for faster computational time and slightly more efficient routes.
+While our main method of route calculation works in real time by getting new fill values from the smart bins throughout the collection run and calculates new best routes based on the truck's current position in real time, there is another, more simpler method that trades off the reliability and adaptability of the real-time method for faster computational time and slightly more efficient routes. That is the static route calculation method and we get it by relaxing and modifying a few constraints mentioned earlier. In Eq \eqref{eq13} the constraint will just less than 100. In Eq \eqref{eq2} and Eq \eqref{eq3} instead of st, the beginning nodes will always be 0. This results in one single route calculation at the beginning of the run that gives us the best route with the data available at that time, but does not consider any new data after that.
 
 To compare the two methods, for the sake of simplicity, we will use the 1 truck per ward case from case 2 and compare it to the static method by applying it to the same 1 truck per ward case. The comparison is represented in Table \ref{tab5}
 
