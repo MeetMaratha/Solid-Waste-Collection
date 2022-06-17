@@ -201,8 +201,8 @@ In the real-time case, there are many more factors to consider, as the values fo
 For our average case simulation, the fill ratios for the smart bins are decided randomly, therefore some nodes do not need to be visited for that run.
 
 Our algorithm is based on one single waste collection run per day, to show the resource constraint. But since we also intend for the algorithm to be scalable for a place where resources are not a problem and multiple trucks can be allotted for waste collection, we also have implemented a case where multiple trucks are allotted to run within one ward so that most of the nodes are able to be covered.
-
-\subsection*{Case 1: Weight Analysis}
+\subsection{Execution case studies}
+\subsubsection*{Case 1: Weight Analysis}
 In order to find the best pair of weights that will give us the best results, ie. the minimum value of the objective function, we need to take different weights, plug them into the objective function and plot the resulting graph (Figure \ref{fig1}). It shows the change in the objective function values for the iterated weights. The lowest point of this graph would give us the optimal weight. Since we want the relative importance of the two objectives, the total sum of the weights is equal to one, thus getting one weight means automatically getting the other.
 
 \begin{figure}[h]
@@ -225,7 +225,7 @@ We can see here that for the optimal results, the $w_1$ should be equal to 0.9 a
 
 Now, we have the two cases for which we have solved the objective function for the optimal solution. For the sake of calculations, the maximum capacity of a truck is 1000 kgs of waste, and the maximum capacity of one smart bin is 100 kgs.
 
-\subsection*{Case 2: Real-time, restricted}
+\subsubsection*{Case 2: Real-time, restricted}
 In this case, the optimal routes will be calculated in real time after a recurring interval of time, but with limited resources which, in this case, are the trucks. We used 1, 2, 3, and 4 trucks per ward and comapared their performances. The weights, as calculated earlier, for distance minimization is taken as 0.9 and waste collection maximization is taken as 0.1
 
 The following Table \ref{tab1} summaraizes the data obtained from realtime restricted optimization of routes where waste is calculated in kilograms and distance traveled in kilometres.
@@ -272,7 +272,7 @@ We observe the case of 4 trucks per ward to determine whether it is sufficient t
 
 We can infer from the above data that the number of trucks falls just short of being able to satisfactorily able to cover most of the city's bins. It is only able to cover, on an average, 70\% of the total number of bins that need to be collected.
 
-\subsection*{Case 3: Real-time, unrestricted}
+\subsubsection*{Case 3: Real-time, unrestricted}
 
 In this case, we want to see the results of route optimization if the resources were not constrained and there were enough, in our case, trucks to cover the waste collection demands at a satisfactory level. From the previous case, we saw that 4 trucks per ward fell just short of being enough, so for this case, we raised the number of trucks to 5 per ward. Table \ref{tab3} summarizes the data obtained from this case.
 
@@ -312,7 +312,7 @@ In this case, we want to see the results of route optimization if the resources 
 
 From this data, we can easily observe that with 5 trucks per city ward, more than 90\% of the city's bins get covered, and with a similar procedure, more trucks can be added for even more efficient collection. While the total distance is increased, it is a direct result of having more trucks running at the same time, and since most of the bins are being collected, some trucks need to traverse outlying regions to cover the remaining bins. This is visualised in Figure \ref{fig2} where we have plotted the optimized routes dictated by the objective function.
 
-\subsection*{Case 4: Impact of the number of trucks on total coverage.}
+\subsubsection*{Case 4: Impact of the number of trucks on total coverage.}
 
 As expected from our previous cases, increasing the number of trucks available per ward leads to a more thorough collection of waste as shown in Table \ref{tab4} and represented graphically in Figure \ref{fig3}. Compared to case 2, where the number of trucks per ward was varied from 1 through 4, we can see a clear rise in the coverage of bins as we increase the number of trucks, concluding in the last and our best case of 5 trucks. Having more trucks at your disposal is a matter of resources, and for a resource constrained region, their availability of trucks may not be sufficient for the amount of waste generated which will, unless overcome by alternate methods such as multiple collection runs per vehicle, will lead to subpar waste collection, as shown by the data. However, those alternate methods are beyond the scope of the current work.
 \begin{table}[H]
@@ -346,7 +346,7 @@ As expected from our previous cases, increasing the number of trucks available p
     \label{fig3}
 \end{figure}
 
-\subsection*{Case 5: Comparison of real-time with static route calculation}
+\subsubsection*{Case 5: Comparison of real-time with static route calculation}
 
 While our main method of route calculation works in real time by getting new fill values from the smart bins throughout the collection run and calculates new best routes based on the truck's current position in real time, there is another, more simpler method that trades off the reliability and adaptability of the real-time method for faster computational time and slightly more efficient routes.
 
