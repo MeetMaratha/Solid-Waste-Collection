@@ -58,9 +58,8 @@ def dyn_opt(df1, df2, df3, distances, visit1, visit2, visit3, folder_path, w1 = 
         c1 = {(i,j) : distances.iloc[i, j] for i,j in A1}
         # c1 = {(i,j) : distances.iloc[i, j]/dis_conv for i,j in A1}
         x1 = mdl.addVars(A1, vtype = GRB.BINARY)
-        y1 = mdl.addVars(V1, vtype = GRB.BINARY)
         u1 = mdl.addVars(N1, vtype = GRB.CONTINUOUS)
-        obj1 = quicksum( (w1*x1[i, j]*c1[(i, j)]) - w2*y1[i]*fill_1.loc[i, 'fill']*B_TO_T for i,j in A1)
+        obj1 = quicksum( (w1*x1[i, j]*c1[(i, j)]) - w2*u1[i] for i,j in A1 if i != 0 and i != start_node[0])
 
 
     if n2_done != 1:
@@ -92,11 +91,9 @@ def dyn_opt(df1, df2, df3, distances, visit1, visit2, visit3, folder_path, w1 = 
             V2 = [start_node[1]] + N2 + [0]
         A2 = [(i,j) for i in V2 for j in V2 if i != j]
         c2 = {(i,j) : distances.iloc[i, j] for i,j in A2}
-        # c2 = {(i,j) : distances.iloc[i, j]/dis_conv for i,j in A2}
         x2 = mdl.addVars(A2, vtype = GRB.BINARY)
-        y2 = mdl.addVars(V2, vtype = GRB.BINARY)
         u2 = mdl.addVars(N2, vtype = GRB.CONTINUOUS)
-        obj2 = quicksum( (w1*x2[i, j]*c2[(i, j)]) - w2*y2[i]*fill_2.loc[i, 'fill']*B_TO_T for i,j in A2)
+        obj2 = quicksum( (w1*x2[i, j]*c2[(i, j)]) - w2*u2[i] for i,j in A2 if i != 0 and i != start_node[1])
         
     if n3_done != 1:
         if m == 0:
@@ -128,9 +125,8 @@ def dyn_opt(df1, df2, df3, distances, visit1, visit2, visit3, folder_path, w1 = 
         c3 = {(i,j) : distances.iloc[i, j] for i,j in A3}
         # c3 = {(i,j) : distances.iloc[i, j]/dis_conv for i,j in A3}
         x3 = mdl.addVars(A3, vtype = GRB.BINARY)
-        y3 = mdl.addVars(V3, vtype = GRB.BINARY)
         u3 = mdl.addVars(N3, vtype = GRB.CONTINUOUS)
-        obj3 = quicksum( (w1*x3[i, j]*c3[(i, j)]) - w2*y3[i]*fill_3.loc[i, 'fill']*B_TO_T for i,j in A3)
+        obj3 = quicksum( (w1*x3[i, j]*c3[(i, j)]) - w2*u3[i] for i,j in A3 if i != 0 and i != start_node[2])
    
     # Model
     mdl.modelSense = GRB.MINIMIZE
@@ -140,7 +136,6 @@ def dyn_opt(df1, df2, df3, distances, visit1, visit2, visit3, folder_path, w1 = 
     if n1_done == 0:
         mdl.addConstrs( quicksum( x1[i,j] for j in V1 if j != i) == 1 for i in N1 )
         mdl.addConstrs( quicksum( x1[i,j] for i in V1 if i != j) == 1 for j in N1 )
-        mdl.addConstr( quicksum( y1[i]*fill_1.loc[i, 'fill']*B_TO_T for i in N1 ) <= (100 - sum(visit1.iloc[:, 1])*B_TO_T) )
         mdl.addConstr( quicksum( x1[start_node[0], j] for j in N1) == 1)
         if start_node[0] != 0:
             mdl.addConstr( quicksum( x1[j, start_node[0]] for j in N1) == 0)
@@ -148,15 +143,13 @@ def dyn_opt(df1, df2, df3, distances, visit1, visit2, visit3, folder_path, w1 = 
         if start_node[0] != 0:
             mdl.addConstr( quicksum( x1[0, j] for j in N1) == 0)
         mdl.addConstrs(
-        (x1[i,j] == 1) >> (u1[i] + fill_1.loc[i, 'fill']*B_TO_T == u1[j]) for i,j in A1 if i != 0 and j != 0 and i != int(visit1.iloc[-1,0]) and j != int(visit1.iloc[-1,0]) 
-        )
+        (x1[i,j] == 1) >> (u1[i] + fill_1.loc[j, 'fill']*B_TO_T == u1[j]) for i,j in A1 if i != 0 and j != 0 and i != start_node[0] and j != start_node[0]) 
         mdl.addConstrs( u1[i] >= fill_1.loc[i, 'fill']*B_TO_T for i in N1 )
         mdl.addConstrs( u1[i] <= 100 - sum(visit1.iloc[:, 1])*B_TO_T for i in N1 )
     
     if n2_done == 0:
         mdl.addConstrs( quicksum( x2[i,j] for j in V2 if j != i) == 1 for i in N2 )
         mdl.addConstrs( quicksum( x2[i,j] for i in V2 if i != j) == 1 for j in N2 )
-        mdl.addConstr( quicksum( y2[i]*fill_2.loc[i, 'fill']*B_TO_T for i in N2 ) <= (100 - sum(visit2.iloc[:, 1])*B_TO_T) )
         mdl.addConstr( quicksum( x2[start_node[1], j] for j in N2) == 1)
         if start_node[1] != 0:
             mdl.addConstr( quicksum( x2[j, start_node[1]] for j in N2) == 0)
@@ -164,15 +157,13 @@ def dyn_opt(df1, df2, df3, distances, visit1, visit2, visit3, folder_path, w1 = 
         if start_node[1] != 0:
             mdl.addConstr( quicksum( x2[0, j] for j in N2) == 0)
         mdl.addConstrs(
-        (x2[i,j] == 1) >> (u2[i] + fill_2.loc[i, 'fill']*B_TO_T == u2[j]) for i,j in A2 if i != 0 and j != 0 and i != int(visit2.iloc[-1,0]) and j != int(visit2.iloc[-1,0]) 
-        )
+        (x2[i,j] == 1) >> (u2[i] + fill_2.loc[j, 'fill']*B_TO_T == u2[j]) for i,j in A2 if i != 0 and j != 0 and i != start_node[1] and j != start_node[1]) 
         mdl.addConstrs( u2[i] >= fill_2.loc[i, 'fill']*B_TO_T for i in N2 )
         mdl.addConstrs( u2[i] <= 100 - sum(visit2.iloc[:, 1])*B_TO_T for i in N2 )
     
     if n3_done == 0:
         mdl.addConstrs( quicksum( x3[i,j] for j in V3 if j != i) == 1 for i in N3 )
         mdl.addConstrs( quicksum( x3[i,j] for i in V3 if i != j) == 1 for j in N3 )
-        mdl.addConstr( quicksum( y3[i]*fill_3.loc[i, 'fill']*B_TO_T for i in N3 ) <= (100 - sum(visit3.iloc[:, 1])*B_TO_T) )
         mdl.addConstr( quicksum( x3[start_node[2], j] for j in N3) == 1)
         if start_node[2] != 0:
             mdl.addConstr( quicksum( x3[j, start_node[2]] for j in N3) == 0)
@@ -180,8 +171,7 @@ def dyn_opt(df1, df2, df3, distances, visit1, visit2, visit3, folder_path, w1 = 
         if start_node[2] != 0:
             mdl.addConstr( quicksum( x3[0, j] for j in N3) == 0)
         mdl.addConstrs(
-        (x3[i,j] == 1) >> (u3[i] + fill_3.loc[i, 'fill']*B_TO_T == u3[j]) for i,j in A3 if i != 0 and j != 0 and i != int(visit3.iloc[-1,0]) and j != int(visit3.iloc[-1,0]) 
-        )
+        (x3[i,j] == 1) >> (u3[i] + fill_3.loc[j, 'fill']*B_TO_T == u3[j]) for i,j in A3 if i != 0 and j != 0 and i != start_node[2] and j != start_node[2])
         mdl.addConstrs( u3[i] >= fill_3.loc[i, 'fill']*B_TO_T for i in N3 )
         mdl.addConstrs( u3[i] <= 100 - sum(visit3.iloc[:, 1])*B_TO_T for i in N3 )
 
@@ -280,8 +270,6 @@ def dyn_opt(df1, df2, df3, distances, visit1, visit2, visit3, folder_path, w1 = 
 
     print(f'\n{n1_done, n2_done, n3_done}')
     m = m + 1
-    # df4 = pd.concat([df1, df2, df3])
-    # df4.loc[0, :] = df.loc[0]
     if n1_done == 1 and n2_done == 1 and n3_done == 1:
         print('\nDone computation')
         return obj_value

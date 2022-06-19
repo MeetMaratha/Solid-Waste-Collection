@@ -11,7 +11,7 @@ def update_fill(data, m):
     fillpmNewName = 'fill_per_m_' + str(m)
     fillNewName = 'fill_ratio_' + str(m)
     if m == 0:
-        fillRatio = [0.0] + [np.random.rand() for _ in range(data.shape[0] - 1)]
+        fillRatio = [np.random.rand() for _ in range(data.shape[0])]
     else:
         fillRatio = data.loc[:, fillPrevName].tolist()
         for k in range(len(fillRatio)):
@@ -43,7 +43,6 @@ def dyn_multi_opt(df, visit, distances, t_name, n_done, n_trucks = 1, folder_Pat
     As = []
     Us = []
     Xs = []
-    Ys = []
     Cs = []
     (visit1, visit2, visit3, visit4, visit5) = (None, None, None, None, None)
     visits = [visit1, visit2, visit3, visit4, visit5]
@@ -75,7 +74,6 @@ def dyn_multi_opt(df, visit, distances, t_name, n_done, n_trucks = 1, folder_Pat
         As.append(None)
         Cs.append(None)
         Xs.append(None)
-        Ys.append(None)
         Us.append(None)
         fills.append(None)
         if n_done[k] == 0:
@@ -100,11 +98,10 @@ def dyn_multi_opt(df, visit, distances, t_name, n_done, n_trucks = 1, folder_Pat
             As[k] = [(p, q) for p in Vs[k] for q in Vs[k] if p != q]
             Cs[k] = {(p, q) : distances.iloc[p, q] for p,q in As[k]}
             Xs[k] = mdl.addVars(As[k], vtype = GRB.BINARY)
-            Ys[k] = mdl.addVars(Vs[k], vtype = GRB.BINARY)
             Us[k] = mdl.addVars(Ns[k], vtype = GRB.CONTINUOUS)
             # print(Ns[k])
             objs[k] = quicksum( 
-                    (w1 * Xs[k][p, q] * Cs[k][(p, q)]) - (w2 * Ys[k][p] * fills[k].loc[p, 'fill'] * B_TO_T) for p,q in As[k]
+                    (w1 * Xs[k][p, q] * Cs[k][(p, q)]) - (w2 * Us[k][p]) for p,q in As[k] if p != 0 and p != startNode[k]
                     )
 
     # Optimization Function defination
@@ -123,9 +120,6 @@ def dyn_multi_opt(df, visit, distances, t_name, n_done, n_trucks = 1, folder_Pat
                 quicksum( Xs[k][i, j] for i in Vs[k] if i != j ) == 1 for j in Ns[k]
             )
             mdl.addConstr(
-                quicksum( Ys[k][i] * fills[k].loc[i, 'fill'] * B_TO_T for i in Ns[k] ) <= ( 100 - sum(visits[k].iloc[:, 1]) * B_TO_T )
-            )
-            mdl.addConstr(
                 quicksum( Xs[k][startNode[k], j] for j in Ns[k]) == 1
             )
             mdl.addConstr(
@@ -140,12 +134,8 @@ def dyn_multi_opt(df, visit, distances, t_name, n_done, n_trucks = 1, folder_Pat
                         quicksum( Xs[k][j, startNode[k]] for j in Ns[k]) == 0
                     )
             mdl.addConstrs(
-                (Xs[k][i, j] == 1) >> (Us[k][i] + fills[k].loc[i, 'fill'] * B_TO_T == Us[k][j]) for i,j in As[k] if i not in [0, visits[k].iloc[-1, 0]] and j not in [0, visits[k].iloc[-1, 0]]
+                (Xs[k][i, j] == 1) >> (Us[k][i] + fills[k].loc[j, 'fill'] * B_TO_T == Us[k][j]) for i,j in As[k] if i not in [0, startNode[k]] and j not in [0, startNode[k]]
             )
-            a = mdl.addVars(Ns[k], vtype = GRB.BINARY)
-            b = mdl.addVars(Ns[k], vtype =  GRB.BINARY)
-            y = mdl.addVars(Ns[k], vtype =  GRB.BINARY)
-
             mdl.addConstrs(
                 Us[k][i] >= (fills[k].loc[i, 'fill'] * B_TO_T) for i in Ns[k]
             )
@@ -175,7 +165,7 @@ def dyn_multi_opt(df, visit, distances, t_name, n_done, n_trucks = 1, folder_Pat
             while TIME - (unnormalize * Cs[k][visits[k].iloc[-1, 0], next_element]) / SPEED >= 0 and next_element != 0:
                 TIME -= (unnormalize * Cs[k][visits[k].iloc[-1, 0], next_element]) / SPEED
                 visits[k].loc[len(visits[k])] = [next_element, df.loc[next_element, fillNewName]]
-                df.loc[next_element, [fillNewName, fillpmNewName + '_' + str(startNode[k])]] = [0.0, 0.0]
+                df.loc[next_element, [fillNewName, fillpmNewName + '_' + str(startNode[k]) + '_' + str(k)]] = [0.0, 0.0]
                 next_element = next(
                     y for x, y in arcs if x == visits[k].iloc[-1 ,0]
                 )
@@ -187,7 +177,7 @@ def dyn_multi_opt(df, visit, distances, t_name, n_done, n_trucks = 1, folder_Pat
                 # ------------------------------------
                 TIME = 0
                 visits[k].loc[len(visits[k])] = [next_element, df.loc[next_element, fillNewName]]
-                df.loc[next_element, [fillNewName, fillpmNewName + '_' + str(startNode[k])]] = [0.0, 0.0]
+                df.loc[next_element, [fillNewName, fillpmNewName + '_' + str(startNode[k]) + '_' + str(k)]] = [0.0, 0.0]
                 next_element = next(
                     y for x, y in arcs if x == visits[k].iloc[-1 ,0]
                 )
