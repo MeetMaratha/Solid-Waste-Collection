@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.8.25)  18 JUN 2022 20:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.8.25)  19 JUN 2022 11:54
 entering extended mode
 **"c:/Users/ASUS/Documents/GitHub/Solid-Waste-Collection/AI Paper/AI Paper.tex"
 (c:/Users/ASUS/Documents/GitHub/Solid-Waste-Collection/AI Paper/AI Paper.tex
@@ -629,71 +629,75 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 36.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{C:/Users/ASUS/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] [2] [3] [4] [5] [6]
-<weight_analysis_w1.jpg, id=145, 404.51125pt x 279.0425pt>
+{C:/Users/ASUS/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] [2] [3] [4] [5]
+<weight_analysis_w1.jpg, id=149, 404.51125pt x 279.0425pt>
 File: weight_analysis_w1.jpg Graphic file (type jpg)
 <use weight_analysis_w1.jpg>
-Package pdftex.def Info: weight_analysis_w1.jpg  used on input line 196.
+Package pdftex.def Info: weight_analysis_w1.jpg  used on input line 177.
 (pdftex.def)             Requested size: 241.84843pt x 166.83495pt.
-<weight_analysis_w2.jpg, id=146, 404.51125pt x 279.0425pt>
+<weight_analysis_w2.jpg, id=150, 404.51125pt x 279.0425pt>
 File: weight_analysis_w2.jpg Graphic file (type jpg)
 <use weight_analysis_w2.jpg>
-Package pdftex.def Info: weight_analysis_w2.jpg  used on input line 201.
+Package pdftex.def Info: weight_analysis_w2.jpg  used on input line 182.
 (pdftex.def)             Requested size: 241.84843pt x 166.83495pt.
- [7 <./weight_analysis_w1.jpg> <./weight_analysis_w2.jpg>]
-Overfull \hbox (53.0328pt too wide) in paragraph at lines 222--231
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[6]
+Overfull \hbox (53.0328pt too wide) in paragraph at lines 203--212
  [][] 
  []
 
-<distance_VS_garbage_restricted.png, id=157, 607.26875pt x 342.27875pt>
+<distance_VS_garbage_restricted.png, id=160, 607.26875pt x 342.27875pt>
 File: distance_VS_garbage_restricted.png Graphic file (type png)
 <use distance_VS_garbage_restricted.png>
-Package pdftex.def Info: distance_VS_garbage_restricted.png  used on input line 235.
+Package pdftex.def Info: distance_VS_garbage_restricted.png  used on input line 216.
 (pdftex.def)             Requested size: 425.08524pt x 239.59348pt.
-[8 <./distance_VS_garbage_restricted.png>] [9]
-<Dynamic5trucks.png, id=177, 910.602pt x 561.297pt>
+[7 <./weight_analysis_w1.jpg> <./weight_analysis_w2.jpg>] [8 <./distance_VS_garbage_restricted.png>]
+<Dynamic5trucks.png, id=181, 910.602pt x 561.297pt>
 File: Dynamic5trucks.png Graphic file (type png)
 <use Dynamic5trucks.png>
-Package pdftex.def Info: Dynamic5trucks.png  used on input line 303.
+Package pdftex.def Info: Dynamic5trucks.png  used on input line 284.
 (pdftex.def)             Requested size: 364.23434pt x 224.51482pt.
- [10 <./Dynamic5trucks.png>]
-<coverage_VS_number_of_trucks.png, id=186, 502.87875pt x 342.27875pt>
+ [9 <./Dynamic5trucks.png>]
+<coverage_VS_number_of_trucks.png, id=191, 502.87875pt x 342.27875pt>
 File: coverage_VS_number_of_trucks.png Graphic file (type png)
 <use coverage_VS_number_of_trucks.png>
-Package pdftex.def Info: coverage_VS_number_of_trucks.png  used on input line 331.
+Package pdftex.def Info: coverage_VS_number_of_trucks.png  used on input line 312.
 (pdftex.def)             Requested size: 241.84843pt x 164.6105pt.
-<number_of_trucks_VS_bins_visited.png, id=187, 607.26875pt x 342.27875pt>
+<number_of_trucks_VS_bins_visited.png, id=192, 607.26875pt x 342.27875pt>
 File: number_of_trucks_VS_bins_visited.png Graphic file (type png)
 <use number_of_trucks_VS_bins_visited.png>
-Package pdftex.def Info: number_of_trucks_VS_bins_visited.png  used on input line 336.
+Package pdftex.def Info: number_of_trucks_VS_bins_visited.png  used on input line 317.
 (pdftex.def)             Requested size: 241.84843pt x 136.31367pt.
- [11 <./coverage_VS_number_of_trucks.png> <./number_of_trucks_VS_bins_visited.png>]
-<Static1truck.png, id=205, 928.06725pt x 561.297pt>
+ [10 <./coverage_VS_number_of_trucks.png> <./number_of_trucks_VS_bins_visited.png>]
+<Static1truck.png, id=209, 928.06725pt x 561.297pt>
 File: Static1truck.png Graphic file (type png)
 <use Static1truck.png>
-Package pdftex.def Info: Static1truck.png  used on input line 365.
+Package pdftex.def Info: Static1truck.png  used on input line 346.
 (pdftex.def)             Requested size: 371.22032pt x 224.51482pt.
-<Dynamic1truck.png, id=206, 928.06725pt x 561.89925pt>
+<Dynamic1truck.png, id=210, 928.06725pt x 561.89925pt>
 File: Dynamic1truck.png Graphic file (type png)
 <use Dynamic1truck.png>
-Package pdftex.def Info: Dynamic1truck.png  used on input line 370.
+Package pdftex.def Info: Dynamic1truck.png  used on input line 351.
 (pdftex.def)             Requested size: 371.22032pt x 224.7557pt.
- [12 <./Static1truck.png> <./Dynamic1truck.png>] [13] (AI Paper.bbl [14] [15]) [16] (AI Paper.aux)
+ [11 <./Static1truck.png>] [12 <./Dynamic1truck.png>] [13] (AI Paper.bbl [14] [15]) [16] (AI Paper.aux)
 Package rerunfilecheck Info: File `"AI Paper".out' has not changed.
 (rerunfilecheck)             Checksum: 738DD667591B36A730FAA2DF3247847B;1345.
  ) 
 Here is how much of TeX's memory you used:
- 22529 strings out of 478868
- 406110 string characters out of 2858669
- 717822 words of memory out of 3000000
- 39964 multiletter control sequences out of 15000+600000
+ 22535 strings out of 478868
+ 406199 string characters out of 2858669
+ 709923 words of memory out of 3000000
+ 39967 multiletter control sequences out of 15000+600000
  414425 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,11n,89p,1557b,578s stack positions out of 5000i,500n,10000p,200000b,80000s
  <C:\Users\ASUS\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on "AI Paper.pdf" (16 pages, 6030201 bytes).
+Output written on "AI Paper.pdf" (16 pages, 6031120 bytes).
 PDF statistics:
- 304 PDF objects out of 1000 (max. 8388607)
- 77 named destinations out of 1000 (max. 500000)
+ 314 PDF objects out of 1000 (max. 8388607)
+ 80 named destinations out of 1000 (max. 500000)
  125 words of extra memory for PDF output out of 10000 (max. 10000000)
 

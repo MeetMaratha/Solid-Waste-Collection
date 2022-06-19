@@ -6,45 +6,46 @@ The style file: ieeetr.bst
 Reallocating 'name_of_file' (item size: 1) to 9 items.
 Database file #1: citation.bib
 Warning--empty journal in hoornweg2012waste
-You've used 25 entries,
+Warning--can't use both volume and number fields in somani2021integrated
+You've used 28 entries,
             1876 wiz_defined-function locations,
-            642 strings with 8909 characters,
-and the built_in function-call counts, 8550 in all, are:
-= -- 898
-> -- 305
+            658 strings with 9466 characters,
+and the built_in function-call counts, 9654 in all, are:
+= -- 1007
+> -- 348
 < -- 0
-+ -- 111
-- -- 86
-* -- 619
-:= -- 1154
-add.period$ -- 25
-call.type$ -- 25
-change.case$ -- 25
++ -- 126
+- -- 98
+* -- 695
+:= -- 1295
+add.period$ -- 28
+call.type$ -- 28
+change.case$ -- 28
 chr.to.int$ -- 0
-cite$ -- 26
-duplicate$ -- 440
-empty$ -- 754
-format.name$ -- 86
-if$ -- 2101
+cite$ -- 30
+duplicate$ -- 502
+empty$ -- 851
+format.name$ -- 98
+if$ -- 2384
 int.to.chr$ -- 0
-int.to.str$ -- 25
-missing$ -- 25
-newline$ -- 78
-num.names$ -- 25
-pop$ -- 55
+int.to.str$ -- 28
+missing$ -- 28
+newline$ -- 87
+num.names$ -- 28
+pop$ -- 64
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 355
+skip$ -- 411
 stack$ -- 0
-substring$ -- 722
-swap$ -- 224
+substring$ -- 802
+swap$ -- 260
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 1
-while$ -- 91
-width$ -- 27
-write$ -- 266
-(There was 1 warning)
+warning$ -- 2
+while$ -- 98
+width$ -- 30
+write$ -- 297
+(There were 2 warnings)
