@@ -29,7 +29,6 @@ fill_p_m = [0.0] + list(B_TO_B * data.loc[1:, 'fill_ratio'] / data.loc[1:, 'dist
 data['fill_p_m'] = fill_p_m
 
 # Optimization
-w1s = [round(i/10, 1) for i in range(0, 11)]
 obj_values = []
 for i in range(11):
     w1, w2 = round(i/10, 1), round(1 - i/10, 1)
@@ -46,10 +45,20 @@ for i in range(11):
     obj_value = dyn_opt(data1, data2, data3, distance, folder_path = 'Data/Dynamic Data/Weight Finding/', w1 = w1, w2 = w2, visit1 = visit1, visit2 = visit2, visit3 = visit3)
     obj_values.append(np.sum(obj_value))
 
+# Plotting
+
+w1s = [round(i/10, 1) for i in range(0, 11)]
 Figure = figure(figsize=(15, 15))
 plt.scatter(w1s, obj_values)
 plt.title('Objective VS W1')
 plt.xlabel('W1')
+plt.ylabel('Objective Value')
+plt.show()
+
+Figure = figure(figsize=(15, 15))
+plt.scatter([round(1 - i, 1) for i in w1s], obj_values)
+plt.title('Objective VS W2')
+plt.xlabel('W2')
 plt.ylabel('Objective Value')
 plt.show()
 
