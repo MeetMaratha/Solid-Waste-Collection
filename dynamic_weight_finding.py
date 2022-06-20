@@ -48,6 +48,9 @@ for i in range(11):
 
 Figure = figure(figsize=(15, 15))
 plt.scatter(w1s, obj_values)
+plt.title('Objective VS W1')
+plt.xlabel('W1')
+plt.ylabel('Objective Value')
 plt.show()
 
 

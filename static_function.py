@@ -81,13 +81,13 @@ def opt(df, distances, w1 = 0.2, w2 = 0.8):
   mdl.addConstr(quicksum(y2[i]*fill_ratio.loc[i]*B_TO_T for i in N2) <= 100)                       
  
   # Tracking fill ratio
-  mdl.addConstrs((x[i,j] == 1) >> (u[i] + fill_ratio.loc[i]*B_TO_T == u[j])
+  mdl.addConstrs((x[i,j] == 1) >> (u[i] + fill_ratio.loc[j]*B_TO_T == u[j])
                   for i,j in A if i != 0 and j!= 0)                                            
   
-  mdl.addConstrs((x1[i,j] == 1) >> (u1[i] + fill_ratio.loc[i]*B_TO_T == u1[j])
+  mdl.addConstrs((x1[i,j] == 1) >> (u1[i] + fill_ratio.loc[j]*B_TO_T == u1[j])
                   for i,j in A1 if i != 0 and j!= 0)                                           
   
-  mdl.addConstrs((x2[i,j] == 1) >> (u2[i] + fill_ratio.loc[i]*B_TO_T == u2[j])
+  mdl.addConstrs((x2[i,j] == 1) >> (u2[i] + fill_ratio.loc[j]*B_TO_T == u2[j])
                   for i,j in A2 if i != 0 and j!= 0)                                           
   
   

@@ -1,4 +1,4 @@
 ,Fill Ward 1 (in %),Garbage Fill Ward 1 (in Litres),Distance Travelled Ward 1 (in m),Garbage per Meter Ward 2 (in KG/m),Percentage of Bins covered Ward 1 (in %),Fill Ward 2 (in %),Garbage Fill Ward 2 (in Litres),Distance Travelled Ward 2 (in m),Percentage of Bins covered Ward 2 (in %),Fill Ward 3 (in %),Garbage Fill Ward 3 (in Litres),Distance Travelled Ward 3 (in m),Garbage per Meter Ward 3 (in KG/m),Percentage of Bins covered Ward 3 (in %)
-Truck 1,99.9092,999.0924,87439.9,0.001,22.1053,98.8613,988.6129,100578.0,18.9189,99.1888,991.8881,115412.4,0.0009,22.3404
-Truck 2,98.9421,989.4209,50811.6,0.0013,21.0526,99.7166,997.1662,74354.6,17.1171,99.2718,992.7181,74016.1,0.0013,21.2766
-Truck 3,99.2653,992.6527,50435.6,0.0012,23.1579,99.7031,997.031,80080.4,17.1171,99.8728,998.7279,57592.8,0.0017,18.0851
+Truck 1,99.9803,999.8029,59636.2,0.0012,22.1053,99.9596,999.5963,82536.9,18.9189,99.8456,998.4563,52318.8,0.0019,17.0213
+Truck 2,99.1745,991.7447,106449.2,0.0008,18.9474,99.6304,996.3038,121713.4,16.2162,99.4597,994.5965,98789.8,0.001,23.4043
+Truck 3,98.4183,984.1829,77018.9,0.0013,18.9474,99.5336,995.3363,76914.2,17.1171,99.1423,991.4229,63711.1,0.0016,18.0851

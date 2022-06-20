@@ -6,7 +6,7 @@ import pandas as pd
 B_TO_T = 10 # Bin to Truck
 B_TO_B = 100 # Bin to Bin
 
-def optimize(df, visit, distances, n_done, visitedNodes, count, NTaken, n_trucks = 1, w1 = 0.5, w2 = 0.5, m = 0):
+def optimize(df, visit, distances, n_done, visitedNodes, count, NTaken, n_trucks = 1, w1 = 0.5, w2 = 0.5, m = 0, folder_Path = '', ward_name = '', t_name = ''):
 
     mdl = Model('CVRP')
 
@@ -26,6 +26,7 @@ def optimize(df, visit, distances, n_done, visitedNodes, count, NTaken, n_trucks
     Xs = []
     Ys = []
     Us = []
+    flag = [None, False]
     (visit1, visit2, visit3) = (None, None, None)
     visits = [visit1, visit2, visit3]
     for i in range(n_trucks):
@@ -59,17 +60,28 @@ def optimize(df, visit, distances, n_done, visitedNodes, count, NTaken, n_trucks
                 if (i not in visitedNodes) and (i not in NTaken) and (i != 0) and ( df.loc[i, fillNewName] + sum(df.loc[N, fillNewName]) ) * B_TO_T <= 100 - sum(visits[k].iloc[:, 1]) * B_TO_T:
                     N.append(i)
                     NTaken.append(i)
-            Ns[k] = N
-            Vs[k] = calc_V(N, m, startNode[k])
-            As[k] = [(p, q) for p in Vs[k] for q in Vs[k] if p != q]
-            Cs[k] = {(p, q) : distances.iloc[p, q] for p,q in As[k]}
-            Xs[k] = mdl.addVars(As[k], vtype = GRB.BINARY)
-            Ys[k] = mdl.addVars(Vs[k], vtype = GRB.BINARY)
-            Us[k] = mdl.addVars(Ns[k], vtype = GRB.CONTINUOUS)
-            # print(Ns[k])
-            objs[k] = quicksum( 
-                    (w1 * Xs[k][p, q] * Cs[k][(p, q)]) - (w2 * Ys[k][p] * fills[k].loc[p, 'fill'] * B_TO_T) for p,q in As[k]
-                    )
+            if N == []:
+                visit[k].loc[len(visit[k])] = [0, sum(visit[k].iloc[:, 1])]
+
+                # ----------------------------------------
+                print(f'Optimization done for truck {k}')
+                # ----------------------------------------
+
+                fileName = folder_Path + 'Visited ' + ward_name + '/visited_' + t_name + '_' + str(k + 1) + '_' + str(w1) + '_' + str(w2) + '.csv'
+                visit[k].to_csv(fileName, index = False)
+                n_done[k] = 1
+                flag = [k, True]
+            else:
+                Ns[k] = N
+                Vs[k] = calc_V(N, m, startNode[k])
+                As[k] = [(p, q) for p in Vs[k] for q in Vs[k] if p != q]
+                Cs[k] = {(p, q) : distances.iloc[p, q] for p,q in As[k]}
+                Xs[k] = mdl.addVars(As[k], vtype = GRB.BINARY)
+                Ys[k] = mdl.addVars(Vs[k], vtype = GRB.BINARY)
+                Us[k] = mdl.addVars(Ns[k], vtype = GRB.CONTINUOUS)
+                objs[k] = quicksum( 
+                        (w1 * Xs[k][p, q] * Cs[k][(p, q)]) - (w2 * Ys[k][p] * fills[k].loc[p, 'fill'] * B_TO_T) for p,q in As[k]
+                        )
     
     # Optimization Function defination
 
@@ -99,16 +111,12 @@ def optimize(df, visit, distances, n_done, visitedNodes, count, NTaken, n_trucks
                 mdl.addConstr(
                     quicksum( Xs[k][0, j] for j in Ns[k]) == 0
                     )
-            if Ns[k] == []:
-                mdl.addConstr(
-                    quicksum( Xs[k][startNode[k], 0]) == 1
-                )
             if startNode[k] != 0:
                     mdl.addConstr(
                         quicksum( Xs[k][j, startNode[k]] for j in Ns[k]) == 0
                     )
             mdl.addConstrs(
-                (Xs[k][i, j] == 1) >> (Us[k][i] + fills[k].loc[i, 'fill'] * B_TO_T == Us[k][j]) for i,j in As[k] if i not in [0, visits[k].iloc[-1, 0]] and j not in [0, visits[k].iloc[-1, 0]]
+                (Xs[k][i, j] == 1) >> (Us[k][i] + fills[k].loc[j, 'fill'] * B_TO_T == Us[k][j]) for i,j in As[k] if i not in [0, visits[k].iloc[-1, 0]] and j not in [0, visits[k].iloc[-1, 0]]
             )
 
             mdl.addConstrs(
@@ -131,7 +139,7 @@ def optimize(df, visit, distances, n_done, visitedNodes, count, NTaken, n_trucks
     
     mdl.reset(0)
 
-    return ob_value, df, active_arcs, NTaken
+    return ob_value, df, active_arcs, NTaken, flag
 
 
 def update_fill(data, m):
@@ -177,8 +185,10 @@ def dyn_multi_opt(df, visit, distances, t_name, n_done, visitedNodes, n_trucks =
         startNode.append(int(visit[k].iloc[-1, 0]))
 
     for l in range(timesToRun):
-        ob_value, df, active_arcs, NTaken = optimize(df = df, visit = visit[l*EACHRUNPOSSIBLE : l*EACHRUNPOSSIBLE + EACHRUNPOSSIBLE], distances = distances, n_done = n_done[l*EACHRUNPOSSIBLE : l*EACHRUNPOSSIBLE + EACHRUNPOSSIBLE], n_trucks = len(n_done[l*EACHRUNPOSSIBLE : l*EACHRUNPOSSIBLE + EACHRUNPOSSIBLE]), w1 = w1, w2 = w2, m = m, visitedNodes = visitedNodes, count = l, NTaken = NTaken)
+        ob_value, df, active_arcs, NTaken, flag = optimize(df = df, visit = visit[l*EACHRUNPOSSIBLE : l*EACHRUNPOSSIBLE + EACHRUNPOSSIBLE], distances = distances, n_done = n_done[l*EACHRUNPOSSIBLE : l*EACHRUNPOSSIBLE + EACHRUNPOSSIBLE], n_trucks = len(n_done[l*EACHRUNPOSSIBLE : l*EACHRUNPOSSIBLE + EACHRUNPOSSIBLE]), w1 = w1, w2 = w2, m = m, visitedNodes = visitedNodes, count = l, NTaken = NTaken)
         objValue += ob_value
+        if flag[1] == True:
+            n_done[flag[0]] = 1
         for a in active_arcs:
             arcs.append(a)
         for _ in range(len(n_done[l*EACHRUNPOSSIBLE : l*EACHRUNPOSSIBLE + EACHRUNPOSSIBLE])):
