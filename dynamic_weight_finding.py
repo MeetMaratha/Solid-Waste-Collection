@@ -49,18 +49,14 @@ for i in range(11):
 
 w1s = [round(i/10, 1) for i in range(0, 11)]
 Figure = figure(figsize=(15, 15))
-plt.scatter(w1s, obj_values)
+plt.scatter(w1s, obj_values, c = 'blue')
+plt.scatter([round(1 - i, 1) for i in w1s], obj_values, c = 'red')
 plt.title('Objective VS W1')
-plt.xlabel('W1')
+plt.xlabel('Value of Weights')
 plt.ylabel('Objective Value')
+plt.legend(['W1', 'W2'])
 plt.show()
 
-Figure = figure(figsize=(15, 15))
-plt.scatter([round(1 - i, 1) for i in w1s], obj_values)
-plt.title('Objective VS W2')
-plt.xlabel('W2')
-plt.ylabel('Objective Value')
-plt.show()
 
 
 W1 = w1s[np.argmin(obj_values)]
