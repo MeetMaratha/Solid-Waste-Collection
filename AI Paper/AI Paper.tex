@@ -21,7 +21,7 @@
 \begin{document}
 
 % \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
-%     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+%  T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
 \title{Route Optimization For Waste Collection\\}
 
@@ -52,7 +52,7 @@ collection bins for realistic outcomes.
 
 \section{Related Studies:}
 
-There has been a multitude of papers that have worked on different aspects of waste collection, such as the costs, route optimization and landfill and depot optimal locations. But, by far, the most common topic of work in this area has been route optimization and, in recent years, Internet of Things (IoT) enabled smart sustainable designs for the waste management systems. It poses a lot of challenges and there are a lot of possible solutions and methods that may be suitable for different cases. 
+A lot of research has been done on different aspects of waste collection, such as the costs, route optimization, smart bins, segregation, landfill and collection depot optimal locations. But, by far, the most common topic of work in this area has been route optimization and, in recent years, Internet of Things (IoT) enabled smart sustainable designs for the waste management systems. It poses a lot of challenges and there are a lot of possible solutions and methods that may be suitable for different cases. 
 
 In one paper \cite{kulcar1996optimizing}, the author focuses on the best location for the construction of a landfill that would result in the shortest collection routes when linked with the currently existing routes and depots. The paper also compares the running costs of different modes of waste transport, such as trains, ships and by road. It was useful in providing a picture of the costs associated with the system, it didn't focus on optimizing the routes that the waste collection was done. Moreover, it was set in Brussels, a highly developed city. In a similar vein, Rathore et al. \cite{rathore2020location} focuses on formulating a mathematical model for finding the optimal places to allocate bins in the Indian city of Bilaspur. While it aims towards the similar goal of waste collection optimization, furthermore in a developing country, the method is different from our intended goal.
 
@@ -130,16 +130,11 @@ This constraint (Eq \eqref{eq7}) ensures that if a truck goes on an arc (an arc 
 \end{equation}
 $$  \forall i\in N$$
 Eq \eqref{eq8} ensures that the amount of waste in a truck after reaching a node must be greater than or equal to the waste it had before that. This makes sure that the truck is actually collecting the waste from that node and not just passing it.
-
-% Changes Here
 % Added this equation
 \begin{equation}\label{eqY}
 	\sum_{i\in N}Y_i f_i* BT\le100
 \end{equation}
 Eq \eqref{eqY} ensures that the truck will not collect waste from a node if collecting from that node makes the truck exceed its maximum capacity. Therefore, for the sake of maximizing waste collected, such nodes will not be taken into consideration for further route calculations
-% Change ends here
-
-
 \begin{equation}\label{eq12}
     u_i\le 100 - P_t
 \end{equation}
@@ -152,11 +147,17 @@ With this, we have formulated our problem and now we can move on to implementing
 
 \subsection{Data Preparation}
 
-We have used a set of randomly selected points in the city of Chandigarh as the collection points that the collection vehicles have to travel to. The random bin locations were generated using QGIS function that generates random points inside a polygon, which in our case was the entire city. Then we divided the points into a certain number of wards, in our case: three, which depend on the number of vehicles that are available for the job. The wards were assigned by using K-Means Clustering algorithm by allotting the nodes into different clusters.
+We have used a set of randomly selected points in the city of Chandigarh as the collection points that the collection vehicles have to travel to. The random bin locations were generated using QGIS function that generates random points inside a polygon, which in our case was the entire city, covering an area of 104.78 Km$^2$. Then we divided the points into a certain number of regions, in our case: three, which depend on the number of vehicles that are available for the job. The regions were assigned by using K-Means Clustering algorithm by allotting the nodes into different clusters (Figure \ref{figm})
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.4]{Nodes.png}
+    \caption{The selected nodes and their clusters}\label{figm}
+\end{figure}
 
 Now, since we are using the concept of smart bins, we also had to simulate their function. While running the optimization process, each individual bin is randomly assigned a value between 0 and 1 to denote how full the bin is. This value will be one of the parameters during the optimization process.
 
-Next, we use OpenStreetMap API to obtain and calculate the distance between all points in the set, subject to the heuristic that all streets are non-directional, meaning all paths measure the same both ways and that a truck assigned to one ward will only collect from bins in its own ward. The numerical values of the distances are normalized to be in the same scale as the waste so that the algorithm is not skewed by the scale of the quantities itself.
+Next, we use OpenStreetMap API to obtain and calculate the distance between all points in the set, subject to the heuristic that all streets are non-directional, meaning all paths measure the same both ways and that a truck assigned to one region will only collect from bins in its own region. The numerical values of the distances are normalized to be in the same scale as the waste so that the algorithm is not skewed by the scale of the quantities itself.
 
 \subsection{Implementation}
 
@@ -174,30 +175,17 @@ In the real-time case, there are many factors to consider, as the values for the
 
 For our average case simulation, the fill ratios for the smart bins are decided randomly, therefore some nodes do not need to be visited for that run, as the truck may already be full before it reaches that far down the priority queue.
 
-Our algorithm is based on one single waste collection run per day, to show the resource constraint. But since we also intend for the algorithm to be scalable for a place where resources are not a problem and multiple trucks can be allotted for waste collection, we also have implemented a case where multiple trucks are allotted to run within one ward so that most of the nodes are able to be covered.
+Our algorithm is based on one single waste collection run per day, to show the resource constraint. But since we also intend for the algorithm to be scalable for a place where resources are not a problem and multiple trucks can be allotted for waste collection, we also have implemented a case where multiple trucks are allotted to run within one region so that most of the nodes are able to be covered.
 \subsection{Execution case studies}
 \subsubsection*{Case 1: Weight Analysis}
 In order to find the best pair of weights that will give us the best results, that is, the minimum value of the objective function, we need to take different weights, plug them into the objective function and plot the resulting graph (Figure \ref{fig1}). It shows the change in the objective function values for the iterated weights. The lowest point of this graph would give us the optimal weight. Since we want the relative importance of the two objectives and the total sum of the weights is equal to one, getting one weight means automatically getting the other.
 
-
-% Changes here
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
-    \begin{subfigure}{0.5\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{../Images/w1.png} % New Image file
-        \caption{Obj vs $w_1$}\label{figw1}
-    \end{subfigure}%
-    \begin{subfigure}{0.5\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{../Images/w2.png} % New Image file
-        \caption{Obj vs $w_2$}\label{figw2}
-    \end{subfigure}
-    \caption{Weight Analysis}
+    \includegraphics[scale=0.7]{weight_analysis_w1.jpg}
+    \caption{Weight Analysis: Objective function vs $w_1$}
     \label{fig1}
 \end{figure}
-
-% Changes End here
 
 We can see here that for the optimal results, the $w_1$ should be equal to 0.9 and $w_2$ equal to 0.1. This means that our optimization procedure should mainly focus on minimizing the distance and to a small extent maximizing the waste collected.
 
@@ -206,12 +194,9 @@ Now, we have the two cases for which we have solved the objective function for t
 \subsubsection*{Case 2: Real-time, restricted}
 Restricted here signifies that the resources which, in this case, are the trucks, are restricted and thus not sufficient to cover the demand for them. This is an especially important case for our work because our focus is on resource constrained societies where this is a common scenario.
 
-In this case, the optimal routes will be calculated in real time after a recurring interval of time. We used 1, 2, 3, and 4 trucks per ward and compared their performances. The weights, as calculated earlier, for distance minimization is taken as 0.9 and waste collection maximization is taken as 0.1
+In this case, the optimal routes will be calculated in real time after a recurring interval of time. We used 1, 2, 3, and 4 trucks per region and compared their performances. The weights, as calculated earlier, for distance minimization is taken as 0.9 and waste collection maximization is taken as 0.1
 
 The following Table \ref{tab1} summarizes the data obtained from real-time restricted optimization of routes where waste is calculated in kilograms and distance traveled in kilometres.
-
-% Changes Here
-
 \begin{table}[H]
     \centering
     \caption{Data for the real-time restricted case} \label{tab1}
@@ -219,7 +204,7 @@ The following Table \ref{tab1} summarizes the data obtained from real-time restr
     % Following are the changes
     \hspace*{-1cm}
     \begin{tabular}{|c|c|c|c|c|c|c|}
-        \hline \multirow{2}{*}{Case} & \multicolumn{2}{c|}{Ward 1} & \multicolumn{2}{c|}{Ward 2} & \multicolumn{2}{c|}{Ward 3}\\
+        \hline \multirow{2}{*}{Case} & \multicolumn{2}{c|}{Region 1} & \multicolumn{2}{c|}{Region 2} & \multicolumn{2}{c|}{Region 3}\\
         \cline{2-7}& Waste (Kg)  & Distance (Km) & Waste (Kg) & Distance (Km) & Waste (Kg) & Distance (Km)\\ 
         \hline \textit{1 Truck} & 999.98 & $51.27$ & 998.4 & $81.19$ & 999.05 & $52.24$ \\
         \hline \textit{2 Trucks} & 1995.72 & $144.47$ & 1976.03 & $174.03$ & 1981.34 & $151.07$ \\
@@ -228,43 +213,33 @@ The following Table \ref{tab1} summarizes the data obtained from real-time restr
         \hline
     \end{tabular}
 \end{table}
-
-% Changes End here
-% Change data here
-We take away some interesting observations from the above data such as the total distance that is being travelled by the trucks is not increasing by the same factor as the waste collected as we increase the number of trucks. The difference is most pronounced between the cases of 1 to 2 trucks and 2 to 3 trucks where there is an increase of about 150\% in the distance corresponding to an increase of a 100\% in the waste collected in the 1-2 truck case. But for the same increase in waste collected, the increase in distance travelled is of only about 30\% for 2-3 trucks case. This is emphasized even further for wards 2 and 3 where the total distance travelled actually decreases while still having a 100\% increase in waste collected. This observation can be visualized in Figure \ref{figz}
-
-% Change here
+We take away some interesting observations from the above data such as the total distance that is being travelled by the trucks is not increasing by the same factor as the waste collected as we increase the number of trucks. The difference is most pronounced between the cases of 1 to 2 trucks and 2 to 3 trucks where there is an increase of about 150\% in the distance corresponding to an increase of a 100\% in the waste collected in the 1-2 truck case. But for the same increase in waste collected, the increase in distance travelled is of only about 30\% for 2-3 trucks case. This is emphasized even further for regions 2 and 3 where the total distance travelled actually decreases while still having a 100\% increase in waste collected (Figure \ref{figz}).
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.7]{../Images/distance_VS_garbage_restricted.png} % New Image path
+    \includegraphics[scale=0.8]{distance_VS_garbage_restricted.png}
     \caption{Distance traveled vs waste collected}\label{figz}
 \end{figure}
 
-% Changes End here
-
 It is clear from the data that when the resources available and the demand for the said resources are close to each other, the overall allotment of those resources is more efficient. When the resources are constrained, they do not have the freedom to focus on efficiency as much because the first and foremost priority is meeting the demand.
 
-We observe the case of 4 trucks per ward to determine whether it is sufficient to satisfy the waste collection demand of the city. Table \ref{tab3} summarizes the data obtained from running the algorithm with this setup.
-
-% Changes here
-% Values are changed
+We observe the case of 4 trucks per region to determine whether it is sufficient to satisfy the waste collection demand of the city. Table \ref{tab3} summarizes the data obtained from running the algorithm with this setup.
 \begin{table}[H]
     \centering
-    \caption{ Data for 4 trucks per ward} \label{tab2}
+    \caption{ Data for 4 trucks per region} \label{tab2}
     \vspace*{0.3cm}
     \begin{tabular}{|c|c|c|c|c|c|}
-        \hline Ward & Truck & Waste (Kg) & Distance (Km) & Waste/Distance & Percent collected \\
-        \hline \multirow{4}{*}{Ward 1} & Truck 1 & 998.8048& 30.52 &32.72  &16.8421\% \\
+        \hline Region & Truck & Waste (Kg) & Distance (Km) & Waste/Distance & Percent collected \\
+        \hline \multirow{4}{*}{Region 1} & Truck 1 & 998.8048& 30.52 &32.72  &16.8421\% \\
         \cline{2-6}& Truck 2 &999.28&49.81&20.1&14.7368\%\\        
         \cline{2-6}& Truck 3 &999.09&31.72&31.4&18.9474\%\\        
         \cline{2-6}& Truck 4 &985.96&58.57&16.83&18.9474\%\\
         \hline & & & &\textbf{Total:} &\textbf{69.47\%}\\
-        \hline \multirow{4}{*}{Ward 2} & Truck 1 &998.82 &64.74  & 15.43  &14.4144\% \\
+        \hline \multirow{4}{*}{Region 2} & Truck 1 &998.82 &64.74  & 15.43  &14.4144\% \\
         \cline{2-6}& Truck 2 &992.05&42.71&23.23&13.5135\%\\        
         \cline{2-6}& Truck 3 &991.81&64.76&15.32&18.018\%\\        
         \cline{2-6}& Truck 4 &990.12&78.80&12.57&18.018\%\\
         \hline & & & &\textbf{Total:} &\textbf{63.9639\%}\\     
-        \hline \multirow{4}{*}{Ward 3} & Truck 1 &999.32  &37.57  &26.60  &15.9574\% \\
+        \hline \multirow{4}{*}{Region 3} & Truck 1 &999.32  &37.57  &26.60  &15.9574\% \\
         \cline{2-6}& Truck 2 &989.50&57.30&17.27&14.8936\%\\        
         \cline{2-6}& Truck 3 &997.948&39.26&25.42&14.8936\%\\        
         \cline{2-6}& Truck 4 &990.7538&75.96&13.04&20.2128\%\\
@@ -273,37 +248,31 @@ We observe the case of 4 trucks per ward to determine whether it is sufficient t
     \end{tabular}
 \end{table}
 
-
-% Changes End here
-We can infer from the above data that the number of trucks falls just short of being able to satisfactorily cover most of the city's bins. It is only able to cover, on an average, 65\% of the total number of bins that need to be collected.
-
-% Changes End here
+We can infer from the above data that the number of trucks falls just short of being able to satisfactorily cover most of the city's bins. It is only able to cover, on an average, 70\% of the total number of bins that need to be collected.
 
 \subsubsection*{Case 3: Real-time, unrestricted}
 
-In this case, we want to see the results of route optimization if the resources were not constrained and there were enough, in our case, trucks to cover the waste collection demands at a satisfactory level. From the previous case, we saw that 4 trucks per ward fell just short of being enough, so for this case, we raised the number of trucks to 5 per ward. Table \ref{tab3} summarizes the data obtained from this case.
+In this case, we want to see the results of route optimization if the resources were not constrained and there were enough, in our case, trucks to cover the waste collection demands at a satisfactory level. From the previous case, we saw that 4 trucks per region fell just short of being enough, so for this case, we raised the number of trucks to 5 per region. Table \ref{tab3} summarizes the data obtained from this case.
 
-% Changes here
-% Values changed here
 \begin{table}[H]
     \centering
-    \caption{ Data for 5 trucks per ward} \label{tab3}
+    \caption{ Data for 5 trucks per region} \label{tab3}
     \vspace*{0.3cm}
     \begin{tabular}{|c|c|c|c|c|c|}
-        \hline Ward & Truck & Waste (Kg) & Distance (Km) & Waste/Distance & Percent collected \\
-        \hline \multirow{4}{*}{Ward 1} & Truck 1 &998.37  &27.39  & 36.45 &17.8947 \\
+        \hline Region & Truck & Waste (Kg) & Distance (Km) & Waste/Distance & Percent collected \\
+        \hline \multirow{4}{*}{Region 1} & Truck 1 &998.37  &27.39  & 36.45 &17.8947 \\
         \cline{2-6}& Truck 2 &999.66&39.19&25.51&15.7895\%\\        
         \cline{2-6}& Truck 3 &997.94&49.22&20.28&16.8421\%\\        
         \cline{2-6}& Truck 4 &996.54&48.59&20.51&22.1053\%\\
         \cline{2-6}& Truck 5 &996.94&106.85&9.33&26.3158\%\\
         \hline &\textbf{Total:} &\textbf{4989.45} &\textbf{271.24} &- &\textbf{98.9474\%}\\
-        \hline \multirow{4}{*}{Ward 2} & Truck 1 &994.87  &54.85  &18.14  &12.6126 \\
+        \hline \multirow{4}{*}{Region 2} & Truck 1 &994.87  &54.85  &18.14  &12.6126 \\
         \cline{2-6}& Truck 2 &994.63&67.35&14.77&13.5135\%\\        
         \cline{2-6}& Truck 3 &998.21&54.87&18.19&12.6126\%\\        
         \cline{2-6}& Truck 4 &999.51&96.53&10.35&17.1171\%\\      
         \cline{2-6}& Truck 5 &999.43&45.39&22.02&17.1171\%\\
         \hline &\textbf{Total:} &\textbf{4986.65} &\textbf{318.99} &- &\textbf{72.9729\%}\\     
-        \hline \multirow{4}{*}{Ward 3} & Truck 1 &998.95  &37.27  &26.80  &14.89 \\
+        \hline \multirow{4}{*}{Region 3} & Truck 1 &998.95  &37.27  &26.80  &14.89 \\
         \cline{2-6}& Truck 2 &999.23&56.54&17.68&15.9574\%\\        
         \cline{2-6}& Truck 3 &992.91&55.05&18.04&18.0851\%\\        
         \cline{2-6}& Truck 4 &999.70&50.32&19.87&25.5319\%\\
@@ -313,68 +282,58 @@ In this case, we want to see the results of route optimization if the resources 
     \end{tabular}
 \end{table}
 
-% Changes End here
-
-% Changes here
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.4]{../Images/Dynamic_weighted_5_Truck.png} % New Image added
+    \includegraphics[scale=0.4]{Dynamic_weighted_5_Truck.png} % New Image added
     \caption{Realtime Unrestricted}\label{fig2}
 \end{figure}
 
-% Changed here to around in place of almost %
-From this data, we can easily observe that with 5 trucks per city ward, around  90\% of the city's bins get covered, and with a similar procedure, more trucks can be added for even more efficient collection. While the total distance is increased, it is a direct result of having more trucks running at the same time, and since most of the bins are being collected, some trucks need to traverse outlying regions to cover the remaining bins. This is visualised in Figure \ref{fig2} where we have plotted the optimized routes dictated by the objective function.
+From this data, we can easily observe that with 5 trucks per city region, around 90\% of the city's bins get covered, and with a similar procedure, more trucks can be added for even more efficient collection. While the total distance is increased, it is a direct result of having more trucks running at the same time, and since most of the bins are being collected, some trucks need to traverse outlying regions to cover the remaining bins. This is visualised in Figure \ref{fig2} where we have plotted the optimized routes dictated by the objective function.
 
-% Changes End here
-\subsubsection*{Case 4: Impact of the number of trucks on total coverage.}
+\subsubsection*{Case 4: Impact of the number of trucks on total bin coverage.}
 
-As expected from our previous cases, increasing the number of trucks available per ward leads to a more thorough collection of waste as shown in Table \ref{tab4} and represented graphically in Figure \ref{fig3}. Compared to case 2, where the number of trucks per ward was varied from 1 through 4, we can see a clear rise in the coverage of bins as we increase the number of trucks, concluding in the last and our best case of 5 trucks. Having more trucks at your disposal is a matter of resources, and for a resource constrained region, their availability of trucks may not be sufficient for the amount of waste generated which will, unless overcome by alternate methods such as multiple collection runs per vehicle, will lead to subpar waste collection, as shown by the data. However, those alternate methods are beyond the scope of the current work.
-
-% Changes here
-% Values changed
+As expected from our previous cases, increasing the number of trucks available per region leads to a more thorough collection of waste as shown in Table \ref{tab4} and represented graphically in Figure \ref{fig3}. Compared to case 2, where the number of trucks per region was varied from 1 through 4, we can see a clear rise in the coverage of bins as we increase the number of trucks, concluding in the last and our best case of 5 trucks. Having more trucks at your disposal is a matter of resources, and for a resource constrained region, their availability of trucks may not be sufficient for the amount of waste generated which will, unless overcome by alternate methods such as multiple collection runs per vehicle, will lead to subpar waste collection, as shown by the data. However, those alternate methods are beyond the scope of the current work.
 \begin{table}[H]
     \centering
-    \caption{ Bins coverage in percent based on number of trucks per ward} \label{tab4}
+    \caption{ Bins coverage in percent based on number of trucks per region} \label{tab4}
     \vspace*{0.3cm}
     \begin{tabular}{|c|c|c|c|c|c|}
-        \hline \multirow{2}{*}{Ward} & \multicolumn{5}{c|}{Number of trucks}\\
+        \hline \multirow{2}{*}{Region} & \multicolumn{5}{c|}{Number of trucks}\\
         \cline{2-6}& 1 Truck& 2 Truck& 3 Truck& 4 Truck& 5 Truck\\
-        \hline \textit{Ward 1} & 11.5789\%& 41.0526\%& 60.0001\%& 69.4737\%& 98.9474\%\\
-        \hline \textit{Ward 2} &9.9099\%&32.4324\%&52.2522\%&63.9636\%&72.9728\%\\
-        \hline \textit{Ward 3} &11.7021\%&42.5532\%&58.5107\%&65.9574\%&99.9999\%\\
+        \hline \textit{Region 1} & 11.5789\%& 41.0526\%& 60.0001\%& 69.4737\%& 98.9474\%\\
+        \hline \textit{Region 2} &9.9099\%&32.4324\%&52.2522\%&63.9636\%&72.9728\%\\
+        \hline \textit{Region 3} &11.7021\%&42.5532\%&58.5107\%&65.9574\%&99.9999\%\\
         \hline
     \end{tabular}
 \end{table}
 
-% Changes End here
 
-% Changes here
 \begin{figure}[H]
     \centering
     \begin{subfigure}{0.5\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{../Images/coverage_VS_number_of_trucks.png} % Image Changed
+        \includegraphics[width=\linewidth]{coverage_VS_number_of_trucks.png}
         \caption{For the entire city}\label{figc1}
     \end{subfigure}%
     \begin{subfigure}{0.5\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{../Images/number_of_trucks_VS_bins_visited.png} % Image Changed
-        \caption{In terms of wards}\label{figc2}
+        \includegraphics[width=\linewidth]{number_of_trucks_VS_bins_visited.png}
+        \caption{Region-wise}\label{figc2}
     \end{subfigure}
     \caption{Effect of number of trucks on bin coverage}
     \label{fig3}
 \end{figure}
 
-% Changes End here
+We visualized the bin coverage data in two separate figures to help see the effects from two different perspectives. In order to give a better idea of the bigger picture that is true for the entire city, Figure \ref{figc1} shows the coverage of the total number of bins, regardless of regions, against the number total number of trucks available for collection. For a more detailed look of the effects of the number of trucks on bin coverage, especially after a more granular level, like regions, we have added Figure \ref{figc2}.
+
+We can observe that for region 2, the total coverage doesn't have the same rise in as compared to regions 1 and 3. It is because, region 2 is larger than region 1 and 3, and contains more nodes. Thus, the observation is explained by the fact that in order to have the same coverage with a higher number of nodes, it would need a larger number of trucks as well. And since, we have taken a uniform number of trucks per regions, as a result, the coverage in region 2 is slightly less than the other regions.
 
 \subsubsection*{Case 5: Comparison of real-time with static route calculation}
 
 While our main method of route calculation works in real time by getting new fill values from the smart bins throughout the collection run and calculates new best routes based on the truck's current position in real time, there is another, more simpler method that trades off the reliability and adaptability of the real-time method for faster computational time and slightly more efficient routes. That is the static route calculation method and we get it by relaxing and modifying a few constraints mentioned earlier. In Eq \eqref{eq12} the constraint will be just less than 100. In Eq \eqref{eq2} and Eq \eqref{eq3} instead of st, the beginning nodes will always be 0. This results in one single route calculation at the beginning of the run that gives us the best route with the data available at that time, but does not consider any new data after that.
 
-To compare the two methods, for the sake of simplicity, we will use the 1 truck per ward case from case 2 and compare it to the static method by applying it to the same 1 truck per ward case. The comparison is represented in Table \ref{tab5}
+To compare the two methods, for the sake of simplicity, we will use the 1 truck per region case from case 2 and compare it to the static method by applying it to the same 1 truck per region case. The comparison is represented in Table \ref{tab5}
 
-%Changes here
-% Values Changed
 \begin{table}[H]
     \centering
     \caption{Comparison of static and real-time optimization performance} \label{tab5}
@@ -387,20 +346,17 @@ To compare the two methods, for the sake of simplicity, we will use the 1 truck 
     \end{tabular}
 \end{table}
 
-% Changes End here
-
 Figure \ref{fig4} and Figure \ref{fig5} are the plots of the routes calculated by the static and the real-time optimization methods respectively.
 
-% Changes here
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.4]{../Images/Static_Unweighted.png} % Image changed here
-    \caption{Routes for 1 truck per ward as calculated by static optimization}\label{fig4}
+    \includegraphics[scale=0.4]{Static_Unweighted.png} % Image changed here
+    \caption{Routes for 1 truck per region as calculated by static optimization}\label{fig4}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.4]{../Images/Dynamic_weighted_1_Truck.png} % Image chaged here
-    \caption{Routes for 1 truck per ward as calculated by real-time optimization}\label{fig5}
+    \includegraphics[scale=0.4]{Dynamic_weighted_1_Truck.png} % Image changed here
+    \caption{Routes for 1 truck per region as calculated by real-time optimization}\label{fig5}
 \end{figure}
 We observe that the weight of the waste collected is nearly the same but the distance travelled by the trucks is smaller in the static case. This can be easily explained by the fact that, in essence, real-time method is just the static method applied repeatedly after certain intervals of time. Therefore, static gives one optimal route for the currently available data, but real-time has to do that each time the data is updated. It has to calculate new routes multiple times, even when the vehicle is already traversing the previous optimal route, and it also has to take the current position of the vehicle into consideration. This makes it inherently slightly more inefficient compared to the static method. 
 
@@ -432,7 +388,7 @@ For real world application of this method, the suggested policy would be to firs
 \section{Conclusion}
 We have achieved most of our core goals of optimizing waste collection with a focus on resource constrained societies. We were able to devise a method to use the available resources as efficiently as possible and at the same time ensure that the method also remains viable in more developed regions if scaled accordingly. Yet there still were things that we were not able to implement in our current endeavour. 
 
-In our process, we divide the total number of nodes into specific clusters depending upon the resources that we have. These clusters are called wards and in the current version, vehicles assigned to each cluster are completely independent of the points in another cluster, and will not collect from a node from another cluster even when it is more efficient to do so. 
+In our process, we divide the total number of nodes into specific clusters depending upon the resources that we have. These clusters are called regions and in the current version, vehicles assigned to each cluster are completely independent of the points in another cluster, and will not collect from a node from another cluster even when it is more efficient to do so. 
 
 These can be taken as goals for future forays into this field to overcome the current limitations of our work. Scopes for future development may focus on improving upon our works by integrating more detailed street data like street signs, one-way roads and using the additional parameters as factors to provide a more street accurate route tailored for a specific region.
 

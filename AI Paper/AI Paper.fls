@@ -1000,6 +1000,13 @@ INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
+INPUT .\Nodes.png
+INPUT .\Nodes.png
+INPUT Nodes.png
+INPUT .\Nodes.png
+INPUT .\Nodes.png
+INPUT .\Nodes.png
+INPUT .\Nodes.png
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
 INPUT .\weight_analysis_w1.jpg
 INPUT .\weight_analysis_w1.jpg
@@ -1008,19 +1015,6 @@ INPUT .\weight_analysis_w1.jpg
 INPUT .\weight_analysis_w1.jpg
 INPUT .\weight_analysis_w1.jpg
 INPUT .\weight_analysis_w1.jpg
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr10.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmmi10.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmsy10.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmex10.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
-INPUT .\weight_analysis_w2.jpg
-INPUT .\weight_analysis_w2.jpg
-INPUT weight_analysis_w2.jpg
-INPUT .\weight_analysis_w2.jpg
-INPUT .\weight_analysis_w2.jpg
-INPUT .\weight_analysis_w2.jpg
-INPUT .\weight_analysis_w2.jpg
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmti12.tfm
 INPUT .\distance_VS_garbage_restricted.png
 INPUT .\distance_VS_garbage_restricted.png
@@ -1029,13 +1023,13 @@ INPUT .\distance_VS_garbage_restricted.png
 INPUT .\distance_VS_garbage_restricted.png
 INPUT .\distance_VS_garbage_restricted.png
 INPUT .\distance_VS_garbage_restricted.png
-INPUT .\Dynamic5trucks.png
-INPUT .\Dynamic5trucks.png
-INPUT Dynamic5trucks.png
-INPUT .\Dynamic5trucks.png
-INPUT .\Dynamic5trucks.png
-INPUT .\Dynamic5trucks.png
-INPUT .\Dynamic5trucks.png
+INPUT .\Dynamic_weighted_5_Truck.png
+INPUT .\Dynamic_weighted_5_Truck.png
+INPUT Dynamic_weighted_5_Truck.png
+INPUT .\Dynamic_weighted_5_Truck.png
+INPUT .\Dynamic_weighted_5_Truck.png
+INPUT .\Dynamic_weighted_5_Truck.png
+INPUT .\Dynamic_weighted_5_Truck.png
 INPUT .\coverage_VS_number_of_trucks.png
 INPUT .\coverage_VS_number_of_trucks.png
 INPUT coverage_VS_number_of_trucks.png
@@ -1043,6 +1037,7 @@ INPUT .\coverage_VS_number_of_trucks.png
 INPUT .\coverage_VS_number_of_trucks.png
 INPUT .\coverage_VS_number_of_trucks.png
 INPUT .\coverage_VS_number_of_trucks.png
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr10.tfm
 INPUT .\number_of_trucks_VS_bins_visited.png
 INPUT .\number_of_trucks_VS_bins_visited.png
 INPUT number_of_trucks_VS_bins_visited.png
@@ -1050,20 +1045,20 @@ INPUT .\number_of_trucks_VS_bins_visited.png
 INPUT .\number_of_trucks_VS_bins_visited.png
 INPUT .\number_of_trucks_VS_bins_visited.png
 INPUT .\number_of_trucks_VS_bins_visited.png
-INPUT .\Static1truck.png
-INPUT .\Static1truck.png
-INPUT Static1truck.png
-INPUT .\Static1truck.png
-INPUT .\Static1truck.png
-INPUT .\Static1truck.png
-INPUT .\Static1truck.png
-INPUT .\Dynamic1truck.png
-INPUT .\Dynamic1truck.png
-INPUT Dynamic1truck.png
-INPUT .\Dynamic1truck.png
-INPUT .\Dynamic1truck.png
-INPUT .\Dynamic1truck.png
-INPUT .\Dynamic1truck.png
+INPUT .\Static_Unweighted.png
+INPUT .\Static_Unweighted.png
+INPUT Static_Unweighted.png
+INPUT .\Static_Unweighted.png
+INPUT .\Static_Unweighted.png
+INPUT .\Static_Unweighted.png
+INPUT .\Static_Unweighted.png
+INPUT .\Dynamic_weighted_1_Truck.png
+INPUT .\Dynamic_weighted_1_Truck.png
+INPUT Dynamic_weighted_1_Truck.png
+INPUT .\Dynamic_weighted_1_Truck.png
+INPUT .\Dynamic_weighted_1_Truck.png
+INPUT .\Dynamic_weighted_1_Truck.png
+INPUT .\Dynamic_weighted_1_Truck.png
 INPUT .\AI Paper.bbl
 INPUT AI Paper.bbl
 INPUT .\AI Paper.bbl
@@ -1077,8 +1072,6 @@ INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx12.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx12.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmex10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmex10.pfb
-INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb
-INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi12.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi12.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi8.pfb
