@@ -50,17 +50,22 @@ P.~Rathore, S.~P. Sarmah, and A.~Singh, ``Location--allocation of bins in urban
   Environment, Development and Sustainability}, vol.~22, no.~4, pp.~3309--3331,
   2020.
 
+\bibitem{barzehkar2019landfill}
+M.~Barzehkar, N.~M. Dinan, S.~Mazaheri, R.~M. Tayebi, and G.~I. Brodie,
+  ``Landfill site selection using gis-based multi-criteria evaluation (case
+  study: Saharkhiz region located in gilan province in iran),'' {\em SN Applied
+  Sciences}, vol.~1, no.~9, pp.~1--11, 2019.
+
+\bibitem{al2021optimization}
+A.~Al-Refaie, A.~Al-Hawadi, and S.~Fraij, ``Optimization models for clustering
+  of solid waste collection process,'' {\em Engineering Optimization}, vol.~53,
+  no.~12, pp.~2056--2069, 2021.
+
 \bibitem{karadimas2008routing}
 N.~V. Karadimas, N.~Doukas, M.~Kolokathi, G.~Defteraiou, {\em et~al.},
   ``Routing optimization heuristics algorithms for urban solid waste
   transportation management,'' {\em wseas transactions on computers}, vol.~7,
   no.~12, pp.~2022--2031, 2008.
-
-\bibitem{chaudhary2019gis}
-S.~Chaudhary, C.~Nidhi, and N.~R. Rawal, ``Gis-based model for optimal
-  collection and transportation system for solid waste in allahabad city,'' in
-  {\em Emerging Technologies in Data Mining and Information Security},
-  pp.~45--65, Springer, 2019.
 
 \bibitem{amal2018sga}
 L.~Amal, L.~H. Son, and H.~Chabchoub, ``Sga: spatial gis-based genetic
@@ -68,15 +73,16 @@ L.~Amal, L.~H. Son, and H.~Chabchoub, ``Sga: spatial gis-based genetic
   Environmental Science and Pollution Research}, vol.~25, no.~27,
   pp.~27569--27582, 2018.
 
+\bibitem{asefi2019mathematical}
+H.~Asefi, S.~Lim, M.~Maghrebi, and S.~Shahparvari, ``Mathematical modelling and
+  heuristic approaches to the location-routing problem of a cost-effective
+  integrated solid waste management,'' {\em Annals of Operations Research},
+  vol.~273, no.~1, pp.~75--110, 2019.
+
 \bibitem{de2007decision}
 E.~de~Oliveira~Simonetto and D.~Borenstein, ``A decision support system for the
   operational planning of solid waste collection,'' {\em Waste Management},
   vol.~27, no.~10, pp.~1286--1297, 2007.
-
-\bibitem{renaud2002sweep}
-J.~Renaud and F.~F. Boctor, ``A sweep-based algorithm for the fleet size and
-  mix vehicle routing problem,'' {\em European Journal of Operational
-  Research}, vol.~140, no.~3, pp.~618--628, 2002.
 
 \bibitem{hannan2020waste}
 M.~Hannan, R.~Begum, A.~Q. Al-Shetwi, P.~Ker, M.~Al~Mamun, A.~Hussain,
@@ -84,26 +90,15 @@ M.~Hannan, R.~Begum, A.~Q. Al-Shetwi, P.~Ker, M.~Al~Mamun, A.~Hussain,
   linking cost saving and emission reduction to achieve sustainable development
   goals,'' {\em Sustainable Cities and Society}, vol.~62, p.~102393, 2020.
 
-\bibitem{asefi2019mathematical}
-H.~Asefi, S.~Lim, M.~Maghrebi, and S.~Shahparvari, ``Mathematical modelling and
-  heuristic approaches to the location-routing problem of a cost-effective
-  integrated solid waste management,'' {\em Annals of Operations Research},
-  vol.~273, no.~1, pp.~75--110, 2019.
-
 \bibitem{akhtar2017backtracking}
 M.~Akhtar, M.~Hannan, R.~Begum, H.~Basri, and E.~Scavino, ``Backtracking search
   algorithm in cvrp models for efficient solid waste collection and route
   optimization,'' {\em Waste Management}, vol.~61, pp.~117--128, 2017.
 
-\bibitem{civicioglu2013backtracking}
-P.~Civicioglu, ``Backtracking search optimization algorithm for numerical
-  optimization problems,'' {\em Applied Mathematics and computation}, vol.~219,
-  no.~15, pp.~8121--8144, 2013.
-
-\bibitem{al2021optimization}
-A.~Al-Refaie, A.~Al-Hawadi, and S.~Fraij, ``Optimization models for clustering
-  of solid waste collection process,'' {\em Engineering Optimization}, vol.~53,
-  no.~12, pp.~2056--2069, 2021.
+\bibitem{malakahmad2014solid}
+A.~Malakahmad, P.~M. Bakri, M.~R.~M. Mokhtar, and N.~Khalil, ``Solid waste
+  collection routes optimization via gis techniques in ipoh city, malaysia,''
+  {\em Procedia Engineering}, vol.~77, pp.~20--27, 2014.
 
 \bibitem{lozano2018smart}
 {\'A}.~Lozano, J.~Caridad, J.~F. De~Paz, G.~Villarrubia~Gonzalez, and J.~Bajo,
@@ -115,38 +110,43 @@ D.~Baldo, A.~Mecocci, S.~Parrino, G.~Peruzzi, and A.~Pozzebon, ``A multi-layer
   lorawan infrastructure for smart waste management,'' {\em Sensors}, vol.~21,
   no.~8, p.~2600, 2021.
 
+\bibitem{chaudhary2019gis}
+S.~Chaudhary, C.~Nidhi, and N.~R. Rawal, ``Gis-based model for optimal
+  collection and transportation system for solid waste in allahabad city,'' in
+  {\em Emerging Technologies in Data Mining and Information Security},
+  pp.~45--65, Springer, 2019.
+
+\bibitem{sk2020optimal}
+M.~M. Sk, S.~A. Ali, and A.~Ahmad, ``Optimal sanitary landfill site selection
+  for solid waste disposal in durgapur city using geographic information system
+  and multi-criteria evaluation technique,'' {\em KN-Journal of Cartography and
+  Geographic Information}, vol.~70, no.~4, pp.~163--180, 2020.
+
+\bibitem{ogwueleke2009route}
+T.~Ogwueleke, ``Route optimization for solid waste collection: Onitsha
+  (nigeria) case study,'' {\em Journal of Applied Sciences and Environmental
+  Management}, vol.~13, no.~2, 2009.
+
+\bibitem{belien2014municipal}
+J.~Beli{\"e}n, L.~De~Boeck, and J.~Van~Ackere, ``Municipal solid waste
+  collection and management problems: a literature review,'' {\em
+  Transportation Science}, vol.~48, no.~1, pp.~78--102, 2014.
+
+\bibitem{sulemana2018optimal}
+A.~Sulemana, E.~A. Donkor, E.~K. Forkuo, and S.~Oduro-Kwarteng, ``Optimal
+  routing of solid waste collection trucks: a review of methods,'' {\em Journal
+  of Engineering}, vol.~2018, 2018.
+
+\bibitem{abdallah2020artificial}
+M.~Abdallah, M.~A. Talib, S.~Feroz, Q.~Nasir, H.~Abdalla, and B.~Mahfood,
+  ``Artificial intelligence applications in solid waste management: A
+  systematic research review,'' {\em Waste Management}, vol.~109, pp.~231--246,
+  2020.
+
 \bibitem{vishnu2021iot}
 S.~Vishnu, S.~J. Ramson, S.~Senith, T.~Anagnostopoulos, A.~M. Abu-Mahfouz,
   X.~Fan, S.~Srinivasan, and A.~A. Kirubaraj, ``Iot-enabled solid waste
   management in smart cities,'' {\em Smart Cities}, vol.~4, no.~3,
   pp.~1004--1017, 2021.
-
-\bibitem{abdullah2018iot}
-N.~Abdullah, O.~A. Alwesabi, and R.~Abdullah, ``Iot-based smart waste
-  management system in a smart city,'' in {\em International conference of
-  reliable information and communication technology}, pp.~364--371, Springer,
-  2018.
-
-\bibitem{ali2020iot}
-T.~Ali, M.~Irfan, A.~S. Alwadie, and A.~Glowacz, ``Iot-based smart waste bin
-  monitoring and municipal solid waste management system for smart cities,''
-  {\em Arabian Journal for Science and Engineering}, vol.~45, no.~12,
-  pp.~10185--10198, 2020.
-
-\bibitem{al2018serverless}
-E.~Al-Masri, I.~Diabate, R.~Jain, M.~H.~L. Lam, and S.~R. Nathala, ``A
-  serverless iot architecture for smart waste management systems,'' in {\em
-  2018 IEEE International Conference on Industrial Internet (ICII)},
-  pp.~179--180, IEEE, 2018.
-
-\bibitem{chaudhari2018solid}
-S.~S. Chaudhari and V.~Y. Bhole, ``Solid waste collection as a service using
-  iot-solution for smart cities,'' in {\em 2018 International Conference on
-  Smart City and Emerging Technology (ICSCET)}, pp.~1--5, IEEE, 2018.
-
-\bibitem{ravindra2015system}
-K.~Ravindra, K.~Kaur, and S.~Mor, ``System analysis of municipal solid waste
-  management in chandigarh and minimization practices for cleaner emissions,''
-  {\em Journal of Cleaner production}, vol.~89, pp.~251--256, 2015.
 
 \end{thebibliography}

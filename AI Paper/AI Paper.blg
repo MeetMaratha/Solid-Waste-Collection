@@ -9,43 +9,43 @@ Warning--empty journal in hoornweg2012waste
 Warning--can't use both volume and number fields in somani2021integrated
 You've used 28 entries,
             1876 wiz_defined-function locations,
-            658 strings with 9466 characters,
-and the built_in function-call counts, 9654 in all, are:
-= -- 1007
-> -- 348
+            657 strings with 9627 characters,
+and the built_in function-call counts, 9150 in all, are:
+= -- 937
+> -- 366
 < -- 0
-+ -- 126
-- -- 98
-* -- 695
-:= -- 1295
++ -- 132
+- -- 104
+* -- 683
+:= -- 1269
 add.period$ -- 28
 call.type$ -- 28
 change.case$ -- 28
 chr.to.int$ -- 0
 cite$ -- 30
-duplicate$ -- 502
-empty$ -- 851
-format.name$ -- 98
-if$ -- 2384
+duplicate$ -- 464
+empty$ -- 791
+format.name$ -- 104
+if$ -- 2238
 int.to.chr$ -- 0
 int.to.str$ -- 28
 missing$ -- 28
 newline$ -- 87
 num.names$ -- 28
-pop$ -- 64
+pop$ -- 53
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 411
+skip$ -- 365
 stack$ -- 0
-substring$ -- 802
-swap$ -- 260
+substring$ -- 704
+swap$ -- 234
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 2
-while$ -- 98
+while$ -- 92
 width$ -- 30
-write$ -- 297
+write$ -- 296
 (There were 2 warnings)
