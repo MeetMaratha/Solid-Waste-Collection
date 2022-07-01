@@ -94,6 +94,40 @@ In our problem, our two main objectives are:
     \item Maximize the waste collected through the collection run
 \end{itemize}
 
+% The table starts here
+The following table defines all the variables used in mathematical formulation
+\begin{table}[H]\label{variables}
+	\centering
+	\caption{The description of variables}
+	\begin{tabular*}{486pt}[H]{|c|c|}
+		\hline \hspace{85pt} Variables \hspace{85pt} & \hspace{85pt } Description \hspace{85pt} \\
+		\hline i, j & Node i and Node j respectively.\\
+		\hline N & Nodes for a particular truck excluding depot.\\
+		\hline V & Nodes for a particular truck including depot.\\
+		\hline A & Arcs formed from a node i to a node j in V.\\
+		\hline \multirow{2}{*}{$C_{ij}$} & Distance cost from a node i\\
+		& to a node j for a truck.\\
+		\hline \multirow{2}{*}{$X_{ij}$} & It is a binary variable that is 1 if a truck is\\
+		& travelling between the node i and node j.\\  
+		\hline \multirow{2}{*}{$Y_{i}$} & It is a binary variable that is 1 if a truck is \\
+		& collecting garbage at node i.\\
+		\hline \multirow{2}{*}{$u_{i}$} & The percentage fill of the truck at node i \\
+		& following given path.\\
+		\hline \multirow{1}{*}{st} & The starting node of the truck in that run.\\
+		\hline \multirow{2}{*}{$w_{1}$} & The weight attached to optimizing distance\\
+		& travelled by the truck.\\
+		\hline \multirow{2}{*}{$w_{2}$} & The weight attached to optimizing \\
+		& fill ratio of the truck.\\
+		\hline \multirow{1}{*}{$f_{i}$} & The fill ratio of bin at node i.\\
+		\hline \multirow{2}{*}{$BT$} & The conversion factor for fill \\
+		& of smart bin to fill of truck.\\
+		\hline \multirow{1}{*}{$P_{t}$} & Fill percentage of truck at time t.\\
+		\hline
+	\end{tabular*}
+\end{table} 
+
+% The table ends here
+
 With this we can formulate our base objective function to be:
 
 \begin{equation}\label{eq1}
