@@ -26,12 +26,13 @@
 \title{Route Optimization For Waste Collection\\}
 \date{}
 \author[1]{Marut Priyadarshi}
-\author[1]{Meet Maratha}
-\author[2]{Mohammad Anish}
-\author[1]{Vaibhav Kumar}
+\author[2]{Meet Maratha}
+\author[3]{Mohammad Anish}
+\author[4]{Vaibhav Kumar}
 \affil[1]{Department of Data Science Engineering, IISER Bhopal}
-\affil[1]{Department of Data Science Engineering, IISER Bhopal}
-\affil[1]{Department of Physics, IISER Bhopal}
+\affil[2]{Department of Data Science Engineering, IISER Bhopal}
+\affil[3]{Department of Physics, IISER Bhopal}
+\affil[4]{Department of Data Science Engineering, IISER Bhopal}
 
 \maketitle
 
@@ -54,9 +55,9 @@ collection bins for realistic outcomes.
 
 There has been a decent amount of work done in different aspects of waste collection, such as the costs, route optimization, smart bins, segregation, landfill and collection depot optimal locations. But, by far, the most common topic of work in this area has been VRP and, in recent years, Internet of Things (IoT) enabled smart designs for the waste management systems. 
 
-Optimization of vehicle routes is one of the main objectives for this paper. VRP has been previously approached from many directions such as landfill and collection sites allocation to minimize distance traveled by collection vehicles \cite{kulcar1996optimizing,rathore2020location,barzehkar2019landfill}, collection point clustering to increase collection efficiency \cite{al2021optimization} and calculating the optimal route with a fixed set of collection nodes and landfill/depot locations \cite{karadimas2008routing, amal2018sga, asefi2019mathematical,de2007decision, hannan2020waste,akhtar2017backtracking}. The mathematical calaculations of the VRP has been solved through pre-existing route optimizer software, such as the ArcGIS Network Analyst \cite{karadimas2008routing,amal2018sga, malakahmad2014solid}, or a formulated single or multi objective functions that calculate the desired routes \cite{hannan2020waste,de2007decision}. The biggest drawbacks of these models is that they are predominantly static and calculate the optimal routes once for a set of collection points. Even the papers that do focus somewhat on dynamic methods, they are mostly theorotical and lack the elements necessary for real life application \cite{hannan2020waste}. Some studies have further incorporated smart bins with the VRP to develop a more robust and resource efficient solution to the optimization problem \cite{akhtar2017backtracking,lozano2018smart,baldo2021multi}. These utilize IoT enabled smart bins to keep track of the waste that needs to be collected and reduce redundancy in waste collection runs. Most of these models focus on case studies set in developed nations, which are not constrained in terms of resources.
+Optimization of vehicle routes is one of the main objectives for this paper. VRP has been previously approached from many directions such as landfill and collection sites allocation to minimize distance traveled by collection vehicles \cite{kulcar1996optimizing,rathore2020location,barzehkar2019landfill}, collection point clustering to increase collection efficiency \cite{al2021optimization} and calculating the optimal route with a fixed set of collection nodes and landfill/depot locations \cite{karadimas2008routing, amal2018sga, asefi2019mathematical,de2007decision, hannan2020waste,akhtar2017backtracking}. The mathematical calculations of the VRP has been solved through pre-existing route optimizer software, such as the ArcGIS Network Analyst \cite{karadimas2008routing,amal2018sga, malakahmad2014solid}, or a formulated single or multi objective functions that calculate the desired routes \cite{hannan2020waste,de2007decision}. The biggest drawbacks of these models is that they are predominantly static and calculate the optimal routes once for a set of collection points. Even the papers that do focus somewhat on dynamic methods, they are mostly theorotical and lack the elements necessary for real life application \cite{hannan2020waste}. Some studies have further incorporated smart bins with the VRP to develop a more robust and resource efficient solution to the optimization problem \cite{akhtar2017backtracking,lozano2018smart,baldo2021multi}. These utilize IoT enabled smart bins to keep track of the waste that needs to be collected and reduce redundancy in waste collection runs. Most of these models focus on case studies set in developed nations, which are not constrained in terms of resources.
 
-The application of route optimization models in resource constrained societies is the second of our main objectives. Waste collection in resource constrained societies comes with the additional challenge of having to allocate insufficient resources to meet the demands as much as possible. While not as many as before, there have been papers that focus on this aspect of waste collection \cite{chaudhary2019gis,rathore2020location,sk2020optimal,malakahmad2014solid, ogwueleke2009route}. The study in \cite{chaudhary2019gis} utilizes ArcGIS Network Analyst to calculate optimal waste collection routes in the city of Allahabad. WHile it does take real life data of collection and landfill sites into consideration for the route calculation, it relies on a pre-existing route optimizer to get the final results.\cite{ogwueleke2009route} and \cite{malakahmad2014solid} focus on route optimization in the cities of Onitsha, Nigeria and Ipoh City, Malaysia respectively. The paper \cite{rathore2020location} focuses on optimal node allocation to maximize the waste collection in the city of Bilaspur, India. These works, however, do not consider any real time data to calculate the optimal routes. This is one of the things this paper seeks to address.
+The application of route optimization models in resource constrained societies is the second of our main objectives. Waste collection in resource constrained societies comes with the additional challenge of having to allocate insufficient resources to meet the demands as much as possible. While not as many as before, there have been papers that focus on this aspect of waste collection \cite{chaudhary2019gis,rathore2020location,sk2020optimal,malakahmad2014solid, ogwueleke2009route}. The study in \cite{chaudhary2019gis} utilizes ArcGIS Network Analyst to calculate optimal waste collection routes in the city of Allahabad. While it does take real life data of collection and landfill sites into consideration for the route calculation, it relies on a pre-existing route optimizer to get the final results.\cite{ogwueleke2009route} and \cite{malakahmad2014solid} focus on route optimization in the cities of Onitsha, Nigeria and Ipoh City, Malaysia respectively. The paper \cite{rathore2020location} focuses on optimal node allocation to maximize the waste collection in the city of Bilaspur, India. These works, however, do not consider any real time data to calculate the optimal routes. This is one of the things this paper seeks to address.
 
 There have been many more works done in the field of VRP and the papers mentioned above are in no way exhaustive. They were just meant to be indicative of the general direction of the research done in this field. There are a number of excellent reviews that go into much more detail regarding the other works that address optimization of waste collection and management systems \cite{belien2014municipal,sulemana2018optimal,abdallah2020artificial}. The engineering and construction aspects of the smart bins are outside the scope of this paper, however other works have delved into much more detail on this problem \cite{vishnu2021iot,lozano2018smart}.
 
@@ -80,13 +81,13 @@ Our model integrates the concept of smart bins with the optimization algorithm. 
 
 \subsection{Problem Definition}
 We address the problem of developing a vehicle routing model by minimizing the incurred travel cost and maximizing the waste collected by the vehicles considering various real-time considerations. We have considered an Indian city to demonstrate its outcomes. To implement the model we have divided the study area in various regions. The region consists of collection bins which are generally used to collect waste from a larger areas using a road network made from edges and nodes. We simulated temporally varying waste values for each of these bins that can be one of the nodes, we call them "smart bins" which are implemented using priority queues based on the distance to that bins and the amount of waste value. The simulation helped us in overcoming the requirement of physical sensor placement at these locations. We incorporated the inputs of stakeholder agency in the simulation purpose to keep the simulation values closer to the actual scenarios. The "route" in our problem corresponds to path of the vehicles covering these bins. To make the implementation realistic we have applied limits on the total waste that can be collected by the vehicles.
-The model is executed after a certain time interval, That considers bins values, current vehicle location during the time interval and generates a route which keeps updating with the time. The model stops until happens repeatedly until either the run is complete or the vehicle is full. The "run" in our problem signifies a collection trip for one vehicle, beginning and ending at the depot. The fact that the values of the bins can updated even when the vehicle is on the move, makes it a realistic case. To implement such conditions the model assumes that the vehicle has completed its current edge and considers the next node as the starting point of the new route calculation. 
+The model is executed after a certain time interval, That considers bins values, current vehicle location during the time interval and generates a route which keeps updating with the time. The model stops until happens repeatedly until either the run is complete or the vehicle is full. The "run" in our problem signifies a collection trip for one vehicle, beginning and ending at the depot. An "iteration" here is one of the multiple route calculations that are done to get the final route. A run is the aggregate of multiple iterations done over time. The fact that the values of the bins can updated even when the vehicle is on the move, makes it a realistic case. To implement such conditions the model assumes that the vehicle has completed its current edge and considers the next node as the starting point of the new iteration. 
 
 Three different execution scenarios are demonstrated. The first scenario restricts the available resources, which in our case is the collection vehicles. The second case demonstrates the impact of available resources on waste collection, bins covered and distance travelled for each region and accumulated at city scale. Lastly we emphasize the importance of dynamic consideration by comparing the outcome of dynamic model with the static model.
 
 \subsection {Mathematical Formulation}
 
-The objective of the model is to maximize the waste collected while minimizing the total distance travelled by the vehicles. We formulate the model as a mixed integer linear programming problem and solved it using Gurobi optimizer (http://www.gurobi.com/) in polynomial time. Such solvers can solve problems with realistic instance sizes, which was in our case.
+The objective of the model is to maximize the waste collected while minimizing the total distance travelled by the vehicles. We formulate the model as a mixed integer linear programming problem and solved it using Gurobi optimizer \cite{gurobi} in polynomial time. Such solvers can solve problems with realistic instance sizes, which was in our case.
 
 In our problem, our two main objectives are:
 \begin{itemize}
@@ -94,8 +95,7 @@ In our problem, our two main objectives are:
     \item Maximize the waste collected through the collection run
 \end{itemize}
 
-% The table starts here
-The following table defines all the variables used in mathematical formulation
+The following table defines all the variables used for the mathematical formulation:
 \begin{table}[H]\label{variables}
 	\centering
 	\caption{The description of variables}
@@ -112,8 +112,8 @@ The following table defines all the variables used in mathematical formulation
 		\hline \multirow{2}{*}{$Y_{i}$} & It is a binary variable that is 1 if a truck is \\
 		& collecting garbage at node i.\\
 		\hline \multirow{2}{*}{$u_{i}$} & The percentage fill of the truck at node i \\
-		& following given path.\\
-		\hline \multirow{1}{*}{st} & The starting node of the truck in that run.\\
+		& following given path, for a specific iteration.\\
+		\hline \multirow{1}{*}{st} & The starting node of a truck in that iteration.\\
 		\hline \multirow{2}{*}{$w_{1}$} & The weight attached to optimizing distance\\
 		& travelled by the truck.\\
 		\hline \multirow{2}{*}{$w_{2}$} & The weight attached to optimizing \\
@@ -121,12 +121,10 @@ The following table defines all the variables used in mathematical formulation
 		\hline \multirow{1}{*}{$f_{i}$} & The fill ratio of bin at node i.\\
 		\hline \multirow{2}{*}{$BT$} & The conversion factor for fill \\
 		& of smart bin to fill of truck.\\
-		\hline \multirow{1}{*}{$P_{t}$} & Fill percentage of truck at time t.\\
+		\hline \multirow{1}{*}{$P_{t}$} & Cumulative fill percentage of truck at time t.\\
 		\hline
 	\end{tabular*}
 \end{table} 
-
-% The table ends here
 
 With this we can formulate our base objective function to be:
 
@@ -134,7 +132,7 @@ With this we can formulate our base objective function to be:
     Obj(minimize)=\sum_{i,j \forall A} w_1 X_{ij} C_{ij} - w_2 Y_i f_i * BT
 \end{equation}
 
-Here, $X_{ij}$ is a binary variable that can only take the values 0 or 1, based on the fact if a truck took a route from i to j. $C_{ij}$ is the cost, or the distance travelled when moving from i to j. $Y_{i}$ is another binary variable that indicates if waste from node i has been collected or not. $BT$ is the conversion factor of how much would the waste from a node would fill up a truck collecting it. $f_i$ represents the fill ratio (the percentage of how full the bin is) of the bin, its value being between 0 and 1. 0 meaning it is empty and 1 meaning it is full. The variables $w_1$ and $w_2$ are the weights associated with distance travelled and waste collected, respectively, to determine which attribute of waste collection should have the higher priority and by how much. N is the set of all nodes, V is the set of all the nodes excluding node 0.
+Here, $X_{ij}$ is a binary variable that can only take the values 0 or 1, based on the fact whether a truck took a route from i to j or not. $C_{ij}$ is the cost, or the distance travelled when moving from i to j. $Y_{i}$ is another binary variable that indicates if waste from node i has been collected or not. $BT$ is the conversion factor of how much would the waste from a node would fill up a truck collecting it. $f_i$ represents the fill ratio (the percentage of how full the bin is) of the bin, its value being between 0 and 1. 0 meaning it is empty and 1 meaning it is full. The variables $w_1$ and $w_2$ are the weights associated with distance travelled and waste collected, respectively, to determine which attribute of waste collection should have the higher priority and by how much. The objective function is specified for a truck and applied to all trucks.
 
 For the weights $w_1$ and $w_2$ the following constraint applies:
 
@@ -144,23 +142,23 @@ For the weights $w_1$ and $w_2$ the following constraint applies:
 
 That is, the total sum of $w_1$ and $w_2$ will always remain equal to 1. This will be later used to perform the weight analysis in order to get the optimal ratios of the weights for our objective function.
 
-For the objective function to fully represent our problem, we need to add constraints. The subscript 'st' denotes the starting node at the start of the calculations after the given time interval.
+For the objective function to fully represent our problem, we need to add constraints. The subscript 'st' denotes the starting node at the start of another iteration after the given time interval.
 \begin{equation}\label{eq2}
     \sum_{j\in N}X_{st,j}=1
 \end{equation}
 \begin{equation}\label{eq3}
     \sum_{j\in N}X_{j,st}=1
 \end{equation}
-Node 0 is assigned to be the depot, the start and the end point of every collection run. Eq (\ref{eq2}) and Eq (\ref{eq3}) ensure the looping of the route, with the added caveat that since the calculations are made multiple times per run as new data is obtained, the value of the starting node for each subsequent route calculation, after the initial one, changes. Therefore, these new starting nodes have to also be taken into consideration.
+Node 0 is assigned to be the depot, the start and the end point of every collection run. Eq (\ref{eq2}) and Eq (\ref{eq3}) ensure the looping of the route, with the added caveat that since the calculations are made multiple times per run (called iterations) as new data is obtained, the value of the starting node for each subsequent iteration, after the initial one, changes. Therefore, these new starting nodes have to also be taken into consideration.
 \begin{equation}\label{eq4}
     \sum_{i\in N}\sum_{j\in V, J\ne i} X_{ji}=1
 \end{equation}
 \begin{equation}\label{eq5}
     \sum_{i\in N}\sum_{j\in V, J\ne i} X_{ij}=1
 \end{equation}
-Eq \eqref{eq4} and Eq \eqref{eq5} specify that the nodes that are already visited by the truck in a collection run is not considered again for for further calculations, or in simpler terms, a node that has already been visited is not visited again in the same run.
+Eq \eqref{eq4} and Eq \eqref{eq5} specify that the nodes that are already visited by the truck in a collection run are not considered again for for further calculations, or in simpler terms, a node that has already been visited is not visited again in the same run.
 
-The variable $u_i$ is a temporary variable that resets to zero at the beginning of each route calculation. It represents the percent the the truck is full for each separate calculation. Variable $P_t$ is the variable that stores all the cumulative progress of how full the truck is, in percent, over subsequent route calculations.
+The variable $u_i$ is a temporary variable that resets to zero at the beginning of each iteration. It represents the percent the the truck is full for each separate calculation. Variable $P_t$ is the variable that stores all the cumulative progress of how full the truck is, in percent, over all the previous and subsequent iteration.
 
 If:
 $$ X_{ij}=1$$
@@ -182,12 +180,12 @@ Eq \eqref{eq8} ensures that the amount of waste in a truck after reaching a node
 \begin{equation}\label{eqY}
 	\sum_{i\in N}Y_i f_i* BT\le100
 \end{equation}
-Eq \eqref{eqY} ensures that the truck will not collect waste from a node if collecting from that node makes the truck exceed its maximum capacity. Therefore, for the sake of maximizing waste collected, such nodes will not be taken into consideration for further route calculations
+Eq \eqref{eqY} ensures that the truck will not collect waste from a node if collecting from that node makes the truck exceed its maximum capacity. Therefore, for the sake of maximizing waste collected, such nodes will not be taken into consideration for further iterations.
 \begin{equation}\label{eq12}
     u_i\le 100 - P_t
 \end{equation}
 $$\forall i \in N $$
-This constraint in Eq \eqref{eq12} ensures that for a single route calculation in the collection run, the value of how full the truck is does not exceed it's capacity. Since $P_t$ stores the cumulative fill percentages of the truck, in any subsequent route calculation, the fill percent of the truck should not exceed the sum of the previous fill percentage and the percent filled in the current calculation. 
+This constraint in Eq \eqref{eq12} ensures that for a single iteration in the collection run, the value of how full the truck is does not exceed its capacity. Since $P_t$ stores the cumulative fill percentages of the truck, in any subsequent and previous iterations, the fill percent of the truck should not exceed the sum of the previous fill percentage and the percent filled in the current calculation. 
 
 With this, we have formulated our problem and now we can move on to implementing and calculating the solution for our problem
 

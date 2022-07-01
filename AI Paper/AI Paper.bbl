@@ -149,4 +149,7 @@ S.~Vishnu, S.~J. Ramson, S.~Senith, T.~Anagnostopoulos, A.~M. Abu-Mahfouz,
   management in smart cities,'' {\em Smart Cities}, vol.~4, no.~3,
   pp.~1004--1017, 2021.
 
+\bibitem{gurobi}
+{Gurobi Optimization, LLC}, ``{Gurobi Optimizer Reference Manual},'' 2022.
+
 \end{thebibliography}

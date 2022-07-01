@@ -1,40 +1,42 @@
-This is BibTeX, Version 0.99d (TeX Live 2021)
+This is BibTeX, Version 0.99d
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: AI Paper.aux
+Reallocating 'name_of_file' (item size: 1) to 7 items.
 The style file: ieeetr.bst
+Reallocating 'name_of_file' (item size: 1) to 9 items.
 Database file #1: citation.bib
 Warning--empty journal in hoornweg2012waste
 Warning--can't use both volume and number fields in somani2021integrated
-You've used 28 entries,
+You've used 29 entries,
             1876 wiz_defined-function locations,
-            657 strings with 9627 characters,
-and the built_in function-call counts, 9150 in all, are:
-= -- 937
-> -- 366
+            661 strings with 9698 characters,
+and the built_in function-call counts, 9271 in all, are:
+= -- 947
+> -- 370
 < -- 0
-+ -- 132
-- -- 104
-* -- 683
-:= -- 1269
-add.period$ -- 28
-call.type$ -- 28
-change.case$ -- 28
++ -- 134
+- -- 105
+* -- 687
+:= -- 1286
+add.period$ -- 29
+call.type$ -- 29
+change.case$ -- 29
 chr.to.int$ -- 0
-cite$ -- 30
-duplicate$ -- 464
-empty$ -- 791
-format.name$ -- 104
-if$ -- 2238
+cite$ -- 31
+duplicate$ -- 468
+empty$ -- 809
+format.name$ -- 105
+if$ -- 2269
 int.to.chr$ -- 0
-int.to.str$ -- 28
+int.to.str$ -- 29
 missing$ -- 28
-newline$ -- 87
-num.names$ -- 28
-pop$ -- 53
+newline$ -- 90
+num.names$ -- 29
+pop$ -- 60
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 365
+skip$ -- 369
 stack$ -- 0
 substring$ -- 704
 swap$ -- 234
@@ -43,7 +45,7 @@ text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 2
-while$ -- 92
-width$ -- 30
-write$ -- 296
+while$ -- 93
+width$ -- 31
+write$ -- 303
 (There were 2 warnings)
