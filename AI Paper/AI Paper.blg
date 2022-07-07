@@ -7,45 +7,45 @@ Reallocating 'name_of_file' (item size: 1) to 9 items.
 Database file #1: citation.bib
 Warning--empty journal in hoornweg2012waste
 Warning--can't use both volume and number fields in somani2021integrated
-You've used 29 entries,
+You've used 30 entries,
             1876 wiz_defined-function locations,
-            661 strings with 9698 characters,
-and the built_in function-call counts, 9271 in all, are:
-= -- 947
-> -- 370
+            666 strings with 9912 characters,
+and the built_in function-call counts, 9629 in all, are:
+= -- 985
+> -- 384
 < -- 0
-+ -- 134
-- -- 105
-* -- 687
-:= -- 1286
-add.period$ -- 29
-call.type$ -- 29
-change.case$ -- 29
++ -- 139
+- -- 109
+* -- 715
+:= -- 1335
+add.period$ -- 30
+call.type$ -- 30
+change.case$ -- 30
 chr.to.int$ -- 0
-cite$ -- 31
-duplicate$ -- 468
-empty$ -- 809
-format.name$ -- 105
-if$ -- 2269
+cite$ -- 32
+duplicate$ -- 485
+empty$ -- 839
+format.name$ -- 109
+if$ -- 2356
 int.to.chr$ -- 0
-int.to.str$ -- 29
-missing$ -- 28
-newline$ -- 90
-num.names$ -- 29
-pop$ -- 60
+int.to.str$ -- 30
+missing$ -- 29
+newline$ -- 93
+num.names$ -- 30
+pop$ -- 61
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 369
+skip$ -- 383
 stack$ -- 0
-substring$ -- 704
-swap$ -- 234
+substring$ -- 736
+swap$ -- 243
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 2
-while$ -- 93
-width$ -- 31
-write$ -- 303
+while$ -- 97
+width$ -- 32
+write$ -- 314
 (There were 2 warnings)

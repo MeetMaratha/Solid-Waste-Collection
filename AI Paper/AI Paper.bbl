@@ -152,4 +152,9 @@ S.~Vishnu, S.~J. Ramson, S.~Senith, T.~Anagnostopoulos, A.~M. Abu-Mahfouz,
 \bibitem{gurobi}
 {Gurobi Optimization, LLC}, ``{Gurobi Optimizer Reference Manual},'' 2022.
 
+\bibitem{degel2015time}
+D.~Degel, L.~Wiesche, S.~Rachuba, and B.~Werners, ``Time-dependent ambulance
+  allocation considering data-driven empirically required coverage,'' {\em
+  Health care management science}, vol.~18, no.~4, pp.~444--458, 2015.
+
 \end{thebibliography}

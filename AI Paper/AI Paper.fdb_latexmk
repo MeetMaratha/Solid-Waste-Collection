@@ -1,16 +1,16 @@
 # Fdb version 3
-["bibtex AI Paper"] 1656669726 "AI Paper.aux" "AI Paper.bbl" "AI Paper" 1656669779
-  "AI Paper.aux" 1656669731 8427 b280e0a9a87d15a975acac79de2d7cb5 "pdflatex"
+["bibtex AI Paper"] 1657182573 "AI Paper.aux" "AI Paper.bbl" "AI Paper" 1657182580
+  "AI Paper.aux" 1657182579 8210 47995029db44db84ef93b0b14ebd567b "pdflatex"
   "C:/Program Files/MiKTeX/bibtex/bst/bibtex/ieeetr.bst" 1291864344 18361 1a00e58565e7f19bf2b3e1bfb82254ae ""
-  "citation.bib" 1656668110 13864 cba54ea37c30c545589ca127c216fd56 ""
+  "citation.bib" 1657182551 14219 daf2a1dbc8833838b04e077cd6d24ae6 ""
   (generated)
   "AI Paper.bbl"
   "AI Paper.blg"
-["pdflatex"] 1656669726 "c:/Users/ASUS/Documents/GitHub/Solid-Waste-Collection/AI Paper/AI Paper.tex" "AI Paper.pdf" "AI Paper" 1656669779
-  "AI Paper.aux" 1656669731 8427 b280e0a9a87d15a975acac79de2d7cb5 "pdflatex"
-  "AI Paper.bbl" 1656669726 7134 e8a50eb0d6f336bd54e5a4553747b51b "bibtex AI Paper"
-  "AI Paper.out" 1656669731 1698 e904ef97e6fab684cf7fb3a2c54d2e95 "pdflatex"
-  "AI Paper.tex" 1656669777 48516 a38843a3948efc46645514532dc2afba ""
+["pdflatex"] 1657182574 "c:/Users/ASUS/Documents/GitHub/Solid-Waste-Collection/AI Paper/AI Paper.tex" "AI Paper.pdf" "AI Paper" 1657182580
+  "AI Paper.aux" 1657182579 8210 47995029db44db84ef93b0b14ebd567b "pdflatex"
+  "AI Paper.bbl" 1657182574 7387 2946913ad7fb7be0180c9fd65808cc4a "bibtex AI Paper"
+  "AI Paper.out" 1657182579 1698 e904ef97e6fab684cf7fb3a2c54d2e95 "pdflatex"
+  "AI Paper.tex" 1657182551 49666 93329effddbde84009a45218c496da93 ""
   "C:/Program Files/MiKTeX/fonts/tfm/jknappen/ec/tcrm1200.tfm" 993062508 1444 95ffe0f19b974d50849790c8225c7ef7 ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1233951848 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -186,13 +186,12 @@
   "Dynamic_weighted_5_Truck.png" 1656321153 2616388 9d419c1cd3ccd6700563b2e5e4903f9e ""
   "Nodes.png" 1656321153 1306850 08376a57ac397dd62ebec6a6cd63319f ""
   "Static_Unweighted.png" 1656321153 2476490 e71a441a8922dda2c24e2b930edcffcc ""
-  "c:/Users/ASUS/Documents/GitHub/Solid-Waste-Collection/AI Paper/AI Paper.tex" 1656669777 48516 a38843a3948efc46645514532dc2afba ""
+  "c:/Users/ASUS/Documents/GitHub/Solid-Waste-Collection/AI Paper/AI Paper.tex" 1657182551 49666 93329effddbde84009a45218c496da93 ""
   "coverage_VS_number_of_trucks.png" 1655964622 22370 585e8797c9fbbc2eaf3bf336eb814f3a ""
   "distance_VS_garbage_restricted.png" 1656667466 29999 b9bdf0b1dfe13df59de703105c5e9dfd ""
   "number_of_trucks_VS_bins_visited.png" 1656667466 31532 d481eae976d4e53ebf67dcfa573b81fa ""
-  "weight_analysis_w1.jpg" 1652638133 10785 ba8f9113ec0f118d662d1990e8d4ec33 ""
   (generated)
-  "AI Paper.out"
-  "AI Paper.pdf"
   "AI Paper.aux"
   "AI Paper.log"
+  "AI Paper.out"
+  "AI Paper.pdf"
