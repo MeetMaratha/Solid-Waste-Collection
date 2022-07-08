@@ -1,8 +1,9 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from dynamic_function import dyn_opt
+from four_plus_truck_function import dyn_multi_opt
 from show_routes import CreateMap
+
 
 # Constants
 B_TO_B = 100
@@ -21,83 +22,146 @@ distance = pd.read_csv('Data/distance.csv').drop('Unnamed: 0', axis = 1)
 for i in range(distance.shape[0]):
     distance.iloc[:, i] = distance.iloc[:, i]/np.max(distance.iloc[:, i])
 
-# Add Fill_ratio, distance and fill per meter
-fill_ratio = [0.0] + [np.random.rand() for i in range(data.shape[0] - 1)]
-distance_from_0 = distance.iloc[:, 0]
-data['fill_ratio'] = fill_ratio
-data['distance_from_0'] = distance_from_0
-fill_p_m = [0.0] + list(B_TO_B * data.loc[1:, 'fill_ratio'] / data.loc[1:, 'distance_from_0'])
-data['fill_p_m'] = fill_p_m
-
 # Optimization
-visit1, visit2, visit3 = (
-    pd.DataFrame({'Node': pd.Series(0, dtype='int'), 'fill_ratio': pd.Series(0, dtype='float')}), 
-    pd.DataFrame({'Node': pd.Series(0, dtype='int'), 'fill_ratio': pd.Series(0, dtype='float')}), 
-    pd.DataFrame({'Node': pd.Series(0, dtype='int'), 'fill_ratio': pd.Series(0, dtype='float')}), 
-    )
-data1 = data[data.Ward == 0]
-data2 = data[data.Ward == 1]
-data3 = data[data.Ward == 2]
 
-obj_value = dyn_opt(data1, data2, data3, distance, folder_path = 'Data/Dynamic Data/Unweighted/', w1 = W1, w2 = W2, visit1 = visit1, visit2 = visit2, visit3 = visit3)
+# Ward 1 Optimization
+
+data1 = data[data.Ward == 0]
+visit1 = pd.DataFrame({'Node': pd.Series(0, dtype='int'), 'fill_ratio': pd.Series(0, dtype='float')})
+visitedNodes = set()
+obj_value1 = dyn_multi_opt(data1, [visit1], visitedNodes = visitedNodes, distances = distance, ward_name = 'Truck 1', t_name = 'truck1', folder_Path = 'Data/Dynamic Data/Unweighted/', w1 = W1, w2 = W2, n_done = [0] * N_TRUCKS, n_trucks = N_TRUCKS)
+print('\n Ward 1 Done \n')
+
+# Ward 2 Optimization
+
+data2 = data[data.Ward == 1]
+visit1 = pd.DataFrame({'Node': pd.Series(0, dtype='int'), 'fill_ratio': pd.Series(0, dtype='float')})
+visitedNodes = set()
+obj_value2 = dyn_multi_opt(data2, [visit1], visitedNodes = visitedNodes, distances = distance, ward_name = 'Truck 2', t_name = 'truck2', folder_Path = 'Data/Dynamic Data/Unweighted/', w1 = W1, w2 = W2, n_done = [0] * N_TRUCKS, n_trucks = N_TRUCKS)
+print('\n Ward 2 Done \n')
+
+# Ward 3 Optimization
+
+data3 = data[data.Ward == 2]
+visit1= pd.DataFrame({'Node': pd.Series(0, dtype='int'), 'fill_ratio': pd.Series(0, dtype='float')})
+visitedNodes = set()
+obj_value3 = dyn_multi_opt(data3, [visit1], visitedNodes = visitedNodes, distances = distance, ward_name = 'Truck 3', t_name = 'truck3', folder_Path = 'Data/Dynamic Data/Unweighted/', w1 = W1, w2 = W2, n_done = [0] * N_TRUCKS, n_trucks = N_TRUCKS)
+print('\n Ward 3 Done \n')
+
 
 # Collect Data
 distance = pd.read_csv('Data/distance.csv').drop('Unnamed: 0', axis = 1)
-v1 = pd.read_csv(f'Data/Dynamic Data/Unweighted/Visited Truck 1/visited_truck1_{W1}_{W2}.csv')
-v2 = pd.read_csv(f'Data/Dynamic Data/Unweighted/Visited Truck 2/visited_truck2_{W1}_{W2}.csv')
-v3 = pd.read_csv(f'Data/Dynamic Data/Unweighted/Visited Truck 3/visited_truck3_{W1}_{W2}.csv')
-v1.Node = v1.Node.astype('int')
-v2.Node = v2.Node.astype('int')
-v3.Node = v3.Node.astype('int')
-path1 = []
-path2 = []
-path3 = []
-for i in range(len(v1) - 1):
-    path1.append((v1.iloc[i, 0], v1.iloc[i + 1, 0]))
-for i in range(len(v2) - 1):
-    path2.append((v2.iloc[i, 0], v2.iloc[i + 1, 0]))
-for i in range(len(v3) - 1):
-    path3.append((v3.iloc[i, 0], v3.iloc[i + 1, 0]))
-gar1 = v1.iloc[-1,1]*10
-gar2 = v2.iloc[-1,1]*10
-gar3 = v3.iloc[-1,1]*10
-dist1 = sum([distance.iloc[i,j] for i,j in path1])
-dist2 = sum([distance.iloc[i,j] for i,j in path2])
-dist3 = sum([distance.iloc[i,j] for i,j in path3])
+
+path11 = []
+
+
+path21 = []
+
+
+path31 = []
+
+
+v11 = pd.read_csv(f'Data/Dynamic Data/Unweighted/Visited Truck 1/visited_truck1_1_{W1}_{W2}.csv')
+
+v21 = pd.read_csv(f'Data/Dynamic Data/Unweighted/Visited Truck 2/visited_truck2_1_{W1}_{W2}.csv')
+
+v31 = pd.read_csv(f'Data/Dynamic Data/Unweighted/Visited Truck 3/visited_truck3_1_{W1}_{W2}.csv')
+
+
+v11.Node = v11.Node.astype('int')
+
+
+v21.Node = v21.Node.astype('int')
+
+
+v31.Node = v31.Node.astype('int')
+
+for i in range(len(v11) - 1):
+    path11.append((v11.iloc[i, 0], v11.iloc[i + 1, 0]))
+
+
+for i in range(len(v21) - 1):
+    path21.append((v21.iloc[i, 0], v21.iloc[i + 1, 0]))
+
+
+for i in range(len(v31) - 1):
+    path31.append((v31.iloc[i, 0], v31.iloc[i + 1, 0]))
+
+
+gar11 = v11.iloc[-1,1]*10
+
+gar21 = v21.iloc[-1,1]*10
+
+gar31 = v31.iloc[-1,1]*10
+
+dist11 = sum([distance.iloc[i,j] for i,j in path11])
+
+dist21 = sum([distance.iloc[i,j] for i,j in path21])
+
+dist31 = sum([distance.iloc[i,j] for i,j in path31])
+
+v1 = [v11]
+v2 = [v21]
+v3 = [v31]
 
 print('--------------- SAVING STATISTICS ----------------------\n')
 # Save Statistics
 
 stats = pd.DataFrame(
     {
-        'Fill (in %)' : [
-            round(gar1, 4), 
-            round(gar2, 4), 
-            round(gar3, 4)],
-        'Garbage Fill (in Litres)' : [
-            round(gar1/10 * B_TO_B, 4),
-            round(gar2/10 * B_TO_B, 4),
-            round(gar3/10 * B_TO_B, 4)],
-        'Distance Travelled (in m)' : [
-            round(dist1, 4),
-            round(dist2, 4),
-            round(dist3, 4)],
-        'Garbage per Meter (in KG/m)' : [
-            round(gar1/dist1, 4),
-            round(gar2/dist2, 4),
-            round(gar3/dist3, 4)],
-        'Percentage of Bins covered (in %)' : [
-            round( 100 * (v1.shape[0] - 2)/ data[data.Ward == 0].shape[0], 4),
-            round( 100 * (v2.shape[0] - 2)/ data[data.Ward == 1].shape[0], 4),
-            round( 100 * (v3.shape[0] - 2)/ data[data.Ward == 2].shape[0], 4)]
-    }, index=['Truck 1', 'Truck 2', 'Truck 3'])
+        'Fill Ward 1 (in %)' : [
+            round(gar11, 4), 
+            '-'],
+        'Garbage Fill Ward 1 (in Litres)' : [
+            round(gar11/10 * B_TO_B, 4),
+            '-'],
+        'Distance Travelled Ward 1 (in m)' : [
+            round(dist11, 4),
+            '-'],
+        'Garbage per Meter Ward 1 (in KG/m)' : [
+            round(gar11/dist11, 4),
+            '-'],
+        'Percentage of Bins covered Ward 1 (in %)' : [
+            round( 100 * (v11.shape[0] - 2)/ data[data.Ward == 0].shape[0], 4),
+            round( 100 * np.sum([i.shape[0] - 2 for i in v1])/ data[data.Ward == 0].shape[0], 4)],
+        'Fill Ward 2 (in %)' : [
+            round(gar21, 4), 
+            '-'],
+        'Garbage Fill Ward 2 (in Litres)' : [
+            round(gar21/10 * B_TO_B, 4),
+            '-'],
+        'Distance Travelled Ward 2 (in m)' : [
+            round(dist21, 4),
+            '-'],
+        'Garbage per Meter Ward 2 (in KG/m)' : [
+            round(gar21/dist21, 4),
+            '-'],
+        'Percentage of Bins covered Ward 2 (in %)' : [
+            round( 100 * (v21.shape[0] - 2)/ data[data.Ward == 1].shape[0], 4),
+            round( 100 * np.sum([i.shape[0] - 2 for i in v2])/ data[data.Ward == 1].shape[0], 4)],
+        'Fill Ward 3 (in %)' : [
+            round(gar31, 4), 
+            '-'],
+        'Garbage Fill Ward 3 (in Litres)' : [
+            round(gar31/10 * B_TO_B, 4),
+            '-'],
+        'Distance Travelled Ward 3 (in m)' : [
+            round(dist31, 4),
+            '-'],
+        'Garbage per Meter Ward 3 (in KG/m)' : [
+            round(gar31/dist31, 4),
+            '-'],
+        'Percentage of Bins covered Ward 3 (in %)' : [
+            round( 100 * (v31.shape[0] - 2)/ data[data.Ward == 2].shape[0], 4),
+            round( 100 * np.sum([i.shape[0] - 2 for i in v3])/ data[data.Ward == 2].shape[0], 4)],
+    }, index=['Truck 1', 'Total Percentage'])
 stats.to_csv('Data/Dynamic Data/Unweighted/Statistics.csv')
 
-print('--------------- GENERATING MAP ----------------------')
+# print('--------------- GENERATING MAP ----------------------')
 # Plotting routes
 
 map = CreateMap()
-map.createRoutes('Data/Dynamic Data/Unweighted/', N_WARDS, N_TRUCKS, W1, W2)
+map.createRoutes('Data/Dynamic Data/Unweighted/', N_WARDS, N_TRUCKS, W1, W2, Multiple_truck = True)
 map.createLatLong('Data/Bin Locations.csv', N_WARDS)
 map.createRoutesDict(N_WARDS)
 map.addRoutesToMap(N_WARDS, N_TRUCKS)

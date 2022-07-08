@@ -29,21 +29,27 @@ class CreateMap():
         self.LOCATION = [30.741482, 76.768066]
         self.START_ZOOM = 11.3
         self.ROUTE_COLORS = [
-            ['#936b31',
-            '#820882',
-            '#f129aa',
-            '#ea2153',
-            '#e5d758'],
-            ['#e8649f',
-            '#e57281',
-            '#5a775e',
-            '#35eee8',
-            '#35bc7c'],
-            ['#9f3aaf',
-            '#f7a166',
-            '#0f11a8',
-            '#7ae2eb',
-            '#c8bbb5']]
+            ['#49382d',
+            '#5a40e8',
+            '#26ef8e',
+            '#2d9e3e',
+            '#2c4f31',
+            '#ff5eb9',
+            '#262625'],
+            ['#275468',
+            '#12e5b7',
+            '#b29f33',
+            '#54510f',
+            '#191c11',
+            '#a36595',
+            '#a89c7a'],
+            ['#586b22',
+            '#525a5b',
+            '#3d3344',
+            '#09721a',
+            '#724e5a',
+            '#011a6d',
+            '#ce6a37']]
         self.WARD_COLORS = ['red', 'green', 'darkblue']
         self.DEPOT_COLOR = 'black'
         self.ors_key = "5b3ce3597851110001cf624890d3df4ec58741129d23e67c5af0e306"
@@ -79,7 +85,9 @@ class CreateMap():
         for i in range(nWards):
             self.routes = {}
             for j in range(nTrucks):
-                if Multiple_truck:
+                if Multiple_truck and i == 2 and j == 6:
+                    continue
+                elif Multiple_truck:
                     path_open = path + 'Visited Truck ' + str(i + 1) + '/visited_truck' + str(i + 1) + '_' + str(j + 1) + '_' + str(w1) + '_' + str(w2) + '.csv'
                 else:
                     path_open = path + 'Visited Truck ' + str(i + 1) + '/visited_truck' + str(i + 1) + '_' + str(w1) + '_' + str(w2) + '.csv'
@@ -147,31 +155,40 @@ class CreateMap():
         cargo3 = folium.FeatureGroup("Cargo 3")
         cargo4 = folium.FeatureGroup("Cargo 4")
         cargo5 = folium.FeatureGroup("Cargo 5")
-
-        # Ward 2
         cargo6 = folium.FeatureGroup("Cargo 6")
         cargo7 = folium.FeatureGroup("Cargo 7")
+
+        # Ward 2
         cargo8 = folium.FeatureGroup("Cargo 8")
         cargo9 = folium.FeatureGroup("Cargo 9")
         cargo10 = folium.FeatureGroup("Cargo 10")
-
-        # Ward 2
         cargo11 = folium.FeatureGroup("Cargo 11")
         cargo12 = folium.FeatureGroup("Cargo 12")
         cargo13 = folium.FeatureGroup("Cargo 13")
         cargo14 = folium.FeatureGroup("Cargo 14")
+
+        # Ward 2
         cargo15 = folium.FeatureGroup("Cargo 15")
+        cargo16 = folium.FeatureGroup("Cargo 16")
+        cargo17 = folium.FeatureGroup("Cargo 17")
+        cargo18 = folium.FeatureGroup("Cargo 18")
+        cargo19 = folium.FeatureGroup("Cargo 19")
+        cargo20 = folium.FeatureGroup("Cargo 20")
+        cargo21 = folium.FeatureGroup("Cargo 21")
 
         cargos = [
-            [cargo1, cargo2, cargo3, cargo4, cargo5],
-            [cargo6, cargo7, cargo8, cargo9, cargo10],
-            [cargo11, cargo12, cargo13, cargo14, cargo15]
+            [cargo1, cargo2, cargo3, cargo4, cargo5, cargo6, cargo7],
+            [cargo8, cargo9, cargo10, cargo11, cargo12, cargo13, cargo14],
+            [cargo15, cargo16, cargo17, cargo18, cargo19, cargo20, cargo21]
         ]
-        truck_1, truck_2, truck_3, truck_4, truck_5 = None, None, None, None, None
-        trucks = [truck_1, truck_2, truck_3, truck_4, truck_5]
+        truck_1, truck_2, truck_3, truck_4, truck_5, truck6, truck7 = None, None, None, None, None, None, None
+        trucks = [truck_1, truck_2, truck_3, truck_4, truck_5, truck6, truck7]
         for i in range(nWards):
             for j in range(nTrucks):
-                truck_1 = folium.vector_layers.PolyLine(
+                if i == 2 and j == 6:
+                    continue
+                else:
+                    truck_1 = folium.vector_layers.PolyLine(
                 self.routes_dict_all[i][j],
                 popup = f'<b>Path of Ward {i + 1} Truck {j + 1}</b>',
                 tooltip = f'Truck {j + 1}',

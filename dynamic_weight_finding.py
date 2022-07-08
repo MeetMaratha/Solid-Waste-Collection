@@ -64,55 +64,84 @@ W2 = round(1 - W1, 1)
 print(f"Best w1 value is : {W1}.")
 distance = pd.read_csv('Data/distance.csv').drop('Unnamed: 0', axis = 1)
 # Storing statistics of best case
-v1 = pd.read_csv(f'Data/Dynamic Data/Weight Finding/Visited Truck 1/visited_truck1_{W1}_{W2}.csv')
-v2 = pd.read_csv(f'Data/Dynamic Data/Weight Finding/Visited Truck 2/visited_truck2_{W1}_{W2}.csv')
-v3 = pd.read_csv(f'Data/Dynamic Data/Weight Finding/Visited Truck 3/visited_truck3_{W1}_{W2}.csv')
-v1.Node = v1.Node.astype('int')
-v2.Node = v2.Node.astype('int')
-v3.Node = v3.Node.astype('int')
-path1 = []
-path2 = []
-path3 = []
-for i in range(len(v1) - 1):
-    path1.append((v1.iloc[i, 0], v1.iloc[i + 1, 0]))
-for i in range(len(v2) - 1):
-    path2.append((v2.iloc[i, 0], v2.iloc[i + 1, 0]))
-for i in range(len(v3) - 1):
-    path3.append((v3.iloc[i, 0], v3.iloc[i + 1, 0]))
-gar1 = v1.iloc[-1,1]*10
-gar2 = v2.iloc[-1,1]*10
-gar3 = v3.iloc[-1,1]*10
-dist1 = sum([distance.iloc[i,j] for i,j in path1])
-dist2 = sum([distance.iloc[i,j] for i,j in path2])
-dist3 = sum([distance.iloc[i,j] for i,j in path3])
+v11 = pd.read_csv(f'Data/Dynamic Data/Weight Finding/Visited Truck 1/visited_truck1_{W1}_{W2}.csv')
+v21 = pd.read_csv(f'Data/Dynamic Data/Weight Finding/Visited Truck 2/visited_truck2_{W1}_{W2}.csv')
+v31 = pd.read_csv(f'Data/Dynamic Data/Weight Finding/Visited Truck 3/visited_truck3_{W1}_{W2}.csv')
+v11.Node = v11.Node.astype('int')
+v21.Node = v21.Node.astype('int')
+v31.Node = v31.Node.astype('int')
+path11 = []
+path21 = []
+path31 = []
+for i in range(len(v11) - 1):
+    path11.append((v11.iloc[i, 0], v11.iloc[i + 1, 0]))
+for i in range(len(v21) - 1):
+    path21.append((v21.iloc[i, 0], v21.iloc[i + 1, 0]))
+for i in range(len(v31) - 1):
+    path31.append((v31.iloc[i, 0], v31.iloc[i + 1, 0]))
+gar11 = v11.iloc[-1,1]*10
+gar21 = v21.iloc[-1,1]*10
+gar31 = v31.iloc[-1,1]*10
+dist11 = sum([distance.iloc[i,j] for i,j in path11])
+dist21 = sum([distance.iloc[i,j] for i,j in path21])
+dist31 = sum([distance.iloc[i,j] for i,j in path31])
 
+
+v1 = [v11]
+v2 = [v21]
+v3 = [v31]
 # Save Statistics
 
 print('--------------- SAVING STATISTICS ----------------------\n')
 
 stats = pd.DataFrame(
     {
-        'Fill (in %)' : [
-            round(gar1, 4), 
-            round(gar2, 4), 
-            round(gar3, 4)],
-        'Garbage Fill (in Litres)' : [
-            round(gar1/10 * B_TO_B, 4),
-            round(gar2/10 * B_TO_B, 4),
-            round(gar3/10 * B_TO_B, 4)],
-        'Distance Travelled (in m)' : [
-            round(dist1, 4),
-            round(dist2, 4),
-            round(dist3, 4)],
-        'Garbage per Meter (in KG/m)' : [
-            round(gar1/dist1, 4),
-            round(gar2/dist2, 4),
-            round(gar3/dist3, 4)],
-        'Percentage of Bins covered (in %)' : [
-            round( 100 * (v1.shape[0] - 2)/ data[data.Ward == 0].shape[0], 4),
-            round( 100 * (v2.shape[0] - 2)/ data[data.Ward == 1].shape[0], 4),
-            round( 100 * (v3.shape[0] - 2)/ data[data.Ward == 2].shape[0], 4)]
-    }, index=['Truck 1', 'Truck 2', 'Truck 3'])
+        'Fill Ward 1 (in %)' : [
+            round(gar11, 4), 
+            '-'],
+        'Garbage Fill Ward 1 (in Litres)' : [
+            round(gar11/10 * B_TO_B, 4),
+            '-'],
+        'Distance Travelled Ward 1 (in m)' : [
+            round(dist11, 4),
+            '-'],
+        'Garbage per Meter Ward 1 (in KG/m)' : [
+            round(gar11/dist11, 4),
+            '-'],
+        'Percentage of Bins covered Ward 1 (in %)' : [
+            round( 100 * (v11.shape[0] - 2)/ data[data.Ward == 0].shape[0], 4),
+            round( 100 * np.sum([i.shape[0] - 2 for i in v1])/ data[data.Ward == 0].shape[0], 4)],
+        'Fill Ward 2 (in %)' : [
+            round(gar21, 4), 
+            '-'],
+        'Garbage Fill Ward 2 (in Litres)' : [
+            round(gar21/10 * B_TO_B, 4),
+            '-'],
+        'Distance Travelled Ward 2 (in m)' : [
+            round(dist21, 4),
+            '-'],
+        'Garbage per Meter Ward 2 (in KG/m)' : [
+            round(gar21/dist21, 4),
+            '-'],
+        'Percentage of Bins covered Ward 2 (in %)' : [
+            round( 100 * (v21.shape[0] - 2)/ data[data.Ward == 1].shape[0], 4),
+            round( 100 * np.sum([i.shape[0] - 2 for i in v2])/ data[data.Ward == 1].shape[0], 4)],
+        'Fill Ward 3 (in %)' : [
+            round(gar31, 4), 
+            '-'],
+        'Garbage Fill Ward 3 (in Litres)' : [
+            round(gar31/10 * B_TO_B, 4),
+            '-'],
+        'Distance Travelled Ward 3 (in m)' : [
+            round(dist31, 4),
+            '-'],
+        'Garbage per Meter Ward 3 (in KG/m)' : [
+            round(gar31/dist31, 4),
+            '-'],
+        'Percentage of Bins covered Ward 3 (in %)' : [
+            round( 100 * (v31.shape[0] - 2)/ data[data.Ward == 2].shape[0], 4),
+            round( 100 * np.sum([i.shape[0] - 2 for i in v3])/ data[data.Ward == 2].shape[0], 4)],
+    }, index=['Truck 1', 'Total Percentage'])
 stats.to_csv('Data/Dynamic Data/Weight Finding/Statistics.csv')
 
 print('--------------- GENERATING MAP ----------------------')
