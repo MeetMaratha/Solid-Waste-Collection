@@ -327,14 +327,14 @@ In this case, we want to see the results of route optimization if the resources 
         \hline      
     \end{tabular}
 \end{table}
-% Changes end here
+
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.4]{Dynamic_weighted_5_Truck.png} % New Image added
+    \includegraphics[scale=0.4]{Dynamic_weighted_unrestricted.png} % New Image added
     \caption{Realtime Unrestricted}\label{fig2}
 \end{figure}
-
+% Changes end here
 % Need changes to paragraph below
 From this data, we can easily observe that with 5 trucks per city region, around 90\% of the city's bins get covered, and with a similar procedure, more trucks can be added for even more efficient collection. While the total distance is increased, it is a direct result of having more trucks running at the same time, and since most of the bins are being collected, some trucks need to traverse outlying regions to cover the remaining bins. This is visualised in Figure \ref{fig2} where we have plotted the optimized routes dictated by the objective function.
 
@@ -382,6 +382,7 @@ While our main method of route calculation works in real time by getting new fil
 
 To compare the two methods, for the sake of simplicity, we will use the 1 truck per region case from case 2 and compare it to the static method by applying it to the same 1 truck per region case. The comparison is represented in Table \ref{tab5}
 
+% Changes here
 \begin{table}[H]
     \centering
     \caption{Comparison of static and real-time optimization performance} \label{tab5}
@@ -389,10 +390,11 @@ To compare the two methods, for the sake of simplicity, we will use the 1 truck 
     \begin{tabular}{|c|c|c|c|}
         \hline Case & Waste (Kg) & Distance (Km) & Percent Covered\\
         \hline \textit{Static}& 2999.32& 112.25 & 13.96\%\\
-        \hline \textit{Real-Time}& 2999.16& 168.30& 11.00\%\\
+        \hline \textit{Real-Time}& 2997.19 & 162.12 & 14.57\%\\
         \hline
     \end{tabular}
 \end{table}
+% Changes End here
 
 Figure \ref{fig4} and Figure \ref{fig5} are the plots of the routes calculated by the static and the real-time optimization methods respectively.
 
