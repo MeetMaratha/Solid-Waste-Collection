@@ -218,7 +218,10 @@ The suggestion of the decision makers (Municipal Corporation Chandigarh) was to 
 The maximum available number of collection vehicles (V) was considered ..., and was considered same for all the regions. The values are selected based on the input of the decision makers. The maximum capacity of a truck (variable for maximum capacity)was considered as 1000 Kg, and the maximum capacity of a smart bin (give variable name) was considered as 100 Kg.
 
 \subsubsection*{Case 1: Restriction on Resources}
+% Changes need to be made in this paragraph
 To highlight the importance of strategical usage of available resources in resource constraint societies, we applied restrictions on the available collection vehicles. The vehicle values were varied from one to four and the impact on total distance travelled, total waste collected, and total nodes covered was studied for each region, and for the subsequently on the city. The routes were calculated while considering the real-time dynamics of smart bins and vehicle waste limits after a recurring interval of time-steps. Table \ref{tab1} summarizes the outcomes where waste is calculated in terms of kilograms and distance traveled in kilometres.
+
+% Changes here
 \begin{table}[H]
     \centering
     \caption{Data for the real-time restricted case} \label{tab1}
@@ -228,13 +231,16 @@ To highlight the importance of strategical usage of available resources in resou
     \begin{tabular}{|c|c|c|c|c|c|c|}
         \hline \multirow{2}{*}{Case} & \multicolumn{2}{c|}{Region 1} & \multicolumn{2}{c|}{Region 2} & \multicolumn{2}{c|}{Region 3}\\
         \cline{2-7}& Waste (Kg)  & Distance (Km) & Waste (Kg) & Distance (Km) & Waste (Kg) & Distance (Km)\\ 
-        \hline \textit{1 Truck} & 999.98 & $51.27$ & 998.4 & $81.19$ & 999.05 & $52.24$ \\
-        \hline \textit{2 Trucks} & 1995.72 & $144.47$ & 1976.03 & $174.03$ & 1981.34 & $151.07$ \\
-        \hline \textit{3 Trucks} & 2975.73 & $243.10$ & 2991.24 & $281.17$ & 2984.48 & $214.82$ \\
-        \hline \textit{4 Trucks} & 3983.13 & $170.63$ & 3972.81 & $251.01$ & 3977.52 & $210.06$ \\
+        \hline \textit{1 Truck} & 999.89 & 39.79 & 997.36 & 63.11 & 999.94 & 59.22 \\
+        \hline \textit{2 Trucks} & 1992.68& 99.58 & 1994.29 & 129.37 & 1984.23& 119.51 \\
+        \hline \textit{3 Trucks} & 2989.61 & 142.05 & 2997.77 & 195.04 & 2979.87 & 180.71 \\
+        \hline \textit{4 Trucks} & 3989.43 & 208.59 & 3986.17 & 279.63 & 3977.46 & 241.80 \\
+        \hline \textit{5 Trucks} & 4961.06 & 321.16 & 4966.69 & 345.68 & 4964.88 & 322.97 \\
+        \hline \textit{6 Trucks} & 5282.82 & 362.89 & 5959.62 & 433.19 & 5179.85 & 373.26 \\
         \hline
     \end{tabular}
 \end{table}
+% Changes End here
 
 It was observed that the total distance that is being travelled by the vehicles is not increasing by the same factor as the waste collected as we increase the number of trucks. The difference is most pronounced between the cases of 1 to 2 trucks and 2 to 3 trucks where there is an increase of about 150\% in the distance corresponding to an increase of a 100\% in the waste collected in the 1-2 truck case. But for the same increase in waste collected, the increase in distance travelled is of only about 30\% for 2-3 trucks case. This is emphasized even further for regions 2 and 3 where the total distance travelled actually decreases while still having a 100\% increase in waste collected (Figure \ref{figz}).
 
@@ -245,66 +251,83 @@ It was observed that the total distance that is being travelled by the vehicles 
 \end{figure}
 
 It is clear from the data that when the resources available and the demand for the said resources are close to each other, the overall allotment of those resources is more efficient. When the resources are constrained, they do not have the freedom to focus on efficiency as much because the first and foremost priority is meeting the demand.
-
-We observe the case of 4 trucks per region to determine whether it is sufficient to satisfy the waste collection demand of the city. Table \ref{tab3} summarizes the data obtained from running the algorithm with this setup.
+% Changes here
+% changed 4 to 6
+We observe the case of 6 trucks per region to determine whether it is sufficient to satisfy the waste collection demand of the city. Table \ref{tab3} summarizes the data obtained from running the algorithm with this setup.
 \begin{table}[H]
     \centering
     \caption{ Data for 4 trucks per region} \label{tab2}
     \vspace*{0.3cm}
+    % Changed Values
     \begin{tabular}{|c|c|c|c|c|c|}
         \hline Region & Truck & Waste (Kg) & Distance (Km) & Waste/Distance & Percent collected \\
-        \hline \multirow{4}{*}{Region 1} & Truck 1 & 998.8048& 30.52 &32.72  &16.8421\% \\
-        \cline{2-6}& Truck 2 &999.28&49.81&20.1&14.7368\%\\        
-        \cline{2-6}& Truck 3 &999.09&31.72&31.4&18.9474\%\\        
-        \cline{2-6}& Truck 4 &985.96&58.57&16.83&18.9474\%\\
-        \hline & & & &\textbf{Total:} &\textbf{69.47\%}\\
-        \hline \multirow{4}{*}{Region 2} & Truck 1 &998.82 &64.74  & 15.43  &14.4144\% \\
-        \cline{2-6}& Truck 2 &992.05&42.71&23.23&13.5135\%\\        
-        \cline{2-6}& Truck 3 &991.81&64.76&15.32&18.018\%\\        
-        \cline{2-6}& Truck 4 &990.12&78.80&12.57&18.018\%\\
-        \hline & & & &\textbf{Total:} &\textbf{63.9639\%}\\     
-        \hline \multirow{4}{*}{Region 3} & Truck 1 &999.32  &37.57  &26.60  &15.9574\% \\
-        \cline{2-6}& Truck 2 &989.50&57.30&17.27&14.8936\%\\        
-        \cline{2-6}& Truck 3 &997.948&39.26&25.42&14.8936\%\\        
-        \cline{2-6}& Truck 4 &990.7538&75.96&13.04&20.2128\%\\
-        \hline & & & &\textbf{Total:} &\textbf{65.9574\%}\\
+        \hline \multirow{4}{*}{Region 1} & Truck 1 & 999.07& 38.53 & 25.93 &14.7368\% \\
+        \cline{2-6}& Truck 2 & 990.67 & 47.20 & 20.99 & 13.6842\%\\        
+        \cline{2-6}& Truck 3 & 994.66 & 43.57 & 22.83 & 15.7895\%\\        
+        \cline{2-6}& Truck 4 & 998.21 & 72.55 & 13.76 & 20.0000\%\\      
+        \cline{2-6}& Truck 5 & 977.66 & 121.86 & 8.02 & 24.2105\%\\      
+        \cline{2-6}& Truck 6 & 322.56 & 39.19 & 8.23 & 11.5789\%\\
+        \hline & & & &\textbf{Total:} &\textbf{100\%}\\
+        \hline \multirow{4}{*}{Region 2} & Truck 1 & 999.71 & 62.64 & 15.96 & 12.6126\% \\
+        \cline{2-6}& Truck 2 & 993.32 & 71.67 & 13.86 & 12.6126\%\\        
+        \cline{2-6}& Truck 3 & 985.38 & 56.82 & 17.34 & 14.4144\%\\        
+        \cline{2-6}& Truck 4 & 991.47 & 78.51 & 12.63 & 13.5135\%\\        
+        \cline{2-6}& Truck 5 & 990.43 & 64.48 & 15.36 & 13.5135\%\\        
+        \cline{2-6}& Truck 6 & 999.31 & 99.06 & 10.09 & 18.9189\%\\
+        \hline & & & &\textbf{Total:} &\textbf{85.5856\%}\\     
+        \hline \multirow{4}{*}{Region 3} & Truck 1 & 999.68 & 48.07 & 20.80 & 15.9574\% \\
+        \cline{2-6}& Truck 2 & 998.71 & 55.13 & 18.12 & 15.9574\%\\        
+        \cline{2-6}& Truck 3 & 991.22 & 50.32 & 19.70 & 14.8936\%\\        
+        \cline{2-6}& Truck 4 & 998.88 & 74.83 & 13.35 & 21.2766\%\\      
+        \cline{2-6}& Truck 5 & 955.92 & 87.04 & 10.98 & 23.4043\%\\      
+        \cline{2-6}& Truck 6 & 235.45 & 57.88 & 4.07 & 8.5106\%\\
+        \hline & & & &\textbf{Total:} &\textbf{100\%}\\
         \hline      
     \end{tabular}
 \end{table}
+% Changes End here
 
+% Will need change in this paragraph
 We can infer from the above data that the number of trucks falls just short of being able to satisfactorily cover most of the city's bins. It is only able to cover, on an average, 70\% of the total number of bins that need to be collected.
 
 \subsubsection*{Case 2: Real-time, unrestricted}
 
 In this case, we want to see the results of route optimization if the resources were not constrained and there were enough, in our case, trucks to cover the waste collection demands at a satisfactory level. From the previous case, we saw that 4 trucks per region fell just short of being enough, so for this case, we raised the number of trucks to 5 per region. Table \ref{tab3} summarizes the data obtained from this case.
 
+% Changes here
 \begin{table}[H]
     \centering
+    % Change the caption here
     \caption{ Data for 5 trucks per region} \label{tab3}
     \vspace*{0.3cm}
+    % Data changed here
     \begin{tabular}{|c|c|c|c|c|c|}
-        \hline Region & Truck & Waste (Kg) & Distance (Km) & Waste/Distance & Percent collected \\
-        \hline \multirow{4}{*}{Region 1} & Truck 1 &998.37  &27.39  & 36.45 &17.8947 \\
-        \cline{2-6}& Truck 2 &999.66&39.19&25.51&15.7895\%\\        
-        \cline{2-6}& Truck 3 &997.94&49.22&20.28&16.8421\%\\        
-        \cline{2-6}& Truck 4 &996.54&48.59&20.51&22.1053\%\\
-        \cline{2-6}& Truck 5 &996.94&106.85&9.33&26.3158\%\\
-        \hline &\textbf{Total:} &\textbf{4989.45} &\textbf{271.24} &- &\textbf{98.9474\%}\\
-        \hline \multirow{4}{*}{Region 2} & Truck 1 &994.87  &54.85  &18.14  &12.6126 \\
-        \cline{2-6}& Truck 2 &994.63&67.35&14.77&13.5135\%\\        
-        \cline{2-6}& Truck 3 &998.21&54.87&18.19&12.6126\%\\        
-        \cline{2-6}& Truck 4 &999.51&96.53&10.35&17.1171\%\\      
-        \cline{2-6}& Truck 5 &999.43&45.39&22.02&17.1171\%\\
-        \hline &\textbf{Total:} &\textbf{4986.65} &\textbf{318.99} &- &\textbf{72.9729\%}\\     
-        \hline \multirow{4}{*}{Region 3} & Truck 1 &998.95  &37.27  &26.80  &14.89 \\
-        \cline{2-6}& Truck 2 &999.23&56.54&17.68&15.9574\%\\        
-        \cline{2-6}& Truck 3 &992.91&55.05&18.04&18.0851\%\\        
-        \cline{2-6}& Truck 4 &999.70&50.32&19.87&25.5319\%\\
-        \cline{2-6}& Truck 5 &907.36&109.96&8.25&25.5319\%\\
-        \hline &\textbf{Total:} &\textbf{4892.15} &\textbf{309.14}&- &\textbf{99.9999\%}\\
+        \hline \multirow{4}{*}{Region 1} & Truck 1 & 999.07& 38.53 & 25.93 &14.7368\% \\
+        \cline{2-6}& Truck 2 & 990.67 & 47.20 & 20.99 & 13.6842\%\\        
+        \cline{2-6}& Truck 3 & 994.66 & 43.57 & 22.83 & 15.7895\%\\        
+        \cline{2-6}& Truck 4 & 998.21 & 72.55 & 13.76 & 20.0000\%\\      
+        \cline{2-6}& Truck 5 & 977.66 & 121.86 & 8.02 & 24.2105\%\\      
+        \cline{2-6}& Truck 6 & 322.56 & 39.19 & 8.23 & 11.5789\%\\ 
+        \hline &\textbf{Total:} &\textbf{5282.82} &\textbf{362.89} &- &\textbf{100\%}\\
+        \hline \multirow{4}{*}{Region 2} & Truck 1 & 999.69 & 60.89 & 16.42 & 12.6126 \\
+        \cline{2-6}& Truck 2 & 992.96 & 70.29 & 14.13 & 13.5135\%\\        
+        \cline{2-6}& Truck 3 & 988.65 & 65.86 & 15.01 & 11.7117\%\\        
+        \cline{2-6}& Truck 4 & 997.20 & 68.30 & 14.60 & 15.3153\%\\      
+        \cline{2-6}& Truck 5 & 983.61 & 73.17 & 13.44 & 15.3153\%\\      
+        \cline{2-6}& Truck 6 & 934.99 & 94.22 & 9.92 & 14.4144\%\\      
+        \cline{2-6}& Truck 7 & 740.36 & 111.69 & 6.63 & 17.1171\%\\
+        \hline &\textbf{Total:} &\textbf{6637.42} &\textbf{544.42} &- &\textbf{100\%}\\     
+        \hline \multirow{4}{*}{Region 3} & Truck 1 & 999.68 & 48.07 & 20.80 & 15.9574\% \\
+		\cline{2-6}& Truck 2 & 998.71 & 55.13 & 18.12 & 15.9574\%\\        
+		\cline{2-6}& Truck 3 & 991.22 & 50.32 & 19.70 & 14.8936\%\\        
+		\cline{2-6}& Truck 4 & 998.88 & 74.83 & 13.35 & 21.2766\%\\      
+		\cline{2-6}& Truck 5 & 955.92 & 87.04 & 10.98 & 23.4043\%\\      
+		\cline{2-6}& Truck 6 & 235.45 & 57.88 & 4.07 & 8.5106\%\\ 
+        \hline &\textbf{Total:} &\textbf{5179.85} &\textbf{373.26 }&- &\textbf{100\%}\\
         \hline      
     \end{tabular}
 \end{table}
+% Changes end here
 
 \begin{figure}[H]
     \centering
@@ -312,6 +335,7 @@ In this case, we want to see the results of route optimization if the resources 
     \caption{Realtime Unrestricted}\label{fig2}
 \end{figure}
 
+% Need changes to paragraph below
 From this data, we can easily observe that with 5 trucks per city region, around 90\% of the city's bins get covered, and with a similar procedure, more trucks can be added for even more efficient collection. While the total distance is increased, it is a direct result of having more trucks running at the same time, and since most of the bins are being collected, some trucks need to traverse outlying regions to cover the remaining bins. This is visualised in Figure \ref{fig2} where we have plotted the optimized routes dictated by the objective function.
 
 \subsubsection*{Case 3: Impact of the number of trucks on total bin coverage.}
@@ -321,12 +345,12 @@ As expected from our previous cases, increasing the number of trucks available p
     \centering
     \caption{ Bins coverage in percent based on number of trucks per region} \label{tab4}
     \vspace*{0.3cm}
-    \begin{tabular}{|c|c|c|c|c|c|}
-        \hline \multirow{2}{*}{Region} & \multicolumn{5}{c|}{Number of trucks}\\
-        \cline{2-6}& 1 Truck& 2 Truck& 3 Truck& 4 Truck& 5 Truck\\
-        \hline \textit{Region 1} & 11.5789\%& 41.0526\%& 60.0001\%& 69.4737\%& 98.9474\%\\
-        \hline \textit{Region 2} &9.9099\%&32.4324\%&52.2522\%&63.9636\%&72.9728\%\\
-        \hline \textit{Region 3} &11.7021\%&42.5532\%&58.5107\%&65.9574\%&99.9999\%\\
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
+        \hline \multirow{2}{*}{Region} & \multicolumn{7}{c|}{Number of trucks}\\
+        \cline{2-8}& 1 Truck & 2 Truck & 3 Truck & 4 Truck & 5 Truck & 6 Truck & 7 Truck\\
+        \hline \textit{Region 1} & 15.7895\% & 32.6316\% & 48.4211\% & 67.3684\% & 92.6316\% & 100\% & - \\
+        \hline \textit{Region 2} & 13.5135\% & 27.0270\% & 45.0450\% & 57.6577\% & 67.5676\% & 85.5859\% & 100\%\\
+        \hline \textit{Region 3} & 14.8936\% & 35.1064\% & 44.6809\% & 68.0851\% & 82.9787\% & 100\% & - \\
         \hline
     \end{tabular}
 \end{table}
