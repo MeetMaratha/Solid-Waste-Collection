@@ -5,6 +5,7 @@
 \usepackage{relsize}
 \usepackage{epsfig,graphicx}
 \usepackage{color}
+\usepackage{xcolor}
 \usepackage{tikz}
 % \usepackage{subfigure}
 \usepackage{hyperref}
@@ -55,7 +56,7 @@ collection bins for realistic outcomes.
 
 There has been a decent amount of work done in different aspects of waste collection, such as the costs, route optimization, smart bins, segregation, landfill and collection depot optimal locations. But, by far, the most common topic of work in this area has been VRP and, in recent years, Internet of Things (IoT) enabled smart designs for the waste management systems. 
 
-Optimization of vehicle routes is one of the main objectives for this paper. VRP has been previously approached from many directions such as landfill and collection sites allocation to minimize distance traveled by collection vehicles \cite{kulcar1996optimizing,rathore2020location,barzehkar2019landfill}, collection point clustering to increase collection efficiency \cite{al2021optimization} and calculating the optimal route with a fixed set of collection nodes and landfill/depot locations \cite{karadimas2008routing, amal2018sga, asefi2019mathematical,de2007decision, hannan2020waste,akhtar2017backtracking}. The mathematical calculations of the VRP has been solved through pre-existing route optimizer software, such as the ArcGIS Network Analyst \cite{karadimas2008routing,amal2018sga, malakahmad2014solid}, or a formulated single or multi objective functions that calculate the desired routes \cite{hannan2020waste,de2007decision}. The biggest drawbacks of these models is that they are predominantly static and calculate the optimal routes once for a set of collection points. Even the papers that do focus somewhat on dynamic methods, they are mostly theorotical and lack the elements necessary for real life application \cite{hannan2020waste}. Some studies have further incorporated smart bins with the VRP to develop a more robust and resource efficient solution to the optimization problem \cite{akhtar2017backtracking,lozano2018smart,baldo2021multi}. These utilize IoT enabled smart bins to keep track of the waste that needs to be collected and reduce redundancy in waste collection runs. Most of these models focus on case studies set in developed nations, which are not constrained in terms of resources.
+Optimization of vehicle routes is one of the main objectives for this paper. VRP has been previously approached from many directions such as landfill and collection sites allocation to minimize distance traveled by collection vehicles \cite{kulcar1996optimizing,rathore2020location,barzehkar2019landfill}, collection point clustering to increase collection efficiency \cite{al2021optimization} and calculating the optimal route with a fixed set of collection nodes and landfill/depot locations \cite{karadimas2008routing, amal2018sga, asefi2019mathematical,de2007decision, hannan2020waste,akhtar2017backtracking}. The mathematical calculations of the VRP have been solved through pre-existing route optimizer software, such as the ArcGIS Network Analyst \cite{karadimas2008routing,amal2018sga, malakahmad2014solid}, or a formulated single or multi objective functions that calculate the desired routes \cite{hannan2020waste,de2007decision}. The biggest drawbacks of these models is that they are predominantly static and calculate the optimal routes once for a set of collection points. Even the papers that do focus somewhat on dynamic methods, they are mostly theorotical and lack the elements necessary for real life application \cite{hannan2020waste}. Some studies have further incorporated smart bins with the VRP to develop a more robust and resource efficient solution to the optimization problem \cite{akhtar2017backtracking,lozano2018smart,baldo2021multi}. These utilize IoT enabled smart bins to keep track of the waste that needs to be collected and reduce redundancy in waste collection runs. Most of these models focus on case studies set in developed nations, which are not constrained in terms of resources.
 
 The application of route optimization models in resource constrained societies is the second of our main objectives. Waste collection in resource constrained societies comes with the additional challenge of having to allocate insufficient resources to meet the demands as much as possible. While not as many as before, there have been papers that focus on this aspect of waste collection \cite{chaudhary2019gis,rathore2020location,sk2020optimal,malakahmad2014solid, ogwueleke2009route}. The study in \cite{chaudhary2019gis} utilizes ArcGIS Network Analyst to calculate optimal waste collection routes in the city of Allahabad. While it does take real life data of collection and landfill sites into consideration for the route calculation, it relies on a pre-existing route optimizer to get the final results.\cite{ogwueleke2009route} and \cite{malakahmad2014solid} focus on route optimization in the cities of Onitsha, Nigeria and Ipoh City, Malaysia respectively. The paper \cite{rathore2020location} focuses on optimal node allocation to maximize the waste collection in the city of Bilaspur, India. These works, however, do not consider any real time data to calculate the optimal routes. This is one of the things this paper seeks to address.
 
@@ -83,11 +84,11 @@ Our model integrates the concept of smart bins with the optimization algorithm. 
 We address the problem of developing a vehicle routing model by minimizing the incurred travel cost and maximizing the waste collected by the vehicles considering various real-time considerations. We have considered an Indian city to demonstrate its outcomes. To implement the model we have divided the study area in various regions. The region consists of collection bins which are used to collect waste and generally caters a large areas. These bins as nodes are assumed to be located on a road network made from edges and nodes. We simulated temporally varying waste values for each of these bins, we call them "smart bins". The simulation helped us in overcoming the requirement of physical sensor placement at these locations. We incorporated the inputs of stakeholder agency in the simulation purpose to keep the simulation values closer to the actual scenarios. 
 	
 A collection vehicle is assigned to a region only collects waste from bins from a specific region through an optimal route.  The "route" in our problem corresponds to path of the vehicles covering these bins and finishing its trip at a depot. The path is made up of  non-directional edges. To make the implementation realistic we have applied limits on the total waste that can be collected by the vehicles. 
-The numerical values of the distances are normalized to the same scale as the waste values to avoid any skewness. The model is executed after a certain time interval by considering  bins waste values, vehicle waste fill status, vehicle location,  and generates a route which keeps updating with the time. We implemented the smart bins in the route finding process using a priority queues where priority is being given to a bin based on the distance to that bins and the amount of waste value of bin. The model stops when either the run is complete or the vehicle is full. The "run" in our problem signifies a collection trip for one vehicle, beginning and ending at the depot. An "iteration" here is one of the multiple route calculations that is done to get the final route. A run is the aggregate of multiple iterations done over time. The values of the bins can be updated even when the vehicle is on the moving on a edge.  For such scenarios the model assumes that the vehicle has completed the current edge and considers the next node as the starting point for the new iteration. 
+The numerical values of the distances are normalized to the same scale as the waste values to avoid any skewness. The model is executed after a certain time interval by considering  bins waste values, vehicle waste fill status, vehicle location,  and generates a route which keeps updating with the time. We implemented the smart bins in the route finding process using a priority queues where priority is being given to a bin based on the distance to that bins and the amount of waste value of bin, that is, for the same distance value, the bin with the greater waste value is assigned higher priority. The model stops when either the run is complete or the vehicle is full. \textcolor{red}{A "time slice" here is the route calculation that is done for one time interval, which is repeated multiple times with updated data to get the final route. The "run" in our problem signifies the whole process of calculating the route for one vehicle, beginning and ending at the depot. A run is the aggregate of multiple time slices over time.} The values of the bins can be updated even when the vehicle is moving on an edge and hasn't reached the next node. For such scenarios the model assumes that the vehicle has completed the current edge and considers the next node as the starting point for the new time slice.
+
+\textcolor{red}{While running the optimization process, each individual bin is randomly assigned a value between 0 and 1 to denote how full the bin is. This value is updated with each time slice to simulate the real life accumulation of waste in bins. When transferring waste from the bins to the truck, a conversion factor is used to convert the waste amount from the percent fill ratio of the bin to the percent fill ratio of the truck. The trucks are programmed to run in parallel, that is, each truck starts its collection run at the same time and continues until they reach full capacity. If a truck, in one time slice, does not visit a node, if there is sufficient capacity remaining, one of the other trucks will address that node.}
 
 Three different execution scenarios are demonstrated. The first scenario restricts the available resources, which in our case is the collection vehicles. The second case demonstrates the impact of available resources on waste collection, bins covered and distance travelled for each region and accumulated at city scale. Lastly we emphasize the importance of dynamic consideration by comparing the outcome of dynamic model with the static model.
-
-
 
 \subsection {Mathematical Formulation}
 
@@ -104,28 +105,30 @@ The following table defines all the variables used for the mathematical formulat
 	\centering
 	\caption{The description of variables}
 	\begin{tabular*}{486pt}[H]{|c|c|}
-		\hline \hspace{85pt} Variables \hspace{85pt} & \hspace{85pt } Description \hspace{85pt} \\
+		\hline \hspace{40pt} Variables \hspace{40pt} & \hspace{130pt} Description \hspace{130pt} \\
 		\hline i, j & Node i and Node j respectively.\\
 		\hline N & Nodes for a particular truck excluding depot.\\
-		\hline V & Nodes for a particular truck including depot.\\
-		\hline A & Arcs formed from a node i to a node j in V.\\
+		\hline D & Nodes for a particular truck including depot.\\
+		\hline \multirow{2}{*}{A} & Set of all the arcs formed from a\\
+		&  node i to a node j for $\forall$ i,j $\in$ V.\\
 		\hline \multirow{2}{*}{$C_{ij}$} & Distance cost from a node i\\
 		& to a node j for a truck.\\
 		\hline \multirow{2}{*}{$X_{ij}$} & It is a binary variable that is 1 if a truck is\\
 		& travelling between the node i and node j.\\  
 		\hline \multirow{2}{*}{$Y_{i}$} & It is a binary variable that is 1 if a truck is \\
-		& collecting garbage at node i.\\
+		& visiting node i.\\
 		\hline \multirow{2}{*}{$u_{i}$} & The percentage fill of the truck at node i \\
-		& following given path, for a specific iteration.\\
-		\hline \multirow{1}{*}{st} & The starting node of a truck in that iteration.\\
-		\hline \multirow{2}{*}{$w_{1}$} & The weight attached to optimizing distance\\
-		& travelled by the truck.\\
-		\hline \multirow{2}{*}{$w_{2}$} & The weight attached to optimizing \\
-		& fill ratio of the truck.\\
+		& following given path, for a specific time slice.\\
+		\hline \multirow{1}{*}{st} & The starting node of a truck in a\\
+		& new time slice.\\
+		\hline \multirow{2}{*}{$w_{1}$} & The weight assigned to the distance \\
+		& objective of the objective function\\
+		\hline \multirow{2}{*}{$w_{2}$} & The weight assigned to the waste amount \\
+		& objective of the objective function\\
 		\hline \multirow{1}{*}{$f_{i}$} & The fill ratio of bin at node i.\\
 		\hline \multirow{2}{*}{$BT$} & The conversion factor for fill \\
 		& of smart bin to fill of truck.\\
-		\hline \multirow{1}{*}{$P_{t}$} & Cumulative fill percentage of truck at time t.\\
+		\hline \multirow{1}{*}{$P_{t}$} & Cumulative fill percentage of truck at a time slice t.\\
 		\hline
 	\end{tabular*}
 \end{table} 
@@ -133,45 +136,44 @@ The following table defines all the variables used for the mathematical formulat
 With this we can formulate our base objective function to be:
 
 \begin{equation}\label{eq1}
-    Obj(minimize)=\sum_{i,j \forall A} w_1 X_{ij} C_{ij} - w_2 Y_i f_i * BT
+    Obj(minimize)=\sum_{i,j \in A} w_1 X_{ij} C_{ij} - w_2 Y_i f_i * BT
 \end{equation}
 
-Here, $X_{ij}$ is a binary variable that can only take the values 0 or 1, based on the fact whether a truck took a route from i to j or not. $C_{ij}$ is the cost, or the distance travelled when moving from i to j. $Y_{i}$ is another binary variable that indicates if waste from node i has been collected or not. $BT$ is the conversion factor of how much would the waste from a node would fill up a truck collecting it. $f_i$ represents the fill ratio (the percentage of how full the bin is) of the bin, its value being between 0 and 1. 0 meaning it is empty and 1 meaning it is full. The variables $w_1$ and $w_2$ are the weights associated with distance travelled and waste collected, respectively, to determine which attribute of waste collection should have the higher priority and by how much. The objective function is specified for a truck and applied to all trucks.
+Here, $X_{ij}$ is a binary variable that can only take the values 0 or 1, based on the fact whether a truck took a route from i to j or not. $C_{ij}$ is the cost, or the distance travelled when moving from i to j. $Y_{i}$ is another binary variable that indicates if waste from node i has been collected or not. $BT$ is the conversion factor of how much would the waste from a node would fill up a truck collecting it. $f_i$ represents the fill ratio (the percentage of how full the bin is) of the bin, its value being between 0 and 1. 0 meaning it is empty and 1 meaning it is full. The variables $w_1$ and $w_2$ are the weights associated with distance travelled and waste collected, respectively, to determine which attribute of waste collection should have the higher priority and by how much. \textcolor{red}{A single instance of the objective function is defined for one vehicle, but for the route optimization involving multiple trucks, multiple instances of the objective function, one for each vehicle, is ran in parallel to simulate simultaneous runs of collection vehicles in real life.}
 
 For the weights $w_1$ and $w_2$ the following constraint applies:
 
 \begin{equation}\label{eq1.5}
-    \sum_{i\in N} w_i = 1
+    \sum_{n\in \{1,2\}} w_n = 1
 \end{equation}
 
 That is, the total sum of $w_1$ and $w_2$ will always remain equal to 1. This will be later used to perform the weight analysis in order to get the optimal ratios of the weights for our objective function.
 
-For the objective function to fully represent our problem, we need to add constraints. The subscript 'st' denotes the starting node at the start of another iteration after the given time interval.
+For the objective function to fully represent our problem, we need to add constraints. The subscript 'st' denotes the starting node at the start of another time slice after the given time interval.
 \begin{equation}\label{eq2}
-    \sum_{j\in N}X_{st,j}=1
+    \sum_{j\in N}X_{st,j}=1 ; \forall st \in N ; j \in N
 \end{equation}
 \begin{equation}\label{eq3}
-    \sum_{j\in N}X_{j,st}=1
+    \sum_{j\in N}X_{j,st}=1 ; \forall st \in N ; j \in N
 \end{equation}
-Node 0 is assigned to be the depot, the start and the end point of every collection run. Eq (\ref{eq2}) and Eq (\ref{eq3}) ensure the looping of the route, with the added caveat that since the calculations are made multiple times per run (called iterations) as new data is obtained, the value of the starting node for each subsequent iteration, after the initial one, changes. Therefore, these new starting nodes have to also be taken into consideration.
+Node 0 is assigned to be the depot, the start and the end point of every collection run. Eq (\ref{eq2}) and Eq (\ref{eq3}) ensure the looping of the route, with the added caveat that since the calculations are made multiple times per run (called time slices) as new data is obtained, the value of the starting node for each subsequent time slice, after the initial one, changes. Therefore, these new starting nodes have to also be taken into consideration.
 \begin{equation}\label{eq4}
-    \sum_{i\in N}\sum_{j\in V, J\ne i} X_{ji}=1
+    \sum_{i\in N}\sum_{j\in D } X_{ji}=1 ; \forall i,j \in A ; j\ne i
 \end{equation}
 \begin{equation}\label{eq5}
-    \sum_{i\in N}\sum_{j\in V, J\ne i} X_{ij}=1
+    \sum_{i\in N}\sum_{j\in D } X_{ij}=1 ; \forall i,j \in A ; j\ne i
 \end{equation}
 Eq \eqref{eq4} and Eq \eqref{eq5} specify that the nodes that are already visited by the truck in a collection run are not considered again for for further calculations, or in simpler terms, a node that has already been visited is not visited again in the same run.
 
-The variable $u_i$ is a temporary variable that resets to zero at the beginning of each iteration. It represents the percent the the truck is full for each separate calculation. Variable $P_t$ is the variable that stores all the cumulative progress of how full the truck is, in percent, over all the previous and subsequent iteration.
+The variable $u_i$ is a temporary variable that resets to zero at the beginning of each time slice. It represents the percent the the truck is full for each separate calculation. Variable $P_t$ is the variable that stores all the cumulative progress of how full the truck is, in percent, over all the previous and subsequent time slice.
 
 If:
 $$ X_{ij}=1$$
 then:
 \begin{equation}\label{eq7}
-    u_i+f_j*BT =u_j
+    u_i+f_j*BT =u_j ; \forall i,j \in A 
 \end{equation}
 for: 
-$$ \forall i,j \in A$$
 $$ i,j\ne 0$$
 $$ i,j \ne st $$
 This constraint (Eq \eqref{eq7}) ensures that if a truck goes on an arc (an arc being a small portion of the entire collection route) from two consecutive nodes, node i to node j, the amount of waste is continuous, that is, the waste in the truck at node j is the sum of the waste at node i and the waste collected in the route i to j. The value of the waste inside the truck is updated at node j so that there is no discrepancy in the case when a new path has to be calculated with new data.
@@ -184,12 +186,12 @@ Eq \eqref{eq8} ensures that the amount of waste in a truck after reaching a node
 \begin{equation}\label{eqY}
 	\sum_{i\in N}Y_i f_i* BT\le100-P_t
 \end{equation}
-Eq \eqref{eqY} ensures that the truck will not collect waste from a node if collecting from that node makes the truck exceed its maximum capacity. Therefore, for the sake of maximizing waste collected, such nodes will not be taken into consideration for further iterations.
+Eq \eqref{eqY} ensures that the truck will not collect waste from a node if collecting from that node makes the truck exceed its maximum capacity. Therefore, for the sake of maximizing waste collected, such nodes will not be taken into consideration for further time slices.
 \begin{equation}\label{eq12}
     u_i\le 100 - P_t
 \end{equation}
 $$\forall i \in N $$
-This constraint in Eq \eqref{eq12} ensures that for a single iteration in the collection run, the value of how full the truck is does not exceed its capacity. Since $P_t$ stores the cumulative fill percentages of the truck, in any subsequent and previous iterations, the fill percent of the truck should not exceed the sum of the previous fill percentage and the percent filled in the current calculation. 
+This constraint in Eq \eqref{eq12} ensures that for a single time slice in the collection run, the value of how full the truck is does not exceed its capacity. Since $P_t$ stores the cumulative fill percentages of the truck, in any subsequent and previous time slices, the fill percent of the truck should not exceed the sum of the previous fill percentage and the percent filled in the current calculation. 
 
 With this, we have formulated our problem and now we can move on to implementing and calculating the solution for our problem
 
@@ -197,7 +199,7 @@ With this, we have formulated our problem and now we can move on to implementing
 
 \subsection{Data Preparation}
 
-To prove the effectiveness of the model, we empirically tested the model for the city of Chandigarh in India. The city is located by the foothills of the Shivalik range of the Himalayas in northwest India. It covers an area of approximately 114 km2. It borders the states of Punjab and Haryana. The city is known as the first planned city of India. The city also has various scattered unplanned built-up patches such as Burail, Nayagaon. The mixed built-up typology was suitable to test the methodology. Hence, the city was found suitable to test the methodology. We generated various waste collection points (location of smart bins) for the city. A total of 300 points were generated randomly using Geographic Information System (GIS) functionalities, with the constraint that the point should fall on the road networks. The road network was extracted from Open Street Map (OSM) database. OpenStreetMap API was then used to calculate the distance between all nodes, and generate a distance matrix which was used in the optimization process. We applied K-Means clustering algorithm to cluster these points in a fixed set of clusters (see Figure 1). In this paper we have selected total clusters to be three. The number can be updated based on user requirements. After clustering region1, region2, and region3 had ...,...and ...points, respectively.The clusters were considered as three regions for which vehicles had to be allocated. To replicate the actual field activities we have considered that a vehicles starts and ends its route at the depot (see Figure) \ref{figm})
+To prove the effectiveness of the model, we empirically tested the model for the city of Chandigarh in India. The city is located by the foothills of the Shivalik range of the Himalayas in northwest India. It covers an area of approximately 114 km$^2$. It borders the states of Punjab and Haryana. The city is known for being the first planned city of India. The city also has various scattered unplanned built-up patches such as Burail, Nayagaon. The mixed built-up typology was suitable to test the methodology. Hence, the city was found suitable to test the methodology. We generated various waste collection points (location of smart bins) for the city. A total of 300 points were generated randomly using Geographic Information System (GIS) functionalities, with the constraint that the point should fall on the road networks. The road network was extracted from Open Street Map (OSM) database. OpenStreetMap API was then used to calculate the distance between all nodes, and generate a distance matrix which was used in the optimization process. We applied K-Means clustering algorithm to cluster these points in a fixed set of clusters (see Figure 1). In this paper we have selected total clusters to be three. The number can be updated based on user requirements. After clustering, region1, region2 and region3 had ...,...and ...points, respectively. The clusters were considered as three regions for which vehicles had to be allocated. To replicate the actual field activities we have considered that a vehicles starts and ends its route at the depot (see Figure) \ref{figm})
 
 
 \begin{figure}[H]
@@ -206,22 +208,16 @@ To prove the effectiveness of the model, we empirically tested the model for the
     \caption{The selected nodes and their clusters}\label{figm}
 \end{figure}
 
-Now, since we are using the concept of smart bins, we also had to simulate their function. While running the optimization process, each individual bin is randomly assigned a value between 0 and 1 to denote how full the bin is. This value will be one of the parameters during the optimization process.
-
- 
 \subsection{Execution case studies}
-Experiments were carried out on Intel Xeon E5-2687W v3 processor which runs at 4GHz and 32 GB RAM. The model was implemented in Python 3.5 and linked with Gurobi optimizer version Gurobi8.0.1. A total of four scenarios were implemented and the minimum and maximum solving time  was around 1.4 s having total variable count: 28706 and maximum linear constraint: 37042 for the maximum case. . 
+Experiments were carried out on a Ryzen 5 2500U processor which runs at 2GHz and utilizes 16 GB RAM. The model was implemented in Python 3.9.6 and solved with Gurobi optimizer version Gurobi 8.0.1. A total of four scenarios were implemented and the minimum and maximum solving time  was around 1.4 s having total variable count: 28706 and maximum linear constraint: 37042 for the maximum case.
 
-As per Dengel et al \cite{degel2015time}, one of the most common approaches to handle multicriteria decision problems is the weighted sum approach. In this approach, the objectives are aggregated prior to the optimization by assigning weights to the objective functions. The weights are based on the decision makers preference in order to model the importance of the goal, which in our case is to find minimum path route while maximizing the collected waste. 
+As per Dengel et al \cite{degel2015time}, one of the most common approaches to handle multi-criteria decision problems is the weighted sum approach. In this approach, the objectives are aggregated prior to the optimization by assigning weights to the objective functions. The weights are based on the decision makers preference in order to model the importance of the goal, which in our case is to find minimum path route while maximizing the collected waste. 
 
 The suggestion of the decision makers (Municipal Corporation Chandigarh) was to provide equal preference to find minimum distance routes and maximizing the waste collection. hence, we assigned  $w_1$ and $w_2$ to be 0.5 to execute the scenarios. This means that our optimization model gives equal importance to minimizing the distance and maximizing the waste collected. To highlight the important of weights a detailed sensitivity analysis of weights on outcomes is discussed later in a subsection.
-The maximum available number of collection vehicles (V) was considered ..., and was considered same for all the regions. The values are selected based on the input of the decision makers. The maximum capacity of a truck (variable for maximum capacity)was considered as 1000 Kg, and the maximum capacity of a smart bin (give variable name) was considered as 100 Kg.
+The maximum available number of collection vehicles (mv) was considered to be 7, and was considered same for all the regions. The values are selected based on the input of the decision makers. The maximum capacity of a truck (TC) was considered as 1000 Kg, and the maximum capacity of a smart bin (BC) was considered as 100 Kg.
 
 \subsubsection*{Case 1: Restriction on Resources}
-% Changes need to be made in this paragraph
-To highlight the importance of strategical usage of available resources in resource constraint societies, we applied restrictions on the available collection vehicles. The vehicle values were varied from one to four and the impact on total distance travelled, total waste collected, and total nodes covered was studied for each region, and for the subsequently on the city. The routes were calculated while considering the real-time dynamics of smart bins and vehicle waste limits after a recurring interval of time-steps. Table \ref{tab1} summarizes the outcomes where waste is calculated in terms of kilograms and distance traveled in kilometres.
-
-% Changes here
+To highlight the importance of strategical usage of available resources in resource constraint societies, we applied restrictions on the available collection vehicles. The vehicle values were varied from one to six and the impact on total distance travelled, total waste collected, and total nodes covered was studied for each region, and  eventually for the city. The routes were calculated while considering the temporal dynamics of bin and waste level, truck positions in varying time-steps. Table \ref{tab1} illustrates the cumulative values for the distance and wastes outcomes for all the trucks in each region.
 \begin{table}[H]
     \centering
     \caption{Data for the real-time restricted case} \label{tab1}
@@ -240,23 +236,19 @@ To highlight the importance of strategical usage of available resources in resou
         \hline
     \end{tabular}
 \end{table}
-% Changes End here
 
-It was observed that the total distance that is being travelled by the vehicles is not increasing by the same factor as the waste collected as we increase the number of trucks. The difference is most pronounced between the cases of 1 to 2 trucks and 2 to 3 trucks where there is an increase of about 150\% in the distance corresponding to an increase of a 100\% in the waste collected in the 1-2 truck case. But for the same increase in waste collected, the increase in distance travelled is of only about 30\% for 2-3 trucks case. This is emphasized even further for regions 2 and 3 where the total distance travelled actually decreases while still having a 100\% increase in waste collected (Figure \ref{figz}).
+A significant impact of available trucks on collected waste can be observed. Further, the increase in waste collected for different number of trucks per region varied linearly for each region to the total distance traveled by all the trucks (Figure \ref{figz}). The increase in distance and collected waste is a direct result of having more trucks running at the same time. For region1 and region3, a sharp drop in the waste collected was observed after five trucks. Which means almost all the smart bins for these regions was catered by these trucks. On the other hand region2 still required more resources to cater the demand. This is more evident by Table \ref{tab3}, which details the case of 6 trucks per region to determine whether it is sufficient to satisfy the waste collection demand of regions and the city. It can be observed all bins for regions 1 and 3 were covered by utilizing 6 trucks, while only 85\% of the nodes for region2 were covered by the six trucks. This is primarily because the value of waste for the bins in this regions was higher due to region2 having more nodes than region1 and region3.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.8]{distance_VS_garbage_restricted.png}
+    \includegraphics[scale=0.6]{distance_VS_garbage_restricted.png}
     \caption{Distance traveled vs waste collected}\label{figz}
 \end{figure}
 
-It is clear from the data that when the resources available and the demand for the said resources are close to each other, the overall allotment of those resources is more efficient. When the resources are constrained, they do not have the freedom to focus on efficiency as much because the first and foremost priority is meeting the demand.
-% Changes here
-% changed 4 to 6
-We observe the case of 6 trucks per region to determine whether it is sufficient to satisfy the waste collection demand of the city. Table \ref{tab3} summarizes the data obtained from running the algorithm with this setup.
+
 \begin{table}[H]
     \centering
-    \caption{ Data for 4 trucks per region} \label{tab2}
+    \caption{ Data for 6 trucks per region} \label{tab2}
     \vspace*{0.3cm}
     % Changed Values
     \begin{tabular}{|c|c|c|c|c|c|}
@@ -285,20 +277,15 @@ We observe the case of 6 trucks per region to determine whether it is sufficient
         \hline      
     \end{tabular}
 \end{table}
-% Changes End here
-
-% Will need change in this paragraph
-We can infer from the above data that the number of trucks falls just short of being able to satisfactorily cover most of the city's bins. It is only able to cover, on an average, 70\% of the total number of bins that need to be collected.
 
 \subsubsection*{Case 2: Real-time, unrestricted}
 
-In this case, we want to see the results of route optimization if the resources were not constrained and there were enough, in our case, trucks to cover the waste collection demands at a satisfactory level. From the previous case, we saw that 4 trucks per region fell just short of being enough, so for this case, we raised the number of trucks to 5 per region. Table \ref{tab3} summarizes the data obtained from this case.
+Often the decision makers want to derive the requirement of resources that could cater to the whole demand. To achieve that, we relaxed the constraint on available resources to deduce the the total resource requirement for achieving 100\% bin visits, with high waste. In the previous case it was established that six trucks would cater to all the bins for region1 and region3. We extended the experiment for region2 by increasing the available trucks till we achieved 100\% bin coverage. It was observed that region2 was fully covered seven trucks (see Table \ref{tab3}). Figure \ref{fig3} shows the final calculated routes for each trucks of regions.
 
-% Changes here
 \begin{table}[H]
     \centering
     % Change the caption here
-    \caption{ Data for 5 trucks per region} \label{tab3}
+    \caption{ Data for unrestricted resources} \label{tab3}
     \vspace*{0.3cm}
     % Data changed here
     \begin{tabular}{|c|c|c|c|c|c|}
@@ -329,32 +316,28 @@ In this case, we want to see the results of route optimization if the resources 
     \end{tabular}
 \end{table}
 
-
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.4]{Dynamic_weighted_unrestricted.png} % New Image added
     \caption{Realtime Unrestricted}\label{fig2}
 \end{figure}
-% Changes end here
-% Need changes to paragraph below
-From this data, we can easily observe that with 5 trucks per city region, around 90\% of the city's bins get covered, and with a similar procedure, more trucks can be added for even more efficient collection. While the total distance is increased, it is a direct result of having more trucks running at the same time, and since most of the bins are being collected, some trucks need to traverse outlying regions to cover the remaining bins. This is visualised in Figure \ref{fig2} where we have plotted the optimized routes dictated by the objective function.
 
-\subsubsection*{Case 3: Impact of the number of trucks on total bin coverage.}
 
-As expected from our previous cases, increasing the number of trucks available per region leads to a more thorough collection of waste as shown in Table \ref{tab4} and represented graphically in Figure \ref{fig3}. Compared to case 2, where the number of trucks per region was varied from 1 through 4, we can see a clear rise in the coverage of bins as we increase the number of trucks, concluding in the last and our best case of 5 trucks. Having more trucks at your disposal is a matter of resources, and for a resource constrained region, their availability of trucks may not be sufficient for the amount of waste generated which will, unless overcome by alternate methods such as multiple collection runs per vehicle, will lead to subpar waste collection, as shown by the data. However, those alternate methods are beyond the scope of the current work.
-\begin{table}[H]
-    \centering
-    \caption{ Bins coverage in percent based on number of trucks per region} \label{tab4}
-    \vspace*{0.3cm}
-    \begin{tabular}{|c|c|c|c|c|c|c|c|}
-        \hline \multirow{2}{*}{Region} & \multicolumn{7}{c|}{Number of trucks}\\
-        \cline{2-8}& 1 Truck & 2 Truck & 3 Truck & 4 Truck & 5 Truck & 6 Truck & 7 Truck\\
-        \hline \textit{Region 1} & 15.7895\% & 32.6316\% & 48.4211\% & 67.3684\% & 92.6316\% & 100\% & - \\
-        \hline \textit{Region 2} & 13.5135\% & 27.0270\% & 45.0450\% & 57.6577\% & 67.5676\% & 85.5859\% & 100\%\\
-        \hline \textit{Region 3} & 14.8936\% & 35.1064\% & 44.6809\% & 68.0851\% & 82.9787\% & 100\% & - \\
-        \hline
-    \end{tabular}
-\end{table}
+
+As expected from our previous cases, increasing the number of trucks available per region leads to a more thorough collection of waste, represented graphically in Figure \ref{fig3}. Compared to case 1, where the number of trucks per region was varied from 1 through 6, we can see a clear rise in the coverage of bins as we increase the number of trucks, concluding in the last and our best unrestricted case of 6 trucks for regions 1 and 3 and 7 trucks for region 2. Having more trucks at your disposal is a matter of resources, and for a resource constrained region, their availability of trucks may not be sufficient for the amount of waste generated. That will, unless overcome by alternate methods such as multiple collection runs per vehicle, will lead to subpar waste collection, as shown by the data. However, those alternate methods are beyond the scope of the current work.
+% \begin{table}[H]
+%     \centering
+%     \caption{ Bins coverage in percent based on number of trucks per region} \label{tab4}
+%     \vspace*{0.3cm}
+%     \begin{tabular}{|c|c|c|c|c|c|}
+%         \hline \multirow{2}{*}{Region} & \multicolumn{5}{c|}{Number of trucks}\\
+%         \cline{2-6}& 1 Truck& 2 Truck& 3 Truck& 4 Truck& 5 Truck\\
+%         \hline \textit{Region 1} & 11.5789\%& 41.0526\%& 60.0001\%& 69.4737\%& 98.9474\%\\
+%         \hline \textit{Region 2} &9.9099\%&32.4324\%&52.2522\%&63.9636\%&72.9728\%\\
+%         \hline \textit{Region 3} &11.7021\%&42.5532\%&58.5107\%&65.9574\%&99.9999\%\\
+%         \hline
+%     \end{tabular}
+% \end{table}
 
 
 \begin{figure}[H]
@@ -375,15 +358,39 @@ As expected from our previous cases, increasing the number of trucks available p
 
 We visualized the bin coverage data in two separate figures to help see the effects from two different perspectives. In order to give a better idea of the bigger picture that is true for the entire city, Figure \ref{figc1} shows the coverage of the total number of bins, regardless of regions, against the number total number of trucks available for collection. For a more detailed look of the effects of the number of trucks on bin coverage, especially after a more granular level, like regions, we have added Figure \ref{figc2}.
 
-We can observe that for region 2, the total coverage doesn't have the same rise in as compared to regions 1 and 3. It is because, region 2 is larger than region 1 and 3, and contains more nodes. Thus, the observation is explained by the fact that in order to have the same coverage with a higher number of nodes, it would need a larger number of trucks as well. And since, we have taken a uniform number of trucks per regions, as a result, the coverage in region 2 is slightly less than the other regions.
+We can observe that for region 2, the total coverage doesn't have the same rise in as compared to regions 1 and 3. It is because, region 2 is larger than region 1 and 3, and contains more nodes. Thus, the observation is explained by the fact that in order to have the same coverage with a higher number of nodes, it would need a larger number of trucks as well. And since, we initially took a uniform number of trucks per region, as a result, the coverage in region 2 is slightly less than the other regions. As expected, once more trucks are added for region 2, it catches up to the other regions in terms of bin coverage.
+\subsubsection*{Case 3: Weight Sensitivity Analysis}
+In order to depict the effects of different weights for the objectives on the waste collected and the distance travelled by the collection trucks, we have done a detailed sensitivity analysis using the case of 3 trucks per region as the base. This is also beneficial in providing a range of options for policy-makers to choose from, depending upon regional requirements and which objective they wish to prioritize.
+
+We observe a range of values for both waste (\ref{figs1}) and distance (\ref{figs2}) for different weights from which appropriate weights may be selected for the desired outcome. In the depiction, only $w_1$ is used as summation of the weights is equal to 1 \eqref{eq1.5}. Thus, the results for $w_2$ will be identical but mirrored. For the calculations in this paper, the values of 0.9 and 0.1 have been used for $w_1$ and $w_2$ respectively, because those values were found to be the ideal compromise between weight and distance objectives in the current scenario.
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Total_Garbage_VS_W1_3_Trucks.png}
+        \caption{Waste vs $w_1$}\label{figs1}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Total_Distance_VS_W1_3_Trucks.png}
+        \caption{Distance vs $w_1$}\label{figs2}
+    \end{subfigure}
+    \caption{Effect of weight on waste and distance for 3 trucks per region}
+    \label{figsz}
+\end{figure}
+To get a closer and more detailed look at the effect of weights on both of the objectives, we have Figure \ref{figs}, which was formed by normalizing the raw results from the sensitivity analysis to the same scale, followed by plotting the normalized data against the different weights. This is conducive to finding patterns and selecting the best weights required for any case.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{Distance and Garbage Normalized VS W1.png}
+    \caption{Normalized weight sensitivity graph}\label{figs}
+\end{figure}
 
 \subsubsection*{Case 4: Comparison of real-time with static route calculation}
 
-While our main method of route calculation works in real time by getting new fill values from the smart bins throughout the collection run and calculates new best routes based on the truck's current position in real time, there is another, more simpler method that trades off the reliability and adaptability of the real-time method for faster computational time and slightly more efficient routes. That is the static route calculation method and we get it by relaxing and modifying a few constraints mentioned earlier. In Eq \eqref{eq12} the constraint will be just less than 100. In Eq \eqref{eq2} and Eq \eqref{eq3} instead of st, the beginning nodes will always be 0. This results in one single route calculation at the beginning of the run that gives us the best route with the data available at that time, but does not consider any new data after that.
+While our main method of route calculation works in real time by getting new fill values from the smart bins throughout the collection run and calculates new best routes based on the truck's current position in real time, there is another, more simpler method that trades off the reliability and adaptability of the real-time method for faster computational time and slightly more efficient routes. That is the static route calculation method and we get it by relaxing and modifying a few constraints mentioned earlier. In Eq \eqref{eq12} the constraint will be just less than 100. In Eq \eqref{eq2} and Eq \eqref{eq3} instead of \textit{st}, the beginning nodes will always be 0. This results in one single route calculation at the beginning of the run that gives us the best route with the data available at that time, but does not consider any new data after that.
 
-To compare the two methods, for the sake of simplicity, we will use the 1 truck per region case from case 2 and compare it to the static method by applying it to the same 1 truck per region case. The comparison is represented in Table \ref{tab5}
+To compare the two methods, for the sake of simplicity, we will use the 1 truck per region case from case 1 and compare it to the static method by applying it to the same 1 truck per region case. The comparison is represented in Table \ref{tab5}
 
-% Changes here
 \begin{table}[H]
     \centering
     \caption{Comparison of static and real-time optimization performance} \label{tab5}
@@ -395,7 +402,6 @@ To compare the two methods, for the sake of simplicity, we will use the 1 truck 
         \hline
     \end{tabular}
 \end{table}
-% Changes End here
 
 Figure \ref{fig4} and Figure \ref{fig5} are the plots of the routes calculated by the static and the real-time optimization methods respectively.
 
