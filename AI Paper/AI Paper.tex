@@ -209,7 +209,7 @@ To prove the effectiveness of the model, we empirically tested the model for the
 \end{figure}
 
 \subsection{Execution case studies}
-Experiments were carried out on a Ryzen 5 2500U processor which runs at 2GHz and utilizes 16 GB RAM. The model was implemented in Python 3.9.6 and solved with Gurobi optimizer version Gurobi 8.0.1. A total of four scenarios were implemented and the minimum and maximum solving time  was around 1.4 s having total variable count: 28706 and maximum linear constraint: 37042 for the maximum case.
+Experiments were carried out on a AMD A6-9220 processor which runs at 2.5GHz and utilizes 8 GB RAM. The model was implemented in Python 3.10.5 and solved with Gurobi optimizer version Gurobi 9.5.1. A total of four scenarios were implemented and the minimum and maximum solving time was around 67.0618 s having total variable count: 7041 and total constraint count: 7075 for the maximum case.
 
 As per Dengel et al \cite{degel2015time}, one of the most common approaches to handle multi-criteria decision problems is the weighted sum approach. In this approach, the objectives are aggregated prior to the optimization by assigning weights to the objective functions. The weights are based on the decision makers preference in order to model the importance of the goal, which in our case is to find minimum path route while maximizing the collected waste. 
 

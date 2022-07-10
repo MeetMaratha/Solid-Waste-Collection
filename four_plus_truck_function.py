@@ -10,6 +10,10 @@ B_TO_B = 100 # Bin to Bin
 
 def optimize(df, visit, distances, n_done, visitedNodes, count, NTaken, n_trucks = 1, w1 = 0.5, w2 = 0.5, m = 0, folder_Path = '', ward_name = '', t_name = '', t_no = None):
 
+# Change to this for getting number of variables and constraints
+
+# def optimize(df, visit, distances, n_done, visitedNodes, count, NTaken, n_trucks = 1, w1 = 0.5, w2 = 0.5, m = 0, folder_Path = '', ward_name = '', t_name = '', t_no = None, NVarRegion = 0, NConstrRegion = 0):
+
     mdl = Model('CVRP')
 
     # Initializations
@@ -142,6 +146,9 @@ def optimize(df, visit, distances, n_done, visitedNodes, count, NTaken, n_trucks
     mdl.optimize()
     objValue = mdl.getObjective().getValue()
     
+    # Uncomment if you need number of variables and constraints
+    # NVarRegion += mdl.NumVars
+    # NConstrRegion += mdl.NumConstrs + mdl.NumGenConstrs
     
     for k in range(len(n_done)):
         if n_done[k] == 0 and Vs == [None]:
@@ -157,6 +164,9 @@ def optimize(df, visit, distances, n_done, visitedNodes, count, NTaken, n_trucks
         if n_done[k] == -1 : n_done[k] == 0
 
     return objValue, df, active_arcs, NTaken, flag
+    
+    # Change if you need number of variables and constraints
+    # return objValue, df, active_arcs, NTaken, flag, NVarRegion, NConstrRegion
 
 
 def update_fill(data, m):
@@ -182,6 +192,9 @@ def calc_V(N, m, st):
     return V
 
 def dyn_multi_opt(df, visit, distances, t_name, n_done, visitedNodes, n_trucks = 1, folder_Path = '', ward_name = '', w1 = 0.5, w2 = 0.5, m = 0, obj_value = 0):
+
+# Change if you need number of variables and constraints
+# def dyn_multi_opt(df, visit, distances, t_name, n_done, visitedNodes, n_trucks = 1, folder_Path = '', ward_name = '', w1 = 0.5, w2 = 0.5, m = 0, obj_value = 0, NVarRegion = 0, NConstrRegion = 0):
     SPEED = 13.88
     # EACHRUNPOSSIBLE = 1
     # EACHRUNPOSSIBLE = 3 # For 5 Truck run
@@ -203,6 +216,9 @@ def dyn_multi_opt(df, visit, distances, t_name, n_done, visitedNodes, n_trucks =
 
     for K in range(len(n_done)):
         objValue, df, active_arcs, NTaken, flag = optimize(df = df, visit = [visit[K]], distances = distances, n_done = [n_done[K]], n_trucks = 1, w1 = w1, w2 = w2, m = m, visitedNodes = visitedNodes, count = K, NTaken = NTaken, folder_Path = folder_Path, ward_name = ward_name, t_name = t_name, t_no = K)
+
+        # Change to get number of variables and constraints
+        # objValue, df, active_arcs, NTaken, flag, NVarRegion, NConstrRegion = optimize(df = df, visit = [visit[K]], distances = distances, n_done = [n_done[K]], n_trucks = 1, w1 = w1, w2 = w2, m = m, visitedNodes = visitedNodes, count = K, NTaken = NTaken, folder_Path = folder_Path, ward_name = ward_name, t_name = t_name, t_no = K, NVarRegion = NVarRegion, NConstrRegion = NConstrRegion)
         if flag[1] == True:
             n_done[flag[0]] = -1
             completedDuringRun[K] = active_arcs
@@ -284,8 +300,16 @@ def dyn_multi_opt(df, visit, distances, t_name, n_done, visitedNodes, n_trucks =
         fileName = folder_Path + ward_name + ' Data/' + t_name + '_multi_' + str(w1) + '_' + str(w2) + '.csv'
         df.to_csv(fileName, index = False)
         return obj_value
+        
+        # Change to get number of variables and constraints
+        # return obj_value, NVarRegion, NConstrRegion
     
     # Recursive call
 
     obj_value = dyn_multi_opt(df =df, visit = visit, visitedNodes = visitedNodes, distances = distances, t_name = t_name, n_done = n_done, w1 = w1, w2 = w2, n_trucks = n_trucks, folder_Path = folder_Path, ward_name = ward_name, obj_value = obj_value, m = m)
     return obj_value
+
+    # Change to get number of variables and constraints
+    # obj_value = dyn_multi_opt(df =df, visit = visit, visitedNodes = visitedNodes, distances = distances, t_name = t_name, n_done = n_done, w1 = w1, w2 = w2, n_trucks = n_trucks, folder_Path = folder_Path, ward_name = ward_name, obj_value = obj_value, m = m, NVarRegion = NVarRegion, NConstrRegion = NConstrRegion)
+    # return obj_value, NVarRegion, NConstrRegion
+    

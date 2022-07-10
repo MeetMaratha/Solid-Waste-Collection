@@ -3,6 +3,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from four_plus_truck_function import dyn_multi_opt
 from show_routes import CreateMap
+import time
+
+start = time.time()
 
 
 # Constants
@@ -38,7 +41,12 @@ visit1, visit2, visit3, visit4, visit5, visit6, visit7 = (
     )
 visitedNodes = set()
 obj_value1 = dyn_multi_opt(data1, [visit1, visit2, visit3, visit4, visit5, visit6, visit7], visitedNodes = visitedNodes, distances = distance, ward_name = 'Truck 1', t_name = 'truck1', folder_Path = 'Data/Dynamic Data/Multiple Trucks/7 Trucks/', w1 = W1, w2 = W2, n_done = [0] * N_TRUCKS, n_trucks = N_TRUCKS)
+
+# Uncomment this if you want number of variables and constraints
+
+# obj_value1, NVarRegion1, NConstrRegion1 = dyn_multi_opt(data1, [visit1, visit2, visit3, visit4, visit5, visit6, visit7], visitedNodes = visitedNodes, distances = distance, ward_name = 'Truck 1', t_name = 'truck1', folder_Path = 'Data/Dynamic Data/Multiple Trucks/7 Trucks/', w1 = W1, w2 = W2, n_done = [0] * N_TRUCKS, n_trucks = N_TRUCKS)
 print('\n Ward 1 Done \n')
+
 
 # Ward 2 Optimization
 
@@ -54,6 +62,10 @@ visit1, visit2, visit3, visit4, visit5, visit6, visit7 = (
     )
 visitedNodes = set()
 obj_value2 = dyn_multi_opt(data2, [visit1, visit2, visit3, visit4, visit5, visit6, visit7], visitedNodes = visitedNodes, distances = distance, ward_name = 'Truck 2', t_name = 'truck2', folder_Path = 'Data/Dynamic Data/Multiple Trucks/7 Trucks/', w1 = W1, w2 = W2, n_done = [0] * N_TRUCKS, n_trucks = N_TRUCKS)
+
+# Uncomment this if you want number of variables and constraints 
+
+# obj_value2, NVarRegion2, NConstrRegion2 = dyn_multi_opt(data2, [visit1, visit2, visit3, visit4, visit5, visit6, visit7], visitedNodes = visitedNodes, distances = distance, ward_name = 'Truck 2', t_name = 'truck2', folder_Path = 'Data/Dynamic Data/Multiple Trucks/7 Trucks/', w1 = W1, w2 = W2, n_done = [0] * N_TRUCKS, n_trucks = N_TRUCKS)
 print('\n Ward 2 Done \n')
 
 # Ward 3 Optimization
@@ -70,6 +82,10 @@ visit1, visit2, visit3, visit4, visit5, visit6, visit7 = (
     )
 visitedNodes = set()
 obj_value3 = dyn_multi_opt(data3, [visit1, visit2, visit3, visit4, visit5, visit6, visit7], visitedNodes = visitedNodes, distances = distance, ward_name = 'Truck 3', t_name = 'truck3', folder_Path = 'Data/Dynamic Data/Multiple Trucks/7 Trucks/', w1 = W1, w2 = W2, n_done = [0] * N_TRUCKS, n_trucks = N_TRUCKS)
+
+# Uncommment this if you want number of variables and constraints
+
+# obj_value3,NVarRegion3, NConstrRegion3 = dyn_multi_opt(data3, [visit1, visit2, visit3, visit4, visit5, visit6, visit7], visitedNodes = visitedNodes, distances = distance, ward_name = 'Truck 3', t_name = 'truck3', folder_Path = 'Data/Dynamic Data/Multiple Trucks/7 Trucks/', w1 = W1, w2 = W2, n_done = [0] * N_TRUCKS, n_trucks = N_TRUCKS)
 print('\n Ward 3 Done \n')
 
 
@@ -381,7 +397,18 @@ stats = pd.DataFrame(
     }, index=['Truck 1', 'Truck 2', 'Truck 3', 'Truck 4', 'Truck 5', 'Truck 6', 'Truck 7', 'Total Percentage'])
 stats.to_csv('Data/Dynamic Data/Multiple Trucks/7 Trucks/Statistics.csv')
 
-# print('--------------- GENERATING MAP ----------------------')
+end = time.time()
+print(f"Total time taken for whole computation : {end - start}s.")
+
+# Print number of variables and constraints
+
+# print(f'Region 1 : Total Number of Variables : {NVarRegion1} and Total Number of Constraints : {NConstrRegion1}.')
+# print(f'Region 2 : Total Number of Variables : {NVarRegion2} and Total Number of Constraints : {NConstrRegion2}.')
+# print(f'Region 3 : Total Number of Variables : {NVarRegion3} and Total Number of Constraints : {NConstrRegion3}.')
+# print(f"Total Number of Variables : {NVarRegion1 + NVarRegion2 + NVarRegion3}")
+# print(f"Total Number of Constraints : {NConstrRegion1 + NConstrRegion2 + NConstrRegion3}")
+
+print('--------------- GENERATING MAP ----------------------')
 # Plotting routes
 
 map = CreateMap()
