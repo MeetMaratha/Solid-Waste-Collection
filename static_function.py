@@ -2,116 +2,158 @@ from gurobipy import Model, GRB, quicksum
 import numpy as np
 import pandas as pd
 
+np.random.seed(42)
+
 # Constants
 B_TO_T = 10 # Bin to Truck
 B_TO_B = 100 # Bin to Bin
 
-# Static Optimization function
-def opt(df, distances, w1 = 0.2, w2 = 0.8):
-  df1 = df[df.Ward == 0].sort_values(by = ['fill_p_m'], ascending = False) 
-  df2 = df[df.Ward == 1].sort_values(by = ['fill_p_m'], ascending = False) 
-  df3 = df[df.Ward == 2].sort_values(by = ['fill_p_m'], ascending = False)
-  fill_ratio = df.fill_ratio
-  mdl = Model('CVRP')
-  N = []
-  for i in df1.index.to_list():
-    if sum(df1.loc[N, 'fill_ratio']*B_TO_T) + df1.loc[i, 'fill_ratio']*B_TO_T <= 100:
-      N.append(i)
+def optimize(df, distances, NTaken, n_trucks = 1, w1 = 0.5, w2 = 0.5, folder_Path = '', ward_name = '', t_name = '', t_no = None):
+    mdl = Model('CVRP')
 
-  N1 = []
-  for i in df2.index.to_list():
-    if sum(df2.loc[N1, 'fill_ratio']*B_TO_T) + df2.loc[i, 'fill_ratio']*B_TO_T <= 100:
-      N1.append(i)
-  
-  N2 = []
-  for i in df3.index.to_list():
-    if sum(df3.loc[N2, 'fill_ratio']*B_TO_T) + df3.loc[i, 'fill_ratio']*B_TO_T <= 100:
-      N2.append(i)
+    # Initializations
+    
+    startNode = [0]
+    objs = [0]
+    fills = []
+    active_arcs = []
+    Ns = []
+    Vs = []
+    As = []
+    Cs = []
+    Xs = []
+    Ys = []
+    Us = []
+    
+    Ns.append(None)
+    Vs.append(None)
+    As.append(None)
+    Cs.append(None)
+    Xs.append(None)
+    Ys.append(None)
+    Us.append(None)
+    active_arcs.append(None)
+    fills.append(None)
+    fillNewName = 'fill_ratio_' + str(t_no)
+    dist = distances.iloc[startNode[0], df.index.tolist()].tolist()
+    distName = 'distance_from_' + str(startNode[0]) + '_' + str(t_no)
+    if distName not in df.columns.tolist() : 
+        temp = df.copy()
+        temp[distName] = dist
+        df = temp.copy()
+    fillpmNewName1 = 'fill_per_m' + '_' + str(t_no)
+    temp = df.copy()
+    temp[fillpmNewName1] = B_TO_B * temp.loc[:, fillNewName] / temp.loc[:, distName]
+    df = temp.copy()
+    df = df.sort_values(by = fillpmNewName1, ascending = False)
+    fills[0] = pd.DataFrame(
+            {'fill' : df.loc[:, fillNewName].tolist() + [0.0]}, index = df.index.tolist() + [0]
+            )
+    N = []
+    for i in df.index.tolist():
+        if (i not in NTaken) and ( df.loc[i, fillNewName] + sum(df.loc[N, fillNewName]) ) * B_TO_T <= 100:
+            N.append(i)
+            NTaken.append(i)
+    Ns[0] = N
+    Vs[0] = N + [0]
+    As[0] = [(p, q) for p in Vs[0] for q in Vs[0] if p != q]
+    Cs[0] = {(p, q) : distances.iloc[p, q] for p,q in As[0]}
+    Xs[0] = mdl.addVars(As[0], vtype = GRB.BINARY)
+    Ys[0] = mdl.addVars(Vs[0], vtype = GRB.BINARY)
+    Us[0] = mdl.addVars(Ns[0], vtype = GRB.CONTINUOUS)
+    objs[0] = quicksum( 
+            (w1 * Xs[0][p, q] * Cs[0][(p, q)]) - (w2 * Ys[0][p] * fills[0].loc[p, 'fill'] * B_TO_T) for p,q in As[0]
+            )
+        
+# Optimization Function defination
 
-  V = [0] + N                                                                                   # All the vertices
-  V1 = [0] + N1                                                                                   # All the vertices
-  V2 = [0] + N2                                                                                   # All the vertices
-  A = [(i, j) for i in V for j in V if i != j]                                                  # Arcs
-  A1 = [(i, j) for i in V1 for j in V1 if i != j]                                                  # Arcs
-  A2 = [(i, j) for i in V2 for j in V2 if i != j]                                                  # Arcs
-  c = {(i,j) : distances.iloc[i,j] for i,j in A}                                                # cost
-  c1 = {(i,j) : distances.iloc[i,j] for i,j in A1}                                                # cost
-  c2 = {(i,j) : distances.iloc[i,j] for i,j in A2}                                                # cost
-  # Starting Gurobi Model
+    
+    mdl.modelSense = GRB.MINIMIZE
+    mdl.setObjective(sum(objs))
 
-  x = mdl.addVars(A, vtype = GRB.BINARY)                                                        # X(ij)
-  x1 = mdl.addVars(A1, vtype = GRB.BINARY)                                                        # X(ij)
-  x2 = mdl.addVars(A2, vtype = GRB.BINARY)                                                        # X(ij)
-  y = mdl.addVars(V, vtype = GRB.BINARY)                                                        # Y(i)
-  y1 = mdl.addVars(V1, vtype = GRB.BINARY)                                                        # Y(i)
-  y2 = mdl.addVars(V2, vtype = GRB.BINARY)                                                        # Y(i)
-  u = mdl.addVars(N, vtype = GRB.CONTINUOUS)                                                    # u(i)
-  u1 = mdl.addVars(N1, vtype = GRB.CONTINUOUS)                                                    # u(i)
-  u2 = mdl.addVars(N2, vtype = GRB.CONTINUOUS)                                                    # u(i)
-  mdl.modelSense = GRB.MINIMIZE                                                                 # Minimization model
+    # Constraints
+
+    mdl.addConstrs(
+        quicksum( Xs[0][i, j] for j in Vs[0] if j != i ) == 1 for i in Ns[0]
+    )
+    mdl.addConstrs(
+        quicksum( Xs[0][i, j] for i in Vs[0] if i != j ) == 1 for j in Ns[0]
+    )
+    mdl.addConstr(
+        quicksum( Ys[0][i] * fills[0].loc[i, 'fill'] * B_TO_T for i in Ns[0] ) <= ( 100)
+    )
+    mdl.addConstr(
+        quicksum( Xs[0][startNode[0], j] for j in Ns[0]) == 1
+    )
+    mdl.addConstr(
+        quicksum( Xs[0][j, startNode[0]] for j in Ns[0] ) == 1
+    )
+    mdl.addConstrs(
+        (Xs[0][i, j] == 1) >> (Us[0][i] + fills[0].loc[j, 'fill'] * B_TO_T == Us[0][j]) for i,j in As[0] if i != 0 and j != 0
+    )
+
+    mdl.addConstrs(
+        Us[0][i] >= (fills[0].loc[i, 'fill'] * B_TO_T) for i in Ns[0]
+    )
+    mdl.addConstrs(Us[0][i] <= (100) for i in Ns[0])
+
+    # Model Restrictions
+
+    mdl.Params.MIPGap = 0.1
+    mdl.Params.TIMELimit = 900
+
+    # Optimization
+    mdl.optimize()
+    objValue = mdl.getObjective().getValue()
+        
+    active_arcs = [a for a in As[0] if Xs[0][a].x > 0.99]
+    
+    return objValue, df, active_arcs, NTaken
+    
+    
+
+def update_fill(data, t_no):
+    fillNewName = 'fill_ratio_' + str(t_no)
+    fillRatio = [np.random.rand() for _ in range(data.shape[0])]
+    data.insert(data.shape[1], fillNewName, fillRatio)
+    return data
 
 
-  mdl.setObjective(quicksum(w1*x[i,j]*c[i,j] - w2*y[i]*fill_ratio.loc[i]*B_TO_T for i,j in A) + quicksum(w1*x1[i,j]*c1[i,j] - w2*y1[i]*fill_ratio.loc[i]*B_TO_T for i,j in A1) + quicksum(w1*x2[i,j]*c2[i,j] - w2*y2[i]*fill_ratio.loc[i]*B_TO_T for i,j in A2))
+def stat_multi_opt(df, visit, distances, t_name, n_trucks = 1, folder_Path = '', ward_name = '', w1 = 0.5, w2 = 0.5, obj_value = 0, t_no = None):
+
+    SPEED = 13.88
 
 
-  # Constraints
+    # Initializations
+        
+    arcs = []
+    startNode = [0]
+    counts = []
+    NTaken = []
+    for K in range(n_trucks):
+        fillNewName = 'fill_ratio_' + str(K)
+        fillpmNewName = 'fill_per_m_' + str(K)
+        df = update_fill(df, K)
+        objValue, df, active_arcs, NTaken = optimize(df = df, distances = distances, n_trucks = K, w1 = w1, w2 = w2, NTaken = NTaken, folder_Path = folder_Path, ward_name = ward_name, t_name = t_name, t_no = K)
 
-  #start at 0
-  mdl.addConstr( quicksum(x[0,j] for j in N) == 1 )
-  mdl.addConstr( quicksum(x1[0,j] for j in N1) == 1 )
-  mdl.addConstr( quicksum(x2[0,j] for j in N2) == 1 )
+        next_element = next(
+                y for x, y in active_arcs if x == 0
+            )
+        while next_element != 0:
+            visit[K].loc[len(visit[K])] = [next_element, df.loc[next_element, fillNewName]]
+            df.loc[next_element, [fillNewName, fillpmNewName]] = [0.0, 0.0]
+            next_element = next(
+                y for x, y in active_arcs if x == int(visit[K].iloc[-1, 0])
+            )
 
-  #End at 0
-  mdl.addConstr( quicksum(x[j,0] for j in N) == 1 )
-  mdl.addConstr( quicksum(x1[j,0] for j in N1) == 1 )
-  mdl.addConstr( quicksum(x2[j,0] for j in N2) == 1 )
-
-  # Updation of route
-  mdl.addConstrs(quicksum(x[i,j] for j in V if j != i) == 1 for i in N)                       
-  mdl.addConstrs(quicksum(x1[i,j] for j in V1 if j != i) == 1 for i in N1)                    
-  mdl.addConstrs(quicksum(x2[i,j] for j in V2 if j != i) == 1 for i in N2)                    
-  
-  mdl.addConstrs(quicksum(x[i,j] for i in V if i != j) == 1 for j in N)                       
-  mdl.addConstrs(quicksum(x1[i,j] for i in V1 if i != j) == 1 for j in N1)                    
-  mdl.addConstrs(quicksum(x2[i,j] for i in V2 if i != j) == 1 for j in N2)                    
-  
-  # Capacity constraint
-  mdl.addConstr(quicksum(y[i]*fill_ratio.loc[i]*B_TO_T for i in N) <= 100)                          
-  mdl.addConstr(quicksum(y1[i]*fill_ratio.loc[i]*B_TO_T for i in N1) <= 100)                       
-  mdl.addConstr(quicksum(y2[i]*fill_ratio.loc[i]*B_TO_T for i in N2) <= 100)                       
- 
-  # Tracking fill ratio
-  mdl.addConstrs((x[i,j] == 1) >> (u[i] + fill_ratio.loc[j]*B_TO_T == u[j])
-                  for i,j in A if i != 0 and j!= 0)                                            
-  
-  mdl.addConstrs((x1[i,j] == 1) >> (u1[i] + fill_ratio.loc[j]*B_TO_T == u1[j])
-                  for i,j in A1 if i != 0 and j!= 0)                                           
-  
-  mdl.addConstrs((x2[i,j] == 1) >> (u2[i] + fill_ratio.loc[j]*B_TO_T == u2[j])
-                  for i,j in A2 if i != 0 and j!= 0)                                           
-  
-  
-  mdl.addConstrs(u[i] >= fill_ratio.loc[i]*B_TO_T for i in N)                                  
-  mdl.addConstrs(u1[i] >= fill_ratio.loc[i]*B_TO_T for i in N1)                                
-  mdl.addConstrs(u2[i] >= fill_ratio.loc[i]*B_TO_T for i in N2)                                
-  
-  
-  mdl.addConstrs(u[i] <= 100 for i in N)                                                   
-  mdl.addConstrs(u1[i] <= 100 for i in N1)                                                 
-  mdl.addConstrs(u2[i] <= 100 for i in N2)                                                 
-  
-  # Time constraint to make model feasible to use
-  mdl.Params.MIGap = 0.1                                                                        # Stop at < 10% gap
-  mdl.Params.TimeLimit = 900                                                                    # Stop after 900s (15 minutes)
-  
-  # Optimize the model
-
-  mdl.optimize()
-
-#   q = mdl.getObjective()
-  obj_value = mdl.getObjective().getValue()
-  active_arcs = [a for a in A if x[a].x > 0.99]                                                 # Store the arcs in the list active_arcs
-  active_arcs1 = [a for a in A1 if x1[a].x > 0.99]                                              # Store the arcs in the list active_arcs
-  active_arcs2 = [a for a in A2 if x2[a].x > 0.99]                                              # Store the arcs in the list active_arcs
-  return [active_arcs, active_arcs1, active_arcs2], obj_value                                              # Return those arcs                                           # Return those arcs 
-
+        visit[K].loc[len(visit[K])] = [next_element, sum(visit[K].iloc[:, 1])]
+        # ----------------------------------------
+        print(f'Optimization done for truck {K}')
+        # ----------------------------------------
+        fileName = folder_Path + 'Visited ' + ward_name + '/visited_' + t_name + '_' + str(K + 1) + '_' + str(w1) + '_' + str(w2) + '.csv'
+        visit[K].to_csv(fileName, index = False)
+        fileName = folder_Path + ward_name + ' Data/' + t_name + '_multi_' + str(w1) + '_' + str(w2) + '.csv'
+        df.to_csv(fileName, index = False)
+        
+        
+    return obj_value
