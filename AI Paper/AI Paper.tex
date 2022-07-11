@@ -360,7 +360,7 @@ Often the decision makers want to derive the requirement of resources that could
 
 \subsubsection*{Case 3: Comparison of real-time with static route calculation}
 
-Our base case of route calculation considers real time dynamics of waste (bin, truck) and truck's current position in real time. However, the existing collection system of the city is static. Hence, we compared the realtime route calculation model with the static by modifying the eq \eqref{eq12} as the constraint will be just less than 100, as shown in \eqref{eq12x}. In equation \eqref{eq2} and Eq \eqref{eq3} instead of \textit{st}, the beginning nodes will always be 0 \eqref{eq2x}\eqref{eq3x}. 
+Our base case of route calculation considers real time dynamics of waste (bin, truck) and truck's current position in real time. However, the existing collection system of the city is static. Hence, we compared the real-time route calculation model with static by modifying the eq \eqref{eq12} where the constraint will simply be less than 100, as shown in \eqref{eq12x}. In equation \eqref{eq2} and Eq \eqref{eq3}, instead of \textit{st}, the beginning nodes will always be 0 (\eqref{eq2x}\eqref{eq3x}). 
 \begin{equation}\label{eq12x}
     u_i\le 100
 \end{equation}
@@ -371,7 +371,7 @@ Our base case of route calculation considers real time dynamics of waste (bin, t
     \sum_{j\in N}X_{j,0}=1 ; \forall j \in N
 \end{equation}
 
-The above constraints when implemented results in a fixed optimal route which doesn't change with the time. We executed the dynamic and static models for 1 truck per region. The comparison is represented in Table \ref{tab5}
+The above constraints when implemented results in a fixed optimal route which doesn't change with the time. We executed the dynamic and static models for 3 trucks per region. for a total of 9 trucks. The comparison is represented in Table \ref{tab5}
 
 \begin{table}[H]
     \centering
@@ -385,7 +385,7 @@ The above constraints when implemented results in a fixed optimal route which do
     \end{tabular}
 \end{table}
 
-The routes (Figure \ref{fig4} and Figure \ref{fig5}) show the routes obtained for static and dynamic case for one truck. The outcomes demonstrate the consideration of dynamic variables on the routes which are different than the static model. 
+The routes (Figure \ref{fig4} and Figure \ref{fig5}) show the routes obtained for static and dynamic case for 9 trucks. The outcomes demonstrate the consideration of dynamic variables on the routes which are different than the static model. 
 
 \begin{figure}[H]
     \centering
@@ -398,16 +398,16 @@ The routes (Figure \ref{fig4} and Figure \ref{fig5}) show the routes obtained fo
     \caption{Routes for 1 truck per region as calculated by real-time optimization}\label{fig5}
 \end{figure}
 
-We observe that the weight of the waste collected is nearly the same but the distance travelled by the trucks is smaller in the static case. This can be easily explained by the fact that, in essence, real-time method is just the static method applied repeatedly after certain intervals of time. Therefore, static gives one optimal route for the currently available data, but real-time has to do that each time the data is updated. It has to calculate new routes multiple times, even when the vehicle is already traversing the previous optimal route, and it also has to take the current position of the vehicle into consideration. This makes it inherently slightly more inefficient compared to the static method. 
+We used the case of 3 vehicles per region in order to achieve a suitable middle ground, providing enough complexity to the problem for the two models to be fully utilized and compared while also maintaining the resource constrained aspect of the problem. We observe that the weight of the waste collected is nearly the same for both cases but the distance travelled by the trucks in the real-time case is significantly less than the static case. This further emphasizes the efficiency of the real-time method over the static method.
 
-This makes static optimization superior but only theoretically, because when applied in the real world, static has many disadvantages which are overcome by real-time optimization, such as adaptability and flexibility. In the static case, there is no accounting for new data. The initial route is the only route. This, consequently, also makes it unreliable. Real-time method, on the other hand, accounts for new data and creates new optimal routes taking it into consideration, making it very adaptable and reliable. Since real-time is just a modified and iterated version of the static method, the difference in computational power required between the two methods is not large. 
+This makes real-time optimization the superior model in terms of both efficiency and features. In the static model, there is no accounting for new data. The initial route is the only route that is calculated. This, consequently, also makes it unreliable. Real-time model, on the other hand, accounts for new data and creates new optimal routes taking it into consideration, making it very adaptable and robust. Since real-time is just a modified and iterated version of the static model, the difference in computational power required between the two methods is not large. 
 
-Therefore, for real life applications, real-time method is the superior method as it is able to deal with non-deterministic events that are common for ground use and adapt to them, giving an uninterrupted and reliable result.
+Therefore, for real life applications, real-time model is the preferred method as it is able to deal with non-deterministic events that are synonymous with ground use and adapt to them, giving an uninterrupted and reliable service, while also providing greatly efficient results.
 
 
  
 \subsubsection*{Sensitivity Analysis of Weights}
-In order to depict the effect of selected objective function weights on the waste  (\ref{figs1})  collected and the distance travelled by the collection trucks (\ref{figs2}), we performed a detailed sensitivity analysis. The Figures indicate that wights had highly non linear influence on the total distance travelled collected than the garbage collected. We normalized the distance and garbage collected values for their comparison (see \ref{figs}). From the graph it can be observed that the weight combinations such as W1=0.9,W2=0.1; W1=0.4,W2=0.6 can be reasonably good for maximizing the collection of waste at minimum distance cost (W1=0.9,W2=0.1). The outcome is also inline with our selected weights. The analysis as a decision making tool can help  in selecting the best weights for desired scenarios.
+In order to depict the effect of selected objective function weights on the waste  (\ref{figs1})  collected and the distance travelled by the collection trucks (\ref{figs2}), we performed a detailed sensitivity analysis. The Figures indicate that weights had highly non linear influence on the total distance travelled collected than the garbage collected. We normalized the distance and garbage collected values for their comparison (see \ref{figs}). From the graph it can be observed that the weight combinations such as W1=0.9,W2=0.1; W1=0.4,W2=0.6 can be reasonably good for maximizing the collection of waste at minimum distance cost (W1=0.9,W2=0.1). The outcome is also inline with our selected weights. The analysis as a decision making tool can help  in selecting the best weights for desired scenarios.
 
 \begin{figure}[H]
     \centering
