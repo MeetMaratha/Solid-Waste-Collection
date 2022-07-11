@@ -1017,13 +1017,6 @@ INPUT .\distance_VS_garbage_restricted.png
 INPUT .\distance_VS_garbage_restricted.png
 INPUT .\distance_VS_garbage_restricted.png
 INPUT .\distance_VS_garbage_restricted.png
-INPUT .\Dynamic_weighted_unrestricted.png
-INPUT .\Dynamic_weighted_unrestricted.png
-INPUT Dynamic_weighted_unrestricted.png
-INPUT .\Dynamic_weighted_unrestricted.png
-INPUT .\Dynamic_weighted_unrestricted.png
-INPUT .\Dynamic_weighted_unrestricted.png
-INPUT .\Dynamic_weighted_unrestricted.png
 INPUT .\coverage_VS_number_of_trucks.png
 INPUT .\coverage_VS_number_of_trucks.png
 INPUT coverage_VS_number_of_trucks.png
@@ -1039,6 +1032,27 @@ INPUT .\number_of_trucks_VS_bins_visited.png
 INPUT .\number_of_trucks_VS_bins_visited.png
 INPUT .\number_of_trucks_VS_bins_visited.png
 INPUT .\number_of_trucks_VS_bins_visited.png
+INPUT .\Dynamic_weighted_unrestricted.png
+INPUT .\Dynamic_weighted_unrestricted.png
+INPUT Dynamic_weighted_unrestricted.png
+INPUT .\Dynamic_weighted_unrestricted.png
+INPUT .\Dynamic_weighted_unrestricted.png
+INPUT .\Dynamic_weighted_unrestricted.png
+INPUT .\Dynamic_weighted_unrestricted.png
+INPUT .\Static_Unweighted.png
+INPUT .\Static_Unweighted.png
+INPUT Static_Unweighted.png
+INPUT .\Static_Unweighted.png
+INPUT .\Static_Unweighted.png
+INPUT .\Static_Unweighted.png
+INPUT .\Static_Unweighted.png
+INPUT .\Dynamic_weighted_1_Truck.png
+INPUT .\Dynamic_weighted_1_Truck.png
+INPUT Dynamic_weighted_1_Truck.png
+INPUT .\Dynamic_weighted_1_Truck.png
+INPUT .\Dynamic_weighted_1_Truck.png
+INPUT .\Dynamic_weighted_1_Truck.png
+INPUT .\Dynamic_weighted_1_Truck.png
 INPUT .\Total_Garbage_VS_W1_3_Trucks.png
 INPUT .\Total_Garbage_VS_W1_3_Trucks.png
 INPUT Total_Garbage_VS_W1_3_Trucks.png
@@ -1065,20 +1079,6 @@ INPUT .\Distance and Garbage Normalized VS W1.png
 INPUT .\Distance and Garbage Normalized VS W1.png
 INPUT .\Distance and Garbage Normalized VS W1.png
 INPUT .\Distance and Garbage Normalized VS W1.png
-INPUT .\Static_Unweighted.png
-INPUT .\Static_Unweighted.png
-INPUT Static_Unweighted.png
-INPUT .\Static_Unweighted.png
-INPUT .\Static_Unweighted.png
-INPUT .\Static_Unweighted.png
-INPUT .\Static_Unweighted.png
-INPUT .\Dynamic_weighted_1_Truck.png
-INPUT .\Dynamic_weighted_1_Truck.png
-INPUT Dynamic_weighted_1_Truck.png
-INPUT .\Dynamic_weighted_1_Truck.png
-INPUT .\Dynamic_weighted_1_Truck.png
-INPUT .\Dynamic_weighted_1_Truck.png
-INPUT .\Dynamic_weighted_1_Truck.png
 INPUT .\AI Paper.bbl
 INPUT AI Paper.bbl
 INPUT .\AI Paper.bbl
