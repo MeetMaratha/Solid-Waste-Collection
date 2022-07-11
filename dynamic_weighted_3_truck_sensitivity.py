@@ -35,7 +35,7 @@ garbage_per_ward_33 = []
 
 
 # Set Random Seed
-np.random.seed(42)
+# np.random.seed(42)
 
 # Import Data
 data = pd.read_csv('Data/Bin Locations.csv', index_col= 'id').sort_index()
@@ -45,6 +45,7 @@ for i in range(distance.shape[0]):
 
 
 for w1 in w1s:
+    np.random.seed(42)
     W1 = w1
     W2 = round(1 - W1, 1)
     # Optimization

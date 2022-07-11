@@ -2,7 +2,7 @@ from gurobipy import Model, GRB, quicksum
 import numpy as np
 import pandas as pd
 
-np.random.seed(42)
+# np.random.seed(42)
 
 # Constants
 B_TO_T = 10 # Bin to Truck
