@@ -1017,6 +1017,21 @@ INPUT .\distance_VS_garbage_restricted.png
 INPUT .\distance_VS_garbage_restricted.png
 INPUT .\distance_VS_garbage_restricted.png
 INPUT .\distance_VS_garbage_restricted.png
+INPUT .\Waste Difference Between Trucks.png
+INPUT .\Waste Difference Between Trucks.png
+INPUT Waste Difference Between Trucks.png
+INPUT .\Waste Difference Between Trucks.png
+INPUT .\Waste Difference Between Trucks.png
+INPUT .\Waste Difference Between Trucks.png
+INPUT .\Waste Difference Between Trucks.png
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr10.tfm
+INPUT .\Distance Difference Between Trucks Scatterplot.png
+INPUT .\Distance Difference Between Trucks Scatterplot.png
+INPUT Distance Difference Between Trucks Scatterplot.png
+INPUT .\Distance Difference Between Trucks Scatterplot.png
+INPUT .\Distance Difference Between Trucks Scatterplot.png
+INPUT .\Distance Difference Between Trucks Scatterplot.png
+INPUT .\Distance Difference Between Trucks Scatterplot.png
 INPUT .\coverage_VS_number_of_trucks.png
 INPUT .\coverage_VS_number_of_trucks.png
 INPUT coverage_VS_number_of_trucks.png
@@ -1024,7 +1039,6 @@ INPUT .\coverage_VS_number_of_trucks.png
 INPUT .\coverage_VS_number_of_trucks.png
 INPUT .\coverage_VS_number_of_trucks.png
 INPUT .\coverage_VS_number_of_trucks.png
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr10.tfm
 INPUT .\number_of_trucks_VS_bins_visited.png
 INPUT .\number_of_trucks_VS_bins_visited.png
 INPUT number_of_trucks_VS_bins_visited.png
@@ -1053,6 +1067,20 @@ INPUT .\Dynamic_weighted_3_Truck.png
 INPUT .\Dynamic_weighted_3_Truck.png
 INPUT .\Dynamic_weighted_3_Truck.png
 INPUT .\Dynamic_weighted_3_Truck.png
+INPUT .\Total Distance Comparision of Static and Dynamic.png
+INPUT .\Total Distance Comparision of Static and Dynamic.png
+INPUT Total Distance Comparision of Static and Dynamic.png
+INPUT .\Total Distance Comparision of Static and Dynamic.png
+INPUT .\Total Distance Comparision of Static and Dynamic.png
+INPUT .\Total Distance Comparision of Static and Dynamic.png
+INPUT .\Total Distance Comparision of Static and Dynamic.png
+INPUT .\Total Garbage Comparision of Static and Dynamic.png
+INPUT .\Total Garbage Comparision of Static and Dynamic.png
+INPUT Total Garbage Comparision of Static and Dynamic.png
+INPUT .\Total Garbage Comparision of Static and Dynamic.png
+INPUT .\Total Garbage Comparision of Static and Dynamic.png
+INPUT .\Total Garbage Comparision of Static and Dynamic.png
+INPUT .\Total Garbage Comparision of Static and Dynamic.png
 INPUT .\Total_Garbage_VS_W1_3_Trucks.png
 INPUT .\Total_Garbage_VS_W1_3_Trucks.png
 INPUT Total_Garbage_VS_W1_3_Trucks.png
@@ -1112,3 +1140,5 @@ INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy8.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy8.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmti12.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmti12.pfb
+INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\symbols\msbm10.pfb
+INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\symbols\msbm10.pfb

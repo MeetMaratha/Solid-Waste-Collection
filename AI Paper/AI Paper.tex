@@ -100,7 +100,7 @@ In our problem, our two main objectives are:
     \item Maximize the waste collected through the collection run
 \end{itemize}
 
-% Changes here
+The following table defines all the variables used for the mathematical formulation:
 The following table defines all the variables used for the mathematical formulation:
 \begin{table}[H]\label{variables}
 	\centering
@@ -112,13 +112,13 @@ The following table defines all the variables used for the mathematical formulat
 		\hline $D$ & Nodes for a particular truck including depot.\\
 		\hline \multirow{2}{*}{$A$} & Set of all the arcs formed from a\\
 		&  node i to a node j for $\forall i,j \in$ V.\\
-		\hline \multirow{2}{*}{$C_{ij} \in [0, 1]$} & Distance cost from a node i\\
+		\hline \multirow{2}{*}{$C_{ij}\in \mathbb{R}^+$} & Distance cost from a node i\\
 		& to a node j for a truck.\\
-		\hline \multirow{2}{*}{$X_{ij} \in [0, 1]$} & It is a binary variable that is 1 if a truck is\\
+		\hline \multirow{2}{*}{$X_{ij} \in \{0, 1\}$} & It is a binary variable that is 1 if a truck is\\
 		& travelling between the node i and node j.\\  
-		\hline \multirow{2}{*}{$Y_{i} \in [0, 1]$} & It is a binary variable that is 1 if a truck is \\
+		\hline \multirow{2}{*}{$Y_{i} \in \{0, 1\}$} & It is a binary variable that is 1 if a truck is \\
 		& visiting node i.\\
-		\hline \multirow{2}{*}{$u_{i}  \in [0, P_{t}] $} & The percentage fill of the truck at node i \\
+		\hline \multirow{2}{*}{$u_{i}  \in [0, 100 -P_{t}] $} & The percentage fill of the truck at node i \\
 		& following given path, for a specific time slice.\\
 		\hline \multirow{2}{*}{$st \in D$} & The starting node of a truck in a\\
 		& new time slice.\\
@@ -127,14 +127,12 @@ The following table defines all the variables used for the mathematical formulat
 		\hline \multirow{2}{*}{$w_{2} \in [0.0, 1.0]$} & The weight assigned to the waste amount \\
 		& objective of the objective function\\
 		\hline \multirow{1}{*}{$f_{i} \in [0.0, 1.0]$} & The fill ratio of bin at node i.\\
-		\hline \multirow{2}{*}{$BT \in \mathbb{Z}$} & The conversion factor for fill \\
+		\hline \multirow{2}{*}{$BT \in \mathbb{R}^+$} & The conversion factor for fill \\
 		& of smart bin to fill of truck.\\
 		\hline \multirow{1}{*}{$P_{t} \in [0.0, 100.0]$} & Cumulative fill percentage of truck at a time slice t.\\
 		\hline
 	\end{tabular*}
 \end{table} 
-
-% Changes End here
 
 With this we can formulate our base objective function to be:
 
@@ -248,6 +246,21 @@ A significant impact of available trucks on collected waste can be observed. Fur
     \caption{Distance traveled vs waste collected}\label{figz}
 \end{figure}
 
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Waste Difference Between Trucks.png}
+        \caption{Difference in waste between cases}\label{figd1}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Distance Difference Between Trucks Scatterplot.png}
+        \caption{Difference in distance between cases}\label{figd2}
+    \end{subfigure}
+    \caption{Trend Analysis between cases}
+    \label{figd}
+\end{figure}
 
 \begin{table}[H]
     \centering
@@ -392,13 +405,29 @@ The routes (Figure \ref{fig4} and Figure \ref{fig5}) show the routes obtained fo
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.4]{Static_Weighted_3_Truck.png} % Image changed here
-    \caption{Routes for 1 truck per region as calculated by static optimization}\label{fig4}
+    \includegraphics[scale=0.3]{Static_Weighted_3_Truck.png} % Image changed here
+    \caption{Routes for 3 truck per region as calculated by static optimization}\label{fig4}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.4]{Dynamic_weighted_3_Truck.png} % Image changed here
-    \caption{Routes for 1 truck per region as calculated by real-time optimization}\label{fig5}
+    \includegraphics[scale=0.3]{Dynamic_weighted_3_Truck.png} % Image changed here
+    \caption{Routes for 3 truck per region as calculated by real-time optimization}\label{fig5}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Total Distance Comparision of Static and Dynamic.png}
+        \caption{Distance comparison}\label{figh1}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Total Garbage Comparision of Static and Dynamic.png}
+        \caption{Waste comparison}\label{figh2}
+    \end{subfigure}
+    \caption{Comparison between static and real-time models}
+    \label{figh}
 \end{figure}
 
 We used the case of 3 vehicles per region in order to achieve a suitable middle ground, providing enough complexity to the problem for the two models to be fully utilized and compared while also maintaining the resource constrained aspect of the problem. We observe that the weight of the waste collected is nearly the same for both cases but the distance travelled by the trucks in the real-time case is significantly less than the static case. This further emphasizes the efficiency of the real-time method over the static method.
@@ -438,12 +467,17 @@ In order to depict the effect of selected objective function weights on the wast
 
 \section{Discussion and Policy Suggestions}
 
-The collection of waste is a highly visible and important municipal service that involves large expenditures. Waste collection problems are, however, one of the most difficult operational problems to solve.
+One of the important issues in the world today is the significant growth of waste production. The collection of waste is a highly visible and important municipal service that involves large expenditures. Waste collection problems are, however, one of the most difficult operational problems to solve, as it involves a lot of complex dynamic activities. Without modeling these activities a solution often have limited on-ground implementation. Our objective in this paper addresses these challenges by simultaneously modeling the dynamic changes in waste values of bin and truck to dynamically update the routes for maximizing the collected waste while covering less distance. The outcomes of various experiments proof that our methodology outperforms the existing static method of waste collection. Our model was able to collect almost similar amount of waste in significantly less distance. It was also able to cover the distance travelled in the case of real-time optimization is less than that of static one. It is due to the fact the optimal routes are calculated multiple times with different starting points based on the truck's current location. This makes the resultant route slightly more inefficient when compared to the initial calculation, but more efficient in the longer run.
 
-\textcolor{blue}{Having more trucks at your disposal is a matter of resources, and for a resource constrained region, their availability of trucks may not be sufficient for the amount of waste generated. That will, unless overcome by alternate methods such as multiple collection runs per vehicle, will lead to subpar waste collection, as shown by the data. However, those alternate methods are beyond the scope of the current work.}
 
+
+\textcolor{blue}{Having more trucks at your disposal is a matter of resources, and for a resource constrained region, their availability of trucks may not be sufficient for the amount of waste generated. That will, unless overcome by alternate methods such as multiple collection runs per vehicle, will lead to subpar waste collection, as shown by the data. However, those alternate methods are beyond the scope of the current work.
+}
+
+---Weight sensitivity--------
 One of the most noticeable observations that can be derived from the results is the weights attached to the two objectives in the objective function. In this case, the distance traveled was computed to be the main factor which must be considered when solving the objective function for the optimal solution. The waste collected appears to be almost completely irrelevant in this case. While this may look like an anomaly, this is solely due to the fact that this is a resource constrained operation. The trucks  have to continue their runs until they are full. Therefore, in the end, the amount of waste collected will always be equal to the maximum capacity, hence rendering maximizing the waste collected objective irrelevant.
 
+---Weight sensitivity--------
 However, we must keep in mind that this will not always be the case. In a case where the resources, that is, the trucks are more than sufficient to cover the demand, the weight for the objective to maximize waste collected will be greater. The more is the resource greater than the requirement, the greater the weight of that objective will be.
 
 We also observe that the distance travelled in the case of real-time optimization is greater than that of static one. It is due to the fact the optimal routes are calculated multiple times with different starting points based on the truck's current location. This makes the resultant route slightly more inefficient when compared to the initial calculation. This is an unavoidable effect of recalculating the routes and not a problem with the algorithm as the path that is already been travelled is not considered by the newly calculated route, hence the resultant route is longer than the initial optimal route
