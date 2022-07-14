@@ -1024,7 +1024,6 @@ INPUT .\Waste Difference Between Trucks.png
 INPUT .\Waste Difference Between Trucks.png
 INPUT .\Waste Difference Between Trucks.png
 INPUT .\Waste Difference Between Trucks.png
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr10.tfm
 INPUT .\Distance Difference Between Trucks Scatterplot.png
 INPUT .\Distance Difference Between Trucks Scatterplot.png
 INPUT Distance Difference Between Trucks Scatterplot.png
@@ -1039,6 +1038,7 @@ INPUT .\coverage_VS_number_of_trucks.png
 INPUT .\coverage_VS_number_of_trucks.png
 INPUT .\coverage_VS_number_of_trucks.png
 INPUT .\coverage_VS_number_of_trucks.png
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr10.tfm
 INPUT .\number_of_trucks_VS_bins_visited.png
 INPUT .\number_of_trucks_VS_bins_visited.png
 INPUT number_of_trucks_VS_bins_visited.png

@@ -245,23 +245,17 @@ A significant impact of available trucks on collected waste can be observed. Fur
     \includegraphics[scale=0.6]{distance_VS_garbage_restricted.png}
     \caption{Distance traveled vs waste collected}\label{figz}
 \end{figure}
-
 \begin{figure}[H]
     \centering
-    \begin{subfigure}{0.5\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{Waste Difference Between Trucks.png}
-        \caption{Difference in waste between cases}\label{figd1}
-    \end{subfigure}%
-    \begin{subfigure}{0.5\textwidth}
-        \centering
-        \includegraphics[width=\linewidth]{Distance Difference Between Trucks Scatterplot.png}
-        \caption{Difference in distance between cases}\label{figd2}
-    \end{subfigure}
-    \caption{Trend Analysis between cases}
-    \label{figd}
+    \includegraphics[scale=0.6]{Waste Difference Between Trucks.png}
+    \caption{Difference in waste between cases}\label{figd1}
 \end{figure}
-
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{Distance Difference Between Trucks Scatterplot.png}
+    \caption{Difference in distance between cases}\label{figd2}
+\end{figure}
+\textcolor{red}{As observed in Figure \ref{figd1}, the difference of the increase of waste collected for the cases of different number of trucks per region is linear, that is, the difference remains more or less the same. This also appears to be true for the case of distance (Figure \ref{figd2}), which has slight deviations from a completely linear trend, but the deviations occur for both sides of the graph, making the deviations effectively inconsequential.}
 \begin{table}[H]
     \centering
     \caption{ Data for 6 trucks per region} \label{tab2}
@@ -463,48 +457,59 @@ In order to depict the effect of selected objective function weights on the wast
     \caption{Normalized weight sensitivity graph}\label{figs}
 \end{figure}
 
+\textcolor{red}{One of the most noticeable observations that can be derived from the sensitivity analysis is the changes in the distance and waste as the weights are varied. The behaviour seems anomalous at first glance, but it can be explained by the fact that the weights do not directly affect the waste collected and distance travelled. The weights only directly affect the objective function and the new routes that are calculated by it, as a result, affect the distance and waste values. Therefore, as the weights are changed, the calculated routes change. Since the paths in real life are not continuous, that is, they do not have paths of every possible length, the distance travelled and similarly, the waste collected values vary significantly as the weights vary.} 
+
+\textcolor{red}{However, we must keep in mind that this does not mean that the paths calculated are unideal. The calculated routes are still the best possible routes following all of the specified requirements and constraints.}
 
 
-\section{Discussion and Policy Suggestions}
-
-One of the important issues in the world today is the significant growth of waste production. The collection of waste is a highly visible and important municipal service that involves large expenditures. Waste collection problems are, however, one of the most difficult operational problems to solve, as it involves a lot of complex dynamic activities. Without modeling these activities a solution often have limited on-ground implementation. Our objective in this paper addresses these challenges by simultaneously modeling the dynamic changes in waste values of bin and truck to dynamically update the routes for maximizing the collected waste while covering less distance. The outcomes of various experiments proof that our methodology outperforms the existing static method of waste collection. Our model was able to collect almost similar amount of waste in significantly less distance. It was also able to cover the distance travelled in the case of real-time optimization is less than that of static one. It is due to the fact the optimal routes are calculated multiple times with different starting points based on the truck's current location. This makes the resultant route slightly more inefficient when compared to the initial calculation, but more efficient in the longer run.
 
 
+\section{Discussion}
 
-\textcolor{blue}{Having more trucks at your disposal is a matter of resources, and for a resource constrained region, their availability of trucks may not be sufficient for the amount of waste generated. That will, unless overcome by alternate methods such as multiple collection runs per vehicle, will lead to subpar waste collection, as shown by the data. However, those alternate methods are beyond the scope of the current work.
-}
+The collection of waste is a highly visible and important municipal service that involves large expenditures. Waste collection problems are, however, one of the most difficult operational problems to solve, as it involves a lot of complex dynamic activities. Without modeling these activities a solution often have limited on-ground implementation. Our objective in this paper addresses these challenges by simultaneously modeling the dynamic changes in waste values of bin and truck to dynamically update the routes for maximizing the collected waste while covering less distance. Moreover, the consideration of dynamic bin values replicates the realistic scenario. A very few research has coupled such variations with the dynamically varying routes based on the model objective. The outcomes of various experiments proof that our methodology outperforms the existing static method of waste collection. Our model was able to collect almost similar amount of waste in significantly less travelled distance. This can have direct implications on the carbon footprint and eventually on developing sustainable societies.
 
----Weight sensitivity--------
-One of the most noticeable observations that can be derived from the results is the weights attached to the two objectives in the objective function. In this case, the distance traveled was computed to be the main factor which must be considered when solving the objective function for the optimal solution. The waste collected appears to be almost completely irrelevant in this case. While this may look like an anomaly, this is solely due to the fact that this is a resource constrained operation. The trucks  have to continue their runs until they are full. Therefore, in the end, the amount of waste collected will always be equal to the maximum capacity, hence rendering maximizing the waste collected objective irrelevant.
-
----Weight sensitivity--------
-However, we must keep in mind that this will not always be the case. In a case where the resources, that is, the trucks are more than sufficient to cover the demand, the weight for the objective to maximize waste collected will be greater. The more is the resource greater than the requirement, the greater the weight of that objective will be.
-
-We also observe that the distance travelled in the case of real-time optimization is greater than that of static one. It is due to the fact the optimal routes are calculated multiple times with different starting points based on the truck's current location. This makes the resultant route slightly more inefficient when compared to the initial calculation. This is an unavoidable effect of recalculating the routes and not a problem with the algorithm as the path that is already been travelled is not considered by the newly calculated route, hence the resultant route is longer than the initial optimal route
-
-We have selected the city of Chandigarh as the base location for paper because while it is our goal to focus on resource constrained regions for route optimization for waste collection, we also want to make it general enough so that with a few tweaks, the same method can also be scaled to be used for more developed regions and cities. Chandigarh was found to be the most suitable choice as it is the perfect blend of the two goals that we have: it is a well-planned city and still retains some of the characteristics of a developing nation.
-
-Our program, once the initial setup of the nodes and the distance between two nodes is done, can efficiently and quickly calculate the optimal route that should be followed by a collection vehicle, whether once per run or in real time. Unlike the currently used systems that are either controlled manually or use general GPS systems to do their collection runs, our process is capable of:
+Another important aspect of a sustainable system that this study addresses is strategic planning of the available resources. As a general theory a lot of resources can solve the problem. However, this can be a challenge for a resource constrained society, as the resources are limited and their availability may not be sufficient for the amount of waste generated. A way to address this can be using alternate methods such as multiple collection runs per vehicle. However, this will have time limitations and can also lead to subpar waste collection, considering the dynamics of wastes. The outcomes of the model execution show that using a reasonably less number of collection trucks a large area can be catered with good efficiency. Further, the performed sensitivity analysis of various objective weights as a decision making tool can help planners preempt the collection scenarios, which makes this system highly relevant to city managers.
+Unlike the currently implemented systems with limited dynamic considerations, our solution:
 \begin{itemize}
-    \item Vastly improved performance in terms of distance travelled
-    \item Smart bins further reduce the distance travelled by removing the need to visit redundant nodes
-    \item We have used linear programming which is a simple yet novel approach to this problem and it is not too mathematically complex
-    \item Our program is able to calculate new paths according to new data in real-time which is much more flexible than the systems currently being used in most places
-    \item We also calculated the effects of resource availability on the overall performance and can further suggest the minimum amount of resources that would be sufficient for the operation.
+   
+    \item is capable of calculating optimal paths based on the dynamic updates (real-time fill levels of smart bins, priority to bins based on fill values, vehicle position and its fill levels ) that generally happen in real-time.
+    \item significantly improves the performance of waste collection system in terms of distance travelled and waste collected.
+    \item reduces the distance overheads by removing the need to visit redundant nodes.
+    \item being generic can be implemented to any city across the globe by updating the specific objectives and constraints. 
+    
+    \item addresses the challenges of decision makers concerning a system that could be implemented in the realistic environment. Our approach of modeling the problem as linear programming model makes it ideal for integrating it with a real-time system. 
+
 \end{itemize}
 
-For real world application of this method, the suggested policy would be to first use the software to calculate the current capabilities of the resources that are available, then apply the algorithm to utilize those resources, namely trucks, to their maximum potential and efficiency. If needed, how much more resources are needed to sufficiently cover the city in question can also be calculated by the software, and the results can be used as data for the requisition request of more resources.
+The paper put forwards following major policy suggestions that can be implemented to to support the vision of creating smart sustainable cities:
 
+\begin{itemize}
+\item Inclusion of waste collection system in climate resilience plan: Climate resilience based urban planning is at the centre of major decision-making systems. Waste collection involves trips of collection vehicles, which adds to carbon emission. Strategic routing of available vehicles can not only benefit the economic aspects but can also help reduce the carbon emissions. To achieve this the government can include the waste collection system with the climate resilience plan of the city. The methodology proposed in this research can serve as an important component of such systems.
+    
+\item Implementation of smart bins for community or regions:  Door-to-door collection of waste is not practiced in majority of city/town. The issue is even more challenging in dense urban regions with narrow lanes where accessibility of vehicles can be limited. However, smart bins for various unorganised and organized built-up regions can address the challenge. Smart bins with sensors that send fill details can help in prioritising them leading to better collection and routing strategies on the similar lines to our method. The information of waste type automatically sensed using smart sensors can further benefit the waste segregation which is an another major challenge in waste management.\cite{actionplan}
+
+ \item On-board computation: Future smart cities are going to be developed using modern technologies as its backbone. Technology can immensely benefit waste collection by implementing  numerous technologies in everyday collection practices. One of these valuable pieces of equipment is the on-board computation. The routing module proposed in the study integrated with Global Navigation Satellite Systems (GNSS) can be implemented in on-board computer for generating routes . Not only can the driver follow his route on the system, but can also communicate with the office notifying them of any important information. Benefits that increase driver efficiency are:
+ \begin{itemize}
+ \item Track routes in real-time
+   \begin{itemize}
+ \item relief driver can run route without any prior knowledge of it,  which can reduce unnecessary time and cost.\item the generated trip data can further be used to update the routing model based on the future requirements.
+   \item brings accountability to the system as stakeholders (decision makers, citizen) can track the vehicle and plan accordingly. Moreover, the decision makers can quantify the effectiveness of the collection process. 
+    
+ \end{itemize}
+ \item Integration with billing systems with smart bins
+   \begin{itemize}
+ \item by integrating the billing system in the routing software with smart bins, customers can for charged for extra collection thus not missing additional revenue. \item customers can also be charged for not segregating waste at the collection point, which can address the segregation process challenges, and will help bring accountability in the system.
+\end{itemize}
+\end{itemize}
+\end{itemize}
 \section{Conclusion}
-We have achieved most of our core goals of optimizing waste collection with a focus on resource constrained societies. We were able to devise a method to use the available resources as efficiently as possible and at the same time ensure that the method also remains viable in more developed regions if scaled accordingly. Yet there still were things that we were not able to implement in our current endeavour. 
+\textcolor{red}{There has been a noticeable lack of work in real-time optimization of VRP compared to standard static optimization. This paper fills that gap by designing a flexible real-time route optimization model that accepts and adapts to constantly updating data to provide optimal routes. This makes the model excellent for real world applications as it can take care of unseen circumstances and automatically adapt to them with little modification. The routes formed by real-time optimization have also been shown to be much more efficient when compared to static optimization models, reducing the distance travelled by around 35\% for the same amount of waste collected (Table \ref{tab5}).}
 
-In our process, we divide the total number of nodes into specific clusters depending upon the resources that we have. These clusters are called regions and in the current version, vehicles assigned to each cluster are completely independent of the points in another cluster, and will not collect from a node from another cluster even when it is more efficient to do so. 
+\textcolor{red}{The paper also fills the relatively niche research gap of VRP applications in resource constrained societies and developing countries. It achieves that goal by creating and testing the model for the city of Chandigarh, India. Chandigarh, being a relatively well planned city, still has many unplanned regions, This allowed us to test the effects of our model for both a developing as well as developed city. This enabled the model to deal with the challenges of a resource constrained society, while also being able to be scaled for a developed region. The paper also focuses on the policy application side of this problem. The sensitivity analysis allows decision makers to decide on the best compromise that is possible for limited resources and the unrestricted case details the minimum amount of resources that are needed to cover the whole region.}
 
-These can be taken as goals for future forays into this field to overcome the current limitations of our work. Scopes for future development may focus on improving upon our works by integrating more detailed street data like street signs, one-way roads and using the additional parameters as factors to provide a more street accurate route tailored for a specific region.
+Scopes for future development may focus on improving upon our works by integrating more detailed street data like street signs, one-way roads and using the additional parameters as factors to provide a more street accurate route tailored for a specific region. Further integration of real time data such as accidents, construction work etc. in route calculations to provide a more robust and exception friendly model may also be considered for further works.
 
-Future works may also focus on the effects different sets of weights may have on the results of the objective function for different granular levels of resource constraint. In our current work, we have focused solely on the best weights for one specific case. So further research can be done to find a more concrete relationship between weights, results and resource availability. 
-
-In our current method of real time route calculation, our algorithm does not consider the route already travelled when calculating the new routes for new data. This leads to some degree of inefficiency in the optimization process and is also a viable topic for further work in this field.
+Future forays into this field may also focus on the effects different sets of weights may have on the results of the objective function for more granular levels of resource constraint. In our current work, we have focused solely on the best weights for one specific case and sensitivity analysis for resource constrained case. So further research can be done to find a more concrete relationship between weights, results and resource availability. In our current method of real time route calculation, our algorithm does not consider the route already travelled when calculating the new routes for new data. This leads to some degree of inefficiency in the optimization process and is also a viable topic for further work in this field.
 \bibliographystyle{ieeetr}
 
 \bibliography{citation}
