@@ -1,16 +1,16 @@
 # Fdb version 3
-["bibtex AI Paper"] 1657819640 "AI Paper.aux" "AI Paper.bbl" "AI Paper" 1657819646
-  "AI Paper.aux" 1657819645 10202 5f26360209d01647628b44f1d086c80a "pdflatex"
+["bibtex AI Paper"] 1657819640 "AI Paper.aux" "AI Paper.bbl" "AI Paper" 1657821885
+  "AI Paper.aux" 1657821884 10202 5f26360209d01647628b44f1d086c80a "pdflatex"
   "C:/Program Files/MiKTeX/bibtex/bst/bibtex/ieeetr.bst" 1291864344 18361 1a00e58565e7f19bf2b3e1bfb82254ae ""
   "citation.bib" 1657819616 14453 aecada3a4e60b5524ccc82c3152a10b8 ""
   (generated)
-  "AI Paper.blg"
   "AI Paper.bbl"
-["pdflatex"] 1657819640 "c:/Users/ASUS/Documents/GitHub/Solid-Waste-Collection/AI Paper/AI Paper.tex" "AI Paper.pdf" "AI Paper" 1657819646
-  "AI Paper.aux" 1657819645 10202 5f26360209d01647628b44f1d086c80a "pdflatex"
+  "AI Paper.blg"
+["pdflatex"] 1657821878 "c:/Users/ASUS/Documents/GitHub/Solid-Waste-Collection/AI Paper/AI Paper.tex" "AI Paper.pdf" "AI Paper" 1657821885
+  "AI Paper.aux" 1657821884 10202 5f26360209d01647628b44f1d086c80a "pdflatex"
   "AI Paper.bbl" 1657819640 7531 e48f13ea2bb298da54587a643becd7d6 "bibtex AI Paper"
-  "AI Paper.out" 1657819645 1574 099ba488c6ebd2576dede5d348d50f45 "pdflatex"
-  "AI Paper.tex" 1657819615 56992 fde3e3cfd3c7a5c1f7e2595469665e38 ""
+  "AI Paper.out" 1657821884 1574 099ba488c6ebd2576dede5d348d50f45 "pdflatex"
+  "AI Paper.tex" 1657821876 56992 fde3e3cfd3c7a5c1f7e2595469665e38 ""
   "C:/Program Files/MiKTeX/fonts/tfm/jknappen/ec/tcrm1200.tfm" 993062508 1444 95ffe0f19b974d50849790c8225c7ef7 ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1233951848 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -185,7 +185,7 @@
   "C:/Users/ASUS/AppData/Roaming/MiKTeX/tex/latex/refcount/refcount.sty" 1576433952 9878 9e94e8fa600d95f9c7731bb21dfb67a4 ""
   "C:/Users/ASUS/AppData/Roaming/MiKTeX/tex/latex/relsize/relsize.sty" 1365244030 15542 c4cc3164fe24f2f2fbb06eb71b1da4c4 ""
   "C:/Users/ASUS/AppData/Roaming/MiKTeX/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1575571282 9715 b051d5b493d9fe5f4bc251462d039e5f ""
-  "Distance Difference Between Trucks Scatterplot.png" 1657635163 30127 7720673f1e865096933d085bf208b967 ""
+  "Distance Difference Between Trucks Scatterplot.png" 1657821857 30417 c188eb8ed44925247c5edb4d8e3804ba ""
   "Distance and Garbage Normalized VS W1.png" 1657632471 31784 235db654a1eb7de9d6b0eb7faca5149f ""
   "Dynamic_weighted_3_Truck.png" 1657632471 2688104 6187ccb2ed7d33581bbe9889bcb51231 ""
   "Dynamic_weighted_unrestricted.png" 1657632471 2759005 0a000263d1afeccec128d1aa4c811dab ""
@@ -196,12 +196,12 @@
   "Total_Distance_VS_W1_3_Trucks.png" 1657632471 18150 e2eaf5d8a6fbef714b674b139979b459 ""
   "Total_Garbage_VS_W1_3_Trucks.png" 1657632471 27021 a1616d316c2cf0d5c0883c1b37a22b4c ""
   "Waste Difference Between Trucks.png" 1657634358 17699 ef7e6c3eb773a19b5c7ad8b0b20b3f55 ""
-  "c:/Users/ASUS/Documents/GitHub/Solid-Waste-Collection/AI Paper/AI Paper.tex" 1657819615 56992 fde3e3cfd3c7a5c1f7e2595469665e38 ""
+  "c:/Users/ASUS/Documents/GitHub/Solid-Waste-Collection/AI Paper/AI Paper.tex" 1657821876 56992 fde3e3cfd3c7a5c1f7e2595469665e38 ""
   "coverage_VS_number_of_trucks.png" 1657306289 20679 abf171d864059d22d90b547b07d64eb7 ""
   "distance_VS_garbage_restricted.png" 1657389636 27737 7554fa7a3bd6b2835f84296d864b1226 ""
   "number_of_trucks_VS_bins_visited.png" 1657306289 33263 c03e4baf08e642d07d91d85687dbb1b3 ""
   (generated)
-  "AI Paper.log"
   "AI Paper.aux"
-  "AI Paper.pdf"
   "AI Paper.out"
+  "AI Paper.pdf"
+  "AI Paper.log"
