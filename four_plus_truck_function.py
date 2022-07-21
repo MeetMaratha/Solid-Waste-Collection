@@ -181,7 +181,9 @@ def update_fill(data, m):
             if fillRatio[k] != 0.0 and np.random.rand() < 0.80:
                 fillRatio[k] = fillRatio[k] + np.random.uniform(0, 1 - fillRatio[k]) / 10
     data.insert(data.shape[1], fillNewName, fillRatio)
+    data.insert(data.shape[1], fillNewName + str(m), fillRatio)
     # data[fillNewName] = fillRatio
+
     return data
 
 def calc_V(N, m, st):
@@ -191,7 +193,7 @@ def calc_V(N, m, st):
         V = [st] + N + [0]
     return V
 
-def dyn_multi_opt(df, visit, distances, t_name, n_done, visitedNodes, n_trucks = 1, folder_Path = '', ward_name = '', w1 = 0.5, w2 = 0.5, m = 0, obj_value = 0):
+def dyn_multi_opt(df, visit, distances, t_name, n_done, visitedNodes, n_trucks = 1, folder_Path = '', ward_name = '', w1 = 0.5, w2 = 0.5, m = 0, obj_value = 0, truck_fill = {}):
 
 # Change if you need number of variables and constraints
 # def dyn_multi_opt(df, visit, distances, t_name, n_done, visitedNodes, n_trucks = 1, folder_Path = '', ward_name = '', w1 = 0.5, w2 = 0.5, m = 0, obj_value = 0, NVarRegion = 0, NConstrRegion = 0):
@@ -199,7 +201,7 @@ def dyn_multi_opt(df, visit, distances, t_name, n_done, visitedNodes, n_trucks =
     # EACHRUNPOSSIBLE = 1
     # EACHRUNPOSSIBLE = 3 # For 5 Truck run
 
-
+    truck_fill[m] = []
     # Initializations
     # timesToRun = int(np.ceil(len(n_done) / EACHRUNPOSSIBLE))
     fillPrevName = 'fill_ratio_' + str(m - 1)
@@ -247,7 +249,7 @@ def dyn_multi_opt(df, visit, distances, t_name, n_done, visitedNodes, n_trucks =
                     print(visit[0].head())
                 TIME -= unnormalize * distances.iloc[int(visit[k].iloc[-1, 0]), next_element] / SPEED
                 visit[k].loc[len(visit[k])] = [next_element, df.loc[next_element, fillNewName]]
-                df.loc[next_element, [fillNewName, fillpmNewName + '_' + str(startNode[k]) + '_' + str(k) + '_' + str(k)]] = [0.0, 0.0]
+                df.loc[next_element, [fillNewName, fillpmNewName + '_' + str(startNode[k]) + '_' + str(k) + '_' + str(0)]] = [0.0, 0.0]
                 visitedNodes.add(next_element)
                 next_element = next(
                     y for x, y in arc if x == visit[k].iloc[-1 ,0]
@@ -262,7 +264,7 @@ def dyn_multi_opt(df, visit, distances, t_name, n_done, visitedNodes, n_trucks =
                 # ------------------------------------
                 TIME = 0
                 visit[k].loc[len(visit[k])] = [next_element, df.loc[next_element, fillNewName]]
-                df.loc[next_element, [fillNewName, fillpmNewName + '_' + str(startNode[k]) + '_' + counts[k] + '_' + str(k)]] = [0.0, 0.0]
+                df.loc[next_element, [fillNewName, fillpmNewName + '_' + str(startNode[k]) + '_' + str(k) + '_' + str(0)]] = [0.0, 0.0]
                 visitedNodes.add(next_element)
                 next_element = next(
                     y for x, y in arc if x == visit[k].iloc[-1 ,0]
@@ -289,6 +291,11 @@ def dyn_multi_opt(df, visit, distances, t_name, n_done, visitedNodes, n_trucks =
             fileName : str = folder_Path + 'Visited ' + ward_name + '/visited_' + t_name + '_' + str(k + 1) + '_' + str(w1) + '_' + str(w2) + '.csv'
             visit[k].to_csv(fileName, index = False)
             n_done[k] = 1
+    for k in range(len(n_done)):
+        if visit[k].iloc[-1, 0] == 0:
+            truck_fill[m].append(visit[k].iloc[-1, 1]*B_TO_T)
+        else :
+            truck_fill[m].append(np.sum(visit[k].iloc[:, 1])*B_TO_T)
     print(f"Done Status : {n_done}")
     m += 1
     if n_done == [1] * len(n_done):
@@ -298,16 +305,16 @@ def dyn_multi_opt(df, visit, distances, t_name, n_done, visitedNodes, n_trucks =
         # -----------------------------------------------
 
         fileName = folder_Path + ward_name + ' Data/' + t_name + '_multi_' + str(w1) + '_' + str(w2) + '.csv'
-        df.to_csv(fileName, index = False)
-        return obj_value
+        df.to_csv(fileName, index = True)
+        return obj_value, truck_fill
         
         # Change to get number of variables and constraints
         # return obj_value, NVarRegion, NConstrRegion
     
     # Recursive call
 
-    obj_value = dyn_multi_opt(df =df, visit = visit, visitedNodes = visitedNodes, distances = distances, t_name = t_name, n_done = n_done, w1 = w1, w2 = w2, n_trucks = n_trucks, folder_Path = folder_Path, ward_name = ward_name, obj_value = obj_value, m = m)
-    return obj_value
+    obj_value = dyn_multi_opt(df =df, visit = visit, visitedNodes = visitedNodes, distances = distances, t_name = t_name, n_done = n_done, w1 = w1, w2 = w2, n_trucks = n_trucks, folder_Path = folder_Path, ward_name = ward_name, obj_value = obj_value, m = m, truck_fill = truck_fill)
+    return obj_value, truck_fill
 
     # Change to get number of variables and constraints
     # obj_value = dyn_multi_opt(df =df, visit = visit, visitedNodes = visitedNodes, distances = distances, t_name = t_name, n_done = n_done, w1 = w1, w2 = w2, n_trucks = n_trucks, folder_Path = folder_Path, ward_name = ward_name, obj_value = obj_value, m = m, NVarRegion = NVarRegion, NConstrRegion = NConstrRegion)

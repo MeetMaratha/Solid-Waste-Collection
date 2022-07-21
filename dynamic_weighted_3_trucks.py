@@ -33,7 +33,7 @@ visit1, visit2, visit3 = (
     pd.DataFrame({'Node': pd.Series(0, dtype='int'), 'fill_ratio': pd.Series(0, dtype='float')}), 
     )
 visitedNodes = set()
-obj_value1 = dyn_multi_opt(data1, [visit1, visit2, visit3], visitedNodes = visitedNodes, distances = distance, ward_name = 'Truck 1', t_name = 'truck1', folder_Path = 'Data/Dynamic Data/Multiple Trucks/3 Trucks/', w1 = W1, w2 = W2, n_done = [0] * N_TRUCKS, n_trucks = N_TRUCKS)
+obj_value1, truck_fill1 = dyn_multi_opt(data1, [visit1, visit2, visit3], visitedNodes = visitedNodes, distances = distance, ward_name = 'Truck 1', t_name = 'truck1', folder_Path = 'Data/Dynamic Data/Multiple Trucks/3 Trucks/', w1 = W1, w2 = W2, n_done = [0] * N_TRUCKS, n_trucks = N_TRUCKS)
 print('\n Ward 1 Done \n')
 
 # Ward 2 Optimization
@@ -45,7 +45,7 @@ visit1, visit2, visit3 = (
     pd.DataFrame({'Node': pd.Series(0, dtype='int'), 'fill_ratio': pd.Series(0, dtype='float')}),
     )
 visitedNodes = set()
-obj_value2 = dyn_multi_opt(data2, [visit1, visit2, visit3], visitedNodes = visitedNodes, distances = distance, ward_name = 'Truck 2', t_name = 'truck2', folder_Path = 'Data/Dynamic Data/Multiple Trucks/3 Trucks/', w1 = W1, w2 = W2, n_done = [0] * N_TRUCKS, n_trucks = N_TRUCKS)
+obj_value2, truck_fill2 = dyn_multi_opt(data2, [visit1, visit2, visit3], visitedNodes = visitedNodes, distances = distance, ward_name = 'Truck 2', t_name = 'truck2', folder_Path = 'Data/Dynamic Data/Multiple Trucks/3 Trucks/', w1 = W1, w2 = W2, n_done = [0] * N_TRUCKS, n_trucks = N_TRUCKS)
 print('\n Ward 2 Done \n')
 
 # Ward 3 Optimization
@@ -57,7 +57,7 @@ visit1, visit2, visit3 = (
     pd.DataFrame({'Node': pd.Series(0, dtype='int'), 'fill_ratio': pd.Series(0, dtype='float')}), 
     )
 visitedNodes = set()
-obj_value3 = dyn_multi_opt(data3, [visit1, visit2, visit3], visitedNodes = visitedNodes, distances = distance, ward_name = 'Truck 3', t_name = 'truck3', folder_Path = 'Data/Dynamic Data/Multiple Trucks/3 Trucks/', w1 = W1, w2 = W2, n_done = [0] * N_TRUCKS, n_trucks = N_TRUCKS)
+obj_value3, truck_fill3 = dyn_multi_opt(data3, [visit1, visit2, visit3], visitedNodes = visitedNodes, distances = distance, ward_name = 'Truck 3', t_name = 'truck3', folder_Path = 'Data/Dynamic Data/Multiple Trucks/3 Trucks/', w1 = W1, w2 = W2, n_done = [0] * N_TRUCKS, n_trucks = N_TRUCKS)
 print('\n Ward 3 Done \n')
 
 
@@ -230,6 +230,7 @@ stats = pd.DataFrame(
             round( 100 * np.sum([i.shape[0] - 2 for i in v3])/ data[data.Ward == 2].shape[0], 4)],
     }, index=['Truck 1', 'Truck 2', 'Truck 3', 'Total Percentage'])
 stats.to_csv('Data/Dynamic Data/Multiple Trucks/3 Trucks/Statistics.csv')
+
 
 print('--------------- GENERATING MAP ----------------------')
 # Plotting routes
