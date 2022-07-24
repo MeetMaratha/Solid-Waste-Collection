@@ -56,7 +56,7 @@ collection bins for realistic outcomes.
 \section{Related Studies}
 
 A lot of work has been done in different aspects of waste collection, such as the costs, route optimization, smart bins, segregation, landfill and collection depot optimal locations. But, by far, the most common topic of work in this area has been Vehicle Routing Problem (VRP) in recent years. These works mostly address the problem of route optimization of collection vehicles for various cases such as landfill and collection sites allocation to minimize distance traveled by collection vehicles \cite{kulcar1996optimizing,rathore2020location,barzehkar2019landfill}, collection point clustering to increase collection efficiency \cite{al2021optimization} and calculating the optimal route with a fixed set of collection nodes and landfill/depot locations \cite{karadimas2008routing, amal2018sga, asefi2019mathematical,de2007decision, hannan2020waste,akhtar2017backtracking}. The mathematical calculations of the VRP have been solved through various preexisting route optimizers  \cite{karadimas2008routing,amal2018sga, malakahmad2014solid}, or by formulating the problem as single or multi-objective functions \cite{hannan2020waste,de2007decision}. The biggest drawbacks of these models is that they are predominantly static and calculate the optimal routes once for a set of collection points. Some studies have modeled the some dynamic aspects in the  routing such as dynamic routes and its impact on fuel consumption\cite{hannan2020waste},smart bins to track waste \cite{akhtar2017backtracking,lozano2018smart,baldo2021multi}. However, they lack the integration of real world aspects such as changes in routes based on the status of other vehicles etc., hence, are often not implemented in decision making system\cite{hannan2020waste}. Further, most of such works are developed for the cities of developed nations which are not resource constrained, and have less challenges as compared to cities of developing nations.\\
-Waste collection in resource constrained societies comes with the additional challenge of having to allocate insufficient resources to meet the demand. There are many studies that have been implemented on the cities of developing nature  that focus on this aspect of waste collection. \cite{chaudhary2019gis} and \cite{sk2020optimal} utilized Geographic Information Systems (GIS) to calculate optimal waste collection routes in the city of Allahabad and Durgapur in India respectively. Theese studies, however, didnt consider any dynamic considerations.\cite{ogwueleke2009route} and \cite{malakahmad2014solid} focused on route optimization in the cities of Onitsha, Ipoh , and Malaysia respectively.  \cite{rathore2020location} focused on optimal node allocation to maximize the waste collection in the city of Bilaspur, India.  These works, however, do not consider any real time data to calculate the optimal routes. 
+Waste collection in resource constrained societies comes with the additional challenge of having to allocate insufficient resources to meet the demand. There are many studies that have been implemented on the cities of developing nature  that focus on this aspect of waste collection. \cite{chaudhary2019gis} and \cite{sk2020optimal} utilized Geographic Information Systems (GIS) to calculate optimal waste collection routes in the city of Allahabad and Durgapur in India respectively.These studies, however, didnt consider any dynamic considerations.\cite{ogwueleke2009route} and \cite{malakahmad2014solid} focused on route optimization in the cities of Onitsha, Ipoh , and Malaysia respectively.  \cite{rathore2020location} focused on optimal node allocation to maximize the waste collection in the city of Bilaspur, India.  These works, however, do not consider any real time data to calculate the optimal routes. 
 There are a some excellent reviews by \cite{belien2014municipal,sulemana2018optimal,abdallah2020artificial} that a reader can refer to study the works related to optimization of waste collection and management systems. 
 
 
@@ -90,15 +90,24 @@ Best path for each agent\\
 
 An agent is initially assigned to a specific region, and it only collects waste from bins from the assigned region through the calculated optimal route. The” route” in our problem corresponds to path of the agent covering these bins and finishing its trip at a fixed depot. A path is made up of non-directional edges, and two or more edges make an “arc”. To make the implementation realistic we have applied limits on the total waste that the agents can collect. When the waste from a bin is collected by an agent the waste value of the vehicle is updated, and the numerical values of the distances are normalized to the same scale as the waste values to avoid any execution bias.\\
 The model is executed after a specific time interval by considering updated bins waste values, vehicle waste fill status, and vehicle location to generate a route. The route is updated after every fixed time interval. A priority is being given to a bin based on the distance to that bin from the agents current location and the waste value of bin. This means that a bin with the greater waste value is assigned a higher priority for the same distance value. When the waste from a bin is collected by an agent the waste fill percentage of the vehicle is updated. 
-The execution for any agent terminates when either a run is complete, or the vehicle is full. The ”run” in our problem signifies the process of agents reaching the depot through calculated routes in various time intervals. As the agents execute in parallel, if an agent, in one time interval fails to visit a does not visit a node because being full, other agent can cater the bin. We also considered the case when bin waste values could update even when the vehicle is moving on an edge and hasn't reached the next node. For such scenarios the model assumes that the vehicle has completed the current edge and considers the next node as the starting point in the next time interval. 
+The execution for any agent terminates when either a run is complete, or the vehicle is full. The ”run” in our problem signifies the process of agents reaching the depot through calculated routes in various time intervals. As the agents execute in parallel, if an agent, in one time interval fails to visit a does not visit a node because being full, other agent can cater the bin. We also considered the case when bin waste values could update even when the vehicle is moving on an edge and hasn’t reached the next node. For such scenarios the model assumes that the vehicle has completed the current edge and considers the next node as the starting point in the next time interval. 
 
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.6]{ExplanationFigure.png}
-    \caption{General representation of the process}\label{fige}
+    \caption{General representation of the dynamism of the process}\label{fige}
 \end{figure}
 
-Figure \ref{fige} depicts the discussed problem definition. Figure 1a depicts the starting state of the two agents $T=0$ at depot, and the percentage fill values for various bins (b1..b7). The fill percentage of agents are also shown. Figure 1b-1d illustrate the further time intervals ($T=T_1,T_2,T_m$) and the dynamic changes in the movement of truck and their fill percentage, updates in the bin fill percentage, and updated routes after each time intervals. It can be noted that truck1 goes to depot at  $T=m$ as its fill percentage becomes 100. The routes at that time is generated to move the truck on the shortest path to depot. Figure 1e depicts the last state at time interval $T=T_f$ when the agents finally return to the depot node at the final time $T=T_f$.
+
+Figure \ref{fige} depicts the discussed problem definition. Figure 1a depicts the starting state of the agent at time interval $T=0$ at depot, and the percentage fill values for various bins (b1..b7). The fill percentage of agents are also shown. Figure 1b-1d illustrate the further time intervals ($T=T_1,T_2,T_m$) and the dynamic changes in the movement of the truck and their fill percentage, updates in the bin fill percentage, and updated route after each time intervals. It can be noted that truck1 goes to depot at  $T=m$ as its fill percentage becomes 100. The routes at that time is generated to move the truck on the shortest path to depot. Figure 1e depicts the last state at time interval $T=T_f$ when the agent finally returns to the depot node at the final time $T=T_f$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{ExplanationFigure2.png}
+    \caption{General representation of the process for multiple agents}\label{fige2}
+\end{figure}
+
+\textcolor{red}{Figure \ref{fige2} depicts the ability of multiple agents to work together to cover bins which the other agent may not be able to cover}
 
 Four different execution scenarios are demonstrated. The first scenario restricts the available resources, which in our case is the collection vehicles. The second case runs the model without any restriction on available resources and demonstrates the impact of available resources on waste collection, bins covered and distance travelled for each region and accumulated at city scale. Lastly we emphasize the importance of dynamic consideration by comparing the outcome of dynamic model with the static model.
 
@@ -130,9 +139,9 @@ Table1 defines all the variables used in the mathematical formulation.
 		\hline \multirow{2}{*}{$Y_{i} \in \{0, 1\}$} & It is a binary variable that is 1 if a truck is \\
 		& visiting node i.\\
 		\hline \multirow{2}{*}{$u_{i}  \in [0, 100 -P_{t}] $} & The percentage fill of the truck at node i \\
-		& following given path, for a specific time slice.\\
+		& following given path, for a specific time interval.\\
 		\hline \multirow{2}{*}{$st \in D$} & The starting node of a truck in a\\
-		& new time slice.\\
+		& new time interval.\\
 		\hline \multirow{2}{*}{$w_{1} \in [0.0, 1.0]$} & The weight assigned to the distance \\
 		& objective of the objective function\\
 		\hline \multirow{2}{*}{$w_{2} \in [0.0, 1.0]$} & The weight assigned to the waste amount \\
@@ -140,7 +149,7 @@ Table1 defines all the variables used in the mathematical formulation.
 		\hline \multirow{1}{*}{$f_{i} \in [0.0, 1.0]$} & The fill ratio of bin at node i.\\
 		\hline \multirow{2}{*}{$BT \in \mathbb{R}^+$} & The conversion factor for fill \\
 		& of smart bin to fill of truck.\\
-		\hline \multirow{1}{*}{$P_{t} \in [0.0, 100.0]$} & Cumulative fill percentage of truck at a time slice t.\\
+		\hline \multirow{1}{*}{$P_{t} \in [0.0, 100.0]$} & Cumulative fill percentage of truck at a time interval t.\\
 		\hline
 	\end{tabular*}
 \end{table} 
@@ -168,7 +177,7 @@ The subscript 'st' denotes the starting node at the start of each time interval.
 \begin{equation}\label{eq3}
     \sum_{j\in N}X_{j,0}=1 ; \forall j \in N
 \end{equation}
-Node 0 is assigned to be the depot, the start and the end point of every collection run. Eq (\ref{eq2}) and Eq (\ref{eq3}) ensure the looping of the route, with the added caveat that since the calculations are made multiple times per run (called time slices) as new data is obtained, the value of the starting node for each subsequent time slice, after the initial one, changes. Therefore, these new starting nodes have to also be taken into consideration.
+Node 0 is assigned to be the depot, the start and the end point of every collection run. Eq (\ref{eq2}) and Eq (\ref{eq3}) ensure the looping of the route, with the added caveat that since the calculations are made multiple times per run (called time intervals) as new data is obtained, the value of the starting node for each subsequent time interval, after the initial one, changes. Therefore, these new starting nodes have to also be taken into consideration.
 \begin{equation}\label{eq4}
     \sum_{i\in N}\sum_{j\in D } X_{ji}=1 ; \forall i,j \in A ; j\ne i
 \end{equation}
@@ -177,7 +186,7 @@ Node 0 is assigned to be the depot, the start and the end point of every collect
 \end{equation}
 Eq \eqref{eq4} and Eq \eqref{eq5} specify that the nodes that are already visited by the truck in a collection run are not considered again for for further calculations, or in simpler terms, a node that has already been visited is not visited again in the same run.
 
-The variable $u_i$ is a temporary variable that resets to zero at the beginning of each time slice. It represents the percent the the truck is full for each separate calculation. Variable $P_t$ is the variable that stores all the cumulative progress of how full the truck is, in percent, over all the previous and subsequent time slice.
+The variable $u_i$ is a temporary variable that resets to zero at the beginning of each time interval. It represents the percent the the truck is full for each time interval. Variable $P_t$ is the variable that stores all the cumulative progress of how full the truck is, in percent, over all the previous and subsequent time interval.
 
 If:
 $$ X_{ij}=1$$
@@ -198,12 +207,12 @@ Eq \eqref{eq8} ensures that the amount of waste in a truck after reaching a node
 \begin{equation}\label{eqY}
 	\sum_{i\in N}Y_i f_i* BT\le100-P_t
 \end{equation}
-Eq \eqref{eqY} ensures that the truck will not collect waste from a node if collecting from that node makes the truck exceed its maximum capacity. Therefore, for the sake of maximizing waste collected, such nodes will not be taken into consideration for further time slices.
+Eq \eqref{eqY} ensures that the truck will not collect waste from a node if collecting from that node makes the truck exceed its maximum capacity. Therefore, for the sake of maximizing waste collected, such nodes will not be taken into consideration for further time intervals.
 \begin{equation}\label{eq12}
     u_i\le 100 - P_t
 \end{equation}
 $$\forall i \in N $$
-This constraint in Eq \eqref{eq12} ensures that for a single time slice in the collection run, the value of how full the truck is does not exceed its capacity. Since $P_t$ stores the cumulative fill percentages of the truck, in any subsequent and previous time slices, the fill percent of the truck should not exceed the sum of the previous fill percentage and the percent filled in the current calculation. 
+This constraint in Eq \eqref{eq12} ensures that for a single time interval in the collection run, the value of how full the truck is does not exceed its capacity. Since $P_t$ stores the cumulative fill percentages of the truck, in any subsequent and previous time intervals, the fill percent of the truck should not exceed the sum of the previous fill percentage and the percent filled in the current calculation. 
 
 With this, we have formulated our problem and now we can move on to implementing and calculating the solution for our problem
 
@@ -267,6 +276,32 @@ A significant impact of available trucks on collected waste can be observed. Fur
     \caption{Difference in distance between cases}\label{figd2}
 \end{figure}
 \textcolor{red}{As observed in Figure \ref{figd1}, the difference of the increase of waste collected for the cases of different number of trucks per region is linear, that is, the difference remains more or less the same. This also appears to be true for the case of distance (Figure \ref{figd2}), which has slight deviations from a completely linear trend, but the deviations occur for both sides of the graph, making the deviations effectively inconsequential.}
+% \begin{figure}[H]
+%     \centering
+%     \begin{subfigure}{0.5\textwidth}
+%         \centering
+%         \includegraphics[width=\linewidth]{Average Fill Ratio VS Time (Line-plot).png}
+%         \caption{Bin fill ratio vs Time interval}\label{figti1}
+%     \end{subfigure}%
+%     \begin{subfigure}{0.5\textwidth}
+%         \centering
+%         \includegraphics[width=\linewidth]{Total Truck Garbage VS Time (Line-Plot).png}
+%         \caption{Truck fill ratio vs Time interval}\label{figti2}
+%     \end{subfigure}
+%     \caption{Bins and trucks fill ratios}
+%     \label{figti}
+% \end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.7]{Average Fill Ratio VS Time (Line-plot).png}
+    \caption{Bin fill ratio vs Time interval}\label{figt1}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.7]{Total Truck Garbage VS Time (Line-Plot).png}
+    \caption{Truck fill ratio vs Time interval}\label{figt2}
+\end{figure}
+
 \begin{table}[H]
     \centering
     \caption{ Data for 6 trucks per region} \label{tab2}
@@ -468,7 +503,7 @@ In order to depict the effect of selected objective function weights on the wast
     \caption{Normalized weight sensitivity graph}\label{figs}
 \end{figure}
 
-\textcolor{red}{One of the most noticeable observations that can be derived from the sensitivity analysis is the changes in the distance and waste as the weights are varied. The behaviour seems anomalous at first glance, but it can be explained by the fact that the weights do not directly affect the waste collected and distance travelled. The weights only directly affect the objective function and the new routes that are calculated by it, as a result, affect the distance and waste values. Therefore, as the weights are changed, the calculated routes change. Since the paths in real life are not continuous, that is, they do not have paths of every possible length, the distance travelled and similarly, the waste collected values vary significantly as the weights vary.} 
+\textcolor{red}{One of the most noticeable observations that can be derived from the sensitivity analysis is the changes in the distance and waste as the weights are varied. The behaviour seems anomalous at first glance, but this is explained by the fact that due to having limited resources, the trucks operate at maximum capacity, therefore a change in the weight associated with waste collection does not have a significant effect and the objective function has to compensate for the change by varying the distance} 
 
 \textcolor{red}{However, we must keep in mind that this does not mean that the paths calculated are unideal. The calculated routes are still the best possible routes following all of the specified requirements and constraints.}
 

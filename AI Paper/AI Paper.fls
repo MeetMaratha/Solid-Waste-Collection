@@ -1010,6 +1010,13 @@ INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam7.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
+INPUT .\ExplanationFigure2.png
+INPUT .\ExplanationFigure2.png
+INPUT ExplanationFigure2.png
+INPUT .\ExplanationFigure2.png
+INPUT .\ExplanationFigure2.png
+INPUT .\ExplanationFigure2.png
+INPUT .\ExplanationFigure2.png
 INPUT .\Nodes.png
 INPUT .\Nodes.png
 INPUT Nodes.png
@@ -1038,6 +1045,20 @@ INPUT .\Distance Difference Between Trucks Scatterplot.png
 INPUT .\Distance Difference Between Trucks Scatterplot.png
 INPUT .\Distance Difference Between Trucks Scatterplot.png
 INPUT .\Distance Difference Between Trucks Scatterplot.png
+INPUT .\Average Fill Ratio VS Time (Line-plot).png
+INPUT .\Average Fill Ratio VS Time (Line-plot).png
+INPUT Average Fill Ratio VS Time (Line-plot).png
+INPUT .\Average Fill Ratio VS Time (Line-plot).png
+INPUT .\Average Fill Ratio VS Time (Line-plot).png
+INPUT .\Average Fill Ratio VS Time (Line-plot).png
+INPUT .\Average Fill Ratio VS Time (Line-plot).png
+INPUT .\Total Truck Garbage VS Time (Line-Plot).png
+INPUT .\Total Truck Garbage VS Time (Line-Plot).png
+INPUT Total Truck Garbage VS Time (Line-Plot).png
+INPUT .\Total Truck Garbage VS Time (Line-Plot).png
+INPUT .\Total Truck Garbage VS Time (Line-Plot).png
+INPUT .\Total Truck Garbage VS Time (Line-Plot).png
+INPUT .\Total Truck Garbage VS Time (Line-Plot).png
 INPUT .\coverage_VS_number_of_trucks.png
 INPUT .\coverage_VS_number_of_trucks.png
 INPUT coverage_VS_number_of_trucks.png
