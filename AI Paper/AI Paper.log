@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Arch Linux) (preloaded format=pdflatex 2022.7.18)  2 AUG 2022 20:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Arch Linux) (preloaded format=pdflatex 2022.7.18)  4 AUG 2022 00:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -836,13 +836,13 @@ ed on input line 275.
 (pdftex.def)             Requested size: 364.36406pt x 205.36882pt.
  [10 <./distance_VS_garbage_restricted.png> <./Waste Difference Between Trucks.
 png>]
-<Average Fill Ratio VS Time (Line-plot).png, id=212, 380.42125pt x 362.35374pt>
+<Average Fill Ratio VS Time (Line-plot).png, id=212, 382.42876pt x 362.35374pt>
 
 File: Average Fill Ratio VS Time (Line-plot).png Graphic file (type png)
 <use Average Fill Ratio VS Time (Line-plot).png>
 Package pdftex.def Info: Average Fill Ratio VS Time (Line-plot).png  used on in
 put line 296.
-(pdftex.def)             Requested size: 266.29305pt x 253.64589pt.
+(pdftex.def)             Requested size: 267.69829pt x 253.64589pt.
 <Total Truck Garbage VS Time (Line-Plot).png, id=213, 357.335pt x 343.2825pt>
 File: Total Truck Garbage VS Time (Line-Plot).png Graphic file (type png)
 <use Total Truck Garbage VS Time (Line-Plot).png>
@@ -929,7 +929,7 @@ Package rerunfilecheck Info: File `"AI Paper".out' has not changed.
 Here is how much of TeX's memory you used:
  23288 strings out of 478238
  432403 string characters out of 5850456
- 716916 words of memory out of 5000000
+ 716914 words of memory out of 5000000
  41019 multiletter control sequences out of 15000+600000
  480254 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -947,7 +947,7 @@ s/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 mf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-dist/fonts/
 type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/pub
 lic/cm-super/sfrm1200.pfb>
-Output written on "AI Paper.pdf" (21 pages, 4557380 bytes).
+Output written on "AI Paper.pdf" (21 pages, 4557125 bytes).
 PDF statistics:
  409 PDF objects out of 1000 (max. 8388607)
  318 compressed objects within 4 object streams
