@@ -1017,6 +1017,9 @@ INPUT .\ExplanationFigure2.png
 INPUT .\ExplanationFigure2.png
 INPUT .\ExplanationFigure2.png
 INPUT .\ExplanationFigure2.png
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam5.tfm
+INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm5.tfm
 INPUT .\Nodes.png
 INPUT .\Nodes.png
 INPUT Nodes.png
@@ -1024,41 +1027,13 @@ INPUT .\Nodes.png
 INPUT .\Nodes.png
 INPUT .\Nodes.png
 INPUT .\Nodes.png
-INPUT .\distance_VS_garbage_restricted.png
-INPUT .\distance_VS_garbage_restricted.png
-INPUT distance_VS_garbage_restricted.png
-INPUT .\distance_VS_garbage_restricted.png
-INPUT .\distance_VS_garbage_restricted.png
-INPUT .\distance_VS_garbage_restricted.png
-INPUT .\distance_VS_garbage_restricted.png
-INPUT .\Waste Difference Between Trucks.png
-INPUT .\Waste Difference Between Trucks.png
-INPUT Waste Difference Between Trucks.png
-INPUT .\Waste Difference Between Trucks.png
-INPUT .\Waste Difference Between Trucks.png
-INPUT .\Waste Difference Between Trucks.png
-INPUT .\Waste Difference Between Trucks.png
-INPUT .\Distance Difference Between Trucks Scatterplot.png
-INPUT .\Distance Difference Between Trucks Scatterplot.png
-INPUT Distance Difference Between Trucks Scatterplot.png
-INPUT .\Distance Difference Between Trucks Scatterplot.png
-INPUT .\Distance Difference Between Trucks Scatterplot.png
-INPUT .\Distance Difference Between Trucks Scatterplot.png
-INPUT .\Distance Difference Between Trucks Scatterplot.png
-INPUT .\Average Fill Ratio VS Time (Line-plot).png
-INPUT .\Average Fill Ratio VS Time (Line-plot).png
-INPUT Average Fill Ratio VS Time (Line-plot).png
-INPUT .\Average Fill Ratio VS Time (Line-plot).png
-INPUT .\Average Fill Ratio VS Time (Line-plot).png
-INPUT .\Average Fill Ratio VS Time (Line-plot).png
-INPUT .\Average Fill Ratio VS Time (Line-plot).png
-INPUT .\Total Truck Garbage VS Time (Line-Plot).png
-INPUT .\Total Truck Garbage VS Time (Line-Plot).png
-INPUT Total Truck Garbage VS Time (Line-Plot).png
-INPUT .\Total Truck Garbage VS Time (Line-Plot).png
-INPUT .\Total Truck Garbage VS Time (Line-Plot).png
-INPUT .\Total Truck Garbage VS Time (Line-Plot).png
-INPUT .\Total Truck Garbage VS Time (Line-Plot).png
+INPUT .\Combined graph Enlarged and table.png
+INPUT .\Combined graph Enlarged and table.png
+INPUT Combined graph Enlarged and table.png
+INPUT .\Combined graph Enlarged and table.png
+INPUT .\Combined graph Enlarged and table.png
+INPUT .\Combined graph Enlarged and table.png
+INPUT .\Combined graph Enlarged and table.png
 INPUT .\coverage_VS_number_of_trucks.png
 INPUT .\coverage_VS_number_of_trucks.png
 INPUT coverage_VS_number_of_trucks.png
@@ -1109,32 +1084,6 @@ INPUT .\Total Garbage Comparision of Static and Dynamic.png
 INPUT .\Total Garbage Comparision of Static and Dynamic.png
 INPUT .\Total Garbage Comparision of Static and Dynamic.png
 INPUT .\Total Garbage Comparision of Static and Dynamic.png
-INPUT .\Total_Garbage_VS_W1_3_Trucks.png
-INPUT .\Total_Garbage_VS_W1_3_Trucks.png
-INPUT Total_Garbage_VS_W1_3_Trucks.png
-INPUT .\Total_Garbage_VS_W1_3_Trucks.png
-INPUT .\Total_Garbage_VS_W1_3_Trucks.png
-INPUT .\Total_Garbage_VS_W1_3_Trucks.png
-INPUT .\Total_Garbage_VS_W1_3_Trucks.png
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmmi10.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmsy10.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmex10.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
-INPUT .\Total_Distance_VS_W1_3_Trucks.png
-INPUT .\Total_Distance_VS_W1_3_Trucks.png
-INPUT Total_Distance_VS_W1_3_Trucks.png
-INPUT .\Total_Distance_VS_W1_3_Trucks.png
-INPUT .\Total_Distance_VS_W1_3_Trucks.png
-INPUT .\Total_Distance_VS_W1_3_Trucks.png
-INPUT .\Total_Distance_VS_W1_3_Trucks.png
-INPUT .\Distance and Garbage Normalized VS W1.png
-INPUT .\Distance and Garbage Normalized VS W1.png
-INPUT Distance and Garbage Normalized VS W1.png
-INPUT .\Distance and Garbage Normalized VS W1.png
-INPUT .\Distance and Garbage Normalized VS W1.png
-INPUT .\Distance and Garbage Normalized VS W1.png
-INPUT .\Distance and Garbage Normalized VS W1.png
 INPUT .\AI Paper.bbl
 INPUT AI Paper.bbl
 INPUT .\AI Paper.bbl
@@ -1148,8 +1097,6 @@ INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx12.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx12.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmex10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmex10.pfb
-INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb
-INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi12.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi12.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi8.pfb
@@ -1160,6 +1107,8 @@ INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmr12.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmr12.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmr17.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmr17.pfb
+INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmr7.pfb
+INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmr7.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmr8.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmr8.pfb
 INPUT C:\Program Files\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy10.pfb

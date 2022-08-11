@@ -30,6 +30,39 @@ N.~Akbarpour, A.~Salehi-Amiri, M.~Hajiaghaei-Keshteli, and D.~Oliva, ``An
   optimization using vehicle routing problem,'' {\em Soft Computing}, vol.~25,
   no.~8, pp.~6707--6727, 2021.
 
+\bibitem{anagnostopoulos2014effective}
+T.~V. Anagnostopoulos and A.~Zaslavsky, ``Effective waste collection with
+  shortest path semi-static and dynamic routing,'' in {\em International
+  conference on next generation wired/wireless networking}, pp.~95--105,
+  Springer, 2014.
+
+\bibitem{anagnostopoulos2015assessing}
+T.~Anagnostopoulos, K.~Kolomvatsos, C.~Anagnostopoulos, A.~Zaslavsky, and
+  S.~Hadjiefthymiades, ``Assessing dynamic models for high priority waste
+  collection in smart cities,'' {\em Journal of Systems and Software},
+  vol.~110, pp.~178--192, 2015.
+
+\bibitem{alwabli2020dynamic}
+A.~Alwabli and I.~Kostanic, ``Dynamic route optimization for waste collection
+  using genetic algorithm,'' in {\em 2020 International Conference on Computer
+  Science and Its Application in Agriculture (ICOSICA)}, pp.~1--7, IEEE, 2020.
+
+\bibitem{dugdhe2016efficient}
+S.~Dugdhe, P.~Shelar, S.~Jire, and A.~Apte, ``Efficient waste collection
+  system,'' in {\em 2016 international conference on internet of things and
+  applications (IOTA)}, pp.~143--147, IEEE, 2016.
+
+\bibitem{chaudhari2018solid}
+S.~S. Chaudhari and V.~Y. Bhole, ``Solid waste collection as a service using
+  iot-solution for smart cities,'' in {\em 2018 International Conference on
+  Smart City and Emerging Technology (ICSCET)}, pp.~1--5, IEEE, 2018.
+
+\bibitem{badve2020garbage}
+M.~Badve, A.~Chaudhari, P.~Davda, V.~Bagaria, and D.~Kalbande, ``Garbage
+  collection system using iot for smart city,'' in {\em 2020 Fourth
+  International Conference on I-SMAC (IoT in Social, Mobile, Analytics and
+  Cloud)(I-SMAC)}, pp.~138--143, IEEE, 2020.
+
 \bibitem{han2015waste}
 H.~Han and E.~Ponce~Cueto, ``Waste collection vehicle routing problem:
   literature review,'' {\em PROMET-Traffic\&Transportation}, vol.~27, no.~4,
@@ -100,6 +133,12 @@ A.~Malakahmad, P.~M. Bakri, M.~R.~M. Mokhtar, and N.~Khalil, ``Solid waste
   collection routes optimization via gis techniques in ipoh city, malaysia,''
   {\em Procedia Engineering}, vol.~77, pp.~20--27, 2014.
 
+\bibitem{grace2021smart}
+E.~Grace Mary~Kanaga and L.~R. Jacob, ``Smart solution for waste management: A
+  coherent framework based on iot and big data analytics,'' in {\em
+  Intelligence in Big Data Technologies—Beyond the Hype}, pp.~97--106,
+  Springer, 2021.
+
 \bibitem{lozano2018smart}
 {\'A}.~Lozano, J.~Caridad, J.~F. De~Paz, G.~Villarrubia~Gonzalez, and J.~Bajo,
   ``Smart waste collection system with low consumption lorawan nodes and route
@@ -145,11 +184,6 @@ M.~Abdallah, M.~A. Talib, S.~Feroz, Q.~Nasir, H.~Abdalla, and B.~Mahfood,
 
 \bibitem{gurobi}
 {Gurobi Optimization, LLC}, ``{Gurobi Optimizer Reference Manual},'' 2022.
-
-\bibitem{degel2015time}
-D.~Degel, L.~Wiesche, S.~Rachuba, and B.~Werners, ``Time-dependent ambulance
-  allocation considering data-driven empirically required coverage,'' {\em
-  Health care management science}, vol.~18, no.~4, pp.~444--458, 2015.
 
 \bibitem{actionplan}
 {Central Pollution Control Board(CPCB)}, ``{The National Action Plan for
