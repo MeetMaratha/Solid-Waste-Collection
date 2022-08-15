@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Arch Linux) (preloaded format=pdflatex 2022.7.18)  14 AUG 2022 19:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Arch Linux) (preloaded format=pdflatex 2022.7.18)  15 AUG 2022 18:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -808,11 +808,11 @@ Overfull \hbox (2.30313pt too wide) in paragraph at lines 119--147
  []
 
 [6 <./ExplanationFigure2.png>] [7] [8]
-<Nodes.png, id=202, 1048.91875pt x 623.32875pt>
+<Nodes.png, id=202, 844.8363pt x 597.432pt>
 File: Nodes.png Graphic file (type png)
 <use Nodes.png>
 Package pdftex.def Info: Nodes.png  used on input line 216.
-(pdftex.def)             Requested size: 419.56006pt x 249.32707pt.
+(pdftex.def)             Requested size: 337.92853pt x 238.96857pt.
 <Combined graph Enlarged and table.png, id=203, 361.35pt x 361.35pt>
 File: Combined graph Enlarged and table.png Graphic file (type png)
 <use Combined graph Enlarged and table.png>
@@ -837,14 +837,19 @@ File: number_of_trucks_VS_bins_visited.png Graphic file (type png)
 Package pdftex.def Info: number_of_trucks_VS_bins_visited.png  used on input li
 ne 375.
 (pdftex.def)             Requested size: 241.84843pt x 136.31367pt.
-<Dynamic_weighted_unrestricted.png, id=236, 1089.06876pt x 633.36626pt>
+<Dynamic_weighted_unrestricted.png, id=236, 338.7054pt x 194.4063pt>
 File: Dynamic_weighted_unrestricted.png Graphic file (type png)
 <use Dynamic_weighted_unrestricted.png>
 Package pdftex.def Info: Dynamic_weighted_unrestricted.png  used on input line 
 386.
-(pdftex.def)             Requested size: 435.61978pt x 253.34201pt.
- [12 <./coverage_VS_number_of_trucks.png> <./number_of_trucks_VS_bins_visited.p
-ng>]
+(pdftex.def)             Requested size: 508.05685pt x 291.6087pt.
+
+Overfull \hbox (24.35999pt too wide) in paragraph at lines 386--387
+ [][] 
+ []
+
+[12 <./coverage_VS_number_of_trucks.png> <./number_of_trucks_VS_bins_visited.pn
+g>]
 <Static_Weighted_3_Truck.png, id=252, 1024.82875pt x 639.38875pt>
 File: Static_Weighted_3_Truck.png Graphic file (type png)
 <use Static_Weighted_3_Truck.png>
@@ -855,8 +860,7 @@ File: Dynamic_weighted_3_Truck.png Graphic file (type png)
 <use Dynamic_weighted_3_Truck.png>
 Package pdftex.def Info: Dynamic_weighted_3_Truck.png  used on input line 427.
 (pdftex.def)             Requested size: 314.37692pt x 192.42035pt.
-
-[13 <./Dynamic_weighted_unrestricted.png>]
+ [13 <./Dynamic_weighted_unrestricted.png>]
 <Total Distance Comparision of Static and Dynamic.png, id=267, 607.26875pt x 34
 2.27875pt>
 File: Total Distance Comparision of Static and Dynamic.png Graphic file (type p
@@ -875,13 +879,13 @@ sed on input line 440.
 (pdftex.def)             Requested size: 241.84843pt x 136.2794pt.
  [14 <./Static_Weighted_3_Truck.png> <./Dynamic_weighted_3_Truck.png> <./Total 
 Distance Comparision of Static and Dynamic.png> <./Total Garbage Comparision of
- Static and Dynamic.png>] [15]
-[16] (./AI Paper.bbl [17] [18])
-<9 Graphs combined.png, id=300, 542.025pt x 498.663pt>
+ Static and Dynamic.png>]
+[15] [16] (./AI Paper.bbl [17] [18])
+<9 Graphs combined.png, id=300, 542.025pt x 517.935pt>
 File: 9 Graphs combined.png Graphic file (type png)
 <use 9 Graphs combined.png>
 Package pdftex.def Info: 9 Graphs combined.png  used on input line 537.
-(pdftex.def)             Requested size: 498.66077pt x 458.76791pt.
+(pdftex.def)             Requested size: 498.66077pt x 476.49806pt.
 
 Overfull \hbox (14.9639pt too wide) in paragraph at lines 537--538
  [][][] 
@@ -912,7 +916,7 @@ usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-dist/fonts/ty
 pe1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/publi
 c/cm-super/sfrm1200.pfb>
-Output written on "AI Paper.pdf" (20 pages, 5408899 bytes).
+Output written on "AI Paper.pdf" (20 pages, 11283000 bytes).
 PDF statistics:
  397 PDF objects out of 1000 (max. 8388607)
  319 compressed objects within 4 object streams

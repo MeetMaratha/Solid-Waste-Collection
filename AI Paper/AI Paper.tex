@@ -207,8 +207,8 @@ $$\forall i \in N $$
 \section{Case Studies and Empirical Results}
 
 \subsection{Data Preparation}
-
-To prove the effectiveness of the model, we empirically tested the model for the city of Chandigarh in India. The city is located by the foothills of the Shivalik range of the Himalayas in northwest India. It covers an area of approximately 114 km$^2$. It borders the states of Punjab and Haryana. The city is known for being the first planned city of India. The city also has various scattered unplanned built-up patches such as Burail, Nayagaon. The mixed built-up typology was suitable to test the methodology. Hence, the city was found suitable to test the methodology. We generated various waste collection points (location of smart bins) for the city. A total of 300 points were generated randomly using Geographic Information System (GIS) functionalities, with the constraint that the point should fall on the road networks. The road network was extracted from Open Street Map (OSM)\footnote{https://www.openstreetmap.org/} database. OpenStreetMap API was then used to calculate the distance between all bins, and generate a distance matrix which was used in the optimization process. We applied K-Means clustering algorithm to cluster these points in a fixed set of clusters (see Figure 1). In this paper we have selected total clusters to be three. The number can be updated based on user requirements. After clustering, region1, region2 and region3 had 95, 111 and 94 points, respectively. The clusters were considered as three regions for which CV had to be allocated. To replicate the actual field activities we have considered that a CV starts and ends its route at the depot (see Figure) \ref{figm})
+% Changes made here to area number and new image added
+To prove the effectiveness of the model, we empirically tested the model for the city of Chandigarh in India. The city is located by the foothills of the Shivalik range of the Himalayas in northwest India. It covers an area of approximately 148.95 km$^2$. It borders the states of Punjab and Haryana. The city is known for being the first planned city of India. The city also has various scattered unplanned built-up patches such as Burail, Nayagaon. The mixed built-up typology was suitable to test the methodology. Hence, the city was found suitable to test the methodology. We generated various waste collection points (location of smart bins) for the city. A total of 300 points were generated randomly using Geographic Information System (GIS) functionalities, with the constraint that the point should fall on the road networks. The road network was extracted from Open Street Map (OSM)\footnote{https://www.openstreetmap.org/} database. OpenStreetMap API was then used to calculate the distance between all bins, and generate a distance matrix which was used in the optimization process. We applied K-Means clustering algorithm to cluster these points in a fixed set of clusters (see Figure 1). In this paper we have selected total clusters to be three. The number can be updated based on user requirements. After clustering, region1, region2 and region3 had 95, 111 and 94 points, respectively. The clusters were considered as three regions for which CV had to be allocated. To replicate the actual field activities we have considered that a CV starts and ends its route at the depot (see Figure) \ref{figm})
 
 
 \begin{figure}[H]
@@ -380,10 +380,10 @@ Often the decision makers want to derive the requirement of resources that could
 \end{figure}
 
  
-
+% Changes here. Added new image
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.4]{Dynamic_weighted_unrestricted.png} % New Image added
+    \includegraphics[scale=1.5]{Dynamic_weighted_unrestricted.png} % New Image added
     \caption{Realtime Unrestricted}\label{fig2}
 \end{figure}
 

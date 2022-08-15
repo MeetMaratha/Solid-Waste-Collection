@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="Collection_Vehicle_5_Ward_1" id="Collection_Vehicle_5_Ward_1">
+	<SimpleField name="start" type="string"></SimpleField>
+	<SimpleField name="end" type="string"></SimpleField>
+	<SimpleField name="cost" type="float"></SimpleField>
+</Schema>
+<Folder><name>Collection_Vehicle_5_Ward_1</name>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#Collection_Vehicle_5_Ward_1">
+		<SimpleData name="start">76.693718, 30.698585</SimpleData>
+		<SimpleData name="end">76.71447, 30.712302</SimpleData>
+		<SimpleData name="cost">0.0283534724458901</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><coordinates>76.6937408440054,30.6985485461402 76.6940845,30.6987639 76.6954119,30.6995957 76.6995352,30.7021603 76.7003986,30.702699 76.7010676,30.7030772 76.7012279,30.7031869 76.7013969,30.7032962 76.7015738,30.7033862 76.7016689,30.7034507 76.7023122,30.703849 76.7043515,30.7051342 76.7069382,30.7068148 76.7074972,30.7071355 76.7074452,30.7072091 76.7109577,30.7094352 76.7116176,30.7098525 76.7128134,30.7105803 76.7121315,30.7114274 76.7106767,30.7131691 76.7107512,30.7132159 76.7116513,30.7137812 76.7118388,30.7135591 76.7123492,30.7129604 76.7126892,30.7125533 76.7128589,30.7123471 76.7131916,30.7125558 76.7135095,30.7127553 76.7139288,30.7130184 76.714515887366,30.7123418176086</coordinates></LineString>
+  </Placemark>
+</Folder>
+</Document></kml>
