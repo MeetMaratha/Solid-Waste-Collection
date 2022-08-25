@@ -139,6 +139,29 @@ E.~Grace Mary~Kanaga and L.~R. Jacob, ``Smart solution for waste management: A
   Intelligence in Big Data Technologies—Beyond the Hype}, pp.~97--106,
   Springer, 2021.
 
+\bibitem{aleyadeh2018iot}
+S.~Aleyadeh and A.-E.~M. Taha, ``An iot-based architecture for waste
+  management,'' in {\em 2018 IEEE International Conference on Communications
+  Workshops (ICC Workshops)}, pp.~1--4, IEEE, 2018.
+
+\bibitem{ramos2018smart}
+T.~R.~P. Ramos, C.~S. de~Morais, and A.~P. Barbosa-P{\'o}voa, ``The smart waste
+  collection routing problem: Alternative operational management approaches,''
+  {\em Expert Systems with Applications}, vol.~103, pp.~146--158, 2018.
+
+\bibitem{anagnostopoulos2018stochastic}
+T.~Anagnostopoulos, A.~Zaslavsky, I.~Sosunova, P.~Fedchenkov, A.~Medvedev,
+  K.~Ntalianis, C.~Skourlas, A.~Rybin, and S.~Khoruznikov, ``A stochastic
+  multi-agent system for internet of things-enabled waste management in smart
+  cities,'' {\em Waste Management \& Research}, vol.~36, no.~11,
+  pp.~1113--1121, 2018.
+
+\bibitem{anagnostopoulos2015robust}
+T.~Anagnostopoulos, A.~Zaslavsky, and A.~Medvedev, ``Robust waste collection
+  exploiting cost efficiency of iot potentiality in smart cities,'' in {\em
+  2015 International conference on recent advances in internet of things
+  (RIoT)}, pp.~1--6, IEEE, 2015.
+
 \bibitem{lozano2018smart}
 {\'A}.~Lozano, J.~Caridad, J.~F. De~Paz, G.~Villarrubia~Gonzalez, and J.~Bajo,
   ``Smart waste collection system with low consumption lorawan nodes and route
@@ -165,6 +188,24 @@ M.~M. Sk, S.~A. Ali, and A.~Ahmad, ``Optimal sanitary landfill site selection
 T.~Ogwueleke, ``Route optimization for solid waste collection: Onitsha
   (nigeria) case study,'' {\em Journal of Applied Sciences and Environmental
   Management}, vol.~13, no.~2, 2009.
+
+\bibitem{vasagade2017dynamic}
+T.~S. Vasagade, S.~S. Tamboli, and A.~D. Shinde, ``Dynamic solid waste
+  collection and management system based on sensors, elevator and gsm,'' in
+  {\em 2017 International conference on inventive communication and
+  computational technologies (ICICCT)}, pp.~263--267, IEEE, 2017.
+
+\bibitem{medvedev2015waste}
+A.~Medvedev, P.~Fedchenkov, A.~Zaslavsky, T.~Anagnostopoulos, and
+  S.~Khoruzhnikov, ``Waste management as an iot-enabled service in smart
+  cities,'' in {\em Internet of Things, Smart Spaces, and Next Generation
+  Networks and Systems}, pp.~104--115, Springer, 2015.
+
+\bibitem{malapur2017iot}
+B.~Malapur and V.~R. Pattanshetti, ``Iot based waste management: An application
+  to smart city,'' in {\em 2017 International Conference on Energy,
+  Communication, Data Analytics and Soft Computing (ICECDS)}, pp.~2476--2486,
+  IEEE, 2017.
 
 \bibitem{belien2014municipal}
 J.~Beli{\"e}n, L.~De~Boeck, and J.~Van~Ackere, ``Municipal solid waste
