@@ -2,7 +2,9 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from four_plus_truck_function import dyn_multi_opt
-from show_routes import CreateMap
+# from show_routes import CreateMap
+from show_routes import CreateJSON
+
 
 
 # Constants
@@ -189,12 +191,15 @@ stats.to_csv('Data/Dynamic Data/Multiple Trucks/2 Trucks/Statistics.csv')
 print('--------------- GENERATING MAP ----------------------')
 # Plotting routes
 
-map = CreateMap()
-map.createRoutes('Data/Dynamic Data/Multiple Trucks/2 Trucks/', N_WARDS, N_TRUCKS, W1, W2, Multiple_truck = True)
-map.createLatLong('Data/Bin Locations.csv', N_WARDS)
-map.createRoutesDict(N_WARDS)
-map.addRoutesToMap(N_WARDS, N_TRUCKS)
-map.addDepot()
-map.addNodes('Data/Bin Locations.csv')
-map.saveMap('Data/Dynamic Data/Multiple Trucks/2 Trucks/')
-map.displayMap('Data/Dynamic Data/Multiple Trucks/2 Trucks/')
+# map = CreateMap()
+# map.createRoutes('Data/Dynamic Data/Multiple Trucks/2 Trucks/', N_WARDS, N_TRUCKS, W1, W2, Multiple_truck = True)
+# map.createLatLong('Data/Bin Locations.csv', N_WARDS)
+# map.createRoutesDict(N_WARDS)
+# map.addRoutesToMap(N_WARDS, N_TRUCKS)
+# map.addDepot()
+# map.addNodes('Data/Bin Locations.csv')
+# map.saveMap('Data/Dynamic Data/Multiple Trucks/2 Trucks/')
+# map.displayMap('Data/Dynamic Data/Multiple Trucks/2 Trucks/')
+
+JSON = CreateJSON(N_WARDS, N_TRUCKS, W1, W2)
+JSON.run('Data/Bin Locations.csv', 'Data/Dynamic Data/Multiple Trucks/2 Trucks/', True)

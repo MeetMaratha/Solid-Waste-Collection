@@ -181,7 +181,7 @@ def update_fill(data, m):
             if fillRatio[k] != 0.0 and np.random.rand() < 0.80:
                 fillRatio[k] = fillRatio[k] + np.random.uniform(0, 1 - fillRatio[k]) / 10
     data.insert(data.shape[1], fillNewName, fillRatio)
-    data.insert(data.shape[1], fillNewName + str(m), fillRatio)
+    data.insert(data.shape[1], fillNewName + '_' + str(m), fillRatio)
     # data[fillNewName] = fillRatio
 
     return data
