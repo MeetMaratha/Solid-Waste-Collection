@@ -483,6 +483,30 @@ INPUT C:\Program Files\MiKTeX\tex\generic\pgf\libraries\pgflibraryplothandlers.c
 INPUT C:\Program Files\MiKTeX\tex\generic\pgf\modules\pgfmodulematrix.code.tex
 INPUT C:\Program Files\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarytopaths.code.tex
 INPUT C:\Program Files\MiKTeX\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarytopaths.code.tex
+INPUT C:\Program Files\MiKTeX\tex\latex\graphics\color.sty
+INPUT C:\Users\ASUS\AppData\Roaming\MiKTeX\tex\latex\colortbl\colortbl.sty
+INPUT C:\Users\ASUS\AppData\Roaming\MiKTeX\tex\latex\colortbl\colortbl.sty
+INPUT C:\Users\ASUS\AppData\Roaming\MiKTeX\tex\latex\colortbl\colortbl.sty
+INPUT C:\Users\ASUS\AppData\Roaming\MiKTeX\tex\latex\colortbl\colortbl.sty
+INPUT C:\Users\ASUS\AppData\Roaming\MiKTeX\tex\latex\colortbl\colortbl.sty
+INPUT C:\Users\ASUS\AppData\Roaming\MiKTeX\tex\latex\colortbl\colortbl.sty
+INPUT C:\Users\ASUS\AppData\Roaming\MiKTeX\tex\latex\colortbl\colortbl.sty
+INPUT C:\Users\ASUS\AppData\Roaming\MiKTeX\tex\latex\colortbl\colortbl.sty
+INPUT C:\Users\ASUS\AppData\Roaming\MiKTeX\tex\latex\colortbl\colortbl.sty
+INPUT C:\Users\ASUS\AppData\Roaming\MiKTeX\tex\latex\colortbl\colortbl.sty
+INPUT C:\Users\ASUS\AppData\Roaming\MiKTeX\tex\latex\colortbl\colortbl.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\tools\array.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\tools\array.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\tools\array.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\tools\array.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\tools\array.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\tools\array.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\tools\array.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\tools\array.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\tools\array.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\tools\array.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\tools\array.sty
+INPUT C:\Program Files\MiKTeX\tex\latex\graphics\color.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\hyperref.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\hyperref.sty
 INPUT C:\Program Files\MiKTeX\tex\latex\hyperref\hyperref.sty
@@ -1034,21 +1058,6 @@ INPUT .\Combined graph Enlarged and table.png
 INPUT .\Combined graph Enlarged and table.png
 INPUT .\Combined graph Enlarged and table.png
 INPUT .\Combined graph Enlarged and table.png
-INPUT .\coverage_VS_number_of_trucks.png
-INPUT .\coverage_VS_number_of_trucks.png
-INPUT coverage_VS_number_of_trucks.png
-INPUT .\coverage_VS_number_of_trucks.png
-INPUT .\coverage_VS_number_of_trucks.png
-INPUT .\coverage_VS_number_of_trucks.png
-INPUT .\coverage_VS_number_of_trucks.png
-INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr10.tfm
-INPUT .\number_of_trucks_VS_bins_visited.png
-INPUT .\number_of_trucks_VS_bins_visited.png
-INPUT number_of_trucks_VS_bins_visited.png
-INPUT .\number_of_trucks_VS_bins_visited.png
-INPUT .\number_of_trucks_VS_bins_visited.png
-INPUT .\number_of_trucks_VS_bins_visited.png
-INPUT .\number_of_trucks_VS_bins_visited.png
 INPUT .\Dynamic_weighted_unrestricted.png
 INPUT .\Dynamic_weighted_unrestricted.png
 INPUT Dynamic_weighted_unrestricted.png
@@ -1070,20 +1079,6 @@ INPUT .\Dynamic_weighted_3_Truck.png
 INPUT .\Dynamic_weighted_3_Truck.png
 INPUT .\Dynamic_weighted_3_Truck.png
 INPUT .\Dynamic_weighted_3_Truck.png
-INPUT .\Total Distance Comparision of Static and Dynamic.png
-INPUT .\Total Distance Comparision of Static and Dynamic.png
-INPUT Total Distance Comparision of Static and Dynamic.png
-INPUT .\Total Distance Comparision of Static and Dynamic.png
-INPUT .\Total Distance Comparision of Static and Dynamic.png
-INPUT .\Total Distance Comparision of Static and Dynamic.png
-INPUT .\Total Distance Comparision of Static and Dynamic.png
-INPUT .\Total Garbage Comparision of Static and Dynamic.png
-INPUT .\Total Garbage Comparision of Static and Dynamic.png
-INPUT Total Garbage Comparision of Static and Dynamic.png
-INPUT .\Total Garbage Comparision of Static and Dynamic.png
-INPUT .\Total Garbage Comparision of Static and Dynamic.png
-INPUT .\Total Garbage Comparision of Static and Dynamic.png
-INPUT .\Total Garbage Comparision of Static and Dynamic.png
 INPUT .\9 Graphs combined.png
 INPUT .\9 Graphs combined.png
 INPUT 9 Graphs combined.png
