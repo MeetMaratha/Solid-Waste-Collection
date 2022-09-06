@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Arch Linux) (preloaded format=pdflatex 2022.7.18)  3 SEP 2022 22:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Arch Linux) (preloaded format=pdflatex 2022.7.18)  4 SEP 2022 12:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -667,32 +667,44 @@ Package caption Info: hyperref package is loaded.
 \c@subfigure=\count321
 \c@subtable=\count322
 )
+(/usr/share/texmf-dist/tex/latex/titlesec/titlesec.sty
+Package: titlesec 2021/07/05 v2.14 Sectioning titles
+\ttl@box=\box68
+\beforetitleunit=\skip66
+\aftertitleunit=\skip67
+\ttl@plus=\dimen291
+\ttl@minus=\dimen292
+\ttl@toksa=\toks41
+\titlewidth=\dimen293
+\titlewidthlast=\dimen294
+\titlewidthfirst=\dimen295
+)
 (/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2022-04-14 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count323
-\l__pdf_internal_box=\box68
+\l__pdf_internal_box=\box69
 )
 (./AI Paper.aux)
 \openout1 = `"AI Paper.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -731,16 +743,16 @@ LaTeX Font Info:    ... okay on input line 23.
 (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count324
-\scratchdimen=\dimen291
-\scratchbox=\box69
+\scratchdimen=\dimen296
+\scratchbox=\box70
 \nofMPsegments=\count325
 \nofMParguments=\count326
-\everyMPshowfont=\toks41
+\everyMPshowfont=\toks42
 \MPscratchCnt=\count327
-\MPscratchDim=\dimen292
+\MPscratchDim=\dimen297
 \MPnumerator=\count328
 \makeMPintoPDFobject=\count329
-\everyMPtoPDFconversion=\toks42
+\everyMPtoPDFconversion=\toks43
 ) (/usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -750,7 +762,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring OFF on input line 23.
+Package hyperref Info: Link coloring OFF on input line 28.
 
 (/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
@@ -763,9 +775,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count330
 )
-LaTeX Info: Redefining \ref on input line 23.
-LaTeX Info: Redefining \pageref on input line 23.
-LaTeX Info: Redefining \nameref on input line 23.
+LaTeX Info: Redefining \ref on input line 28.
+LaTeX Info: Redefining \pageref on input line 28.
+LaTeX Info: Redefining \nameref on input line 28.
 
 (./AI Paper.out) (./AI Paper.out)
 \@outlinefile=\write4
@@ -773,13 +785,13 @@ LaTeX Info: Redefining \nameref on input line 23.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 39.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 44.
 
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 39.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 44.
 
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -787,17 +799,17 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
-Underfull \hbox (badness 10000) in paragraph at lines 85--94
+Underfull \hbox (badness 10000) in paragraph at lines 90--99
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 85--94
+Underfull \hbox (badness 10000) in paragraph at lines 90--99
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--96
+Underfull \hbox (badness 10000) in paragraph at lines 100--101
 
  []
 
@@ -805,16 +817,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 95--96
 <ExplanationFigure.png, id=155, 520.94624pt x 860.46469pt>
 File: ExplanationFigure.png Graphic file (type png)
 <use ExplanationFigure.png>
-Package pdftex.def Info: ExplanationFigure.png  used on input line 101.
+Package pdftex.def Info: ExplanationFigure.png  used on input line 106.
 (pdftex.def)             Requested size: 312.57016pt x 516.2828pt.
  [4 <./ExplanationFigure.png>]
 <ExplanationFigure2.png, id=168, 723.70375pt x 224.84pt>
 File: ExplanationFigure2.png Graphic file (type png)
 <use ExplanationFigure2.png>
-Package pdftex.def Info: ExplanationFigure2.png  used on input line 110.
+Package pdftex.def Info: ExplanationFigure2.png  used on input line 115.
 (pdftex.def)             Requested size: 434.2256pt x 134.90503pt.
 
-Overfull \hbox (19.20854pt too wide) in paragraph at lines 126--155
+Overfull \hbox (19.20854pt too wide) in paragraph at lines 131--160
  [][] 
  []
 
@@ -822,56 +834,56 @@ Overfull \hbox (19.20854pt too wide) in paragraph at lines 126--155
 <Nodes.png, id=215, 844.8363pt x 597.432pt>
 File: Nodes.png Graphic file (type png)
 <use Nodes.png>
-Package pdftex.def Info: Nodes.png  used on input line 223.
+Package pdftex.def Info: Nodes.png  used on input line 228.
 (pdftex.def)             Requested size: 422.41711pt x 298.71527pt.
 <Combined graph Enlarged and table.png, id=216, 361.35pt x 409.53pt>
 File: Combined graph Enlarged and table.png Graphic file (type png)
 <use Combined graph Enlarged and table.png>
 Package pdftex.def Info: Combined graph Enlarged and table.png  used on input l
-ine 235.
+ine 240.
 (pdftex.def)             Requested size: 487.82352pt x 552.86664pt.
 
-Overfull \hbox (4.12665pt too wide) in paragraph at lines 235--236
+Overfull \hbox (4.12665pt too wide) in paragraph at lines 240--241
  [][] 
  []
 
 [8 <./Nodes.png>] [9 <./Combined graph Enlarged and table.png>]
-Overfull \hbox (19.60423pt too wide) in paragraph at lines 305--331
+Overfull \hbox (19.60423pt too wide) in paragraph at lines 310--336
  [][] 
  []
 
 
-Overfull \hbox (26.84477pt too wide) in paragraph at lines 345--372
+Overfull \hbox (26.84477pt too wide) in paragraph at lines 350--377
  [][] 
  []
 
 [10]
-<Dynamic_weighted_unrestricted.png, id=247, 844.8363pt x 597.432pt>
+<Dynamic_weighted_unrestricted.png, id=245, 844.8363pt x 597.432pt>
 File: Dynamic_weighted_unrestricted.png Graphic file (type png)
 <use Dynamic_weighted_unrestricted.png>
 Package pdftex.def Info: Dynamic_weighted_unrestricted.png  used on input line 
-395.
+400.
 (pdftex.def)             Requested size: 464.6614pt x 328.58861pt.
  [11]
-<Static_Weighted_3_Truck.png, id=260, 844.8363pt x 597.432pt>
+<Static_Weighted_3_Truck.png, id=258, 844.8363pt x 597.432pt>
 File: Static_Weighted_3_Truck.png Graphic file (type png)
 <use Static_Weighted_3_Truck.png>
-Package pdftex.def Info: Static_Weighted_3_Truck.png  used on input line 432.
+Package pdftex.def Info: Static_Weighted_3_Truck.png  used on input line 437.
 (pdftex.def)             Requested size: 464.6614pt x 328.58861pt.
-<Dynamic_weighted_3_Truck.png, id=261, 844.8363pt x 597.432pt>
+<Dynamic_weighted_3_Truck.png, id=259, 844.8363pt x 597.432pt>
 File: Dynamic_weighted_3_Truck.png Graphic file (type png)
 <use Dynamic_weighted_3_Truck.png>
-Package pdftex.def Info: Dynamic_weighted_3_Truck.png  used on input line 437.
+Package pdftex.def Info: Dynamic_weighted_3_Truck.png  used on input line 442.
 (pdftex.def)             Requested size: 464.6614pt x 328.58861pt.
  [12 <./Dynamic_weighted_unrestricted.png>] [13 <./Static_Weighted_3_Truck.png>
  <./Dynamic_weighted_3_Truck.png>]
-<9 Graphs combined.png, id=281, 551.661pt x 522.753pt>
+<9 Graphs combined.png, id=278, 551.661pt x 522.753pt>
 File: 9 Graphs combined.png Graphic file (type png)
 <use 9 Graphs combined.png>
-Package pdftex.def Info: 9 Graphs combined.png  used on input line 464.
+Package pdftex.def Info: 9 Graphs combined.png  used on input line 469.
 (pdftex.def)             Requested size: 507.52586pt x 480.93062pt.
 
-Overfull \hbox (23.829pt too wide) in paragraph at lines 464--465
+Overfull \hbox (23.829pt too wide) in paragraph at lines 469--470
  [][][] 
  []
 
@@ -881,13 +893,13 @@ Package rerunfilecheck Info: File `"AI Paper".out' has not changed.
 (rerunfilecheck)             Checksum: 08D58F4C1679040A31F12898D51D46DC;1541.
  ) 
 Here is how much of TeX's memory you used:
- 23342 strings out of 478238
- 431390 string characters out of 5850456
- 723126 words of memory out of 5000000
- 41071 multiletter control sequences out of 15000+600000
- 479351 words of font info for 67 fonts, out of 8000000 for 9000
+ 23632 strings out of 478238
+ 435315 string characters out of 5850456
+ 729904 words of memory out of 5000000
+ 41361 multiletter control sequences out of 15000+600000
+ 478745 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,14n,80p,2534b,460s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 84i,14n,80p,2534b,459s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/publi
@@ -901,10 +913,10 @@ usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-dist/fonts/ty
 pe1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/publi
 c/cm-super/sfrm1200.pfb>
-Output written on "AI Paper.pdf" (21 pages, 27378098 bytes).
+Output written on "AI Paper.pdf" (21 pages, 27378029 bytes).
 PDF statistics:
- 408 PDF objects out of 1000 (max. 8388607)
- 337 compressed objects within 4 object streams
- 104 named destinations out of 1000 (max. 500000)
+ 403 PDF objects out of 1000 (max. 8388607)
+ 332 compressed objects within 4 object streams
+ 100 named destinations out of 1000 (max. 500000)
  133 words of extra memory for PDF output out of 10000 (max. 10000000)
 
