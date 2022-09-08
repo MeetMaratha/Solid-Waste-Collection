@@ -7,47 +7,46 @@
 \usepackage{color}
 \usepackage{xcolor}
 \usepackage{tikz}
+\usepackage[authordate16,backend=biber]{biblatex-chicago}
+\addbibresource{citation.bib}
 \usepackage{color, colortbl}
 % \usepackage{subfigure}
 \usepackage{hyperref}
 \usepackage{algorithm}
 \usepackage{algorithmic}
-\usepackage{cite}
+% \usepackage{cite}
 \usepackage{amsfonts}
 \usepackage{textcomp}
 \usepackage{xcolor}
 \usepackage{multirow}
 \usepackage{authblk}
 \usepackage{subcaption}
-\usepackage{titlesec}
-
-\titleformat{\section}{\normalfont\fontsize{12}{15}\bfseries}{\thesection}{1em}{}
-
-\titleformat{\title}{\normalfont\fontsize{30}{5}\bfseries}{\thetitle}{1em}{}
+\usepackage{nameref}
+\usepackage{xstring}
 
 \begin{document}
 
 % \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
 %  T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
-\title{Route Optimization For Waste Collection\\}
+\title{Efficient Waste Collection in Resource Constrainted Societies While Considering Dynamics\\}
 \date{}
 \author[1]{Marut Priyadarshi}
-\author[2]{Meet Maratha}
-\author[3]{Mohammad Anish}
-\author[4]{Vaibhav Kumar}
+\author[1]{Meet Maratha}
+\author[2]{Mohammad Anish}
+\author[1*]{Vaibhav Kumar}
 \affil[1]{Department of Data Science and Engineering, IISER Bhopal}
-\affil[2]{Department of Data Science and Engineering, IISER Bhopal}
-\affil[3]{Department of Physics, IISER Bhopal}
-\affil[4]{Department of Data Science and Engineering, IISER Bhopal}
+\affil[2]{Department of Physics, IISER Bhopal}
+
 
 \maketitle
-
+\section{Abstract}
+\pagebreak
 \section{Introduction}
 
-Solid Waste Management (SWM) is considered one of the critical drivers of urban environmental management systems \cite{hoornweg2012waste}.It is generally an exercise to collect the combined waste from households, agricultural, industrial, commercial activity, institutional, and miscellaneous, generated from the living community \cite{GUPTA2015206}. India is one of the least urbanized countries in the world, yet urban India produces about 42.0 million tons of municipal solid waste annually, i.e., 1.15 lakh metric tons per day (TPD) \cite{SHARMA2021293,GUPTA2015206}. These figures are bound to increase in the future, as cities are witnessing extreme demographic transfers, immigration, population growth, and consumption rate, which are the key driving factors for the increase in urban waste. This has become one of the most urgent concerns for local agencies in India. During the last decade, the Government of India has launched various programs, e.g., Clean India Mission, Smart Cities, Amruth Cities, and Digital India to improve living standards. Waste management is one of the core infrastructure elements of these missions, which requires empirically driven conclusions to address the SWM related challenges \cite{CHEELA2021419}. 
+Solid Waste Management (SWM) is considered as one of the critical drivers of urban environmental management systems \parencite{hoornweg2012waste}.It involves collection and treatment of combined waste from households, agricultural, industrial, commercial activity, institutional, and miscellaneous, generated from the living community \parencite{GUPTA2015206}. India alone produces about 42.0 million tons of municipal solid waste annually, i.e., 1.15 lakh metric tons per day (TPD) \parencite{SHARMA2021293,GUPTA2015206}. These figures are bound to increase in the future, as cities are witnessing extreme demographic transfers, immigration, population growth, and consumption rate, which are the key reasons behind the increase in urban waste. This has become one of the most urgent concerns for agencies in India. To address the concerns and for improving the living standards, very recently Government of India (GoI) has launched various programs, e.g., Clean India Mission, Smart Cities, Amruth Cities, and Digital India. Waste management is one of the core infrastructure elements of these missions, which requires empirically driven conclusions to address the SWM related challenges \parencite{CHEELA2021419}. 
 
-Solid Waste Collection (SWC) is the most integral activity of SWM \cite{GUPTA2015206}. However, the waste collection in developing countries like India is very unorganized, primarily due to resource constraints and poor planning of available resources \cite{somani2021integrated}. Collection Vehicle Route Planning (CVRP) is a critical resource component of a waste collection system, whose planning is often not driven by analytics, resulting in poor collection efficiency  \cite{akbarpour2021innovative}. Similar scenarios have been reported across cities of developing countries \cite{anagnostopoulos2014effective, anagnostopoulos2015assessing, alwabli2020dynamic}. VRP requires modeling many dynamic components such as path planning, consideration of available resources, spatiotemporal demand patterns, and real-time dynamics of waste volume at collection points and Collection Vehicles (CV). A plethora of literature addresses subsets of these components in solution development across various cities\cite{dugdhe2016efficient,chaudhari2018solid,badve2020garbage}. However, the literature has not reported a holistic waste collection system that considers them simultaneously for any region. Hence, the on-ground implementation of the present approaches is still minimal, leading to significant impacts on the operation costs and the environment \cite{apaydin2007route, han2015waste}. Moreover, the components and their interrelationships are very complex for resource-constrained societies and therefore pose new challenges that require the researchers' urgent attention. While a significant number of works focus on CVRP optimization using smart bins and Internet Of Things (IoT), there is a noticeable lack of literature that integrates the different components of the SWC.  The components often lack real-time dynamic route optimization, especially in resource-constrained regions.
+Solid Waste Collection (SWC) is the most integral activity of SWM \parencite*{GUPTA2015206}. However, the waste collection in developing countries like India is very unorganized, primarily due to resource constraints and poor planning of available resources \parencite{somani2021integrated}. Collection Vehicle Route Planning (CVRP) is a critical resource component of a waste collection system, whose planning is often not driven by analytics, resulting in poor collection efficiency  \parencite{akbarpour2021innovative}. Similar scenarios have been reported across cities of developing countries \parencite{anagnostopoulos2014effective, anagnostopoulos2015assessing, alwabli2020dynamic}. VRP requires modeling many dynamic components such as path planning, consideration of available resources, spatiotemporal demand patterns, and real-time dynamics of waste volume at collection points and Collection Vehicles (CV). A plethora of literature addresses subsets of these components in solution development across various cities \parencite{dugdhe2016efficient,chaudhari2018solid,badve2020garbage}. However, the literature has not reported a holistic waste collection system that considers them simultaneously for any region. Hence, the on-ground implementation of the present approaches is still minimal, leading to significant impacts on the operation costs and the environment \parencite{apaydin2007route, han2015waste}. Moreover, the components and their interrelationships are very complex for resource-constrained societies and therefore pose new challenges that require the researchers' urgent attention. While a significant number of works focus on CVRP optimization using smart bins and Internet Of Things (IoT), there is a noticeable lack of literature that integrates the different components of the SWC.  The components often lack real-time dynamic route optimization, especially in resource-constrained regions.
 
 To address the challenges stated above, we propose a waste collection framework for cities, intending to find the optimal routes for the available CV while considering the dynamic variations in the waste information at collection points and that of the CV. We also discuss the influence of available resources in covering the collection bins, whose dynamic information drives the best path. Finding the best path is formulated as an optimization problem and solved using linear programming. This approach has an advantage over other traditional path planning approaches due to the considerations of field-based activities in the model. Further, the study focuses on resource-constrained societies resulting in a decision-making tool that can be scaled and applied universally.
 Moreover, being dynamic, our model can calculate optimal routes, replicating the real-time scenarios. Hence, it can help fill the gap between theory and on-ground implementation. The paper has the following major contributions:
@@ -61,25 +60,25 @@ collection bins for realistic outcomes.
 
 \section{Background}
 
-Much work has been done in different aspects of waste collection, such as route optimization, smart bins, segregation, landfill, and collection depot location optimization. In recent years the most common topic of work in this area has been Vehicle Routing Problem (VRP). The VRP-based studies have mostly addressed the problem of route optimization of collection vehicles for various cases such as landfill and collection sites allocation to minimize distance traveled by collection vehicles \cite{kulcar1996optimizing,rathore2020location,barzehkar2019landfill}, collection point clustering to increase collection efficiency \cite{al2021optimization} and calculating the optimal route with a fixed set of collection bins and landfill/depot locations \cite{karadimas2008routing, amal2018sga, asefi2019mathematical,de2007decision, hannan2020waste,akhtar2017backtracking}. These studies have formulated the problems and solved them through various optimizers such as  ArcGIS Network Analyst. \cite{karadimas2008routing,amal2018sga, malakahmad2014solid, hannan2020waste,de2007decision, grace2021smart}. The biggest drawback of these models remains their static nature; that is, the route is calculated at once, which may not reflect the onground scenario. Some studies have also modeled some dynamic aspects in the routing to study their impact on fuel consumption\cite{hannan2020waste}. Other works focus purely on the theoretical part of the problem and test their models on simulated datasets\cite{akhtar2017backtracking,anagnostopoulos2014effective, anagnostopoulos2015assessing,aleyadeh2018iot,akbarpour2021innovative}. Moreover, various studies have also implemented smart bins to track waste in cities such as Valorsul, Portugal\cite{ramos2018smart}, Athens, Greece \cite{karadimas2008routing}, St. Petersburg, Russia \cite{anagnostopoulos2018stochastic,anagnostopoulos2015robust}, Salamanca, Spain \cite{lozano2018smart}, Florance, Italy \cite{baldo2021multi} and Mecca, Saudi Arabia\cite{alwabli2020dynamic}. However, they lack the integration of real world aspects such as changes in routes based on various other dynamic factors such as real-time waste status of collection vehicles and their coordination with other vehicles. Hence, they are often not implemented in policy-making system. Furthermore, most of such works are developed for the cities of developed nations which are not resource constrained and have fewer challenges as compared to cities of developing nations.
+Much work has been done in different aspects of waste collection, such as route optimization, smart bins, segregation, landfill, and collection depot location optimization. In recent years the most common topic of work in this area has been Vehicle Routing Problem (VRP). The VRP-based studies have mostly addressed the problem of route optimization of collection vehicles for various cases such as landfill and collection sites allocation to minimize distance traveled by collection vehicles \parencite{kulcar1996optimizing,rathore2020location,barzehkar2019landfill}, collection point clustering to increase collection efficiency \parencite{al2021optimization} and calculating the optimal route with a fixed set of collection bins and landfill/depot locations \parencite{karadimas2008routing, amal2018sga, asefi2019mathematical,de2007decision, hannan2020waste,akhtar2017backtracking}. These studies have formulated the problems and solved them through various optimizers, algorithms and models such as ArcGIS Network Analyst \parencite{karadimas2008routing}, ArcView \parencite{,malakahmad2014solid}, Genetic Algorithm \parencite{amal2018sga}, Linear Programming \parencite{hannan2020waste} etc. \parencite{ grace2021smart}. The biggest drawback of these models remains their static nature; that is, the route is calculated at once, which may not reflect the onground scenario. Some studies have also modeled some dynamic aspects in the routing to study their impact on fuel consumption \parencite{hannan2020waste}. Other works focus purely on the theoretical part of the problem and test their models on simulated datasets \parencite{akhtar2017backtracking,anagnostopoulos2014effective, anagnostopoulos2015assessing,aleyadeh2018iot,akbarpour2021innovative}. Moreover, various studies have also implemented smart bins to track waste in cities such as Valorsul, Portugal \parencite{ramos2018smart}, Athens, Greece \parencite{karadimas2008routing}, St. Petersburg, Russia \parencite{anagnostopoulos2018stochastic,anagnostopoulos2015robust}, Salamanca, Spain \parencite{lozano2018smart}, Florance, Italy \parencite{baldo2021multi}, Porto Alegre, Brazil \parencite{de2007decision} and Mecca, Saudi Arabia \parencite{alwabli2020dynamic}. However, they lack the integration of real world aspects such as changes in routes based on various other dynamic factors such as real-time waste status of collection vehicles and their coordination with other vehicles. Hence, they are often not implemented in policy-making system. Furthermore, most of such works are developed for the cities of developed nations which are not resource constrained and have fewer challenges as compared to cities of developing nations.
 
-Waste collection in resource-constrained societies comes with the additional challenge of allocating insufficient resources to meet the demand. Many studies have been implemented on the cities of developing nations such as India that focus on various aspects of waste collection. \cite{dugdhe2016efficient}, \cite{chaudhari2018solid}, and \cite{badve2020garbage} have highlighted the dynamism and lack of awareness as the major issues of dynamic waste collection in India. They implemented IoT based bins to plan the collection routes in real time. Their system didn't do an analysis of constraints related to resource availability, along with their coordination. \cite{chaudhary2019gis} and \cite{sk2020optimal} utilized Geographic Information Systems (GIS) to calculate optimal waste collection routes in the city of Allahabad and Durgapur in India, respectively. These studies, however, didn't take any dynamic considerations.\cite{ogwueleke2009route} and \cite{malakahmad2014solid} focused on route optimization in the cities of Onitsha, Nigeria and Ipoh, Malaysia, respectively. \cite{rathore2020location} focused on optimal bin allocation to maximize the waste collection in the city of Bilaspur, India. \cite{vasagade2017dynamic},\cite{medvedev2015waste} and \cite{malapur2017iot} propose using IoT enabled devices and GIS to enable intelligent waste collection in smart cities. These works, however, do not consider any real time data to calculate the optimal routes.
+Waste collection in resource-constrained societies comes with the additional challenge of allocating insufficient resources to meet the demand. Many studies have been implemented on the cities of developing nations such as India that focus on various aspects of waste collection. \cite{dugdhe2016efficient}, \cite{chaudhari2018solid}, and \cite{badve2020garbage} have highlighted the dynamism and lack of awareness as the major issues of dynamic waste collection in India. They implemented IoT based bins to plan the collection routes in real time. Their system didn't do an analysis of constraints related to resource availability, along with their coordination. \cite{chaudhary2019gis}, and \cite{sk2020optimal} utilized Geographic Information Systems (GIS) to calculate optimal waste collection routes in the city of Allahabad and Durgapur in India, respectively. These studies, however, didn't take any dynamic considerations.\cite{ogwueleke2009route} and \cite{malakahmad2014solid} focused on route optimization in the cities of Onitsha, Nigeria and Ipoh, Malaysia, respectively. \cite{rathore2020location} focused on optimal bin allocation to maximize the waste collection in the city of Bilaspur, India. \cite{vasagade2017dynamic}, \cite{medvedev2015waste}, and \cite{malapur2017iot} propose using IoT enabled devices and GIS to enable intelligent waste collection in smart cities. These works, however, do not consider any real time data to calculate the optimal routes.
 
 Therefore, implementing dynamic scenarios to suit the requirements of resource constraint societies remains an open research problem. The reader can refer to recent reviews by \cite{belien2014municipal,sulemana2018optimal,abdallah2020artificial} for a detailed discussion on the works related to the optimization of waste collection and management systems.
 
 
 
-% In one paper \cite{kulcar1996optimizing}, the author focuses on the best location for the construction of a landfill that would result in the shortest collection routes when linked with the currently existing routes and depots. The paper also compares the running costs of different modes of waste transport, such as trains, ships and by road. It was useful in providing a picture of the costs associated with the system, it didn't focus on optimizing the routes that the waste collection was done. Moreover, it was set in Brussels, a highly developed city. In a similar vein, Rathore et al. \cite{rathore2020location} focuses on formulating a mathematical model for finding the optimal places to allocate bins in the Indian city of Bilaspur. While it aims towards the similar goal of waste collection optimization, furthermore in a developing country, the method is different from our intended goal.
+% In one paper \parencite{kulcar1996optimizing}, the author focuses on the best location for the construction of a landfill that would result in the shortest collection routes when linked with the currently existing routes and depots. The paper also compares the running costs of different modes of waste transport, such as trains, ships and by road. It was useful in providing a picture of the costs associated with the system, it didn't focus on optimizing the routes that the waste collection was done. Moreover, it was set in Brussels, a highly developed city. In a similar vein, Rathore et al. \parencite{rathore2020location} focuses on formulating a mathematical model for finding the optimal places to allocate bins in the Indian city of Bilaspur. While it aims towards the similar goal of waste collection optimization, furthermore in a developing country, the method is different from our intended goal.
 
-% Many papers utilize pre-existing solvers or software to compute the optimized routes and use the results to compare them to other algorithms or observe the effects the optimized routes bring to the current system. In the case of one paper \cite{karadimas2008routing}, the sole focus of the paper is on route optimization. However, it only applies ant colony system and the route optimizer for the software ArcGIS Network Analyst to get the optimal route for non-real time data and compares the efficiencies of the two methods. Moreover it focuses on Athens, another developed city, and even then on only one prefecture of it. Similarly, Chaudhary et al \cite{chaudhary2019gis} have utilized ArcGIS Network Analyst software to calculate optimal routes for waste collection, this time in the city of Allahabad. This lies closer to our goal of route optimization for more resource constrained societies and while it is an extensive application of optimization process utilizing the real-life data from the city, it still only utilizes a pre-existing algorithm along with fixed unchanging datapoints to calculate the collection routes, which our work seeks to expand upon. Another paper \cite{amal2018sga} uses the route optimization solver of GIS software ArcGIS (which itself utilizes Dijkstra algorthm) to calculate a pool of routes which, in turn, feeds the genetic algorithm to iteratively arrive at the optimal routes for the waste collection vehicles.
+% Many papers utilize pre-existing solvers or software to compute the optimized routes and use the results to compare them to other algorithms or observe the effects the optimized routes bring to the current system. In the case of one paper \parencite{karadimas2008routing}, the sole focus of the paper is on route optimization. However, it only applies ant colony system and the route optimizer for the software ArcGIS Network Analyst to get the optimal route for non-real time data and compares the efficiencies of the two methods. Moreover it focuses on Athens, another developed city, and even then on only one prefecture of it. Similarly, Chaudhary et al \parencite{chaudhary2019gis} have utilized ArcGIS Network Analyst software to calculate optimal routes for waste collection, this time in the city of Allahabad. This lies closer to our goal of route optimization for more resource constrained societies and while it is an extensive application of optimization process utilizing the real-life data from the city, it still only utilizes a pre-existing algorithm along with fixed unchanging datapoints to calculate the collection routes, which our work seeks to expand upon. Another paper \parencite{amal2018sga} uses the route optimization solver of GIS software ArcGIS (which itself utilizes Dijkstra algorthm) to calculate a pool of routes which, in turn, feeds the genetic algorithm to iteratively arrive at the optimal routes for the waste collection vehicles.
 
-% In their paper, Simonetto and Borenstein \cite{de2007decision}, used linear programming to formulate a function for route optimization via minimization of cost coupled with a heuristic developed by Renaud and Boctor \cite{renaud2002sweep} in order to bring down the computation time (at that time) to reasonable levels. Similarly, in this paper \cite{hannan2020waste}, the authors have used linear programming combined with smart bins to find optimal waste collection routes that remove the inefficiency that is associated with formulating a route that visits all bins, regardless of its fill status. However, as it was a paper focused on the algorithmic part of the problem, they used purely simulated data, void of any real world analogue and only factored in the euclidian distances between the bins. Asefi et al \cite{asefi2019mathematical} uses a mixed-integer linear programming model to minimize costs and uses two different meta heuristic approaches to deal with the non-deterministic polynomial-time hardness of the waste collection problem. This model is then applied to a case study in the city of Tehran, Iran. 
+% In their paper, Simonetto and Borenstein \parencite{de2007decision}, used linear programming to formulate a function for route optimization via minimization of cost coupled with a heuristic developed by Renaud and Boctor \parencite{renaud2002sweep} in order to bring down the computation time (at that time) to reasonable levels. Similarly, in this paper \parencite{hannan2020waste}, the authors have used linear programming combined with smart bins to find optimal waste collection routes that remove the inefficiency that is associated with formulating a route that visits all bins, regardless of its fill status. However, as it was a paper focused on the algorithmic part of the problem, they used purely simulated data, void of any real world analogue and only factored in the euclidian distances between the bins. Asefi et al \parencite{asefi2019mathematical} uses a mixed-integer linear programming model to minimize costs and uses two different meta heuristic approaches to deal with the non-deterministic polynomial-time hardness of the waste collection problem. This model is then applied to a case study in the city of Tehran, Iran. 
 
-% In other papers utilizing smart bins, Akhtar \cite{akhtar2017backtracking} utilizes new population based meta heuristic backtracking search optimization, developed by Civicioglu \cite{civicioglu2013backtracking}, to calculate optimal routes for collection vehicles. Its main feature is its simplicity as it has only one control parameter. It is also a highly theoretical work and focuses mainly on the mathematical aspects of the problem and not its real-life application. Al-Refaie et al \cite{al2021optimization} takes a different approach and focuses instead on distributing the collection points into optimal clusters so that the collection efficiency of the vehicles can be maximized.
+% In other papers utilizing smart bins, Akhtar \parencite{akhtar2017backtracking} utilizes new population based meta heuristic backtracking search optimization, developed by Civicioglu \parencite{civicioglu2013backtracking}, to calculate optimal routes for collection vehicles. Its main feature is its simplicity as it has only one control parameter. It is also a highly theoretical work and focuses mainly on the mathematical aspects of the problem and not its real-life application. Al-Refaie et al \parencite{al2021optimization} takes a different approach and focuses instead on distributing the collection points into optimal clusters so that the collection efficiency of the vehicles can be maximized.
 
-% Papers like Lozano et al \cite{lozano2018smart} and later Baldo et al \cite{baldo2021multi}, Vishnu et al \cite{vishnu2021iot} use smart bins, but the focus of these papers are the smart bins themselves, their engineering aspect and case studies involving them, along with constructing a system centered around technology which automates a lot of the tasks involved in the whole process of waste collection and management. The optimization part is left to pre-existing solving algorithms.
+% Papers like Lozano et al \parencite{lozano2018smart} and later Baldo et al \parencite{baldo2021multi}, Vishnu et al \parencite{vishnu2021iot} use smart bins, but the focus of these papers are the smart bins themselves, their engineering aspect and case studies involving them, along with constructing a system centered around technology which automates a lot of the tasks involved in the whole process of waste collection and management. The optimization part is left to pre-existing solving algorithms.
 
-% Smart bins have also been discussed in a more theoretical aspect, utilizing IoT technology in other studies such as Abdullah et al \cite{abdullah2018iot}, Ali et al \cite{ali2020iot}, Al-Masri et al \cite{al2018serverless} and Chaudhari and Bhole \cite{chaudhari2018solid}. They have touched upon smart bins as parts of a sustainable smart city architecture and different ways that they may be utilized, along with supporting subsystems. It should be noted that the above-cited literature is in no way an exhaustive list of literature utilizing IoT or smart bins, and merely provides a general idea of the works using it.
+% Smart bins have also been discussed in a more theoretical aspect, utilizing IoT technology in other studies such as Abdullah et al \parencite{abdullah2018iot}, Ali et al \parencite{ali2020iot}, Al-Masri et al \parencite{al2018serverless} and Chaudhari and Bhole \parencite{chaudhari2018solid}. They have touched upon smart bins as parts of a sustainable smart city architecture and different ways that they may be utilized, along with supporting subsystems. It should be noted that the above-cited literature is in no way an exhaustive list of literature utilizing IoT or smart bins, and merely provides a general idea of the works using it.
 
 
 
@@ -103,7 +102,7 @@ The execution for any agent terminates when a run is complete or the CV is full.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.6]{ExplanationFigure.png}
+    \includegraphics[scale=0.55]{ExplanationFigure.png}
     \caption{General representation of the dynamism of the process}\label{fige}
 \end{figure}
 
@@ -120,7 +119,7 @@ Three different execution scenarios are demonstrated. The first scenario restric
 
 \subsection {Mathematical Formulation}
 
-The objective of the model to maximize the waste collected while minimizing the total distance traveled by the CV (see Eq (\ref{eq1})). We formulated the model as a mixed integer linear programming problem and solved it using Gurobi optimizer \cite{gurobi} in polynomial time.
+The objective of the model to maximize the waste collected while minimizing the total distance traveled by the CV (see Eq (\ref{eq1})). We formulated the model as a mixed integer linear programming problem and solved it using Gurobi optimizer \parencite{gurobi} in polynomial time.
 
 Table1 defines all the variables used in the mathematical formulation.
 \definecolor{Gray1}{gray}{0.9}
@@ -132,26 +131,26 @@ Table1 defines all the variables used in the mathematical formulation.
         \hline 
         \rowcolor{Gray1}\hspace{40pt} \textbf{Variables} \hspace{40pt} & \hspace{130pt} \textbf{Description} \hspace{130pt} \\
 		\hline $i, j \in D$ & $i^{th}$ bin and $j^{th}$ bin respectively.\\
+		\hline $D$ & Total bins for a particular region including depot.\\
 		\hline $N$ & Bins for a particular CV excluding depot.\\
-		\hline $D$ & Bins for a particular CV including depot.\\
 		\hline \multirow{2}{*}{$A$} & Set of all the arcs formed from \\
-		&  $i^{th}$ bin to $j^{th}$ bin for $\forall i,j \in$ D.\\
-		\hline \multirow{2}{*}{$C_{ij}\in \mathbb{R}^+$} & Distance cost from a bin i\\
-		& to a bin j for a CV.\\
-		\hline \multirow{2}{*}{$X_{ij} \in \{0, 1\}$} & It is a binary variable that is 1 if a CV is\\
-		& travelling between the bin i and bin j.\\  
-		\hline \multirow{2}{*}{$Y_{i} \in \{0, 1\}$} & It is a binary variable that is 1 if a CV is \\
-		& visiting bin i.\\
-		\hline \multirow{1}{*}{$P_{t} \in [0.0, 100.0]$} & Cumulative fill percentage of CV at a time interval t.\\
-		\hline \multirow{2}{*}{$u_{i}  \in [0, 100 -P_{t}] $} & The percentage fill of the CV at bin i \\
-		& following given path, for a specific time interval.\\
+		&  $i^{th}$ bin to $j^{th}$ bin for $\forall i ,j \in$ D.\\
+		\hline \multirow{2}{*}{$C_{ij}\in \mathbb{R}^+$} & Distance cost from bin $i$\\
+		& to bin $j$ for a CV.\\
+		\hline \multirow{2}{*}{$X_{ij} \in \{0, 1\}$} & Binary variable that is 1 if a CV is\\
+		& travelling between the bin $i$ and bin $j$.\\  
+		\hline \multirow{2}{*}{$Y_{i} \in \{0, 1\}$} & A binary variable that is 1 if a CV has \\
+		& visited bin $i$.\\
+		\hline \multirow{1}{*}{$P_{t} \in [0.0, 100.0]$} & Cumulative fill percentage of CV for the time interval $t$.\\
+		\hline \multirow{2}{*}{$u_{i}  \in [0, 100 -P_{t}] $} & The fill percentage of the CV visiting bin $i$ \\
+		& for a specific time interval.\\
 		\hline \multirow{2}{*}{$st \in D$} & The starting bin of a CV in a\\
 		& new time interval.\\
 		\hline \multirow{2}{*}{$w_{1} \in [0.0, 1.0]$} & The weight assigned to the distance \\
-		& objective of the objective function\\
+		& in the objective function\\
 		\hline \multirow{2}{*}{$w_{2} \in [0.0, 1.0]$} & The weight assigned to the waste amount \\
-		& objective of the objective function\\
-		\hline \multirow{1}{*}{$f_{i} \in [0.0, 1.0]$} & The fill ratio of bin at bin i.\\
+		& in the objective function\\
+		\hline \multirow{1}{*}{$f_{i} \in [0.0, 1.0]$} & The fill ratio of bin at bin $i$.\\
 		\hline \multirow{2}{*}{$BT \in \mathbb{R}^+$} & The conversion factor for fill \\
 		& of smart bin to fill of CV.\\
 		
@@ -159,13 +158,13 @@ Table1 defines all the variables used in the mathematical formulation.
     \end{tabular}
 \end{table} 
 
-As per Dengel et al [29], one of the most common approaches to handle multi-criteria decision problems is the weighted sum approach. This approach aggregates the objectives prior to the optimization by assigning weights to the objective functions. We followed a similar methodology for solving the model, and the weights ($w_1$ and $w_2$ in Eq (\ref{eq1}))   were decided after a detailed sensitivity analysis and decision makers preferences concerning the objectives.
+Weighted sum approach is one of the most widely used approaches in solving multi-criteria decision problems. In this approach objectives are aggregated prior to the optimization by assigning weights to the objective functions. We followed a similar methodology for solving the model, and the weights ($w_1$ and $w_2$ in Eq. (\ref{eq1})) were decided after a detailed sensitivity analysis and decision makers preferences concerning the objectives.
 
 \begin{equation}\label{eq1}
     Obj(Maximize)=\sum_{i,j \in A} w_1 X_{ij} C_{ij} - w_2 Y_i f_i * BT
 \end{equation}
 
-Here, $X_{ij}$ is a binary variable whose value is 1 when an edge (i to j) is selected in a route and 0 otherwise. $C_{ij}$ represents the cost associated with the distance between i and j. The binary variable $Y_{i}$ is assigned the value 1 when a bin is served by a collection vehicle, and 0 otherwise. Once a collection vehicle serves a bin and collects the waste ($f_i$: fill ratio between 0 and 1, where 1 and 0 correspond to full and empty, respectively), the conversion factor "$BT$" scales the amount in the bin to the scale of the collection vehicle's percentage fill scale. The variables $w_1$ and $w_2$ are the weights associated with distance traveled and waste collected. These weights sum up to one represented by constraint (2).
+Here, $X_{ij}$ is a binary variable whose value is 1 when an edge (i to j) is selected in a route and 0 otherwise. $C_{ij}$ represents the cost associated with the distance between i and j. The binary variable $Y_{i}$ is assigned the value 1 when a bin is served by a collection vehicle, and 0 otherwise. Once a collection vehicle serves a bin and collects the waste ($f_i$: fill ratio between 0 and 1, where 1 and 0 correspond to full and empty, respectively), the conversion factor "$BT$" scales the amount of waste in the bin to the scale of the collection vehicle's fill percentage scale. The variables $w_1$ and $w_2$ are the weights associated with distance traveled and waste collected. These weights sum up to one represented by constraint (2).
 
 \begin{equation}\label{eq1.5}
     \sum_{n\in \{1,2\}} w_n = 1
@@ -220,7 +219,7 @@ Constraint \eqref{eqY} confirms that the CV will not collect waste from a bin if
 \section{Case Studies and Empirical Results}
 
 \subsection{Data Preparation}
-To prove the model's effectiveness, we empirically tested the model for the city of Chandigarh in India. The city is located in northwest India's foothills of the Shivalik range of the Himalayas covering an area of approximately 149 km$^2$. It borders the states of Punjab and Haryana. The city is known for being the first planned city of India. The city also has various unplanned built-up patches such as Burail, Nayagaon, etc. The mixed built-up typology was suitable to test our methodology and thus, the city was found expedient to test the models. We generated the city's various waste collection points (location of smart bins). A total of 300 points were generated randomly using Geographic Information System (GIS) functionalities, with the constraint that the point should fall on the road networks. The road network was extracted from Open Street Map (OSM)\footnote{https://www.openstreetmap.org/} database. OpenStreetMap API was then used to calculate the distance between all bins and generate a distance matrix used in the optimization process. We applied K-Means clustering algorithm to cluster these points in a fixed set of clusters (see Figure \ref{figm}). In this paper we have selected total clusters to be three. The number can be updated based on user requirements. After clustering, region1, region2 and region3 had 95, 111 and 94 points, respectively. The clusters were considered as three regions for which CV had to be allocated. To replicate the actual field activities we have assumed that a CV starts and ends its route at the depot.
+To prove the model's effectiveness, we empirically tested the model for the city of Chandigarh in India. The city is located in northwest India's foothills of Himalayas covering an area of approximately 149 km$^2$. It borders the states of Punjab and Haryana. The city is known for being the first planned city of India. However, some regions of the city also has various unplanned built-up patches such as Burail, Nayagaon, etc. The mixed built-up typology was suitable to test our methodology and thus, the city was found expedient to test the models. We generated the city's various waste collection points (location of smart bins). A total of 300 points were generated randomly using Geographic Information System (GIS) functionalities, with the constraint that the point should fall on the road networks. The road network was extracted from Open Street Map (OSM)\footnote{https://www.openstreetmap.org/} database. OpenStreetMap API was then used to calculate the distance between all bins and generate a distance matrix used in the optimization process. We applied K-Means clustering algorithm to cluster these points in a fixed set of clusters (see Figure \ref{figm}). In this paper we have selected total clusters to be three. The number can be updated based on user requirements. After clustering, region1, region2 and region3 had 95, 111 and 94 points, respectively. The clusters were considered as three regions for which CV had to be allocated. To replicate the actual field activities we have assumed that a CV starts and ends its route at the depot.
 
 
 \begin{figure}[H]
@@ -404,8 +403,8 @@ Often the decision makers want to derive the requirement of resources that could
 
 \subsubsection*{Case 3: Comparison of real-time with static route calculation}
 
-Our base case of route calculation considers real-time dynamics of waste (bin, CV) and CV's current position in real-time. However, the existing collection system of the city is static. Hence, we compared the real-time route calculation model with static by modifying the eq \eqref{eq12} where the constraint will be less than 100, as shown in \eqref{eq12x}. In Eq \eqref{eq2} and Eq \eqref{eq3}, instead of \textit{st}, the beginning bin will always be 0
- (\eqref{eq2x}\eqref{eq3x}). 
+Our base case of route calculation considers real-time dynamics of waste (bin, CV) and CV's current position in real-time. However, the existing collection system of the city is static. Hence, we compared the real-time route calculation model with static by modifying the Eq \eqref{eq12} where the constraint will be less than 100, as shown in \eqref{eq12x}. In Eq \eqref{eq2} and Eq \eqref{eq3}, instead of \textit{st}, the beginning bin will always be 0
+ (\ref{eq2x},\ref{eq3x}). 
 \begin{equation}\label{eq12x}
     u_i\le 100
 \end{equation}
@@ -462,7 +461,7 @@ We used the case of 3 CV per region to achieve a suitable middle ground to depic
 
 We performed a detailed analysis of waste collected, distance traveled and the percentage of bins covered in the three regions. Since this is a resource-constrained region, the waste collected and bins covered is similar in the case of static and dynamic models. It is in the case of distance traveled where the dynamic model shows its advantage {Figure \ref{figcg1}(b), (e), (h)}. The reduction in distance traveled becomes even more pronounced when more CV are in use.
 
-Since reducing the distance traveled is one of the most important goals of VRP, this makes real-time optimization the superior model in terms of both efficiency and features. In the static model, there is no accounting for new data. The initial route is the only route that is calculated. This, consequently, also makes it unreliable. On the other hand, the real-time model accounts for new data and creates new optimal routes, making it very adaptable and robust. Since real-time is just a modified and iterated version of the static model, the difference in computational power required between the two methods is insignificant.
+Since reducing the distance traveled is one of the most important goals of VRP, this makes real-time optimization the superior model in terms of both efficiency and features. In the static model, there is no accounting for new data. The initial route is the only route that is calculated. This, consequently, also makes it unreliable. On the other hand, the real-time model accounts for new data and creates new optimal routes, making it very adaptable and robust. Since real-time is just a modified and iterated version of the static model, the difference in computational power required between the two methods is same. Therefore, for real life applications, real-time dynamic model can be preferred method as it is able to deal with non-deterministic events that are synonymous with ground use and adapt to them, giving an uninterrupted and reliable service, while also providing greatly efficient results.
 
 \begin{figure}[H]
 	\centering
@@ -470,7 +469,7 @@ Since reducing the distance traveled is one of the most important goals of VRP, 
 	\caption{Detailed static vs dynamic performance analysis}\label{figcg1}
 \end{figure}
 
-Therefore, for real life applications, real-time dynamic model is the preferred method as it is able to deal with non-deterministic events that are synonymous with ground use and adapt to them, giving an uninterrupted and reliable service, while also providing greatly efficient results.
+
 
 
  
@@ -530,7 +529,7 @@ The paper puts forward following major policy suggestions that can be implemente
 \begin{itemize}
 \item Inclusion of waste collection system in climate resilience plan: Climate resilience-based urban planning is at the centre of major decision-making systems. Waste collection involves trips of collection vehicles, which adds to carbon emissions. Strategic routing of available CV can not only benefit the economic aspects but can also help reduce carbon emissions. To achieve this, the government can include the waste collection system with the climate resilience plan of the city. The methodology proposed in this research can be an important component of such systems.
     
-\item Implementation of smart bins for community or regions:  Door-to-door waste collection is not practiced in the majority of city/towns. The issue is even more challenging in dense urban areas with narrow lanes where accessibility of CV can be limited. However, smart bins for various unorganized and organized built-up regions can address the challenge. Smart bins with sensors that send fill details can help prioritize them, leading to better collection and routing strategies on similar lines to our method. The information of waste type automatically sensed using smart sensors can further benefit waste segregation which is another major challenge in waste management.\cite{actionplan}
+\item Implementation of smart bins for community or regions:  Door-to-door waste collection is not practiced in the majority of city/towns. The issue is even more challenging in dense urban areas with narrow lanes where accessibility of CV can be limited. However, smart bins for various unorganized and organized built-up regions can address the challenge. Smart bins with sensors that send fill details can help prioritize them, leading to better collection and routing strategies on similar lines to our method. The information of waste type automatically sensed using smart sensors can further benefit waste segregation which is another major challenge in waste management.\parencite{actionplan}
 
  \item On-board computation: Future smart cities will be developed using modern technologies as their backbone. Technology can immensely benefit waste collection by implementing numerous technologies in everyday collection practices. One of these valuable pieces of equipment is the on-board computation. The routing module proposed in the study integrated with Global Navigation Satellite Systems (GNSS) can be implemented on an onboard computer for generating routes. The driver can follow his route on the system and communicate with the office, notifying them of any important information. Benefits that increase driver efficiency are:
  \begin{itemize}
@@ -553,7 +552,8 @@ Waste collection is one of the essential components of waste management process,
 The outcomes as a planning tool can help make decisions concerning the compromises for limited resources and their impact on waste collection and extra distance traveled to fulfill the demand. One of the study's limitations would be the non-consideration of a bin by any other CV, even if the bin were not full when visited. This can be addressed by relaxing the constraint, and its impact on outcomes can be examined. We have considered simulated smart bins for testing models, which can be replaced with IoT-enabled smart bins in real environments. Further integration of real-time data of accidents, construction work, etc., can provide more accurate routes.
 
 
-\bibliographystyle{ieeetr}
+% \bibliographystyle{authoryear}
+\printbibliography
 
-\bibliography{citation}
+% \bibliography{citation}
 \end{document}
