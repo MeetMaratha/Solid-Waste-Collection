@@ -1,17 +1,17 @@
 # Fdb version 3
-["biber AI Paper"] 1662662738 "AI Paper.bcf" "AI Paper.bbl" "AI Paper" 1662662853
+["biber AI Paper"] 1662662738 "AI Paper.bcf" "AI Paper.bbl" "AI Paper" 1662663087
   "AI Paper.bcf" 1662662853 174151 e8ee5c6b2af92b5f7d88db54641e1905 "pdflatex"
   "citation.bib" 1661407299 19285 7e0e2e5208db67b7dd834858f2821076 ""
   (generated)
-  "AI Paper.bbl"
   "AI Paper.blg"
-["pdflatex"] 1662662837 "c:/Users/ASUS/Documents/GitHub/Solid-Waste-Collection/AI Paper/AI Paper.tex" "AI Paper.pdf" "AI Paper" 1662662853
+  "AI Paper.bbl"
+["pdflatex"] 1662662837 "c:/Users/ASUS/Documents/GitHub/Solid-Waste-Collection/AI Paper/AI Paper.tex" "AI Paper.pdf" "AI Paper" 1662663087
   "9 Graphs combined.png" 1661766451 19911768 3649d13a7106d9474855aa4d12634f51 ""
   "AI Paper.aux" 1662662853 17818 e6b12ab5e9eda1a593c990097123dfb3 "pdflatex"
   "AI Paper.bbl" 1662662801 83776 fa03d30c8879dce160b3d6e232cc2e84 "biber AI Paper"
   "AI Paper.out" 1662662853 1625 8db7bc97e8ca0e9e9d8d8544efff3de1 "pdflatex"
   "AI Paper.run.xml" 1662662853 2453 1869788a02e46b9a7c59ef2a9be00645 "pdflatex"
-  "AI Paper.tex" 1662662676 55308 068efd96265132bdc1e019ece6bb1912 ""
+  "AI Paper.tex" 1662663085 55308 068efd96265132bdc1e019ece6bb1912 ""
   "C:/Program Files/MiKTeX/fonts/tfm/jknappen/ec/tcrm1200.tfm" 993062508 1444 95ffe0f19b974d50849790c8225c7ef7 ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
   "C:/Program Files/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1233951848 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -213,11 +213,11 @@
   "ExplanationFigure2.png" 1661789202 97144 3eabf0dce5ff3a47abd326e7ff10d0ae ""
   "Nodes.png" 1661050965 7247557 a40d054494debc74ca53e2cc60264489 ""
   "Static_Weighted_3_Truck.png" 1662278596 8007306 006683bf3f2192f9e03c6d01b8d2b56e ""
-  "c:/Users/ASUS/Documents/GitHub/Solid-Waste-Collection/AI Paper/AI Paper.tex" 1662662676 55308 068efd96265132bdc1e019ece6bb1912 ""
+  "c:/Users/ASUS/Documents/GitHub/Solid-Waste-Collection/AI Paper/AI Paper.tex" 1662663085 55308 068efd96265132bdc1e019ece6bb1912 ""
   (generated)
+  "AI Paper.log"
+  "AI Paper.out"
+  "AI Paper.pdf"
+  "AI Paper.bcf"
   "AI Paper.run.xml"
   "AI Paper.aux"
-  "AI Paper.log"
-  "AI Paper.bcf"
-  "AI Paper.pdf"
-  "AI Paper.out"
