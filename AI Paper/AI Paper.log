@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.8.25)  9 SEP 2022 00:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.8) (preloaded format=pdflatex 2021.8.25)  9 SEP 2022 21:13
 entering extended mode
 **"c:/Users/ASUS/Documents/GitHub/Solid-Waste-Collection/AI Paper/AI Paper.tex"
 (c:/Users/ASUS/Documents/GitHub/Solid-Waste-Collection/AI Paper/AI Paper.tex
@@ -898,117 +898,117 @@ LaTeX Info: Redefining \nameref on input line 27.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 42.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 43.
  (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 42.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 43.
  (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {C:/Users/ASUS/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] [2] [3]
-Underfull \hbox (badness 10000) in paragraph at lines 89--98
+Underfull \hbox (badness 10000) in paragraph at lines 77--86
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 89--98
+Underfull \hbox (badness 10000) in paragraph at lines 77--86
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 99--100
+Underfull \hbox (badness 10000) in paragraph at lines 87--88
 
  []
 
 [4]
-<ExplanationFigure.png, id=173, 829.59938pt x 499.11469pt>
-File: ExplanationFigure.png Graphic file (type png)
-<use ExplanationFigure.png>
-Package pdftex.def Info: ExplanationFigure.png  used on input line 105.
+<Figure 1.png, id=173, 829.59938pt x 499.11469pt>
+File: Figure 1.png Graphic file (type png)
+<use Figure 1.png>
+Package pdftex.def Info: Figure 1.png  used on input line 93.
 (pdftex.def)             Requested size: 456.28108pt x 274.51392pt.
-<ExplanationFigure2.png, id=177, 723.70375pt x 224.84pt>
-File: ExplanationFigure2.png Graphic file (type png)
-<use ExplanationFigure2.png>
-Package pdftex.def Info: ExplanationFigure2.png  used on input line 114.
+<Figure 2.png, id=177, 723.70375pt x 224.84pt>
+File: Figure 2.png Graphic file (type png)
+<use Figure 2.png>
+Package pdftex.def Info: Figure 2.png  used on input line 102.
 (pdftex.def)             Requested size: 434.2256pt x 134.90503pt.
- [5 <./ExplanationFigure.png> <./ExplanationFigure2.png>]
-Overfull \hbox (19.20854pt too wide) in paragraph at lines 130--159
+ [5 <./Figure 1.png> <./Figure 2.png>]
+Overfull \hbox (19.20854pt too wide) in paragraph at lines 118--147
  [][] 
  []
 
 [6] [7]
-<Nodes.png, id=228, 844.8363pt x 597.432pt>
-File: Nodes.png Graphic file (type png)
-<use Nodes.png>
-Package pdftex.def Info: Nodes.png  used on input line 227.
+<Figure 3.png, id=228, 844.8363pt x 597.432pt>
+File: Figure 3.png Graphic file (type png)
+<use Figure 3.png>
+Package pdftex.def Info: Figure 3.png  used on input line 215.
 (pdftex.def)             Requested size: 422.41711pt x 298.71527pt.
- [8 <./Nodes.png>]
-<Combined graph Enlarged and table.png, id=236, 361.35pt x 409.53pt>
-File: Combined graph Enlarged and table.png Graphic file (type png)
-<use Combined graph Enlarged and table.png>
-Package pdftex.def Info: Combined graph Enlarged and table.png  used on input line 239.
+ [8 <./Figure 3.png>]
+<Figure 4.png, id=236, 361.35pt x 409.53pt>
+File: Figure 4.png Graphic file (type png)
+<use Figure 4.png>
+Package pdftex.def Info: Figure 4.png  used on input line 227.
 (pdftex.def)             Requested size: 487.82352pt x 552.86664pt.
 
-Overfull \hbox (4.12665pt too wide) in paragraph at lines 239--240
+Overfull \hbox (4.12665pt too wide) in paragraph at lines 227--228
  [][] 
  []
 
-[9] [10 <./Combined graph Enlarged and table.png>]
-Overfull \hbox (19.60423pt too wide) in paragraph at lines 309--335
+[9] [10 <./Figure 4.png>]
+Overfull \hbox (19.60423pt too wide) in paragraph at lines 297--323
  [][] 
  []
 
 
-Overfull \hbox (26.84477pt too wide) in paragraph at lines 349--376
+Overfull \hbox (26.84477pt too wide) in paragraph at lines 337--364
  [][] 
  []
 
 [11]
-<Dynamic_weighted_unrestricted.png, id=263, 844.8363pt x 597.432pt>
-File: Dynamic_weighted_unrestricted.png Graphic file (type png)
-<use Dynamic_weighted_unrestricted.png>
-Package pdftex.def Info: Dynamic_weighted_unrestricted.png  used on input line 399.
+<Figure 5.png, id=263, 844.8363pt x 597.432pt>
+File: Figure 5.png Graphic file (type png)
+<use Figure 5.png>
+Package pdftex.def Info: Figure 5.png  used on input line 387.
 (pdftex.def)             Requested size: 464.6614pt x 328.58861pt.
  [12]
-<Static_Weighted_3_Truck.png, id=276, 844.8363pt x 597.432pt>
-File: Static_Weighted_3_Truck.png Graphic file (type png)
-<use Static_Weighted_3_Truck.png>
-Package pdftex.def Info: Static_Weighted_3_Truck.png  used on input line 436.
+<Figure 6.png, id=276, 844.8363pt x 597.432pt>
+File: Figure 6.png Graphic file (type png)
+<use Figure 6.png>
+Package pdftex.def Info: Figure 6.png  used on input line 414.
 (pdftex.def)             Requested size: 464.6614pt x 328.58861pt.
-<Dynamic_weighted_3_Truck.png, id=277, 844.8363pt x 597.432pt>
-File: Dynamic_weighted_3_Truck.png Graphic file (type png)
-<use Dynamic_weighted_3_Truck.png>
-Package pdftex.def Info: Dynamic_weighted_3_Truck.png  used on input line 441.
+<Figure 7.png, id=277, 844.8363pt x 597.432pt>
+File: Figure 7.png Graphic file (type png)
+<use Figure 7.png>
+Package pdftex.def Info: Figure 7.png  used on input line 419.
 (pdftex.def)             Requested size: 464.6614pt x 328.58861pt.
- [13 <./Dynamic_weighted_unrestricted.png>] [14 <./Static_Weighted_3_Truck.png> <./Dynamic_weighted_3_Truck.png>]
-<9 Graphs combined.png, id=297, 551.661pt x 522.753pt>
-File: 9 Graphs combined.png Graphic file (type png)
-<use 9 Graphs combined.png>
-Package pdftex.def Info: 9 Graphs combined.png  used on input line 468.
+ [13 <./Figure 5.png>] [14 <./Figure 6.png> <./Figure 7.png>]
+<Figure 8.png, id=297, 551.661pt x 522.753pt>
+File: Figure 8.png Graphic file (type png)
+<use Figure 8.png>
+Package pdftex.def Info: Figure 8.png  used on input line 432.
 (pdftex.def)             Requested size: 507.52586pt x 480.93062pt.
 
-Overfull \hbox (23.829pt too wide) in paragraph at lines 468--469
+Overfull \hbox (23.829pt too wide) in paragraph at lines 432--433
  [][][] 
  []
 
-[15] [16 <./9 Graphs combined.png>] [17] [18]
-Overfull \hbox (8.3567pt too wide) in paragraph at lines 557--557
+[15] [16 <./Figure 8.png>] [17] [18]
+Overfull \hbox (8.3567pt too wide) in paragraph at lines 499--499
 [][]\OT1/cmr/m/n/12 Anagnostopoulos, Theodoros, Kostas Kolom-vat-sos, Chris-tos Anag-nos-topou-los, Arkady Za-slavsky,
  []
 
 
-Overfull \hbox (25.19795pt too wide) in paragraph at lines 557--557
+Overfull \hbox (25.19795pt too wide) in paragraph at lines 499--499
 [][]\OT1/cmr/m/n/12 Anagnostopoulos, Theodoros, Arkady Za-slavsky, Inna So-sunova, Petr Fed-chenkov, Alexey Medvedev,
  []
 
 [19] [20]
-Overfull \hbox (4.24817pt too wide) in paragraph at lines 557--557
+Overfull \hbox (4.24817pt too wide) in paragraph at lines 499--499
 [][]\OT1/cmr/m/n/12 Medvedev, Alexey, Petr Fed-chenkov, Arkady Za-slavsky, Theodoros Anag-nos-topou-los, and Sergey
  []
 
-[21] (AI Paper.aux)
+[21] [22] (AI Paper.aux)
 Package rerunfilecheck Info: File `"AI Paper".out' has not changed.
 (rerunfilecheck)             Checksum: 8DB7BC97E8CA0E9E9D8D8544EFFF3DE1;1625.
 Package logreq Info: Writing requests to '"AI Paper".run.xml'.
@@ -1016,17 +1016,17 @@ Package logreq Info: Writing requests to '"AI Paper".run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31814 strings out of 478868
- 594921 string characters out of 2858669
- 1599060 words of memory out of 3000000
+ 31820 strings out of 478868
+ 594281 string characters out of 2858669
+ 1599062 words of memory out of 3000000
  49145 multiletter control sequences out of 15000+600000
  413178 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,14n,94p,2851b,3821s stack positions out of 5000i,500n,10000p,200000b,80000s
  <C:\Users\ASUS\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on "AI Paper.pdf" (21 pages, 27392893 bytes).
+Output written on "AI Paper.pdf" (22 pages, 27414221 bytes).
 PDF statistics:
- 428 PDF objects out of 1000 (max. 8388607)
- 105 named destinations out of 1000 (max. 500000)
+ 439 PDF objects out of 1000 (max. 8388607)
+ 111 named destinations out of 1000 (max. 500000)
  141 words of extra memory for PDF output out of 10000 (max. 10000000)
 

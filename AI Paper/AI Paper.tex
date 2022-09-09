@@ -29,6 +29,7 @@
 % \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
 %  T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
+
 \title{Efficient Waste Collection in Resource Constrainted Societies While Considering Dynamics\\}
 \date{}
 \author[1]{Marut Priyadarshi}
@@ -68,19 +69,6 @@ Therefore, implementing dynamic scenarios to suit the requirements of resource c
 
 
 
-% In one paper \parencite{kulcar1996optimizing}, the author focuses on the best location for the construction of a landfill that would result in the shortest collection routes when linked with the currently existing routes and depots. The paper also compares the running costs of different modes of waste transport, such as trains, ships and by road. It was useful in providing a picture of the costs associated with the system, it didn't focus on optimizing the routes that the waste collection was done. Moreover, it was set in Brussels, a highly developed city. In a similar vein, Rathore et al. \parencite{rathore2020location} focuses on formulating a mathematical model for finding the optimal places to allocate bins in the Indian city of Bilaspur. While it aims towards the similar goal of waste collection optimization, furthermore in a developing country, the method is different from our intended goal.
-
-% Many papers utilize pre-existing solvers or software to compute the optimized routes and use the results to compare them to other algorithms or observe the effects the optimized routes bring to the current system. In the case of one paper \parencite{karadimas2008routing}, the sole focus of the paper is on route optimization. However, it only applies ant colony system and the route optimizer for the software ArcGIS Network Analyst to get the optimal route for non-real time data and compares the efficiencies of the two methods. Moreover it focuses on Athens, another developed city, and even then on only one prefecture of it. Similarly, Chaudhary et al \parencite{chaudhary2019gis} have utilized ArcGIS Network Analyst software to calculate optimal routes for waste collection, this time in the city of Allahabad. This lies closer to our goal of route optimization for more resource constrained societies and while it is an extensive application of optimization process utilizing the real-life data from the city, it still only utilizes a pre-existing algorithm along with fixed unchanging datapoints to calculate the collection routes, which our work seeks to expand upon. Another paper \parencite{amal2018sga} uses the route optimization solver of GIS software ArcGIS (which itself utilizes Dijkstra algorthm) to calculate a pool of routes which, in turn, feeds the genetic algorithm to iteratively arrive at the optimal routes for the waste collection vehicles.
-
-% In their paper, Simonetto and Borenstein \parencite{de2007decision}, used linear programming to formulate a function for route optimization via minimization of cost coupled with a heuristic developed by Renaud and Boctor \parencite{renaud2002sweep} in order to bring down the computation time (at that time) to reasonable levels. Similarly, in this paper \parencite{hannan2020waste}, the authors have used linear programming combined with smart bins to find optimal waste collection routes that remove the inefficiency that is associated with formulating a route that visits all bins, regardless of its fill status. However, as it was a paper focused on the algorithmic part of the problem, they used purely simulated data, void of any real world analogue and only factored in the euclidian distances between the bins. Asefi et al \parencite{asefi2019mathematical} uses a mixed-integer linear programming model to minimize costs and uses two different meta heuristic approaches to deal with the non-deterministic polynomial-time hardness of the waste collection problem. This model is then applied to a case study in the city of Tehran, Iran. 
-
-% In other papers utilizing smart bins, Akhtar \parencite{akhtar2017backtracking} utilizes new population based meta heuristic backtracking search optimization, developed by Civicioglu \parencite{civicioglu2013backtracking}, to calculate optimal routes for collection vehicles. Its main feature is its simplicity as it has only one control parameter. It is also a highly theoretical work and focuses mainly on the mathematical aspects of the problem and not its real-life application. Al-Refaie et al \parencite{al2021optimization} takes a different approach and focuses instead on distributing the collection points into optimal clusters so that the collection efficiency of the vehicles can be maximized.
-
-% Papers like Lozano et al \parencite{lozano2018smart} and later Baldo et al \parencite{baldo2021multi}, Vishnu et al \parencite{vishnu2021iot} use smart bins, but the focus of these papers are the smart bins themselves, their engineering aspect and case studies involving them, along with constructing a system centered around technology which automates a lot of the tasks involved in the whole process of waste collection and management. The optimization part is left to pre-existing solving algorithms.
-
-% Smart bins have also been discussed in a more theoretical aspect, utilizing IoT technology in other studies such as Abdullah et al \parencite{abdullah2018iot}, Ali et al \parencite{ali2020iot}, Al-Masri et al \parencite{al2018serverless} and Chaudhari and Bhole \parencite{chaudhari2018solid}. They have touched upon smart bins as parts of a sustainable smart city architecture and different ways that they may be utilized, along with supporting subsystems. It should be noted that the above-cited literature is in no way an exhaustive list of literature utilizing IoT or smart bins, and merely provides a general idea of the works using it.
-
-
 
 \section{Problem Definition and Mathematical Formulation}
 
@@ -102,7 +90,7 @@ The execution for any agent terminates when a run is complete or the CV is full.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.55]{ExplanationFigure.png}
+    \includegraphics[scale=0.55]{Figure 1.png}
     \caption{General representation of the dynamism of the process}\label{fige}
 \end{figure}
 
@@ -111,7 +99,7 @@ Figure \ref{fige} depicts the discussed problem definition. Figure 1a shows the 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.6]{ExplanationFigure2.png}
+    \includegraphics[scale=0.6]{Figure 2.png}
     \caption{General representation of the process for multiple agents}\label{fige2}
 \end{figure}
 
@@ -224,7 +212,7 @@ To prove the model's effectiveness, we empirically tested the model for the city
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.5]{Nodes.png}
+    \includegraphics[scale=0.5]{Figure 3.png}
     \caption{The selected bins and their clusters}\label{figm}
 \end{figure}
 
@@ -236,7 +224,7 @@ The suggestion of the decision makers (Municipal Corporation Chandigarh) was to 
 We applied restrictions on the available collection vehicles to highlight the importance of strategical usage of available resources in resource constraint societies. The CV values were varied from one to six, and the impact on total distance traveled, waste collected and bins covered was studied for each region and eventually for the city. The routes were calculated while considering the temporal dynamics of bin and waste level, CV positions in varying time steps.
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=1.35]{Combined graph Enlarged and table.png}
+    \includegraphics[scale=1.35]{Figure 4.png}
     \caption{Analysis of real-time restricted case}\label{figcom}
 \end{figure}
 % \begin{table}[H]
@@ -396,7 +384,7 @@ Often the decision makers want to derive the requirement of resources that could
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.55]{Dynamic_weighted_unrestricted.png} % New Image added
+    \includegraphics[scale=0.55]{Figure 5.png} % New Image added
     \caption{Realtime Unrestricted}\label{fig2}
 \end{figure}
 
@@ -417,46 +405,22 @@ Our base case of route calculation considers real-time dynamics of waste (bin, C
 
 The above constraints, when implemented result in a fixed optimal route that doesn't change with time. We executed the dynamic and static models for 3 CV per region, for a total of 9 CVs.
 
-% \begin{table}[H]
-%     \centering
-%     \caption{Comparison of static and real-time optimization performance} \label{tab5}
-%     \vspace*{0.3cm}
-%     \begin{tabular}{|c|c|c|c|}
-%         \hline Case & Waste (Kg) & Distance (Km) & Percent Covered\\
-%         \hline \textit{Static}& 8996.88 & 798.13 & 40.33\%\\
-%         \hline \textit{Real-Time}& 8967.25 & 517.8 & 46.00\%\\
-%         \hline
-%     \end{tabular}
-% \end{table}
+
 
 The routes (Figure \ref{fig4} and Figure \ref{fig5}) show the routes obtained for the static and dynamic case for 9 CV. The outcomes demonstrate that the consideration of dynamic variables result in different routes when compared to the static model.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.55]{Static_Weighted_3_Truck.png} % Image changed here
+    \includegraphics[scale=0.55]{Figure 6.png} % Image changed here
     \caption{Routes for 3 CV per region as calculated by static optimization}\label{fig4}
 \end{figure}
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.55]{Dynamic_weighted_3_Truck.png} % Image changed here
+    \includegraphics[scale=0.55]{Figure 7.png} % Image changed here
     \caption{Routes for 3 CV per region as calculated by real-time optimization}\label{fig5}
 \end{figure}
 
-% \begin{figure}[H]
-%     \centering
-%     \begin{subfigure}{0.5\textwidth}
-%         \centering
-%         \includegraphics[width=\linewidth]{Total Distance Comparision of Static and Dynamic.png}
-%         \caption{Distance comparison}\label{figh1}
-%     \end{subfigure}%
-%     \begin{subfigure}{0.5\textwidth}
-%         \centering
-%         \includegraphics[width=\linewidth]{Total Garbage Comparision of Static and Dynamic.png}
-%         \caption{Waste comparison}\label{figh2}
-%     \end{subfigure}
-%     \caption{Comparison between static and real-time models}
-%     \label{figh}
-% \end{figure}
+
 We used the case of 3 CV per region to achieve a suitable middle ground to depict the difference in the routes created by both models, providing enough complexity to the problem for the two models to be fully utilized and compared while also maintaining the resource-constrained aspect of the problem. We observe that the weight of the waste collected is nearly the same for both cases, but the distance traveled by the CV in the real-time case is significantly lower than in the static case. This further emphasizes the efficiency of the real-time method over the static method.
 
 We performed a detailed analysis of waste collected, distance traveled and the percentage of bins covered in the three regions. Since this is a resource-constrained region, the waste collected and bins covered is similar in the case of static and dynamic models. It is in the case of distance traveled where the dynamic model shows its advantage {Figure \ref{figcg1}(b), (e), (h)}. The reduction in distance traveled becomes even more pronounced when more CV are in use.
@@ -465,45 +429,9 @@ Since reducing the distance traveled is one of the most important goals of VRP, 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.92]{9 Graphs combined.png}\label{ABCD}
+	\includegraphics[scale=0.92]{Figure 8.png}\label{ABCD}
 	\caption{Detailed static vs dynamic performance analysis}\label{figcg1}
 \end{figure}
-
-
-
-
- 
-% \subsubsection*{Sensitivity Analysis of Weights}
-% In order to depict the effect of selected objective function weights on the waste  (\ref{figs1})  collected and the distance travelled by the collection trucks (\ref{figs2}), we performed a detailed sensitivity analysis. The Figures indicate that weights had highly non linear influence on the total distance travelled collected than the garbage collected. We normalized the distance and garbage collected values for their comparison (see \ref{figs}). From the graph it can be observed that the weight combinations such as W1=0.9,W2=0.1; W1=0.4,W2=0.6 can be reasonably good for maximizing the collection of waste at minimum distance cost (W1=0.9,W2=0.1). The outcome is also inline with our selected weights. The analysis as a decision making tool can help  in selecting the best weights for desired scenarios.
-
-% \begin{figure}[H]
-%     \centering
-%     \begin{subfigure}{0.5\textwidth}
-%         \centering
-%         \includegraphics[width=\linewidth]{Total_Garbage_VS_W1_3_Trucks.png}
-%         \caption{Waste vs $w_1$}\label{figs1}
-%     \end{subfigure}%
-%     \begin{subfigure}{0.5\textwidth}
-%         \centering
-%         \includegraphics[width=\linewidth]{Total_Distance_VS_W1_3_Trucks.png}
-%         \caption{Distance vs $w_1$}\label{figs2}
-%     \end{subfigure}
-%     \caption{Effect of weight on waste and distance for 3 CVs per region}
-%     \label{figsz}
-% \end{figure}
-
-% \begin{figure}[H]
-%     \centering
-%     \includegraphics[scale=0.6]{Distance and Garbage Normalized VS W1.png}
-%     \caption{Normalized weight sensitivity graph}\label{figs}
-% \end{figure}
-
-% \textcolor{red}{One of the most noticeable observations that can be derived from the sensitivity analysis is the changes in the distance and waste as the weights are varied. The behaviour seems anomalous at first glance, but this is explained by the fact that due to having limited resources, the CVs operate at maximum capacity, therefore a change in the weight associated with waste collection does not have a significant effect and the objective function has to compensate for the change by varying the distance} 
-
-% \textcolor{red}{However, we must keep in mind that this does not mean that the paths calculated are unideal. The calculated routes are still the best possible routes following all of the specified requirements and constraints.}
-
-
-
 
 \section{Discussion}
 
@@ -551,6 +479,20 @@ Waste collection is one of the essential components of waste management process,
 
 The outcomes as a planning tool can help make decisions concerning the compromises for limited resources and their impact on waste collection and extra distance traveled to fulfill the demand. One of the study's limitations would be the non-consideration of a bin by any other CV, even if the bin were not full when visited. This can be addressed by relaxing the constraint, and its impact on outcomes can be examined. We have considered simulated smart bins for testing models, which can be replaced with IoT-enabled smart bins in real environments. Further integration of real-time data of accidents, construction work, etc., can provide more accurate routes.
 
+
+\subsubsection*{Ethics declarations}
+The study was approved by the Ethics Committee of the Indian Institute of Science Education and
+Research Bhopal, India
+\subsubsection*{Consent to participate}
+The need of Informed consent was waived by the Ethics committee of the Indian Institute of Science
+Education and Research Bhopal, India.
+\subsubsection*{Funding}
+None
+\subsubsection*{Competing interests}
+The authors declare no competing interests.
+\subsubsection*{Data availability}
+The datasets generated during and/or analysed during the current study are available from the corresponding
+author on reasonable request.
 
 % \bibliographystyle{authoryear}
 \printbibliography

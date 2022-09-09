@@ -1151,13 +1151,13 @@ INPUT C:\Program Files\MiKTeX\fonts\tfm\jknappen\ec\tcrm1200.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmti12.tfm
-INPUT .\ExplanationFigure.png
-INPUT .\ExplanationFigure.png
-INPUT ExplanationFigure.png
-INPUT .\ExplanationFigure.png
-INPUT .\ExplanationFigure.png
-INPUT .\ExplanationFigure.png
-INPUT .\ExplanationFigure.png
+INPUT .\Figure 1.png
+INPUT .\Figure 1.png
+INPUT Figure 1.png
+INPUT .\Figure 1.png
+INPUT .\Figure 1.png
+INPUT .\Figure 1.png
+INPUT .\Figure 1.png
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr8.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmr6.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmmi12.tfm
@@ -1175,55 +1175,55 @@ INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam7.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
-INPUT .\ExplanationFigure2.png
-INPUT .\ExplanationFigure2.png
-INPUT ExplanationFigure2.png
-INPUT .\ExplanationFigure2.png
-INPUT .\ExplanationFigure2.png
-INPUT .\ExplanationFigure2.png
-INPUT .\ExplanationFigure2.png
-INPUT .\Nodes.png
-INPUT .\Nodes.png
-INPUT Nodes.png
-INPUT .\Nodes.png
-INPUT .\Nodes.png
-INPUT .\Nodes.png
-INPUT .\Nodes.png
-INPUT .\Combined graph Enlarged and table.png
-INPUT .\Combined graph Enlarged and table.png
-INPUT Combined graph Enlarged and table.png
-INPUT .\Combined graph Enlarged and table.png
-INPUT .\Combined graph Enlarged and table.png
-INPUT .\Combined graph Enlarged and table.png
-INPUT .\Combined graph Enlarged and table.png
-INPUT .\Dynamic_weighted_unrestricted.png
-INPUT .\Dynamic_weighted_unrestricted.png
-INPUT Dynamic_weighted_unrestricted.png
-INPUT .\Dynamic_weighted_unrestricted.png
-INPUT .\Dynamic_weighted_unrestricted.png
-INPUT .\Dynamic_weighted_unrestricted.png
-INPUT .\Dynamic_weighted_unrestricted.png
-INPUT .\Static_Weighted_3_Truck.png
-INPUT .\Static_Weighted_3_Truck.png
-INPUT Static_Weighted_3_Truck.png
-INPUT .\Static_Weighted_3_Truck.png
-INPUT .\Static_Weighted_3_Truck.png
-INPUT .\Static_Weighted_3_Truck.png
-INPUT .\Static_Weighted_3_Truck.png
-INPUT .\Dynamic_weighted_3_Truck.png
-INPUT .\Dynamic_weighted_3_Truck.png
-INPUT Dynamic_weighted_3_Truck.png
-INPUT .\Dynamic_weighted_3_Truck.png
-INPUT .\Dynamic_weighted_3_Truck.png
-INPUT .\Dynamic_weighted_3_Truck.png
-INPUT .\Dynamic_weighted_3_Truck.png
-INPUT .\9 Graphs combined.png
-INPUT .\9 Graphs combined.png
-INPUT 9 Graphs combined.png
-INPUT .\9 Graphs combined.png
-INPUT .\9 Graphs combined.png
-INPUT .\9 Graphs combined.png
-INPUT .\9 Graphs combined.png
+INPUT .\Figure 2.png
+INPUT .\Figure 2.png
+INPUT Figure 2.png
+INPUT .\Figure 2.png
+INPUT .\Figure 2.png
+INPUT .\Figure 2.png
+INPUT .\Figure 2.png
+INPUT .\Figure 3.png
+INPUT .\Figure 3.png
+INPUT Figure 3.png
+INPUT .\Figure 3.png
+INPUT .\Figure 3.png
+INPUT .\Figure 3.png
+INPUT .\Figure 3.png
+INPUT .\Figure 4.png
+INPUT .\Figure 4.png
+INPUT Figure 4.png
+INPUT .\Figure 4.png
+INPUT .\Figure 4.png
+INPUT .\Figure 4.png
+INPUT .\Figure 4.png
+INPUT .\Figure 5.png
+INPUT .\Figure 5.png
+INPUT Figure 5.png
+INPUT .\Figure 5.png
+INPUT .\Figure 5.png
+INPUT .\Figure 5.png
+INPUT .\Figure 5.png
+INPUT .\Figure 6.png
+INPUT .\Figure 6.png
+INPUT Figure 6.png
+INPUT .\Figure 6.png
+INPUT .\Figure 6.png
+INPUT .\Figure 6.png
+INPUT .\Figure 6.png
+INPUT .\Figure 7.png
+INPUT .\Figure 7.png
+INPUT Figure 7.png
+INPUT .\Figure 7.png
+INPUT .\Figure 7.png
+INPUT .\Figure 7.png
+INPUT .\Figure 7.png
+INPUT .\Figure 8.png
+INPUT .\Figure 8.png
+INPUT Figure 8.png
+INPUT .\Figure 8.png
+INPUT .\Figure 8.png
+INPUT .\Figure 8.png
+INPUT .\Figure 8.png
 INPUT C:\Program Files\MiKTeX\fonts\tfm\public\cm\cmcsc10.tfm
 INPUT AI Paper.aux
 INPUT .\AI Paper.out
