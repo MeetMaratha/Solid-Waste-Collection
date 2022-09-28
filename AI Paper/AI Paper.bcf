@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bcf:controlfile version="3.7" bltxversion="3.16" xmlns:bcf="https://sourceforge.net/projects/biblatex">
+<bcf:controlfile version="3.8" bltxversion="3.17" xmlns:bcf="https://sourceforge.net/projects/biblatex">
   <!-- BIBER OPTIONS -->
   <bcf:options component="biber" type="global">
     <bcf:option type="singlevalued">
@@ -2738,7 +2738,7 @@
       <bcf:field source="urlyear" skip="true"/>
       <bcf:field source="urlmonth" skip="true"/>
       <bcf:field source="urlday" skip="true"/>
-      <bcf:field source="urlyeardivision" skip="true"/>
+      <bcf:field source="urlseason" skip="true"/>
       <bcf:field source="urlhour" skip="true"/>
       <bcf:field source="urlminute" skip="true"/>
       <bcf:field source="doi" skip="true"/>
@@ -2754,19 +2754,19 @@
       <bcf:field source="year" skip="true"/>
       <bcf:field source="month" skip="true"/>
       <bcf:field source="day" skip="true"/>
-      <bcf:field source="yeardivision" skip="true"/>
+      <bcf:field source="season" skip="true"/>
       <bcf:field source="endyear" skip="true"/>
       <bcf:field source="endmonth" skip="true"/>
       <bcf:field source="endday" skip="true"/>
-      <bcf:field source="endyeardivision" skip="true"/>
+      <bcf:field source="endseason" skip="true"/>
       <bcf:field source="origyear" skip="true"/>
       <bcf:field source="origmonth" skip="true"/>
       <bcf:field source="origday" skip="true"/>
-      <bcf:field source="origyeardivision" skip="true"/>
+      <bcf:field source="origseason" skip="true"/>
       <bcf:field source="origendyear" skip="true"/>
       <bcf:field source="origendmonth" skip="true"/>
       <bcf:field source="origendday" skip="true"/>
-      <bcf:field source="origendyeardivision" skip="true"/>
+      <bcf:field source="origendseason" skip="true"/>
     </bcf:inherit>
   </bcf:inheritance>
   <!-- UNIQUENAME TEMPLATES -->
@@ -3011,14 +3011,14 @@
       <bcf:field fieldtype="field" datatype="datepart">minute</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart">second</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart">timezone</bcf:field>
-      <bcf:field fieldtype="field" datatype="datepart">season</bcf:field>
+      <bcf:field fieldtype="field" datatype="datepart">yeardivision</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart">endmonth</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart">endday</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart">endhour</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart">endminute</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart">endsecond</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart">endtimezone</bcf:field>
-      <bcf:field fieldtype="field" datatype="datepart">endseason</bcf:field>
+      <bcf:field fieldtype="field" datatype="datepart">endyeardivision</bcf:field>
       <bcf:field fieldtype="field" datatype="date" skip_output="true">eventdate</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart" nullok="true">eventendyear</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart" nullok="true">eventyear</bcf:field>
@@ -3028,14 +3028,14 @@
       <bcf:field fieldtype="field" datatype="datepart">eventminute</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart">eventsecond</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart">eventtimezone</bcf:field>
-      <bcf:field fieldtype="field" datatype="datepart">eventseason</bcf:field>
+      <bcf:field fieldtype="field" datatype="datepart">eventyeardivision</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart">eventendmonth</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart">eventendday</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart">eventendhour</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart">eventendminute</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart">eventendsecond</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart">eventendtimezone</bcf:field>
-      <bcf:field fieldtype="field" datatype="datepart">eventendseason</bcf:field>
+      <bcf:field fieldtype="field" datatype="datepart">eventendyeardivision</bcf:field>
       <bcf:field fieldtype="field" datatype="date" skip_output="true">origdate</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart" nullok="true">origendyear</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart" nullok="true">origyear</bcf:field>
@@ -3045,14 +3045,14 @@
       <bcf:field fieldtype="field" datatype="datepart">origminute</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart">origsecond</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart">origtimezone</bcf:field>
-      <bcf:field fieldtype="field" datatype="datepart">origseason</bcf:field>
+      <bcf:field fieldtype="field" datatype="datepart">origyeardivision</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart">origendmonth</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart">origendday</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart">origendhour</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart">origendminute</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart">origendsecond</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart">origendtimezone</bcf:field>
-      <bcf:field fieldtype="field" datatype="datepart">origendseason</bcf:field>
+      <bcf:field fieldtype="field" datatype="datepart">origendyeardivision</bcf:field>
       <bcf:field fieldtype="field" datatype="date" skip_output="true">urldate</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart" nullok="true">urlendyear</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart" nullok="true">urlyear</bcf:field>
@@ -3062,14 +3062,14 @@
       <bcf:field fieldtype="field" datatype="datepart">urlminute</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart">urlsecond</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart">urltimezone</bcf:field>
-      <bcf:field fieldtype="field" datatype="datepart">urlseason</bcf:field>
+      <bcf:field fieldtype="field" datatype="datepart">urlyeardivision</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart">urlendmonth</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart">urlendday</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart">urlendhour</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart">urlendminute</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart">urlendsecond</bcf:field>
       <bcf:field fieldtype="field" datatype="datepart">urlendtimezone</bcf:field>
-      <bcf:field fieldtype="field" datatype="datepart">urlendseason</bcf:field>
+      <bcf:field fieldtype="field" datatype="datepart">urlendyeardivision</bcf:field>
       <bcf:field fieldtype="field" datatype="verbatim">doi</bcf:field>
       <bcf:field fieldtype="field" datatype="verbatim">eprint</bcf:field>
       <bcf:field fieldtype="field" datatype="verbatim">file</bcf:field>
@@ -3102,10 +3102,10 @@
       <bcf:field>endhour</bcf:field>
       <bcf:field>endminute</bcf:field>
       <bcf:field>endmonth</bcf:field>
-      <bcf:field>endseason</bcf:field>
       <bcf:field>endsecond</bcf:field>
       <bcf:field>endtimezone</bcf:field>
       <bcf:field>endyear</bcf:field>
+      <bcf:field>endyeardivision</bcf:field>
       <bcf:field>entryset</bcf:field>
       <bcf:field>entrysubtype</bcf:field>
       <bcf:field>execute</bcf:field>
@@ -3144,17 +3144,17 @@
       <bcf:field>origendhour</bcf:field>
       <bcf:field>origendminute</bcf:field>
       <bcf:field>origendmonth</bcf:field>
-      <bcf:field>origendseason</bcf:field>
       <bcf:field>origendsecond</bcf:field>
       <bcf:field>origendtimezone</bcf:field>
       <bcf:field>origendyear</bcf:field>
+      <bcf:field>origendyeardivision</bcf:field>
       <bcf:field>orighour</bcf:field>
       <bcf:field>origminute</bcf:field>
       <bcf:field>origmonth</bcf:field>
-      <bcf:field>origseason</bcf:field>
       <bcf:field>origsecond</bcf:field>
       <bcf:field>origtimezone</bcf:field>
       <bcf:field>origyear</bcf:field>
+      <bcf:field>origyeardivision</bcf:field>
       <bcf:field>origlocation</bcf:field>
       <bcf:field>origpublisher</bcf:field>
       <bcf:field>origtitle</bcf:field>
@@ -3164,7 +3164,6 @@
       <bcf:field>relatedoptions</bcf:field>
       <bcf:field>relatedstring</bcf:field>
       <bcf:field>relatedtype</bcf:field>
-      <bcf:field>season</bcf:field>
       <bcf:field>second</bcf:field>
       <bcf:field>shortauthor</bcf:field>
       <bcf:field>shorteditor</bcf:field>
@@ -3206,6 +3205,7 @@
       <bcf:field>xdata</bcf:field>
       <bcf:field>xref</bcf:field>
       <bcf:field>year</bcf:field>
+      <bcf:field>yeardivision</bcf:field>
     </bcf:entryfields>
     <bcf:entryfields>
       <bcf:entrytype>set</bcf:entrytype>
@@ -3634,12 +3634,12 @@
       <bcf:field>note</bcf:field>
       <bcf:field>number</bcf:field>
       <bcf:field>pubstate</bcf:field>
-      <bcf:field>season</bcf:field>
       <bcf:field>series</bcf:field>
       <bcf:field>subtitle</bcf:field>
       <bcf:field>title</bcf:field>
       <bcf:field>titleaddon</bcf:field>
       <bcf:field>volume</bcf:field>
+      <bcf:field>yeardivision</bcf:field>
     </bcf:entryfields>
     <bcf:entryfields>
       <bcf:entrytype>mvproceedings</bcf:entrytype>
@@ -3651,17 +3651,17 @@
       <bcf:field>eventendhour</bcf:field>
       <bcf:field>eventendminute</bcf:field>
       <bcf:field>eventendmonth</bcf:field>
-      <bcf:field>eventendseason</bcf:field>
       <bcf:field>eventendsecond</bcf:field>
       <bcf:field>eventendtimezone</bcf:field>
       <bcf:field>eventendyear</bcf:field>
+      <bcf:field>eventendyeardivision</bcf:field>
       <bcf:field>eventhour</bcf:field>
       <bcf:field>eventminute</bcf:field>
       <bcf:field>eventmonth</bcf:field>
-      <bcf:field>eventseason</bcf:field>
       <bcf:field>eventsecond</bcf:field>
       <bcf:field>eventtimezone</bcf:field>
       <bcf:field>eventyear</bcf:field>
+      <bcf:field>eventyeardivision</bcf:field>
       <bcf:field>eventtitle</bcf:field>
       <bcf:field>eventtitleaddon</bcf:field>
       <bcf:field>isbn</bcf:field>
@@ -3692,17 +3692,17 @@
       <bcf:field>eventendhour</bcf:field>
       <bcf:field>eventendminute</bcf:field>
       <bcf:field>eventendmonth</bcf:field>
-      <bcf:field>eventendseason</bcf:field>
       <bcf:field>eventendsecond</bcf:field>
       <bcf:field>eventendtimezone</bcf:field>
       <bcf:field>eventendyear</bcf:field>
+      <bcf:field>eventendyeardivision</bcf:field>
       <bcf:field>eventhour</bcf:field>
       <bcf:field>eventminute</bcf:field>
       <bcf:field>eventmonth</bcf:field>
-      <bcf:field>eventseason</bcf:field>
       <bcf:field>eventsecond</bcf:field>
       <bcf:field>eventtimezone</bcf:field>
       <bcf:field>eventyear</bcf:field>
+      <bcf:field>eventyeardivision</bcf:field>
       <bcf:field>eventtitle</bcf:field>
       <bcf:field>eventtitleaddon</bcf:field>
       <bcf:field>isbn</bcf:field>
@@ -3743,17 +3743,17 @@
       <bcf:field>eventendhour</bcf:field>
       <bcf:field>eventendminute</bcf:field>
       <bcf:field>eventendmonth</bcf:field>
-      <bcf:field>eventendseason</bcf:field>
       <bcf:field>eventendsecond</bcf:field>
       <bcf:field>eventendtimezone</bcf:field>
       <bcf:field>eventendyear</bcf:field>
+      <bcf:field>eventendyeardivision</bcf:field>
       <bcf:field>eventhour</bcf:field>
       <bcf:field>eventminute</bcf:field>
       <bcf:field>eventmonth</bcf:field>
-      <bcf:field>eventseason</bcf:field>
       <bcf:field>eventsecond</bcf:field>
       <bcf:field>eventtimezone</bcf:field>
       <bcf:field>eventyear</bcf:field>
+      <bcf:field>eventyeardivision</bcf:field>
       <bcf:field>eventtitle</bcf:field>
       <bcf:field>eventtitleaddon</bcf:field>
       <bcf:field>isbn</bcf:field>
@@ -3825,17 +3825,17 @@
       <bcf:field>eventendhour</bcf:field>
       <bcf:field>eventendminute</bcf:field>
       <bcf:field>eventendmonth</bcf:field>
-      <bcf:field>eventendseason</bcf:field>
       <bcf:field>eventendsecond</bcf:field>
       <bcf:field>eventendtimezone</bcf:field>
       <bcf:field>eventendyear</bcf:field>
+      <bcf:field>eventendyeardivision</bcf:field>
       <bcf:field>eventhour</bcf:field>
       <bcf:field>eventminute</bcf:field>
       <bcf:field>eventmonth</bcf:field>
-      <bcf:field>eventseason</bcf:field>
       <bcf:field>eventsecond</bcf:field>
       <bcf:field>eventtimezone</bcf:field>
       <bcf:field>eventyear</bcf:field>
+      <bcf:field>eventyeardivision</bcf:field>
       <bcf:field>eventtitle</bcf:field>
       <bcf:field>eventtitleaddon</bcf:field>
       <bcf:field>howpublished</bcf:field>
@@ -4168,6 +4168,49 @@
     <bcf:citekey order="39">abdallah2020artificial</bcf:citekey>
     <bcf:citekey order="40">gurobi</bcf:citekey>
     <bcf:citekey order="41">actionplan</bcf:citekey>
+    <bcf:citekey order="42">hoornweg2012waste</bcf:citekey>
+    <bcf:citekey order="43">GUPTA2015206</bcf:citekey>
+    <bcf:citekey order="44">SHARMA2021293</bcf:citekey>
+    <bcf:citekey order="45">CHEELA2021419</bcf:citekey>
+    <bcf:citekey order="46">somani2021integrated</bcf:citekey>
+    <bcf:citekey order="47">akbarpour2021innovative</bcf:citekey>
+    <bcf:citekey order="48">anagnostopoulos2014effective</bcf:citekey>
+    <bcf:citekey order="49">anagnostopoulos2015assessing</bcf:citekey>
+    <bcf:citekey order="50">alwabli2020dynamic</bcf:citekey>
+    <bcf:citekey order="51">dugdhe2016efficient</bcf:citekey>
+    <bcf:citekey order="52">chaudhari2018solid</bcf:citekey>
+    <bcf:citekey order="53">badve2020garbage</bcf:citekey>
+    <bcf:citekey order="54">apaydin2007route</bcf:citekey>
+    <bcf:citekey order="55">han2015waste</bcf:citekey>
+    <bcf:citekey order="56">kulcar1996optimizing</bcf:citekey>
+    <bcf:citekey order="57">rathore2020location</bcf:citekey>
+    <bcf:citekey order="58">barzehkar2019landfill</bcf:citekey>
+    <bcf:citekey order="59">al2021optimization</bcf:citekey>
+    <bcf:citekey order="60">karadimas2008routing</bcf:citekey>
+    <bcf:citekey order="61">amal2018sga</bcf:citekey>
+    <bcf:citekey order="62">asefi2019mathematical</bcf:citekey>
+    <bcf:citekey order="63">de2007decision</bcf:citekey>
+    <bcf:citekey order="64">hannan2020waste</bcf:citekey>
+    <bcf:citekey order="65">akhtar2017backtracking</bcf:citekey>
+    <bcf:citekey order="66">malakahmad2014solid</bcf:citekey>
+    <bcf:citekey order="67">grace2021smart</bcf:citekey>
+    <bcf:citekey order="68">aleyadeh2018iot</bcf:citekey>
+    <bcf:citekey order="69">ramos2018smart</bcf:citekey>
+    <bcf:citekey order="70">anagnostopoulos2018stochastic</bcf:citekey>
+    <bcf:citekey order="71">anagnostopoulos2015robust</bcf:citekey>
+    <bcf:citekey order="72">lozano2018smart</bcf:citekey>
+    <bcf:citekey order="73">baldo2021multi</bcf:citekey>
+    <bcf:citekey order="74">chaudhary2019gis</bcf:citekey>
+    <bcf:citekey order="75">sk2020optimal</bcf:citekey>
+    <bcf:citekey order="76">ogwueleke2009route</bcf:citekey>
+    <bcf:citekey order="77">vasagade2017dynamic</bcf:citekey>
+    <bcf:citekey order="78">medvedev2015waste</bcf:citekey>
+    <bcf:citekey order="79">malapur2017iot</bcf:citekey>
+    <bcf:citekey order="80">belien2014municipal</bcf:citekey>
+    <bcf:citekey order="81">sulemana2018optimal</bcf:citekey>
+    <bcf:citekey order="82">abdallah2020artificial</bcf:citekey>
+    <bcf:citekey order="83">gurobi</bcf:citekey>
+    <bcf:citekey order="84">actionplan</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="cms">
