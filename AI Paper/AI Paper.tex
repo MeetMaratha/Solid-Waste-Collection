@@ -90,18 +90,18 @@ The execution for any agent terminates when a run is complete or the CV is full.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.25]{Figure 1.png}
+    \includegraphics[scale=0.25]{Figure 1 and 2 Combined.png}
     \caption{General representation of the dynamism of the process}\label{fige}
 \end{figure}
 
 
 Figure \ref{fige} depicts the discussed problem definition. Figure 1a shows the starting state of the agent at time interval $T=0$ at depot, and the percentage fill values for various bins, and the agent respectively. Figure 1b-1d illustrate the further time intervals ($T=T_1,T_2...T_m$) and the dynamic changes in the movement of the agent, their updated fill percentages, updates in the bin fill percentage, and updated route after each time intervals i.e., at T1 and T2 the routes are different. Figure 1e depicts the last state at time interval $T=T_f$ when the agent finally returns to the depot. Figure \ref{fige2} depicts a case of multiple agents moving in parallel while working together to gather the waste optimally.  
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.45]{Figure 2.png}
-    \caption{General representation of the process for multiple agents}\label{fige2}
-\end{figure}
+%\begin{figure}[H]
+    %\centering
+    %\includegraphics[scale=0.45]{Figure 2.png}
+    %\caption{General representation of the process for multiple %agents}\label{fige2}
+%\end{figure}
 
 Three different execution scenarios are demonstrated. The first scenario restricts the available resources, which in our case is the collection vehicles. The second case runs the model without any restriction on available resources. It demonstrates the impact of available resources on waste collection, bins covered, and distance travelled for each region and accumulated at the city scale. Lastly we emphasize the importance of dynamic considerations by comparing the outcome of dynamic with the static model.
 
@@ -224,7 +224,7 @@ The suggestion of the decision makers (Municipal Corporation Chandigarh) was to 
 We applied restrictions on the available collection vehicles to highlight the importance of strategical usage of available resources in resource constraint societies. The CV values were varied from one to six, and the impact on total distance traveled, waste collected and bins covered was studied for each region and eventually for the city. The routes were calculated while considering the temporal dynamics of bin and waste level, CV positions in varying time steps.
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=1.35]{Figure 4.png}
+    \includegraphics[scale=1.1]{Figure 4.png}
     \caption{Analysis of real-time restricted case}\label{figcom}
 \end{figure}
 % \begin{table}[H]
@@ -384,7 +384,7 @@ Often the decision makers want to derive the requirement of resources that could
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.55]{Figure 5.png} % New Image added
+    \includegraphics[scale=0.40]{Figure 5.png} % New Image added
     \caption{Realtime Unrestricted}\label{fig2}
 \end{figure}
 
@@ -411,14 +411,14 @@ The routes (Figure \ref{fig4} and Figure \ref{fig5}) show the routes obtained fo
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.55]{Figure 6.png} % Image changed here
+    \includegraphics[scale=0.45]{Figure 6 and 7 Combined.png} % Image changed here
     \caption{Routes for 3 CV per region as calculated by static optimization}\label{fig4}
 \end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.55]{Figure 7.png} % Image changed here
-    \caption{Routes for 3 CV per region as calculated by real-time optimization}\label{fig5}
-\end{figure}
+%\begin{figure}[H]
+ %   \centering
+ %   \includegraphics[scale=0.55]{Figure 7.png} % Image changed here
+ %   \caption{Routes for 3 CV per region as calculated by real-time optimization}\label{fig5}
+%\end{figure}
 
 
 We used the case of 3 CV per region to achieve a suitable middle ground to depict the difference in the routes created by both models, providing enough complexity to the problem for the two models to be fully utilized and compared while also maintaining the resource-constrained aspect of the problem. We observe that the weight of the waste collected is nearly the same for both cases, but the distance traveled by the CV in the real-time case is significantly lower than in the static case. This further emphasizes the efficiency of the real-time method over the static method.
