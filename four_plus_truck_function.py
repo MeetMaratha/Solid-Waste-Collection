@@ -91,14 +91,18 @@ def optimize(df, visit, distances, n_done, visitedNodes, count, NTaken, n_trucks
                 Xs[k] = mdl.addVars(As[k], vtype = GRB.BINARY)
                 Ys[k] = mdl.addVars(Vs[k], vtype = GRB.BINARY)
                 Us[k] = mdl.addVars(Ns[k], vtype = GRB.CONTINUOUS)
+                # objs[k] = quicksum( 
+                #         (w1 * Xs[k][p, q] * Cs[k][(p, q)]) - (w2 * Ys[k][p] * fills[k].loc[p, 'fill'] * B_TO_T) for p,q in As[k]
+                #         )
                 objs[k] = quicksum( 
-                        (w1 * Xs[k][p, q] * Cs[k][(p, q)]) - (w2 * Ys[k][p] * fills[k].loc[p, 'fill'] * B_TO_T) for p,q in As[k]
+                        (-w1 * Xs[k][p, q] * Cs[k][(p, q)]) + (w2 * Ys[k][p] * fills[k].loc[p, 'fill'] * B_TO_T) for p,q in As[k]
                         )
             
     # Optimization Function defination
 
     
-    mdl.modelSense = GRB.MINIMIZE
+    mdl.modelSense = GRB.MAXIMIZE
+    # mdl.modelSense = GRB.MINIMIZE
     mdl.setObjective(sum(objs))
 
     # Constraints
@@ -313,7 +317,7 @@ def dyn_multi_opt(df, visit, distances, t_name, n_done, visitedNodes, n_trucks =
     
     # Recursive call
 
-    obj_value = dyn_multi_opt(df =df, visit = visit, visitedNodes = visitedNodes, distances = distances, t_name = t_name, n_done = n_done, w1 = w1, w2 = w2, n_trucks = n_trucks, folder_Path = folder_Path, ward_name = ward_name, obj_value = obj_value, m = m, truck_fill = truck_fill)
+    obj_value, _ = dyn_multi_opt(df =df, visit = visit, visitedNodes = visitedNodes, distances = distances, t_name = t_name, n_done = n_done, w1 = w1, w2 = w2, n_trucks = n_trucks, folder_Path = folder_Path, ward_name = ward_name, obj_value = obj_value, m = m, truck_fill = truck_fill)
     return obj_value, truck_fill
 
     # Change to get number of variables and constraints
