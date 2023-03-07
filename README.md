@@ -1,4 +1,6 @@
 ## Solid waste collection Optimization
+The paper has been published in Springer Nature and can be found [here](https://www.nature.com/articles/s41598-023-29593-x.epdf?sharing_token=T7qW4Wf6IrrbA3hosV7ypNRgN0jAjWel9jnR3ZoTv0OQTYJ1chF4A3By2Het_SUUYeSL-_Okqgm1JVnX0j-EjhgwaZi5El6D-Pvva2z9OcSiK4n9vcfq7jj7wImjeKUjdDrwut6rQbS8rY-21_IeFMivA5PNCc3VJdJsjT17szo%3D)
+
 
 ### Requirements
 
