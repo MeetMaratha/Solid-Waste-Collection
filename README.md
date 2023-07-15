@@ -21,6 +21,40 @@ Waste collection in developing nations faces multi-fold challenges, such as reso
 
 Best path for each agent such that there is maximum amount of waste collection while travelling the least distance.
 
+## Installation
+
+1. Clone the github repository using the following command
+
+```
+git clone https://github.com/MeetMaratha/Solid-Waste-Collection.git
+```
+
+2. Make a virtual environment to work. This is only needed to separate the project from the main system install. You can use the following command in the cloned github folder to generate the virtual environment on Windows and Linux distributions other than Ubuntu/Debian
+
+```
+python -m venv solid_venv
+```
+
+For Ubuntu/Debian use following command
+
+```
+python3 -m venv solid_venv
+```
+3. Activate the virtual environment using the following command in the cloned github folder
+
+**For Bash/Windows/ZSH shell:**
+```
+source solid_venv/bin/activate
+```
+**For Fish shell:**
+```
+source solid_venv/bin/activate.fish
+```
+4. Install the python packages required using the following command
+```
+pip install -r requirements.txt
+```
+
 ## General flow 
 
 1. We assume that a road network with placement of _**n**_ bins and 2 depot are already provided.
@@ -34,7 +68,7 @@ Best path for each agent such that there is maximum amount of waste collection w
 
 The following image displays an example of the whole work flow:
 
-![](Images/Explanation/Figure%201%20and%202%20Combined.png) 
+![](Images/Figure_001.png) 
 
 ## Optimization function
 
