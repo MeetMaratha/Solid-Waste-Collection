@@ -103,7 +103,7 @@ There are constraints and such which we use to solve the problem defined, you ca
 
 The road network was extracted from [OpenStreetMap](https://www.openstreetmap.org) (OSM) database. OpenStreetMap API was then used to calculate the distance between all bins and generate a distance matrix used in the optimization process. We applied K-Means clustering algorithm to cluster these points in a fixed set of clusters provided in [QGIS](https://www.qgis.org/en/site/). In this experiment, we have selected total clusters to be three. The number can be updated based on user requirements. After clustering, region 1, region 2, and region 3 had 95, 111, and 94 points, respectively. The clusters were considered as three regions for which CV had to be allocated. To replicate the actual field activities, we have assumed that a CV starts and ends its route at the depot. A representation of the generated map is as follows:
 
-![](Manuscript%20Anonymous/Figures/Figure%203.png)
+![](Images/Figure_002.png)
 
 ## Case Studies
 Experiments were carried out on an **AMD A6-9220 processor**, which runs at **2.5 GHz** and utilizes **8 GB RAM**. The model was implemented in **Python 3.10.5** and solved with Gurobi optimizer version **Gurobi 9.5.1**. A total of four scenarios were implemented. The minimum and maximum solving times were around 67.0618 s having total variable count of 7041 and total constraint count of 7075 for the maximum case. The suggestion of the decision makers (Municipal Corporation Chandigarh) was to provide equal preference to find minimum distance routes and maximize the waste collection. Hence, we assigned $w_1$ and $w_2$ to be **0.5** to execute the scenarios. This means that our optimization model gives equal importance to minimizing the distance and maximizing the waste collected. The maximum capacity of a CV was considered as **1000 kg**, and the maximum capacity of a smart bin (garbage bin) was considered as **100 kg**.
@@ -118,7 +118,6 @@ The outcomes as a planning tool can help make decisions concerning the compromis
 
 ## Folder structure and files
 
-  - **Chandigarh QGIS :** It contains all files related to QGIS we have used.
   - **Data :** It contains all data which we are using for our computation.
   - **Bin Locations.csv :** They are randomly generated points in QGIS and clustered using K-Means. The depot is assigned ward -1.
   - **distances.csv :** This contains the distance matrix of all points in same ward or from depot.
